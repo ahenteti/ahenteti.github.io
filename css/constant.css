@@ -1,0 +1,21 @@
+:root {
+    --color-orange: #FF6600;
+    --color-blue: #1a73e8;
+    --color-green: #00CC8F;
+
+    --color-gray-background: #FAFAFA;
+    --color-gray-dark: #333;
+    --color-gray-medium: #555;
+    --color-gray-light: #888;
+    --color-gray-eee: #eee;
+
+    --home-width: 80%;
+    
+    --border-radius: 3px;
+    --header-hight: 3.5rem;
+
+    --transition: all .2s ease-in;
+
+    --box-shadow: 0px 2px 5px rgba(0, 0, 0, .2);
+    --text-shadow: 0 0 5px rgba(0, 0, 0, .5);
+}

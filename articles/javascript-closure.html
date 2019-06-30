@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Javascript :: Closure</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Anonymous+Pro|PT+Serif|Roboto&display=swap">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/styles/atom-one-light.min.css">
+    <link rel="stylesheet" href="/css/constant.css">
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/tooltip.css">
+    <link rel="stylesheet" href="/css/article.css">
+    <link rel="stylesheet" href="/css/blockquote.css">
+    <link rel="stylesheet" href="/css/code-block.css">
+    <script src="https://kit.fontawesome.com/58854edabd.js"></script>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">ahenteti articles</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <article>
+        <h1 class="title banner"><span>Closure functions<br/>in Javascript</span></h1>
+
+        <main>
+            <h2>Definition</h2>
+            <blockquote>
+                    An inner function always has access to the vars and parameters of its 
+                    outer function, even after the outer function has returned
+                <cite>
+                    ~ Douglas Crockford
+                </cite>
+            </blockquote>
+    
+            <h2>closure function</h2>
+            <div class="code-block">
+                <pre>
+                    <code class="js">
+                        function closureFunction() {
+                            let date = new Date();
+                            return function() {
+                                return date.getMilliseconds();
+                            }
+                        }
+                    </code>
+                </pre>
+                <div class="copy-code-icon" data-tooltip="Copy the code to clipboard">
+                    <i class="far fa-copy"></i>
+                </div>
+            </div>
+    
+            <h2>non-closure function</h2>
+            <div class="code-block">
+                <pre>
+                    <code>
+                        function nonClosureFunction() {
+                            let date = new Date();
+                            return date.getMilliseconds();
+                        }
+                    </code>
+                </pre>
+                <div class="copy-code-icon" data-tooltip="Copy the code to clipboard">
+                    <i class="far fa-copy"></i>
+                </div>
+            </div>
+        </main>
+
+    </article>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.8/highlight.min.js"></script>
+    <script src="/js/code-block.js"></script>
+    <script src="/js/article.js"></script>
+</body>
+
+</html>

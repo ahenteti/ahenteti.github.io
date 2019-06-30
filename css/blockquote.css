@@ -1,0 +1,44 @@
+blockquote {
+    margin: 1rem 0 0;
+    padding: .5rem 1.5rem;
+    border-left: 3px solid var(--color-green);
+    font-family: 'PT serif', 'Roboto', serif;
+    font-style: italic;
+    color: var(--color-gray-medium);
+    text-align: justify;
+    position: relative
+}
+
+blockquote::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -5px;
+    width: 10px;
+    height: 2.5rem;
+    background: white;
+}
+
+blockquote::after {
+    content: "\f10e";
+    font-family: "Font Awesome 5 Pro";
+    font-weight: 700;
+    font-style: normal;
+    position: absolute;
+    color: var(--color-green);
+    top: 50%;
+    transform: translateY(-50%);
+    left: -10px;
+}
+
+blockquote cite {
+    display: block;
+    margin-top: 1rem;
+    color: var(--color-gray-light);
+    font-size: 0.9rem;
+}
+
+blockquote footer::before {
+    content: '— ';
+}
