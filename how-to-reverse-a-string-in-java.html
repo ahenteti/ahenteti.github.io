@@ -36,4 +36,45 @@
   "img/obtaining-digital-certificate-procedure.png": "img/obtaining-digital-certificate-procedure.png",
   "img/ssl-connection.png": "img/ssl-connection.png",
   "img/digital-signature.png": "img/digital-signature.png"
-}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"><link href="css/index.296547b65d061a075e55.css" rel="stylesheet"></head> <body> <app-header home=true></app-header> <main> <section class=intro> <h1 class="name one-line">Welcome to ahenteti notes</h1> <p class=description> In this website, I'm going to centralize what I have learned from the Internet. <b>Big thanks</b> to you gays that helped me improve my skills </p> </section> <section class=search> <app-search></app-search> </section> <section class=articles> </section> <section class=no-result> </section> </main> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/index.296547b65d061a075e55.js"></script></body> </html>
+}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <h2>Using string concatenation</h2> <app-multiline-code language=java> <pre slot=code>
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            String reversedStr = "";
+                            for (int i = str.length() - 1; i &gt;= 0; i--) {
+                                reversedStr += str.charAt(i);
+                            }
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre> </app-multiline-code> <app-warn> <p> As Strings in java immutables. the concatenation of two strings result of the creation of a third String object. So we don't encourage the use of this solution as it shows bad performance and bad memory management </p> </app-warn> <h2>Using StringBuilder reverse method</h2> <app-multiline-code language=java> <pre slot=code>
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            StringBuilder reversedStrBuilder = new StringBuilder(str);
+                            String reversedStr = reversedStrBuilder.reverse().toString();
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre> </app-multiline-code> <h2>Using StringBuilder append method</h2> <app-multiline-code language=java> <pre slot=code>
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            StringBuilder reversedStrBuilder = new StringBuilder();
+                            for (int i = str.length() - 1; i &gt;= 0; i--) {
+                                reversedStrBuilder.append(str.charAt(i));
+                            }
+                            String reversedStr = reversedStrBuilder.toString();
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre> </app-multiline-code> </app-article> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/how-to-reverse-a-string-in-java.b31b0afa5d621ab7ef88.js"></script></body> </html>

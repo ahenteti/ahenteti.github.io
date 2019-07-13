@@ -36,4 +36,61 @@
   "img/obtaining-digital-certificate-procedure.png": "img/obtaining-digital-certificate-procedure.png",
   "img/ssl-connection.png": "img/ssl-connection.png",
   "img/digital-signature.png": "img/digital-signature.png"
-}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"><link href="css/index.296547b65d061a075e55.css" rel="stylesheet"></head> <body> <app-header home=true></app-header> <main> <section class=intro> <h1 class="name one-line">Welcome to ahenteti notes</h1> <p class=description> In this website, I'm going to centralize what I have learned from the Internet. <b>Big thanks</b> to you gays that helped me improve my skills </p> </section> <section class=search> <app-search></app-search> </section> <section class=articles> </section> <section class=no-result> </section> </main> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/index.296547b65d061a075e55.js"></script></body> </html>
+}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <app-multiline-code> <pre slot=code>
+                <code>
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html lang="en"&gt;
+                    
+                    &lt;head&gt;
+                        &lt;meta charset="UTF-8"&gt;
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                        &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+                        &lt;title&gt;Document&lt;/title&gt;
+                        &lt;style&gt;
+                            *,
+                            *::before,
+                            *::after {
+                                padding: 0;
+                                margin: 0;
+                                box-sizing: border-box;
+                            }
+                        
+                            .square {
+                                position: relative;
+                                height: 100px;
+                                width: 100px;
+                                background: #3498db;
+                                border-radius: 100%;
+                            }
+                        
+                            .circle {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                height: 25px;
+                                width: 25px;
+                                background: #ecf0f1;
+                                border-radius: 100%;
+                            }
+                        &lt;/style&gt;
+                    &lt;/head&gt;
+                    
+                    &lt;body&gt;
+                    
+                        &lt;div class="square"&gt;
+                            &lt;div class="circle"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    
+                        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"&gt;&lt;/script&gt;
+                        &lt;script&gt;
+                            html2canvas(document.querySelector(".square"), {
+                                onrendered: canvas =&gt; document.body.appendChild(canvas)
+                            })
+                        &lt;/script&gt;
+                    
+                    &lt;/body&gt;
+                    
+                    &lt;/html&gt;
+                </code>
+            </pre> </app-multiline-code> </app-article> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/html2canvas-script-demo.f86543944022e079faba.js"></script></body> </html>

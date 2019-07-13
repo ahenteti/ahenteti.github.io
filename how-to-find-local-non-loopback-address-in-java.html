@@ -36,4 +36,42 @@
   "img/obtaining-digital-certificate-procedure.png": "img/obtaining-digital-certificate-procedure.png",
   "img/ssl-connection.png": "img/ssl-connection.png",
   "img/digital-signature.png": "img/digital-signature.png"
-}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"><link href="css/index.296547b65d061a075e55.css" rel="stylesheet"></head> <body> <app-header home=true></app-header> <main> <section class=intro> <h1 class="name one-line">Welcome to ahenteti notes</h1> <p class=description> In this website, I'm going to centralize what I have learned from the Internet. <b>Big thanks</b> to you gays that helped me improve my skills </p> </section> <section class=search> <app-search></app-search> </section> <section class=articles> </section> <section class=no-result> </section> </main> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/index.296547b65d061a075e55.js"></script></body> </html>
+}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <app-multiline-code language=java> <pre slot=code>
+                <code>
+                    import java.net.InetAddress;
+                    import java.net.NetworkInterface;
+                    import java.net.SocketException;
+                    import java.util.Enumeration;
+                    
+                    /**
+                     * InetAddress Utils
+                     */
+                    public class InetAddressUtils {
+                    
+                        /**
+                         * Finds a local, non-loopback address
+                         * 
+                         * @return The first non-loopback found, or &lt;code&gt;null&lt;/code&gt; if no
+                         *         such addresses found
+                         * @throws SocketException If there was a problem querying the network
+                         *                         interfaces
+                         */
+                        public static InetAddress getLocalAddress() throws SocketException {
+                            Enumeration&lt;NetworkInterface&gt; interfaces = NetworkInterface.getNetworkInterfaces();
+                            while (interfaces.hasMoreElements()) {
+                                NetworkInterface iface = interfaces.nextElement();
+                                Enumeration&lt;InetAddress&gt; addresses = iface.getInetAddresses();
+                    
+                                while (addresses.hasMoreElements()) {
+                                    InetAddress addr = addresses.nextElement();
+                                    if (!addr.isLoopbackAddress()) {
+                                        return addr;
+                                    }
+                                }
+                            }
+                    
+                            return null;
+                        }
+                    }
+                </code>
+            </pre> </app-multiline-code> </app-article> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/how-to-find-local-non-loopback-address-in-java.0e771a6046e3469ad438.js"></script></body> </html>

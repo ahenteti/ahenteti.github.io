@@ -1,0 +1,213 @@
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <meta http-equiv=X-UA-Compatible content="ie=edge"> <link rel="shortcut icon" type=image/png href=/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
+  "components.js": "js/components.a7b03a7dfe26a7677cc6.js",
+  "common.js": "js/common.10aae30536f2ade5e752.js",
+  "common.css": "css/common.10aae30536f2ade5e752.css",
+  "javascript-closure.js": "js/javascript-closure.9058d976542e1c40128b.js",
+  "javascript-closure.css": "css/javascript-closure.9058d976542e1c40128b.css",
+  "index.js": "js/index.296547b65d061a075e55.js",
+  "index.css": "css/index.296547b65d061a075e55.css",
+  "slide-in-as-you-scroll-down-cards.js": "js/slide-in-as-you-scroll-down-cards.379121dc756c2334f405.js",
+  "slide-in-as-you-scroll-down-cards.css": "css/slide-in-as-you-scroll-down-cards.379121dc756c2334f405.css",
+  "about.js": "js/about.c6542baae58e9219191c.js",
+  "about.css": "css/about.c6542baae58e9219191c.css",
+  "how-to-stop-a-process-listening-on-a-certain-port-in-windows.js": "js/how-to-stop-a-process-listening-on-a-certain-port-in-windows.87ae61a48fc6ecad3841.js",
+  "how-to-show-line-numbers-in-vim.js": "js/how-to-show-line-numbers-in-vim.5d1bfc960f36204bad9a.js",
+  "html2canvas-script-demo.js": "js/html2canvas-script-demo.f86543944022e079faba.js",
+  "simple-crud-table-with-jsf-2.3-and-primafaces.js": "js/simple-crud-table-with-jsf-2.3-and-primafaces.ec1c3a420a59ead61475.js",
+  "old-versus-new-jsf-scope-annotations.js": "js/old-versus-new-jsf-scope-annotations.d4032d27cdd6c1c46adb.js",
+  "jsf-websocket-demo.js": "js/jsf-websocket-demo.d6502e8353fcd321de12.js",
+  "jsf-tutorial.js": "js/jsf-tutorial.b18a99ab3b66034048ac.js",
+  "jsf-primefaces-demo.js": "js/jsf-primefaces-demo.2151f6ce9396428f1fee.js",
+  "jsf-helloworld-demo.js": "js/jsf-helloworld-demo.201c5ab7ceefacc0a6ca.js",
+  "jsf-download-file-demo.js": "js/jsf-download-file-demo.6b3e86c099729399f86f.js",
+  "facelet-templating-system.js": "js/facelet-templating-system.14b94e338eab2a0b5194.js",
+  "facelet-composite-components-demo.js": "js/facelet-composite-components-demo.8bdc135e178bb95faa53.js",
+  "jdbc-with-and-without-jpa.js": "js/jdbc-with-and-without-jpa.1e3ca5893e4831fc105f.js",
+  "how-to-reverse-a-string-in-java.js": "js/how-to-reverse-a-string-in-java.b31b0afa5d621ab7ef88.js",
+  "how-to-find-local-non-loopback-address-in-java.js": "js/how-to-find-local-non-loopback-address-in-java.0e771a6046e3469ad438.js",
+  "how-to-create-a-postgres-jdbc-connection-in-java-se.js": "js/how-to-create-a-postgres-jdbc-connection-in-java-se.f6b65788bd1a464aebec.js",
+  "secure-connnections-with-ssl.js": "js/secure-connnections-with-ssl.5985fa858452f962065e.js",
+  "openssl-quick-tips.js": "js/openssl-quick-tips.80f2c824a5cbd630bb15.js",
+  "git-quick-tips.js": "js/git-quick-tips.01858e53e5fc001864e5.js",
+  "tabs-widget-demo.js": "js/tabs-widget-demo.72c11bb910725fd933f5.js",
+  "how-to-add-three-dots-to-text-when-overflow-in-css.js": "js/how-to-add-three-dots-to-text-when-overflow-in-css.67bff82d59783d8ae40c.js",
+  "bash-quick-tips.js": "js/bash-quick-tips.0d7374591b0667edc628.js",
+  "img/encryption_decryption_overview.png": "img/encryption_decryption_overview.png",
+  "img/obtaining-digital-certificate-procedure.png": "img/obtaining-digital-certificate-procedure.png",
+  "img/ssl-connection.png": "img/ssl-connection.png",
+  "img/digital-signature.png": "img/digital-signature.png"
+}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <app-code-tabs> <app-code-tab slot=code-tab>project structure</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    ├── java
+                                    │   └── io
+                                    │       └── github
+                                    │           └── ahenteti
+                                    │               └── java
+                                    │                   └── EditorBean.java
+                                    └── webapp
+                                        ├── WEB-INF
+                                        │   └── web.xml
+                                        ├── index.xhtml
+                                        └── resources
+                                            └── css
+                                                └── default.css
+                            
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>pom.xml</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
+                        <code>
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jsf-primefaces-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                                &lt;packaging&gt;war&lt;/packaging&gt;
+                            
+                                &lt;name&gt;${project.artifactId}&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;javaee.api.version&gt;8.0&lt;/javaee.api.version&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.primefaces&lt;/groupId&gt;
+                                        &lt;artifactId&gt;primefaces&lt;/artifactId&gt;
+                                        &lt;version&gt;7.0&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;!-- javaee 8 --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;javax&lt;/groupId&gt;
+                                        &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+                                        &lt;version&gt;${javaee.api.version}&lt;/version&gt;
+                                        &lt;scope&gt;provided&lt;/scope&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;!-- lombok --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;1.18.8&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;
+                                            &lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;
+                                            &lt;inherited&gt;true&lt;/inherited&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;id&gt;deploy&lt;/id&gt;
+                                                    &lt;phase&gt;integration-test&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;redeploy&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                            &lt;configuration&gt;
+                                                &lt;container&gt;
+                                                    &lt;containerId&gt;glassfish5x&lt;/containerId&gt;
+                                                    &lt;type&gt;installed&lt;/type&gt;
+                                                    &lt;home&gt;${env.GLASSFISH_HOME}&lt;/home&gt;
+                                                &lt;/container&gt;
+                                                &lt;configuration&gt;
+                                                    &lt;type&gt;existing&lt;/type&gt;
+                                                    &lt;home&gt;${env.GLASSFISH_HOME}/glassfish/domains&lt;/home&gt;
+                                                    &lt;properties&gt;
+                                                        &lt;cargo.glassfish.domain.name&gt;domain1&lt;/cargo.glassfish.domain.name&gt;
+                                                        &lt;cargo.remote.password /&gt;
+                                                    &lt;/properties&gt;
+                                                &lt;/configuration&gt;
+                                            &lt;/configuration&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                                &lt;repositories&gt;
+                                    &lt;repository&gt;
+                                        &lt;url&gt;http://repository.primefaces.org/&lt;/url&gt;
+                                        &lt;id&gt;PrimeFaces-maven-lib&lt;/id&gt;
+                                        &lt;layout&gt;default&lt;/layout&gt;
+                                        &lt;name&gt;Repository for library PrimeFaces-maven-lib&lt;/name&gt;
+                                    &lt;/repository&gt;
+                                &lt;/repositories&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>web.xml</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;web-app version="3.1" 
+                                     xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+                                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                                     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;javax.faces.PROJECT_STAGE&lt;/param-name&gt;
+                                    &lt;param-value&gt;Development&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                                &lt;servlet&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+                                    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+                                &lt;/servlet&gt;
+                                &lt;servlet-mapping&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;url-pattern&gt;*.xhtml&lt;/url-pattern&gt;
+                                &lt;/servlet-mapping&gt;
+                                &lt;session-config&gt;
+                                    &lt;session-timeout&gt;30&lt;/session-timeout&gt;
+                                &lt;/session-config&gt;
+                                &lt;welcome-file-list&gt;
+                                    &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
+                                &lt;/welcome-file-list&gt;
+                            &lt;/web-app&gt;
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>index.xhtml</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xhtml> <pre slot=code>
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+                            &lt;!DOCTYPE html
+                                PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                            &lt;html 
+                                lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+                                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                xmlns:p="http://primefaces.org/ui"
+                                &gt;
+                            
+                                &lt;h:head&gt;
+                                    &lt;h:outputStylesheet library="css" name="default.css" /&gt;
+                                    &lt;title&gt;JSF Hello World Application&lt;/title&gt;
+                                &lt;/h:head&gt;
+                                &lt;h:body&gt;
+                                    &lt;h2&gt;Primefaces Demo&lt;/h2&gt;
+                                    &lt;p:editor value="#{editorBean.value}"/&gt;
+                                &lt;/h:body&gt;
+                            
+                            &lt;/html&gt;
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>EditorBean.java</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=java> <pre slot=code>
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import java.io.Serializable;
+                            import javax.enterprise.context.SessionScoped;
+                            import javax.inject.Named;
+                            
+                            import lombok.Data;
+                            
+                            @Data
+                            @Named
+                            @SessionScoped
+                            public class EditorBean implements Serializable {
+                            
+                                private static final long serialVersionUID = 5443351151396868724L;
+                                private String value;
+                            
+                            }
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> </app-code-tabs> </app-article> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/jsf-primefaces-demo.2151f6ce9396428f1fee.js"></script></body> </html>

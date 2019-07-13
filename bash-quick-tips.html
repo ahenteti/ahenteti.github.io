@@ -36,4 +36,25 @@
   "img/obtaining-digital-certificate-procedure.png": "img/obtaining-digital-certificate-procedure.png",
   "img/ssl-connection.png": "img/ssl-connection.png",
   "img/digital-signature.png": "img/digital-signature.png"
-}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"><link href="css/index.296547b65d061a075e55.css" rel="stylesheet"></head> <body> <app-header home=true></app-header> <main> <section class=intro> <h1 class="name one-line">Welcome to ahenteti notes</h1> <p class=description> In this website, I'm going to centralize what I have learned from the Internet. <b>Big thanks</b> to you gays that helped me improve my skills </p> </section> <section class=search> <app-search></app-search> </section> <section class=articles> </section> <section class=no-result> </section> </main> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/index.296547b65d061a075e55.js"></script></body> </html>
+}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <h2>How to convert a string to lower case</h2> <app-oneline-code code="echo 'HELLO WORLD!' | tr '[:upper:]' '[:lower:]'" language=bash> </app-oneline-code> <h2>How to uppercase the first character in a variable</h2> <app-oneline-code code="foo=$(tr '[:lower:]' '[:upper:]' &lt;&lt;&lt; ${foo:0:1})${foo:1}" language=bash> </app-oneline-code> <h2>How to split a string on delimiter</h2> <app-multiline-code language=bash> <pre slot=code>
+                <code>
+                    IFS='-' read -ra array &lt;&lt;&lt; "a-b-c"; unset IFS
+                    for i in ${array[@]}; do
+                        echo $i
+                    done
+                </code>
+            </pre> </app-multiline-code> <h2>How to remove particular characters from a string</h2> <app-multiline-code language=bash> <pre slot=code>
+                <code>
+                    # using tr
+                    echo "Hello World!" | tr -d !
+    
+                    # using sed
+                    echo "Hello World!" | sed 's/!//g'
+                </code>
+            </pre> </app-multiline-code> <h2>How to prevent read command to eat backslashes</h2> <p>you should use the <span class=code>-r</span> option of the read command</p> <app-oneline-code code="read <span class='highlight'>-r</span> path" language=bash> </app-oneline-code> <h2>How to insert multiple lines into a file after specified pattern</h2> <p>https://stackoverflow.com/questions/22497246/insert-multiple-lines-into-a-file-after-specified-pattern-using-shell-script</p> <h2>How to extract filename and extension in Bash</h2> <app-multiline-code language=bash> <pre slot=code>
+                <code>
+                    filename=$(basename "$fullfile")
+                    extension="${filename##*.}"
+                    filename="${filename%.*}"
+                </code>
+            </pre> </app-multiline-code> </app-article> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/bash-quick-tips.0d7374591b0667edc628.js"></script></body> </html>
