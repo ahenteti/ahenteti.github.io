@@ -1,0 +1,112 @@
+$imgWidthHeight: 150px;
+
+main {
+    width: 65%;
+}
+
+.about-container {
+    margin-top: 10rem;
+    box-shadow: var(--box-shadow);
+    padding: 8rem;
+}
+
+.about-container, .about-container a {
+    color: var(--color-gray-medium);
+}
+
+.about-container a:hover {
+    color: var(--primary-color);
+}
+
+.profile-with-general-info {
+    display: flex;
+    align-items: center;
+
+    & img {
+        width: $imgWidthHeight;
+        height: $imgWidthHeight;
+        border-radius: 100%;
+    }
+    
+}
+
+.general-info {
+    display: flex;
+    flex-direction: column;
+    padding-left: 6rem;
+
+    & .name {
+        font-size: 2.3rem;
+        padding-bottom: 1rem;
+    }
+
+    & .text-with-icon {
+        padding-top: .3rem;
+        
+        & ion-icon {
+            font-size: 2rem;
+            padding-right: 2rem;
+            color: var(--primary-color);
+        }
+    }
+    
+    & .text-with-icon, & a {
+        font-size: 1.3rem;
+    }
+    
+}
+
+.summary {
+    margin-top: 5rem;
+
+    & .tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 2rem -.5rem 0;
+
+        & app-tag {
+            margin: .3rem .5rem;
+        }
+    }
+}
+
+[name=heart] {
+    color: rgb(242, 84, 125);
+    padding: 0 .4rem;
+}
+
+@media screen and (max-width: 720px) {
+    main {
+        width: 90%;
+    }
+
+    .about-container {
+        margin-top: 7rem;
+        box-shadow: none;
+        padding: 4rem;
+    }
+
+    .profile-with-general-info {
+        flex-direction: column;
+    }
+
+    .general-info {
+        padding-left: 0;
+        margin-top: 4rem;
+        
+        & .name {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        & .text-with-icon, & a {
+            font-size: 1.6rem;
+        }
+    }
+
+    .summary {
+        margin-top: 2.5rem;
+    }
+}

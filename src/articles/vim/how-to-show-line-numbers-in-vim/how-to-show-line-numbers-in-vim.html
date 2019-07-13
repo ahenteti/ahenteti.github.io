@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('include/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <h2>Solution for opened files</h2>
+        <p>
+            Switch to <i>command mode</i>, if it is not the case, in your vim editor 
+            and set the following command
+        </p>
+        <app-oneline-code code=":set number" language="vim">
+        </app-oneline-code>
+        
+        <h2>Default solution</h2>
+        <p>
+            Add the following line to your vim configuration file
+        </p>
+        <app-oneline-code code="echo ':set number' >> ~/.vimrc" language="bash">
+        </app-oneline-code>
+    </app-article>
+</body>
+
+</html>

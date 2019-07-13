@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('include/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <h2>Encryption decryption overview</h2>
+        <img src="./encryption_decryption_overview.png" alt="encryption decryption overview">
+        
+        <br>
+        <table>
+            <thead>
+                <th>key</th>
+                <th>description</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="nowrap bold">Symmetric Key</td>
+                    <td>Symmetric-key encryption are algorithms which use the same cryptographic keys for both encryption of plaintext and decryption of ciphertext</td>
+                </tr>
+                <tr>
+                    <td class="nowrap bold">Asymmetric Key</td>
+                    <td>Asymmetric encryption uses 2 pairs of key for encryption. Public key is available to anyone while the secret key is only made available to the receiver of the message</td>
+                </tr>
+                <tr>
+                    <td class="nowrap bold">Public Key</td>
+                    <td>Public key cryptography is an encryption system which is based on two pairs of keys. Public keys are used to encrypt messages for a receiver</td>
+                </tr>
+                <tr>
+                    <td class="nowrap bold">Private Key</td>
+                    <td>Private key may be part of a public/ private asymmetric key pair. It can be used in asymmetric encryption as you can use the same key to encrypt and decrypt data</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>Hash functions</h2>
+        <app-quote author="wikipedia">
+            <p>
+                A hash function is any function that can be used to map data of an <b>arbitrary size</b> to <b>fixed-size values</b>. 
+                The values returned by these functions cannot be <b>reverse engineered</b> to the original message
+            </p>
+        </app-quote>
+
+        <h2>Digital Signature</h2>
+        <img src="./digital-signature.png" alt="digital signature">
+
+        <h2>Digital Certificates</h2>
+        <app-quote author="wikipedia">
+            <p class="mb-1">
+                A digital certificate is an electronic document used to prove the ownership of a <b>public key</b>
+            </p>
+            <p class="mb">The certificate includes :</p>
+            <ul>
+                <li>the <b>public key</b> of the web site</li>
+                <li>information about the owner of the web site, called the <b>subject</b></li>
+                <li>information about the entity has verified the certificate's contents, called the <b>issuer</b></li>
+                <li>the digital signature of the <b>issuer</b></li>
+            </ul>
+        </app-quote>
+
+        <h2>Procedure of obtaining a digital certificate</h2>
+        <img src="./obtaining-digital-certificate-procedure.png" alt="">
+
+        <h2>SSL connection</h2>
+        <img src="./ssl-connection.png" alt="">
+
+        <app-more-info>
+            <app-link
+                href="https://www.guru99.com/difference-encryption-decryption.html"
+                label="difference between encryption and decryption"    
+            ></app-link>
+            <app-link
+                href="https://en.wikipedia.org/wiki/Hash_function"
+                label="Hash functions"    
+            ></app-link>
+            <app-link
+                href="https://en.wikipedia.org/wiki/Digital_Certificate"
+                label="Digital certificate"    
+            ></app-link>
+        </app-more-info>
+        
+    </app-article>
+
+</body>
+
+</html>

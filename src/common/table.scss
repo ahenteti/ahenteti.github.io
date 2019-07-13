@@ -1,0 +1,19 @@
+.table {
+    overflow: auto;
+}
+
+table {
+    margin-top: 1rem;
+    width: 100%;
+}
+table thead {
+    background-color: #eee;
+}
+table th, table td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    vertical-align: top;
+}
+table th {
+    text-align: left;
+}

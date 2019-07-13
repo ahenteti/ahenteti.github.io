@@ -1,0 +1,79 @@
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+/* Hide the tooltip content by default */
+[data-tooltip]::before,
+[data-tooltip]::after {
+  display: none;
+  transition: opacity .2s ease-in;
+}
+
+/* Position tooltip above the element by default */
+[data-tooltip]::before {
+    position: absolute;
+    background-color: var(--color-gray-dark);
+    color: #fff;
+    content: attr(data-tooltip);
+    padding: .5rem 1rem;
+    border-radius: .3rem;
+    white-space: nowrap;
+    font-size: 1.4rem;
+    
+    bottom: calc(100% + .5rem);
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+[data-tooltip].tooltip-left::before {
+    bottom: 50%;
+    left: -1rem;
+    transform: translate(-100%, 50%);
+}
+
+[data-tooltip].tooltip-right::before {
+    bottom: 50%;
+    left: calc(100% + 1rem);
+    transform: translate(0, 50%);
+}
+
+/* Triangle hack to make tooltip look like a speech bubble */
+[data-tooltip]::after {
+    width: 0;
+    content: " ";
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+
+    bottom: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-top: .5rem solid var(--color-gray-dark);
+    border-right: .5rem solid transparent;
+    border-left: .5rem solid transparent;
+}
+
+[data-tooltip].tooltip-left::after {
+    bottom: 50%;
+    left: 0;
+    transform: translate(-100%, 50%);
+    border-top: .5rem solid transparent;
+    border-left: .5rem solid var(--color-gray-dark);
+    border-bottom: .5rem solid transparent;
+}
+
+[data-tooltip].tooltip-right::after {
+    bottom: 50%;
+    left: 100%;
+    transform: translate(0, 50%);
+    border-top: .5rem solid transparent;
+    border-right: .5rem solid var(--color-gray-dark);
+    border-bottom: .5rem solid transparent;
+}
+
+/* Show tooltip content on hover */
+[data-tooltip]:hover::before,
+[data-tooltip]:hover::after {
+    display: block;
+}

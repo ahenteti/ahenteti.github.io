@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('include/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">Result</app-code-tab>
+            <app-code-panel class="result" slot="code-panel">
+                <style>
+                    .result .tablist {
+                        padding: 3rem;
+                    }
+                    .result .tabs {
+                        display: flex;
+                    }
+
+                    .result .panels {
+                        height: 5em;
+                        background: #FAFAFA;
+                    }
+
+                    .result [role="tab"] {
+                        position: relative;
+                        margin: 0;
+                        padding: 1em;
+                        border: none;
+                        outline: none;
+                        background: #EEEEEE;
+                        transition: all .2s ease-in;
+                    }
+
+                    .result [role="tab"]:hover,
+                    .result [role="tab"][aria-selected="true"] {
+                        background: #FAFAFA;
+                    }
+
+                    .result [role="tabpanel"] {
+                        padding: 1rem;
+                        font-size: 1.5rem;
+                    }
+                </style>
+                <div class="tablist" role="tablist">
+                    <div class="tabs">
+                        <button role="tab" aria-selected="true" aria-controls="tab1-tab" id="tab1">tab1</button>
+                        <button role="tab" aria-selected="false" aria-controls="tab2-tab" id="tab2">tab2</button>
+                        <button role="tab" aria-selected="false" aria-controls="tab3-tab" id="tab3">tab3</button>
+                    </div>
+                    <div class="panels">
+                        <div role="tabpanel" id="tab1-tab" aria-labelledby="tab1">
+                            tab1 content
+                        </div>
+                        <div role="tabpanel" id="tab2-tab" aria-labelledby="tab2" hidden="true">
+                            tab2 content
+                        </div>
+                        <div role="tabpanel" id="tab3-tab" aria-labelledby="tab3" hidden="true">
+                            tab3 content
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    (function () {
+                        var tabs = Array.from(document.querySelectorAll('.result [role="tab"]'));
+                        var panels = Array.from(document.querySelectorAll('.result [role="tabpanel"]'));
+                        
+                        for (i = 0; i < tabs.length; i++) {
+                            tabs[i].addEventListener('click', event => activateTab(event));
+                        }
+
+                        function activateTab (event) {
+                            event.stopPropagation();
+                            var tab = event.target;
+                            deactivateTabs();
+                            tab.setAttribute('aria-selected', 'true');
+                            var controls = tab.getAttribute('aria-controls');
+                            document.getElementById(controls).removeAttribute('hidden');
+                        }
+
+                        function deactivateTabs () {
+                            for (i = 0; i < tabs.length; i++) {
+                                tabs[i].setAttribute('aria-selected', 'false');
+                                panels[i].setAttribute('hidden', 'true');
+                            }
+                        }
+                    })();
+                </script>
+            </app-code-panel>
+
+            <app-code-tab selected="true" slot="code-tab">index.html</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="html">
+                    <pre slot="code">
+                        <code>
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+                            
+                            &lt;head&gt;
+                                &lt;meta charset="UTF-8"&gt;
+                                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                                &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+                                &lt;title&gt;tabs widget demo&lt;/title&gt;
+                                &lt;link rel="stylesheet" href="./main.css"&gt;
+                            &lt;/head&gt;
+                            
+                            &lt;body&gt;
+                            
+                                &lt;div role="tablist"&gt;
+                                    &lt;div class="tabs"&gt;
+                                        &lt;button role="tab" aria-selected="true" aria-controls="tab1-tab" id="tab1"&gt;
+                                            tab1
+                                        &lt;/button&gt;
+                                        &lt;button role="tab" aria-selected="false" aria-controls="tab2-tab" id="tab2"&gt;
+                                            tab2
+                                        &lt;/button&gt;
+                                        &lt;button role="tab" aria-selected="false" aria-controls="tab2-tab" id="tab3"&gt;
+                                            tab3
+                                        &lt;/button&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="panels"&gt;
+                                        &lt;div role="tabpanel" id="tab1-tab" aria-labelledby="tab1"&gt;
+                                            tab1 content
+                                        &lt;/div&gt;
+                                        &lt;div role="tabpanel" id="tab2-tab" aria-labelledby="tab2" hidden=""&gt;
+                                            tab2 content
+                                        &lt;/div&gt;
+                                        &lt;div role="tabpanel" id="tab3-tab" aria-labelledby="tab3" hidden=""&gt;
+                                            tab3 content
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            
+                                &lt;script src="./main.js"&gt;&lt;/script&gt;
+                            
+                            &lt;/body&gt;
+                            
+                            &lt;/html&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+
+            <app-code-tab slot="code-tab">main.css</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="css">
+                    <pre slot="code">
+                        <code>
+                            *, *::before, *::after {
+                                padding: 0;
+                                margin: 0;
+                                box-sizing: border-box;
+                            }
+                                
+                            body {
+                                font-family: sans-serif;
+                                color: #333;
+                            }
+                            
+                            .tabs {
+                                display: flex;
+                            }
+                            
+                            .panels {
+                                height: 5em;
+                                background: #FAFAFA;
+                            }
+                            
+                            [role="tab"] {
+                                position: relative;
+                                margin: 0;
+                                padding: 1em;
+                                border: none;
+                                outline: none;
+                                background: #EEEEEE;
+                                transition: all .2s ease-in;
+                            }
+                            
+                            [role="tab"]:hover, 
+                            [role="tab"][aria-selected="true"] {
+                                background: #FAFAFA;
+                            }
+                                
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+
+            <app-code-tab slot="code-tab">main.js</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="javascript">
+                    <pre slot="code">
+                        <code>
+                            (function () {
+                                var tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+                                var panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+                                
+                                for (i = 0; i &lt; tabs.length; i++) {
+                                    tabs[i].addEventListener('click', event =&gl; activateTab(event.target));
+                                }
+                                
+                                function activateTab (tab) {
+                                    deactivateTabs();
+                                    tab.setAttribute('aria-selected', 'true');
+                                    var controls = tab.getAttribute('aria-controls');
+                                    document.getElementById(controls).removeAttribute('hidden');
+                                }
+                                
+                                function deactivateTabs () {
+                                    for (i = 0; i &lt; tabs.length; i++) {
+                                        tabs[i].setAttribute('aria-selected', 'false');
+                                        panels[i].setAttribute('hidden', 'true');
+                                    }
+                                }
+                            })();
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+
+        </app-code-tabs>
+
+        <app-more-info>
+            <app-link
+                href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/tabs-widget-demo"
+                label="Github source code"    
+            ></app-link>
+            <app-link
+                href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html"
+                label="Example of Tabs with Automatic Activation from W3C"    
+            ></app-link>
+        </app-more-info>
+
+    </app-article>
+
+</body>
+
+</html>

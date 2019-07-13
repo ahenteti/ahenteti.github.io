@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('include/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <app-multiline-code>
+            <pre slot="code">
+                <code>
+                    &lt;!DOCTYPE html&gt;
+                    &lt;html lang="en"&gt;
+                    
+                    &lt;head&gt;
+                        &lt;meta charset="UTF-8"&gt;
+                        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                        &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+                        &lt;title&gt;Document&lt;/title&gt;
+                        &lt;style&gt;
+                            *,
+                            *::before,
+                            *::after {
+                                padding: 0;
+                                margin: 0;
+                                box-sizing: border-box;
+                            }
+                        
+                            .square {
+                                position: relative;
+                                height: 100px;
+                                width: 100px;
+                                background: #3498db;
+                                border-radius: 100%;
+                            }
+                        
+                            .circle {
+                                position: absolute;
+                                top: 50%;
+                                left: 50%;
+                                transform: translate(-50%, -50%);
+                                height: 25px;
+                                width: 25px;
+                                background: #ecf0f1;
+                                border-radius: 100%;
+                            }
+                        &lt;/style&gt;
+                    &lt;/head&gt;
+                    
+                    &lt;body&gt;
+                    
+                        &lt;div class="square"&gt;
+                            &lt;div class="circle"&gt;&lt;/div&gt;
+                        &lt;/div&gt;
+                    
+                        &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.js"&gt;&lt;/script&gt;
+                        &lt;script&gt;
+                            html2canvas(document.querySelector(".square"), {
+                                onrendered: canvas =&gt; document.body.appendChild(canvas)
+                            })
+                        &lt;/script&gt;
+                    
+                    &lt;/body&gt;
+                    
+                    &lt;/html&gt;
+                </code>
+            </pre>
+        </app-multiline-code>     
+    </app-article>
+</body>
+
+</html>

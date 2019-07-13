@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('include/head.html')}
+
+<link rel="stylesheet" href="css/slide-in-as-you-scroll-down-cards.css">
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">Result</app-code-tab>
+            <app-code-panel class="result" slot="code-panel">
+                <section class="demo">
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div> 
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                    <div class="card"></div>
+                </section>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">html</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="html">
+                    <pre slot="code">
+                        <code>
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+                            
+                            &lt;head&gt;
+                              &lt;meta charset="UTF-8"&gt;
+                              &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                              &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+                              &lt;title&gt;tabs widget demo&lt;/title&gt;
+                              &lt;link rel="stylesheet" href="./main.css"&gt;
+                            &lt;/head&gt;
+                            
+                            &lt;body&gt;
+                            
+                              &lt;section&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt; 
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                                &lt;div class="card"&gt;&lt;/div&gt;
+                              &lt;/section&gt;
+                              
+                              &lt;script src="./main.js"&gt;&lt;/script&gt;
+                            
+                            &lt;/body&gt;
+                            
+                            &lt;/html&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">css</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="css">
+                    <pre slot="code">
+                        <code>
+                            *, *::before, *::after {
+                              padding: 0;
+                              margin: 0;
+                              box-sizing: border-box;
+                            }
+                            
+                            body {
+                              background: #eee;
+                            }
+                            
+                            section {
+                              max-width: 600px;
+                              margin: 0 auto;
+                              padding: 20px;
+                              overflow: hidden;
+                              display: grid;
+                              grid-template-columns: 1fr 1fr;
+                              grid-gap: 20px;;
+                            }
+                            
+                            .card {
+                              min-height: 200px;
+                              background: white;
+                              box-shadow: 0 1px 3px rgba(black, 0.2);
+                            }
+                            
+                            .card:nth-child(even) {
+                              margin-right: 0;
+                            }
+                            
+                            .already-visible {
+                              transform: translateY(0);
+                              animation: none;
+                            }
+                            .not-yet-visible {
+                              transform: translateY(150px);
+                            }
+                            
+                            .visible-after-scroll {
+                              animation: visible-after-scroll 0.8s ease forwards;
+                            }
+
+                            @keyframes visible-after-scroll {
+                              to { transform: translateY(0); }
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">javascript</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="js">
+                    <pre slot="code">
+                        <code>
+                            function alreadyVisible (card) {
+                              let position = card.getBoundingClientRect();
+                              return position.top &lt; window.innerHeight;
+                            }
+                            
+                            function visible (card) {
+                              let position = card.getBoundingClientRect();
+                              return position.bottom &lt; 0 && position.top &gt; window.innerHeight;
+                            }
+                            
+                            document.querySelectorAll('.card').forEach(card =&gt; {
+                              if (alreadyVisible(card)) {
+                                card.classList.add('already-visible')
+                              } else {
+                                card.classList.add('not-yet-visible')
+                              }
+                            });
+                            
+                            window.addEventListener('scroll', function () {
+                              document.querySelectorAll('.card').forEach(card =&gt; {
+                                if (visible(card)) {
+                                  card.classList.add('visible-after-scroll')
+                                }
+                              });
+                            })
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+        </app-code-tabs>
+
+        <app-more-info>
+            <app-link
+                href="https://css-tricks.com/slide-in-as-you-scroll-down-boxes/"
+                label="Slide-in as you scroll down cards"    
+            ></app-link>
+        </app-more-info>
+        
+    </app-article>
+
+</body>
+
+</html>

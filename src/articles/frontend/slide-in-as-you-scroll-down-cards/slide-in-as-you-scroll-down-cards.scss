@@ -1,0 +1,35 @@
+.demo {
+    max-height: 500px;
+    background: #eee;
+    margin: 0 auto;
+    padding: 20px;
+    overflow: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+}
+
+.demo .card {
+    min-height: 100px;
+    background: white;
+}
+
+.demo .card:nth-child(even) {
+    margin-right: 0;
+}
+
+.demo .already-visible {
+    transform: translateY(0);
+    animation: none;
+}
+.demo .not-yet-visible {
+    transform: translateY(150px);
+}
+
+.demo .visible-after-scroll {
+    animation: visible-after-scroll 0.8s ease forwards;
+}
+
+@keyframes visible-after-scroll {
+    to { transform: translateY(0); }
+}

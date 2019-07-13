@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('include/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <h2>Using string concatenation</h2>
+        <app-multiline-code language="java">
+            <pre slot="code">
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            String reversedStr = "";
+                            for (int i = str.length() - 1; i &gt;= 0; i--) {
+                                reversedStr += str.charAt(i);
+                            }
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre>
+        </app-multiline-code>
+
+        <app-warn>
+            <p>
+                As Strings in java immutables. the concatenation of two strings result of the
+                creation of a third String object. So we don't encourage the use of this solution
+                as it shows bad performance and bad memory management
+            </p>
+        </app-warn>
+
+        <h2>Using StringBuilder reverse method</h2>
+        <app-multiline-code language="java">
+            <pre slot="code">
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            StringBuilder reversedStrBuilder = new StringBuilder(str);
+                            String reversedStr = reversedStrBuilder.reverse().toString();
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre>
+        </app-multiline-code>
+
+        <h2>Using StringBuilder append method</h2>
+        <app-multiline-code language="java">
+            <pre slot="code">
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            StringBuilder reversedStrBuilder = new StringBuilder();
+                            for (int i = str.length() - 1; i &gt;= 0; i--) {
+                                reversedStrBuilder.append(str.charAt(i));
+                            }
+                            String reversedStr = reversedStrBuilder.toString();
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre>
+        </app-multiline-code>
+    </app-article>
+</body>
+
+</html>

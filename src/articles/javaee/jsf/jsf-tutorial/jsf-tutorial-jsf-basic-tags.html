@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('include/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article-in-serie article-title="JSF tutorial <br/> HTML tag library">
+        
+        <app-oneline-code code="line of code" language="bash">
+        </app-oneline-code>
+
+        <app-multiline-code language="bash">
+            <pre slot="code">
+                <code>
+                    line 1. 
+                    line 2. 
+                </code>
+            </pre>
+        </app-multiline-code>
+
+    </app-article-in-serie>
+
+</body>
+
+</html>
