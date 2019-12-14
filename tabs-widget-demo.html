@@ -1,5 +1,5 @@
 <!doctype html> <html lang=en> <head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <meta http-equiv=X-UA-Compatible content="ie=edge"> <link rel="shortcut icon" type=image/png href=/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
-  "components.js": "js/components.a7b03a7dfe26a7677cc6.js",
+  "components.js": "js/components.f891e15061a821f39af3.js",
   "common.js": "js/common.10aae30536f2ade5e752.js",
   "common.css": "css/common.10aae30536f2ade5e752.css",
   "javascript-closure.js": "js/javascript-closure.9058d976542e1c40128b.js",
@@ -36,30 +36,34 @@
   "img/obtaining-digital-certificate-procedure.png": "img/obtaining-digital-certificate-procedure.png",
   "img/ssl-connection.png": "img/ssl-connection.png",
   "img/digital-signature.png": "img/digital-signature.png"
-}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <app-code-tabs> <app-code-tab slot=code-tab>Result</app-code-tab> <app-code-panel class=result slot=code-panel> <style>.result .tablist{padding:3rem}.result .tabs{display:flex}.result .panels{height:5em;background:#fafafa}.result [role=tab]{position:relative;margin:0;padding:1em;border:none;outline:0;background:#eee;transition:all .2s ease-in}.result [role=tab]:hover,.result [role=tab][aria-selected=true]{background:#fafafa}.result [role=tabpanel]{padding:1rem;font-size:1.5rem}</style> <div class=tablist role=tablist> <div class=tabs> <button role=tab aria-selected=true aria-controls=tab1-tab id=tab1>tab1</button> <button role=tab aria-selected=false aria-controls=tab2-tab id=tab2>tab2</button> <button role=tab aria-selected=false aria-controls=tab3-tab id=tab3>tab3</button> </div> <div class=panels> <div role=tabpanel id=tab1-tab aria-labelledby=tab1> tab1 content </div> <div role=tabpanel id=tab2-tab aria-labelledby=tab2 hidden=true> tab2 content </div> <div role=tabpanel id=tab3-tab aria-labelledby=tab3 hidden=true> tab3 content </div> </div> </div> <script> (function () {
-                        var tabs = Array.from(document.querySelectorAll('.result [role="tab"]'));
-                        var panels = Array.from(document.querySelectorAll('.result [role="tabpanel"]'));
-                        
-                        for (i = 0; i < tabs.length; i++) {
-                            tabs[i].addEventListener('click', event => activateTab(event));
-                        }
+}</script><link href="css/common.10aae30536f2ade5e752.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <app-code-tabs> <app-code-tab slot=code-tab>Result</app-code-tab> <app-code-panel class=result slot=code-panel> <style>.result .tablist{padding:3rem}.result .tabs{display:flex;flex-wrap:wrap}.result .panels{height:5em;background:#fafafa}.result [role=tab]{position:relative;margin:0;padding:1em;border:none;outline:0;background:#eee;transition:all .2s ease-in}.result [role=tab]:hover,.result [role=tab][aria-selected=true]{background:#fafafa}.result [role=tabpanel]{padding:1rem;font-size:1.5rem}</style> <div class=tablist role=tablist> <div class=tabs> <button role=tab aria-selected=true aria-controls=tab1-tab id=tab1> tab1 </button> <button role=tab aria-selected=false aria-controls=tab2-tab id=tab2> tab2 </button> <button role=tab aria-selected=false aria-controls=tab3-tab id=tab3> tab3 </button> </div> <div class=panels> <div role=tabpanel id=tab1-tab aria-labelledby=tab1> tab1 content </div> <div role=tabpanel id=tab2-tab aria-labelledby=tab2 hidden=true> tab2 content </div> <div role=tabpanel id=tab3-tab aria-labelledby=tab3 hidden=true> tab3 content </div> </div> </div> <script> (function() {
+              var tabs = Array.from(
+                document.querySelectorAll('.result [role="tab"]')
+              );
+              var panels = Array.from(
+                document.querySelectorAll('.result [role="tabpanel"]')
+              );
 
-                        function activateTab (event) {
-                            event.stopPropagation();
-                            var tab = event.target;
-                            deactivateTabs();
-                            tab.setAttribute('aria-selected', 'true');
-                            var controls = tab.getAttribute('aria-controls');
-                            document.getElementById(controls).removeAttribute('hidden');
-                        }
+              for (i = 0; i < tabs.length; i++) {
+                tabs[i].addEventListener("click", event => activateTab(event));
+              }
 
-                        function deactivateTabs () {
-                            for (i = 0; i < tabs.length; i++) {
-                                tabs[i].setAttribute('aria-selected', 'false');
-                                panels[i].setAttribute('hidden', 'true');
-                            }
-                        }
-                    })(); </script> </app-code-panel> <app-code-tab selected=true slot=code-tab>index.html</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=html> <pre slot=code>
+              function activateTab(event) {
+                event.stopPropagation();
+                var tab = event.target;
+                deactivateTabs();
+                tab.setAttribute("aria-selected", "true");
+                var controls = tab.getAttribute("aria-controls");
+                document.getElementById(controls).removeAttribute("hidden");
+              }
+
+              function deactivateTabs() {
+                for (i = 0; i < tabs.length; i++) {
+                  tabs[i].setAttribute("aria-selected", "false");
+                  panels[i].setAttribute("hidden", "true");
+                }
+              }
+            })(); </script> </app-code-panel> <app-code-tab selected=true slot=code-tab>index.html</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=html> <pre slot=code>
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -120,6 +124,7 @@
                             
                             .tabs {
                                 display: flex;
+                                flex-wrap: wrap;
                             }
                             
                             .panels {
@@ -168,4 +173,4 @@
                                 }
                             })();
                         </code>
-                    </pre> </app-multiline-code> </app-code-panel> </app-code-tabs> <app-more-info> <app-link href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/tabs-widget-demo label="Github source code"></app-link> <app-link href=https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html label="Example of Tabs with Automatic Activation from W3C"></app-link> </app-more-info> </app-article> <script type="text/javascript" src="js/components.a7b03a7dfe26a7677cc6.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/tabs-widget-demo.72c11bb910725fd933f5.js"></script></body> </html>
+                    </pre> </app-multiline-code> </app-code-panel> </app-code-tabs> <app-more-info> <app-link href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/tabs-widget-demo label="Github source code"></app-link> <app-link href=https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html label="Example of Tabs with Automatic Activation from W3C"></app-link> </app-more-info> </app-article> <script type="text/javascript" src="js/components.f891e15061a821f39af3.js"></script><script type="text/javascript" src="js/common.10aae30536f2ade5e752.js"></script><script type="text/javascript" src="js/tabs-widget-demo.72c11bb910725fd933f5.js"></script></body> </html> 
