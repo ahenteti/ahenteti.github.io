@@ -10,7 +10,8 @@ main {
     padding: 8rem;
 }
 
-.about-container, .about-container a {
+.about-container,
+.about-container a {
     color: var(--color-gray-medium);
 }
 
@@ -27,7 +28,7 @@ main {
         height: $imgWidthHeight;
         border-radius: 100%;
     }
-    
+
 }
 
 .general-info {
@@ -42,18 +43,19 @@ main {
 
     & .text-with-icon {
         padding-top: .3rem;
-        
+
         & ion-icon {
             font-size: 2rem;
             padding-right: 2rem;
             color: var(--primary-color);
         }
     }
-    
-    & .text-with-icon, & a {
+
+    & .text-with-icon,
+    & a {
         font-size: 1.3rem;
     }
-    
+
 }
 
 .summary {
@@ -70,6 +72,47 @@ main {
         }
     }
 }
+
+.section-title {
+    margin: 2.5rem 0;
+    color: var(--color-gray-medium);
+    text-transform: uppercase;
+    position: relative;
+    line-height: 2rem;
+    font-size: 2rem;
+}
+
+.section-title::before {
+    content: "";
+    display: inline-block;
+    height: 1.6rem;
+    width: 1.6rem;
+    margin-right: 1rem;
+    background: var(--primary-color);
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    display: block;
+    height: .3rem;
+    width: 75%;
+    bottom: -1rem;
+    background: linear-gradient(to right, var(--primary-color), #FFF);
+}
+
+.work-experience ul li {
+    display: flex;
+    align-items: center;
+}
+
+.work-experience ul li .icon {
+    color: var(--primary-color);
+    margin-left: 1.5rem;
+    margin-right: .5rem;
+    font-size: 2rem;
+}
+
 
 [name=heart] {
     color: rgb(242, 84, 125);
@@ -94,14 +137,15 @@ main {
     .general-info {
         padding-left: 0;
         margin-top: 4rem;
-        
+
         & .name {
             font-size: 3rem;
             text-align: center;
             margin-bottom: 2rem;
         }
-        
-        & .text-with-icon, & a {
+
+        & .text-with-icon,
+        & a {
             font-size: 1.6rem;
         }
     }
