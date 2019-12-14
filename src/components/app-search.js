@@ -1,12 +1,12 @@
 class AppSearch extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
+    this._root = this.attachShadow({ mode: "open" });
+    this._commonCss = window.webpackManifest["common.css"];
   }
 
-  connectedCallback () {
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
 
@@ -28,17 +28,17 @@ class AppSearch extends HTMLElement {
   }
 }
 
-window.customElements.define('app-search', AppSearch);
+window.customElements.define("app-search", AppSearch);
 
 class AppSearchInput extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
+    this._root = this.attachShadow({ mode: "open" });
+    this._commonCss = window.webpackManifest["common.css"];
   }
 
-  connectedCallback () {
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         
@@ -95,103 +95,108 @@ class AppSearchInput extends HTMLElement {
   }
 }
 
-window.customElements.define('app-search-input', AppSearchInput);
+window.customElements.define("app-search-input", AppSearchInput);
 
 class AppSearchSelect extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-    this._fontSize = '1.3rem';
+    this._root = this.attachShadow({ mode: "open" });
+    this._commonCss = window.webpackManifest["common.css"];
+    this._fontSize = "1.3rem";
   }
 
   _calcTagWidth(tag) {
-    let text = document.createElement("span"); 
-    text.style.fontSize = this._fontSize; 
-    document.body.appendChild(text); 
-    text.style.position = 'absolute'; 
-    text.innerHTML = tag; 
-    const width = Math.ceil(text.clientWidth); 
+    let text = document.createElement("span");
+    text.style.fontSize = this._fontSize;
+    document.body.appendChild(text);
+    text.style.position = "absolute";
+    text.innerHTML = tag;
+    const width = Math.ceil(text.clientWidth);
     document.body.removeChild(text);
     return width;
   }
 
-  _buildSelectedOptionDiv () {
-    let span = document.createElement('span');
-    span.innerHTML = 'all';
-    let dropdownArrowIcon = document.createElement('ion-icon');
-    dropdownArrowIcon.setAttribute('name', 'arrow-dropdown');
-    dropdownArrowIcon.style.fontSize = '2rem';
-    dropdownArrowIcon.style.marginLeft = '10px';
+  _buildSelectedOptionDiv() {
+    let span = document.createElement("span");
+    span.innerHTML = "all";
+    let dropdownArrowIcon = document.createElement("ion-icon");
+    dropdownArrowIcon.setAttribute("name", "arrow-dropdown");
+    dropdownArrowIcon.style.fontSize = "2rem";
+    dropdownArrowIcon.style.marginLeft = "10px";
 
-    let dropupArrowIcon = document.createElement('ion-icon');
-    dropupArrowIcon.setAttribute('class', 'hidden');
-    dropupArrowIcon.setAttribute('name', 'arrow-dropup');
-    dropupArrowIcon.style.fontSize = '2rem';
-    dropupArrowIcon.style.marginLeft = '10px';
+    let dropupArrowIcon = document.createElement("ion-icon");
+    dropupArrowIcon.setAttribute("class", "hidden");
+    dropupArrowIcon.setAttribute("name", "arrow-dropup");
+    dropupArrowIcon.style.fontSize = "2rem";
+    dropupArrowIcon.style.marginLeft = "10px";
 
-    let option = document.createElement('div');
+    let option = document.createElement("div");
     option.appendChild(span);
     option.appendChild(dropdownArrowIcon);
     option.appendChild(dropupArrowIcon);
-    option.style.display = 'flex';
-    option.style.alignItems = 'center';
-    option.style.justifyContent = 'space-between';
-    option.setAttribute('class', 'select-selected select-option');
-    
-    span.addEventListener('change', function () {
-      if (span.innerHTML == 'all') {
-        option.setAttribute('class', 'select-selected select-option');
+    option.style.display = "flex";
+    option.style.alignItems = "center";
+    option.style.justifyContent = "space-between";
+    option.setAttribute("class", "select-selected select-option");
+
+    span.addEventListener("change", function() {
+      if (span.innerHTML == "all") {
+        option.setAttribute("class", "select-selected select-option");
       } else {
-        option.setAttribute('class', 'select-selected select-option primary-color');
+        option.setAttribute(
+          "class",
+          "select-selected select-option primary-color"
+        );
       }
-    })
+    });
     return option;
   }
 
-  _fillSelectOptions () {
+  _fillSelectOptions() {
     const selectedOption = this._buildSelectedOptionDiv();
-    const dropdownArrowIcon = selectedOption.querySelector('[name=arrow-dropdown]');
-    const dropupArrowIcon = selectedOption.querySelector('[name=arrow-dropup]');
-    
+    const dropdownArrowIcon = selectedOption.querySelector(
+      "[name=arrow-dropdown]"
+    );
+    const dropupArrowIcon = selectedOption.querySelector("[name=arrow-dropup]");
+
     let maxTagWidth = 0;
-    let selectOptions = document.createElement('div');
-    selectOptions.setAttribute('class', 'select-items hidden');
+    let selectOptions = document.createElement("div");
+    selectOptions.setAttribute("class", "select-items hidden");
     ALL_TAGS.forEach(tag => {
-      let option = document.createElement('div');
+      let option = document.createElement("div");
       option.innerHTML = tag;
       maxTagWidth = Math.max(maxTagWidth, this._calcTagWidth(tag));
-      option.setAttribute('class', 'select-option tag');
+      option.setAttribute("class", "select-option tag");
       selectOptions.appendChild(option);
     });
 
-    selectedOption.addEventListener('click', function(e) {
+    selectedOption.addEventListener("click", function(e) {
       e.stopPropagation();
-      selectOptions.classList.toggle('hidden');
-      dropdownArrowIcon.classList.toggle('hidden');
-      dropupArrowIcon.classList.toggle('hidden');
+      selectOptions.classList.toggle("hidden");
+      dropdownArrowIcon.classList.toggle("hidden");
+      dropupArrowIcon.classList.toggle("hidden");
     });
 
-    selectOptions.addEventListener('click', function(e) {
-      let span = selectedOption.querySelector('span');
+    selectOptions.addEventListener("click", function(e) {
+      let span = selectedOption.querySelector("span");
       span.innerHTML = e.target.innerHTML;
     });
 
     document.addEventListener("click", function() {
-      selectOptions.classList.add('hidden');
-      dropdownArrowIcon.classList.remove('hidden');
-      dropupArrowIcon.classList.add('hidden');
-    }); 
-    
-    this._container = this._root.querySelector('.container');
+      selectOptions.classList.add("hidden");
+      dropdownArrowIcon.classList.remove("hidden");
+      dropupArrowIcon.classList.add("hidden");
+    });
+
+    this._container = this._root.querySelector(".container");
     this._container.appendChild(selectedOption);
     this._container.appendChild(selectOptions);
-    this._selectItems = this._root.querySelector('.container .select-items');
-    this._selectItems.style.width = (maxTagWidth + 45) + 'px';
+    this._selectItems = this._root.querySelector(".container .select-items");
+    this._selectItems.style.width = maxTagWidth + 45 + "px";
   }
 
-  connectedCallback () {
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         .container {
@@ -259,5 +264,4 @@ class AppSearchSelect extends HTMLElement {
   }
 }
 
-window.customElements.define('app-search-select', AppSearchSelect);
-
+window.customElements.define("app-search-select", AppSearchSelect);

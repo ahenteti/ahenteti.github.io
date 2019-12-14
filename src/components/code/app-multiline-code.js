@@ -1,42 +1,48 @@
 class AppMultilineCode extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
+    this._root = this.attachShadow({ mode: "open" });
+    this._commonCss = window.webpackManifest["common.css"];
   }
 
-  _resetPreTagContentWithFormattedSlotContent () {
-    this._slot = this._root.querySelector('slot');
+  _resetPreTagContentWithFormattedSlotContent() {
+    this._slot = this._root.querySelector("slot");
     this._slotContent = this._slot.assignedNodes()[0].innerHTML;
-    this._slotContent = this._slotContent.replace(/^[\s\S]*<code.*?>/, '');
-    this._slotContent = this._slotContent.replace(/<\/code>[\s\S]*$/, '');
+    this._slotContent = this._slotContent.replace(/^[\s\S]*<code.*?>/, "");
+    this._slotContent = this._slotContent.replace(/<\/code>[\s\S]*$/, "");
     const firstNewLineAndIndentation = this._slotContent.match(/\n\s*/);
-    const firstNewLineAndIndentationRegExp = new RegExp(firstNewLineAndIndentation, 'g');
-    this._slotContent = this._slotContent.replace(firstNewLineAndIndentationRegExp, '\n');
-    this._slotContent = this._slotContent.replace(/^\s*\n/, '');
-    this._slotContent = this._slotContent.replace(/\n\s*$/, '');
-    this._slotContent = '<code>' + this._slotContent + '</code>';
+    const firstNewLineAndIndentationRegExp = new RegExp(
+      firstNewLineAndIndentation,
+      "g"
+    );
+    this._slotContent = this._slotContent.replace(
+      firstNewLineAndIndentationRegExp,
+      "\n"
+    );
+    this._slotContent = this._slotContent.replace(/^\s*\n/, "");
+    this._slotContent = this._slotContent.replace(/\n\s*$/, "");
+    this._slotContent = "<code>" + this._slotContent + "</code>";
     this.$pre.innerHTML = this._slotContent;
   }
 
-  _addLineNumbersColumn () {
-    if (typeof (window.getComputedStyle) === 'undefined') {
+  _addLineNumbersColumn() {
+    if (typeof window.getComputedStyle === "undefined") {
       return; // old browsers :(
     }
-    const lineNumbersColumn = document.createElement('div');
-    lineNumbersColumn.setAttribute('area-hidden', 'true');
-    this._slotContent.split('\n').forEach(line => {
-      lineNumbersColumn.appendChild(document.createElement('span'));
+    const lineNumbersColumn = document.createElement("div");
+    lineNumbersColumn.setAttribute("area-hidden", "true");
+    this._slotContent.split("\n").forEach(line => {
+      lineNumbersColumn.appendChild(document.createElement("span"));
     });
-    this.$pre.insertAdjacentHTML('afterbegin', lineNumbersColumn.outerHTML);
-  };
+    this.$pre.insertAdjacentHTML("afterbegin", lineNumbersColumn.outerHTML);
+  }
 
-  _resetCopyCodeIconTooltipDataAttribute () {
-    this.$icon.setAttribute('data-tooltip', 'Copy the code to clipboard');
-  };
+  _resetCopyCodeIconTooltipDataAttribute() {
+    this.$icon.setAttribute("data-tooltip", "Copy the code to clipboard");
+  }
 
-  _addEventListenerToCopyCodeIcon () {
-    this.$icon.addEventListener('click', () => {
+  _addEventListenerToCopyCodeIcon() {
+    this.$icon.addEventListener("click", () => {
       // code inspiration: https://stackoverflow.com/questions/36639681/how-to-copy-text-from-a-div-to-clipboard
       // code inspiration: https://edupala.com/copy-div-content-clipboard/
       if (document.body.createTextRange) {
@@ -44,7 +50,7 @@ class AppMultilineCode extends HTMLElement {
         const range = document.body.createTextRange();
         range.moveToElementText(this.$pre);
         range.select().createTextRange();
-        document.execCommand('Copy');
+        document.execCommand("Copy");
       } else if (window.getSelection) {
         // other browsers
         var selection = window.getSelection();
@@ -52,31 +58,33 @@ class AppMultilineCode extends HTMLElement {
         range.selectNodeContents(this.$pre);
         selection.removeAllRanges();
         selection.addRange(range);
-        document.execCommand('copy');
+        document.execCommand("copy");
         selection.removeRange(range);
-        this.$icon.setAttribute('data-tooltip', 'Copied');
+        this.$icon.setAttribute("data-tooltip", "Copied");
       }
     });
 
-    this.$icon.addEventListener('mouseout', () => this._resetCopyCodeIconTooltipDataAttribute());
-  };
+    this.$icon.addEventListener("mouseout", () =>
+      this._resetCopyCodeIconTooltipDataAttribute()
+    );
+  }
 
-  _init () {
-    this.$pre = this._root.querySelector('pre');
-    this.$icon = this._root.querySelector('.copy-code-icon');
+  _init() {
+    this.$pre = this._root.querySelector("pre");
+    this.$icon = this._root.querySelector(".copy-code-icon");
     this._resetPreTagContentWithFormattedSlotContent();
     this._addLineNumbersColumn();
     this._resetCopyCodeIconTooltipDataAttribute();
     this._addEventListenerToCopyCodeIcon();
-  };
+  }
 
-  get language () {
+  get language() {
     return this._language;
-  };
+  }
 
-  connectedCallback () {
-    this._language = this.getAttribute('language');
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._language = this.getAttribute("language");
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
 
@@ -93,6 +101,7 @@ class AppMultilineCode extends HTMLElement {
         
         .container > pre {
           display: flex;
+          flex-wrap: wrap;
           background-color: var(--code-background-color);
           line-height: 1.3;
           border-radius: var(--border-radius);
@@ -176,4 +185,4 @@ class AppMultilineCode extends HTMLElement {
   }
 }
 
-window.customElements.define('app-multiline-code', AppMultilineCode);
+window.customElements.define("app-multiline-code", AppMultilineCode);

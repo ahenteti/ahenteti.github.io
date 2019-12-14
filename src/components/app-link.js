@@ -1,18 +1,19 @@
 class AppLink extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
+    this._root = this.attachShadow({ mode: "open" });
+    this._commonCss = window.webpackManifest["common.css"];
   }
 
-  connectedCallback () {
-    this._href = this.getAttribute('href') || '#';
-    this._label = this.getAttribute('label');
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._href = this.getAttribute("href") || "#";
+    this._label = this.getAttribute("label");
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         li {
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           color: var(--primary-color);
         }
@@ -36,4 +37,4 @@ class AppLink extends HTMLElement {
   }
 }
 
-window.customElements.define('app-link', AppLink);
+window.customElements.define("app-link", AppLink);

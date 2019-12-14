@@ -1,13 +1,13 @@
 class AppArticleTitle extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
+    this._root = this.attachShadow({ mode: "open" });
+    this._commonCss = window.webpackManifest["common.css"];
   }
 
-  connectedCallback () {
-    this._title = this.getAttribute('article-title');
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._title = this.getAttribute("article-title");
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         .container {
@@ -30,6 +30,7 @@ class AppArticleTitle extends HTMLElement {
         .metadata {
           margin-top: 5rem;
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
           justify-content: space-between;
         }
@@ -82,4 +83,4 @@ class AppArticleTitle extends HTMLElement {
   }
 }
 
-window.customElements.define('app-article-title', AppArticleTitle);
+window.customElements.define("app-article-title", AppArticleTitle);
