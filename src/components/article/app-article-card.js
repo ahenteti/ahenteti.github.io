@@ -18,7 +18,6 @@ class AppArticleCard extends HTMLElement {
 
         .container {
           display: flex;
-          flex-wrap: wrap;
           flex-direction: column;
           justify-content: space-between;
           padding: var(--app-article-card-padding, 3rem);

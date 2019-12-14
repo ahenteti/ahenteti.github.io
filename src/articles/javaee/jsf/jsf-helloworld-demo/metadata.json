@@ -2,5 +2,6 @@
   "name": "JSF helloworld demo",
   "url": "jsf-helloworld-demo.html",
   "tags": "javaee,jsf",
+  "category": "javaee",
   "publicationDate": "sept. 02, 2019"
 }

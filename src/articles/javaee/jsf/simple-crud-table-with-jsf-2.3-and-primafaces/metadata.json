@@ -1,6 +1,7 @@
 {
   "name": "Simple CRUD table with JSF 2.3 and Primefaces",
   "url": "simple-crud-table-with-jsf-2.3-and-primafaces.html",
-  "tags": "crud,demo,javaee,jsf,primefaces",
+  "tags": "javaee,crud,demo,jsf,primefaces",
+  "category": "javaee",
   "publicationDate": "Oct 10, 2019"
 }

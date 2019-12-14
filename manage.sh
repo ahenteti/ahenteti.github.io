@@ -201,8 +201,9 @@ newArticle() {
   tools/jq -n --arg name "$name" \
          --arg publicationDate "$publicationDate" \
          --arg file_name "$file_name" \
+         --arg category "$parentFolder" \
          --arg tags "$(jointBy , ${sortedTags[*]})" \
-         '{ name: $name, url: $file_name, tags: $tags, publicationDate: $publicationDate }' \
+         '{ name: $name, url: $file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
          > $metadata
   echo -e "${GREEN}\nDone${NORMAL}"
 } 

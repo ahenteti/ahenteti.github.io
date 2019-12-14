@@ -1,6 +1,7 @@
 {
   "name": "Facelet templating system",
   "url": "facelet-templating-system.html",
-  "tags": "facelet,javaee,jsf",
+  "tags": "javaee,facelet,jsf",
+  "category": "javaee",
   "publicationDate": "sept. 03, 2019"
 }
