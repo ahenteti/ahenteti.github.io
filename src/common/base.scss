@@ -189,3 +189,22 @@ app-article h3 {
   flex-wrap: wrap;
   align-items: center;
 }
+
+.come-in {
+  animation: come-in 0.8s ease forwards;
+}
+
+.already-visible {
+  transform: translateY(0);
+  animation: none;
+}
+
+.not-yet-visible {
+  transform: translateY(150px);
+}
+
+@keyframes come-in {
+  to {
+    transform: translateY(0);
+  }
+}

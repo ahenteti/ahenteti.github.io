@@ -1,31 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('include/head.html')}
 
-${require('include/head.html')}
-
-<body>
+  <body>
     <app-header home="true"></app-header>
 
     <main>
-        <section class="intro">
-            <h1 class="name one-line">Welcome to ahenteti notes</h1>
-            <p class="description">
-                In this website, I'm going to centralize what I have learned from the Internet.
-                <b>Big thanks</b> to you gays that helped me improve my skills
-            </p>
-        </section>
+      <section class="intro">
+        <h1 class="name one-line">Welcome to ahenteti notes</h1>
+        <p class="description">
+          In this website, I'm going to centralize what I have learned from the
+          Internet.
+          <b>Big thanks</b> to you gays that helped me improve my skills
+        </p>
+      </section>
 
-        <section class="search">
-            <app-search></app-search>
-        </section>
+      <section class="search">
+        <app-search></app-search>
+      </section>
 
-        <section class="articles">
-        </section>
+      <section class="articles"></section>
 
-        <section class="no-result">
-        </section>
+      <section class="no-result"></section>
     </main>
-
-</body>
-
+  </body>
 </html>

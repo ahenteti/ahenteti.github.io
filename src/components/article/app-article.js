@@ -1,17 +1,17 @@
 /* eslint-disable no-undef */
-import * as hljs from 'common/vendor/highlight/highlight.min.js';
+import * as hljs from "common/vendor/highlight/highlight.min.js";
 
 class AppArticle extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-    this._commonJs = window.webpackManifest['common.js'];
+    this._root = this.attachShadow({ mode: "open" });
+    this._commonCss = window.webpackManifest["common.css"];
+    this._commonJs = window.webpackManifest["common.js"];
   }
 
-  connectedCallback () {
-    this._title = this.getAttribute('article-title');
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._title = this.getAttribute("article-title");
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
 
@@ -76,62 +76,75 @@ class AppArticle extends HTMLElement {
     // //////////////////////////////// //
     //        global variables          //
     // //////////////////////////////// //
-    const $appMultilineCode = document.querySelectorAll('app-multiline-code');
-    const $appOnelineCode = document.querySelectorAll('app-oneline-code');
-    const $articleComponent = document.querySelector('app-article');
-    const $articleTitleComponent = $articleComponent.shadowRoot.querySelector('app-article-title');
-    const $articleTitle = $articleTitleComponent.shadowRoot.querySelector('h1');
-    const $articlePublicationDate = $articleTitleComponent.shadowRoot.querySelector('.publication-date');
-    const $articleTagsContainer = $articleTitleComponent.shadowRoot.querySelector('.tags');
-    const $relatedArticlesContainer = $articleComponent.shadowRoot.querySelector('.related-articles');
-    const $relatedArticlesTitle = $articleComponent.shadowRoot.querySelector('.related-articles-title');
-    
+    const $appMultilineCode = document.querySelectorAll("app-multiline-code");
+    const $appOnelineCode = document.querySelectorAll("app-oneline-code");
+    const $articleComponent = document.querySelector("app-article");
+    const $articleTitleComponent = $articleComponent.shadowRoot.querySelector(
+      "app-article-title"
+    );
+    const $articleTitle = $articleTitleComponent.shadowRoot.querySelector("h1");
+    const $articlePublicationDate = $articleTitleComponent.shadowRoot.querySelector(
+      ".publication-date"
+    );
+    const $articleTagsContainer = $articleTitleComponent.shadowRoot.querySelector(
+      ".tags"
+    );
+    const $relatedArticlesContainer = $articleComponent.shadowRoot.querySelector(
+      ".related-articles"
+    );
+    const $relatedArticlesTitle = $articleComponent.shadowRoot.querySelector(
+      ".related-articles-title"
+    );
+
     // //////////////////////////////// //
     //          main actions            //
     // //////////////////////////////// //
     highlightCodeSectionsAsync();
     renderArticleMetadata();
     renderRelatedArticles();
-    
+
     // ////////////////////////////// //
     //        event listeners         //
     // ////////////////////////////// //
-    document.addEventListener('click', handleTagClickEvent)
-    
+    document.addEventListener("click", handleTagClickEvent);
+
     // //////////////////////////////// //
     //         util functions           //
     // //////////////////////////////// //
-    function highlightCodeSectionsAsync () {
+    function highlightCodeSectionsAsync() {
       setTimeout(() => {
         $appMultilineCode.forEach(el => {
-          const code = el.querySelector('code');
+          const code = el.querySelector("code");
           highlightBlock(code, el.language);
         });
         $appOnelineCode.forEach(el => {
-          const code = el.shadowRoot.querySelector('code');
+          const code = el.shadowRoot.querySelector("code");
           highlightBlock(code, el.language);
         });
       });
     }
-    
-    function highlightBlock (code, language) {
+
+    function highlightBlock(code, language) {
       if (language) {
         code.classList.add(language);
       }
       hljs.highlightBlock(code);
     }
-    
-    function renderArticleMetadata () {
+
+    function renderArticleMetadata() {
       const currentArticleMetadata = findArticleMetadata();
-      if ($articleTitle.innerHTML == 'null') {
+      if ($articleTitle.innerHTML == "null") {
         $articleTitle.innerHTML = currentArticleMetadata.name;
       }
-      $articlePublicationDate.innerHTML = currentArticleMetadata.publicationDate;
-      $articleTagsContainer.innerHTML = currentArticleMetadata.tags.split(',')
-        .map(tag => `<app-tag value="${tag}"></app-tag>`).join('');
+      $articlePublicationDate.innerHTML =
+        currentArticleMetadata.publicationDate;
+      $articleTagsContainer.innerHTML = currentArticleMetadata.tags
+        .split(",")
+        .map(tag => `<app-tag value="${tag}"></app-tag>`)
+        .join("");
     }
-    
-    function renderRelatedArticles () {
+
+    function renderRelatedArticles() {
       const currentArticleMetadata = findArticleMetadata();
       var index = 0;
       for (const article of currentArticleMetadata.relatedArticles) {
@@ -142,14 +155,14 @@ class AppArticle extends HTMLElement {
         }
       }
       if (currentArticleMetadata.relatedArticles.length == 0) {
-        $relatedArticlesTitle.setAttribute('hidden', 'true');
+        $relatedArticlesTitle.setAttribute("hidden", "true");
       }
     }
-    
-    function handleTagClickEvent (event) {
+
+    function handleTagClickEvent(event) {
       const tag = event.composedPath().find(component => {
         try {
-          return component.classList.contains('tag');
+          return component.classList.contains("tag");
         } catch (error) {
           return false;
         }
@@ -159,18 +172,20 @@ class AppArticle extends HTMLElement {
         window.location = `/index.html?tag=${tag.innerText}`;
       }
     }
-    
-    function findArticleMetadata () {
+
+    function findArticleMetadata() {
       for (const article of ALL_ARTICLES) {
         if (window.location.pathname.includes(article.url)) {
           return article;
         }
       }
-      throw new Error('the current article is not defined in the ALL_ARTICLES variable!');
+      throw new Error(
+        "the current article is not defined in the ALL_ARTICLES_BY_CATEGORY variable!"
+      );
     }
 
-    function renderArticle (article) {
-      const markup = /* html */`
+    function renderArticle(article) {
+      const markup = /* html */ `
       <app-article-card class="article related-article"
         url="${article.url}"
         name="${article.name}"
@@ -178,9 +193,9 @@ class AppArticle extends HTMLElement {
         tags="${article.tags}"
       ></app-article-card>
       `;
-      $relatedArticlesContainer.insertAdjacentHTML('afterbegin', markup);
+      $relatedArticlesContainer.insertAdjacentHTML("afterbegin", markup);
     }
   }
 }
 
-window.customElements.define('app-article', AppArticle);
+window.customElements.define("app-article", AppArticle);

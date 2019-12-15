@@ -38,8 +38,31 @@ class AppFancyTitle extends HTMLElement {
           background: linear-gradient(to right, var(--primary-color), #fff);
         }
       </style>
-      <h2 class="fancy-title">${this._value}</h2>
+      <div class="container">
+        <h2 class="fancy-title">${this._value}</h2>
+      </div>
     `;
+    this._container = this._root.querySelector(".container");
+
+    this.alreadyVisible = function() {
+      let position = this.getBoundingClientRect();
+      return (
+        position.top < 0 ||
+        (position.top < window.innerHeight && position.bottom >= 0)
+      );
+    };
+
+    this.addAlreadyVisibleClass = function() {
+      this._container.classList.add("already-visible");
+    };
+
+    this.addNotYetVisibleClass = function() {
+      this._container.classList.add("not-yet-visible");
+    };
+
+    this.addComeInClass = function() {
+      this._container.classList.add("come-in");
+    };
   }
 }
 

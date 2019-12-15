@@ -78,25 +78,6 @@ class AppArticleCard extends HTMLElement {
           margin: .3rem .5rem;
         }
 
-        .come-in {
-          animation: come-in .8s ease forwards;
-        }
-
-        .already-visible {
-          transform: translateY(0);
-          animation: none;
-        }
-
-        .not-yet-visible {
-          transform: translateY(150px);
-        }
-
-        @keyframes come-in {
-          to {
-            transform: translateY(0);
-          }
-        }
-
       </style>
       <a href="${this._url}">
         <div class="container">
