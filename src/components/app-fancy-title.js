@@ -33,7 +33,7 @@ class AppFancyTitle extends HTMLElement {
           position: absolute;
           display: block;
           height: 0.3rem;
-          width: 75%;
+          width: var(--fancy-title-underline-width, 75%);
           bottom: -1rem;
           background: linear-gradient(to right, var(--primary-color), #fff);
         }

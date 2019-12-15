@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('templates/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">project structure</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    ├── java
+                                    │   └── io
+                                    │       └── github
+                                    │           └── ahenteti
+                                    │               └── java
+                                    │                   ├── config
+                                    │                   │   └── ConfigurationBean.java
+                                    │                   ├── controller
+                                    │                   │   └── CustomerController.java
+                                    │                   ├── model
+                                    │                   │   └── Customer.java
+                                    │                   └── service
+                                    │                       └── CustomerService.java
+                                    ├── resources
+                                    │   └── META-INF
+                                    │       └── persistence.xml
+                                    └── webapp
+                                        ├── WEB-INF
+                                        │   ├── beans.xml
+                                        │   ├── faces-config.xml
+                                        │   └── web.xml
+                                        ├── index.xhtml
+                                        └── resources
+                                            └── css
+                                                └── default.css
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jsf-crud-app-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                                &lt;packaging&gt;war&lt;/packaging&gt;
+                            
+                                &lt;name&gt;\${project.artifactId}&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                    &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;repositories&gt;
+                                    &lt;repository&gt;
+                                        &lt;id&gt;prime-repo&lt;/id&gt;
+                                        &lt;name&gt;Prime Repo&lt;/name&gt;
+                                        &lt;url&gt;http://repository.primefaces.org&lt;/url&gt;
+                                    &lt;/repository&gt;
+                                &lt;/repositories&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;javax&lt;/groupId&gt;
+                                        &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+                                        &lt;version&gt;8.0&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.primefaces&lt;/groupId&gt;
+                                        &lt;artifactId&gt;primefaces&lt;/artifactId&gt;
+                                        &lt;version&gt;6.2&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;
+                                        &lt;artifactId&gt;all-themes&lt;/artifactId&gt;
+                                        &lt;version&gt;1.0.10&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;1.18.8&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;
+                                            &lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;
+                                            &lt;version&gt;1.7.7&lt;/version&gt;
+                                            &lt;inherited&gt;true&lt;/inherited&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;id&gt;deploy&lt;/id&gt;
+                                                    &lt;phase&gt;integration-test&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;redeploy&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                            &lt;configuration&gt;
+                                                &lt;container&gt;
+                                                    &lt;containerId&gt;glassfish5x&lt;/containerId&gt;
+                                                    &lt;type&gt;installed&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}&lt;/home&gt;
+                                                &lt;/container&gt;
+                                                &lt;configuration&gt;
+                                                    &lt;type&gt;existing&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}/glassfish/domains&lt;/home&gt;
+                                                    &lt;properties&gt;
+                                                        &lt;cargo.glassfish.domain.name&gt;domain1&lt;/cargo.glassfish.domain.name&gt;
+                                                        &lt;cargo.remote.password /&gt;
+                                                    &lt;/properties&gt;
+                                                &lt;/configuration&gt;
+                                            &lt;/configuration&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">web.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"&gt;
+                            
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;primefaces.THEME&lt;/param-name&gt;
+                                    &lt;param-value&gt;bootstrap&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                            
+                                &lt;servlet&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+                                    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+                                &lt;/servlet&gt;
+                            
+                                &lt;servlet-mapping&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;url-pattern&gt;*.xhtml&lt;/url-pattern&gt;
+                                &lt;/servlet-mapping&gt;
+                            
+                                &lt;welcome-file-list&gt;
+                                    &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
+                                &lt;/welcome-file-list&gt;
+                            
+                            &lt;/web-app&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8'?&gt;
+                            &lt;!--
+                            
+                                Licensed to the Apache Software Foundation (ASF) under one
+                                or more contributor license agreements.  See the NOTICE file
+                                distributed with this work for additional information
+                                regarding copyright ownership.  The ASF licenses this file
+                                to you under the Apache License, Version 2.0 (the
+                                "License"); you may not use this file except in compliance
+                                with the License.  You may obtain a copy of the License at
+                            
+                                  http://www.apache.org/licenses/LICENSE-2.0
+                            
+                                Unless required by applicable law or agreed to in writing,
+                                software distributed under the License is distributed on an
+                                "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+                                KIND, either express or implied.  See the License for the
+                                specific language governing permissions and limitations
+                                under the License.
+                            
+                            --&gt;
+                            &lt;faces-config version="2.3"
+                                          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"&gt;
+                            
+                            &lt;/faces-config&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">beans.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
+                                   bean-discovery-mode="all" version="2.0"&gt;
+                            &lt;/beans&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+                                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"&gt;
+                                &lt;persistence-unit name="customers" transaction-type="JTA"&gt;
+                                    &lt;jta-data-source&gt;jdbc/customers&lt;/jta-data-source&gt;
+                                    &lt;properties&gt;
+                                        &lt;property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/&gt;
+                                    &lt;/properties&gt;
+                                &lt;/persistence-unit&gt;
+                            &lt;/persistence&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xhtml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+                            &lt;!DOCTYPE html
+                                PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                            &lt;html 
+                                lang="en" 
+                                xmlns="http://www.w3.org/1999/xhtml" 
+                                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                                xmlns:p="http://primefaces.org/ui"
+                                &gt;
+                                &lt;h:head&gt;
+                                    &lt;meta charset="UTF-8" /&gt;
+                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+                                    &lt;h:outputStylesheet library="css" name="default.css" /&gt; 
+                                    &lt;title&gt;demo&lt;/title&gt;
+                                &lt;/h:head&gt;
+                                &lt;h:body&gt;
+                                    &lt;div class="header"&gt;
+                                        &lt;h2&gt;Customers&lt;/h2&gt;
+                                        &lt;p:commandButton value="New" 
+                                                         onclick="PF('newCustomerDialog').show();"
+                                                         styleClass="ui-priority-primary"/&gt;
+                                    &lt;/div&gt;
+                                    &lt;h:form id="customers" styleClass="clearfix"&gt;
+                                        &lt;p:growl id="growl" /&gt;
+                                        &lt;p:dataTable id="customerList" var="customer" value="#{customerController.customers}"&gt;
+                                            &lt;p:column headerText="Id"&gt;
+                                                &lt;h:outputText value="#{customer.id}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="First name"&gt;
+                                                &lt;h:outputText id="firstNameInput" value="#{customer.firstName}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="Last name"&gt;
+                                                &lt;h:outputText id="lastNameInput" value="#{customer.lastName}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="Email"&gt;
+                                                &lt;h:outputText id="emailInput" value="#{customer.email}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="Day of birth"&gt;
+                                                &lt;h:outputText value="#{customer.birthday}"&gt;
+                                                    &lt;f:convertDateTime type="localDate" pattern="dd/MM/yyyy"/&gt;
+                                                &lt;/h:outputText&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column&gt;
+                                                &lt;p:commandButton update="customerList" value="Delete" icon="ui-icon-closethick"
+                                                                 action="#{customerController.delete(customer)}"
+                                                                 styleClass="ui-priority-primary"&gt;
+                                                &lt;/p:commandButton&gt;
+                                            &lt;/p:column&gt;
+                                        &lt;/p:dataTable&gt;
+                                    &lt;/h:form&gt;
+                            
+                                    &lt;p:dialog header="New Customer" modal="true" widgetVar="newCustomerDialog"&gt;
+                                        &lt;h:form id="add"&gt;
+                                            &lt;h:panelGrid columns="3" cellpadding="15" style="margin: 0 auto;"&gt;
+                                                &lt;p:outputLabel for="firstName" value="First name" /&gt;
+                                                &lt;p:inputText id="firstName" value="#{customerController.newCustomer.firstName}" /&gt;
+                                                &lt;p:message for="firstName" /&gt;
+                            
+                                                &lt;p:outputLabel for="lastName" value="Last name" /&gt;
+                                                &lt;p:inputText id="lastName" value="#{customerController.newCustomer.lastName}"&gt;
+                                                &lt;/p:inputText&gt;
+                                                &lt;p:message for="lastName" /&gt;
+                            
+                                                &lt;p:outputLabel for="email" value="E-Mail" /&gt;
+                                                &lt;p:inputText id="email" value="#{customerController.newCustomer.email}"&gt;
+                                                &lt;/p:inputText&gt;
+                                                &lt;p:message for="email" /&gt;
+                            
+                                                &lt;p:outputLabel for="birthday" value="Day of birth" /&gt;
+                                                &lt;p:calendar id="birthday" value="#{customerController.newCustomer.birthday}" pattern="dd/MM/yyyy" mask="true"&gt;
+                                                    &lt;f:convertDateTime type="localDate" pattern="dd/MM/yyyy" /&gt;
+                                                &lt;/p:calendar&gt;
+                                                &lt;p:message for="birthday" /&gt;
+                            
+                                                &lt;p:commandButton update="@form :customers" value="Add" oncomplete="if (args &amp;&amp; !args.validationFailed) PF('newCustomerDialog').hide();" 
+                                                                 action="#{customerController.create}"
+                                                                 styleClass="ui-priority-primary"&gt;
+                                                &lt;/p:commandButton&gt;
+                                            &lt;/h:panelGrid&gt;
+                                        &lt;/h:form&gt;
+                                    &lt;/p:dialog&gt;
+                            
+                                &lt;/h:body&gt;
+                            &lt;/html&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">CustomerService.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java.service;
+                            
+                            import java.util.Collection;
+                            import javax.annotation.PostConstruct;
+                            import javax.ejb.Stateless;
+                            import javax.persistence.EntityManager;
+                            import javax.persistence.EntityManagerFactory;
+                            import javax.persistence.PersistenceContext;
+                            import javax.persistence.PersistenceUnit;
+                            import io.github.ahenteti.java.model.Customer;
+                            
+                            @Stateless
+                            public class CustomerService {
+                            
+                                @PersistenceContext(unitName = "customers") private EntityManager entityManager;
+                            
+                                public void create(Customer customer) {
+                                    Customer newCustomer = new Customer();
+                                    newCustomer.setFirstName(customer.getFirstName());
+                                    newCustomer.setLastName(customer.getLastName());
+                                    newCustomer.setEmail(customer.getEmail());
+                                    newCustomer.setBirthday(customer.getBirthday());
+                                    this.entityManager.persist(newCustomer);
+                                }
+                            
+                                public Collection&lt;Customer&gt; read() {
+                                    return this.entityManager.createNamedQuery(Customer.FIND_ALL, Customer.class).getResultList();
+                                }
+                            
+                                public void update(Collection&lt;Customer&gt; customers) {
+                                    customers.forEach(entityManager::merge);
+                                }
+                            
+                                public void delete(Customer customer) {
+                                    if (entityManager.contains(customer)) {
+                                        entityManager.remove(customer);
+                                    } else {
+                                        Customer managedCustomer = entityManager.find(Customer.class, customer.getId());
+                                        if (managedCustomer != null) {
+                                            entityManager.remove(managedCustomer);
+                                        }
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">Customer.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java.model;
+                            
+                            import java.io.Serializable;
+                            import java.time.LocalDate;
+                            import javax.persistence.Column;
+                            import javax.persistence.Entity;
+                            import javax.persistence.GeneratedValue;
+                            import javax.persistence.GenerationType;
+                            import javax.persistence.Id;
+                            import javax.persistence.NamedQueries;
+                            import javax.persistence.NamedQuery;
+                            import javax.validation.constraints.Email;
+                            import javax.validation.constraints.NotEmpty;
+                            import javax.validation.constraints.Past;
+                            import lombok.Data;
+                            
+                            @Data
+                            @Entity
+                            @NamedQueries({
+                                    // @formatter:off
+                                    @NamedQuery(name = Customer.FIND_ALL, query = "select c from Customer c"),
+                                    @NamedQuery(name= Customer.FIND_BY_EMAIL, query="select c from Customer c where c.email = :email")
+                                    // @formatter:on
+                            })
+                            public class Customer implements Serializable {
+                            
+                                public static final String FIND_ALL = "Customer.findAll";
+                                public static final String FIND_BY_EMAIL = "Employee.findByEmail";
+                                private static final long serialVersionUID = -8220762341837326032L;
+                            
+                                @Id
+                                @GeneratedValue(strategy = GenerationType.IDENTITY)
+                                private Long id;
+                            
+                                @Column(nullable = false)
+                                @NotEmpty
+                                private String firstName;
+                            
+                                @NotEmpty
+                                @Column(nullable = false)
+                                private String lastName;
+                            
+                                @Email
+                                @Column(nullable = false)
+                                private String email;
+                            
+                                @Past
+                                private LocalDate birthday;
+                            
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">CustomerController.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java.controller;
+                            
+                            import java.io.Serializable;
+                            import java.util.Collection;
+                            import javax.annotation.PostConstruct;
+                            import javax.faces.application.FacesMessage;
+                            import javax.faces.context.FacesContext;
+                            import javax.faces.view.ViewScoped;
+                            import javax.inject.Inject;
+                            import javax.inject.Named;
+                            import io.github.ahenteti.java.model.Customer;
+                            import io.github.ahenteti.java.service.CustomerService;
+                            import lombok.Data;
+                            
+                            @Data
+                            @Named
+                            @ViewScoped
+                            public class CustomerController implements Serializable {
+                            
+                                private static final long serialVersionUID = 6866663669266518821L;
+                                
+                                ////////////////////////
+                                //        state       //
+                                ////////////////////////
+                                private Collection&lt;Customer&gt; customers;
+                                private Customer newCustomer;
+                            
+                                ////////////////////////
+                                //    dependencies    //
+                                ////////////////////////
+                                @Inject private CustomerService customerService;
+                                @Inject private FacesContext facesContext;
+                            
+                                @PostConstruct
+                                public void init() {
+                                    this.customers = customerService.read();
+                                    this.newCustomer = new Customer();
+                                }
+                            
+                                public void create() {
+                                    customerService.create(newCustomer);
+                                    this.customers = customerService.read();
+                                    this.newCustomer = new Customer();
+                                }
+                            
+                                public void update() {
+                                    customerService.update(customers);
+                                    facesContext.addMessage(null, new FacesMessage("Update successful"));
+                                }
+                            
+                                public void delete(Customer customer) {
+                                    customerService.delete(customer);
+                                    customers.remove(customer);
+                                }
+                            
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">ConfigurationBean.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java.config;
+                            
+                            import javax.faces.annotation.FacesConfig;
+                            
+                            /**
+                             * The presence of the @FacesConfig annotation on a managed bean deployed within an application enables version specific
+                             * features. In this case, it enables JSF CDI injection and EL resolution using CDI.
+                             */
+                            @FacesConfig(version = FacesConfig.Version.JSF_2_3)
+                            public class ConfigurationBean {
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+        </app-code-tabs>
+
+        <app-more-info>
+            <app-link
+                href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/jsf-crud-app-demo"
+                label="Github source code"    
+            ></app-link>
+            <app-link
+                href="https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/"
+                label="Simple crud table with JSF 2.3 and primefaces"    
+            ></app-link>
+        </app-more-info>
+        
+    </app-article>
+
+</body>
+
+</html>

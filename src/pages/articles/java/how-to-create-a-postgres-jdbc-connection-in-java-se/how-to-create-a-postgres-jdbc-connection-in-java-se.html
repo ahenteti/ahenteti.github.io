@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('templates/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <app-multiline-code language="java">
+            <pre slot="code">
+                <code>
+                    /**
+                        * jdbc driver demo
+                        *
+                        */
+                    public class Main 
+                    {
+                        public static void main(String[] args) {
+                            try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "&lt;username&gt;", "&lt;password&gt;")) {
+                                System.out.println("connected to PostgreSQL database with success");
+                                Statement statement = connection.createStatement();
+                                ResultSet resultSet = statement.executeQuery("SELECT true AS IS_ALIVE");
+                                while (resultSet.next()) {
+                                    System.out.printf("%-30.30s  %-30.30s%n", "IS_ALIVE", resultSet.getBoolean("IS_ALIVE"));
+                                }
+                            } catch (SQLException e) {
+                                System.out.println("connection failed");
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                </code>
+            </pre>
+        </app-multiline-code>
+    </app-article>
+</body>
+
+</html>

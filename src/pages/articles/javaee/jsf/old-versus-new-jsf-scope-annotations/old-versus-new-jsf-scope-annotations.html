@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('templates/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <div class="table">
+            <table>
+                <thead>
+                    <th>Old Annotation</th>
+                    <th>New Annotation</th>
+                </thead>
+                <tbody>
+                    <tr class="monospace">
+                        <td>javax.faces.bean.RequestScoped</td>
+                        <td>javax.enterprise.context.RequestScoped</td>
+                    </tr>
+                    <tr class="monospace">
+                        <td>javax.faces.bean.SessionScoped</td>
+                        <td>javax.enterprise.context.SessionScoped</td>
+                    </tr>
+                    <tr class="monospace">
+                        <td>javax.faces.bean.ApplicationScoped</td>
+                        <td>javax.enterprise.context.ApplicationScoped</td>
+                    </tr>
+                    <tr class="monospace">
+                        <td>javax.faces.bean.ViewScoped</td>
+                        <td>javax.faces.view.ViewScoped</td>
+                    </tr>
+                    <tr class="monospace">
+                        <td>javax.faces.bean.ManagedBean</td>
+                        <td>javax.inject.Named</td>
+                    </tr>
+                    <tr class="monospace">
+                        <td>javax.faces.bean.ManagedProperty</td>
+                        <td>javax.inject.Inject</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </app-article>
+
+</body>
+
+</html>

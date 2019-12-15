@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('templates/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <h2>JDBC without JPA</h2>
+
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">Main.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            public class Main {
+                                public static void main(String[] args) throws ClassNotFoundException, SQLException {
+                                    loadDatabaseDriver();
+                                    createBookTable();
+                                    persistBook(new Book(1L, "title"));
+                                    System.out.println(findBook(1L));
+                                }
+                                
+                                private static void loadDatabaseDriver() throws ClassNotFoundException {
+                                    Class.forName("org.h2.Driver");
+                                }
+                                
+                                private static void createBookTable() throws SQLException {
+                                    String query = "CREATE TABLE BOOK (ID BIGINT NOT NULL, TITLE VARCHAR, PRIMARY KEY (ID))";
+                                    try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+                                        stmt.executeUpdate();
+                                    }
+                                }
+                                
+                                private static void persistBook(Book book) throws SQLException {
+                                    String query = "INSERT INTO BOOK (ID, TITLE) VALUES (?, ?)";
+                                    try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+                                
+                                        stmt.setLong(1, book.getId());
+                                        stmt.setString(2, book.getTitle());
+                                    
+                                        stmt.executeUpdate();
+                                    }
+                                }
+                                    
+                                private static Book findBook(Long id) throws SQLException {
+                                    Book book = new Book();
+                                    String query = "SELECT ID, TITLE FROM BOOK WHERE ID = ?";
+                                    try (PreparedStatement stmt = getConnection().prepareStatement(query)) {
+                                        stmt.setLong(1, id);
+                                        ResultSet rs = stmt.executeQuery();
+                                        while (rs.next()) {
+                                            book.setId(rs.getLong("ID"));
+                                            book.setTitle(rs.getString("TITLE"));
+                                        }
+                                    }
+                                    return book;
+                                }
+                            
+                                private static Connection getConnection() throws SQLException {
+                                    return DriverManager.getConnection("jdbc:h2:mem:demo");
+                                }
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">Book.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            @Data
+                            @AllArgsConstructor
+                            public class Book {
+                                private Long id;
+                                private String title;
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jdbc-with-and-without-jpa-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;!-- database --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+                                        &lt;artifactId&gt;h2&lt;/artifactId&gt;
+                                        &lt;version&gt;1.4.199&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;!-- lombok --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;1.18.8&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+
+            <app-code-tab slot="code-tab">project structure</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    └── java
+                                        └── io
+                                            └── github
+                                                └── ahenteti
+                                                    └── java
+                                                        ├── Book.java
+                                                        └── Main.java
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+        </app-code-tabs>
+
+        <h2>JDBC with JPA</h2>
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">Main.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            public class Main {
+
+                                private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("book-persistence-unit");
+                                private static EntityManager em = emf.createEntityManager();
+                                
+                                public static void main(String[] args) throws ClassNotFoundException, SQLException {
+                                    persistBook(new Book(1L, "title"));
+                                    System.out.println(findBook(1L));
+                                }
+                                
+                                private static void persistBook(Book book) {
+                                    em.persist(book);
+                                }
+                                
+                                private static Book findBook(Long id) throws SQLException {
+                                    return em.find(Book.class, id);
+                                }
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+
+            <app-code-tab slot="code-tab">Book.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            <span class="highlight">@Entity</span>
+                            @Data
+                            @AllArgsConstructor
+                            public class Book {
+                                <span class="highlight">@Id</span>
+                                private Long id;
+                                private String title;
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+
+            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jdbc-with-and-without-jpa-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    <span class="highlight">&lt;!-- JPA --&gt;</span>
+                                    <span class="highlight">&lt;dependency&gt;</span>
+                                        <span class="highlight">&lt;groupId&gt;javax.persistence&lt;/groupId&gt;</span>
+                                        <span class="highlight">&lt;artifactId&gt;javax.persistence-api&lt;/artifactId&gt;</span>
+                                        <span class="highlight">&lt;version&gt;2.2&lt;/version&gt;</span>
+                                    <span class="highlight">&lt;/dependency&gt;</span>
+                            
+                                    <span class="highlight">&lt;!-- JPA implementation --&gt;</span>
+                                    <span class="highlight">&lt;dependency&gt;</span>
+                                        <span class="highlight">&lt;groupId&gt;org.hibernate&lt;/groupId&gt;</span>
+                                        <span class="highlight">&lt;artifactId&gt;hibernate-agroal&lt;/artifactId&gt;</span>
+                                        <span class="highlight">&lt;version&gt;5.3.11.Final&lt;/version&gt;</span>
+                                        <span class="highlight">&lt;type&gt;pom&lt;/type&gt;</span>
+                                    <span class="highlight">&lt;/dependency&gt;</span>
+                            
+                                    &lt;!-- database --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;com.h2database&lt;/groupId&gt;
+                                        &lt;artifactId&gt;h2&lt;/artifactId&gt;
+                                        &lt;version&gt;1.4.199&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                
+                                    &lt;!-- lombok --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;1.18.8&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                            
+                                &lt;/dependencies&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+
+            <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
+                            &lt;persistence 
+                                xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+                                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+                                version="2.2"&gt;
+                                &lt;persistence-unit name="book-persistence-unit" transaction-type="RESOURCE_LOCAL"&gt;
+                                    &lt;provider&gt;org.hibernate.ejb.HibernatePersistence&lt;/provider&gt;
+                                    &lt;class&gt;io.github.ahenteti.java.Book&lt;/class&gt;
+                                    &lt;properties&gt;
+                                        &lt;property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/&gt;
+                                        &lt;property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:demo"/&gt;
+                                    &lt;/properties&gt;
+                                &lt;/persistence-unit&gt;
+                            &lt;/persistence&gt;                                
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">project structure</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    ├── java
+                                    │   └── io
+                                    │       └── github
+                                    │           └── ahenteti
+                                    │               └── java
+                                    │                   ├── Book.java
+                                    │                   └── Main.java
+                                    │
+                                    └── resources
+                                        └── META-INF
+                                            └── persistence.xml
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+        </app-code-tabs>
+
+        <app-more-info>
+            <app-link
+                href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/jdbc-with-and-without-jpa-demo"
+                label="Github source code"    
+            ></app-link>
+        </app-more-info>
+        
+    </app-article>
+
+</body>
+
+</html>

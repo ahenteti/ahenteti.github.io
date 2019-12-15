@@ -13,7 +13,7 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 let ARTICLES_METADATA = null;
 
 const entries = glob
-  .sync("./src/{index,about,articles}/**/*.js")
+  .sync("./src/pages/{index,about,articles}/**/*.js")
   .reduce((acc, filePath) => {
     const parentFolderName = getParentFolderName(filePath);
     const fileNameWithoutExtension = getBasenameWithoutExtension(
@@ -29,7 +29,7 @@ entries.common = "./src/common/common.js";
 entries.components = "./src/components/components.js";
 
 const htmlWebpackPlugins = glob
-  .sync("./src/{index,about,articles}/**/*.html")
+  .sync("./src/pages/{index,about,articles}/**/*.html")
   .reduce((acc, filePath) => {
     acc.push(
       new HtmlWebpackPlugin({
@@ -125,7 +125,7 @@ function getParentFolderName(filePath) {
 function getArticlesMetadata() {
   if (ARTICLES_METADATA === null) {
     ARTICLES_METADATA = glob
-      .sync("./src/articles/**/metadata.json")
+      .sync("./src/pages/articles/**/metadata.json")
       .reduce((articles, filePath) => {
         articles.push(JSON.parse(fs.readFileSync(filePath)));
         return articles;
@@ -178,12 +178,20 @@ function toArticlesByCategory(allArticles) {
     }
     articlesByCategory[article.category].push(article);
   }
-  return articlesByCategory;
+  const sortedArticlesByCategory = Object.entries(articlesByCategory)
+    .sort(
+      ([category1], [category2]) =>
+        articlesByCategory[category1].length <
+        articlesByCategory[category2].length
+    )
+    .reduce((obj, [key, value]) => Object.assign(obj, { [key]: value }), {});
+
+  return sortedArticlesByCategory;
 }
 
 function getArticlesTags() {
   const tags = glob
-    .sync("./src/articles/**/metadata.json")
+    .sync("./src/pages/articles/**/metadata.json")
     .reduce((tags, filePath) => {
       JSON.parse(fs.readFileSync(filePath))
         .tags.split(",")

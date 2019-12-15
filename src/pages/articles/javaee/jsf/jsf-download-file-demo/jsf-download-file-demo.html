@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('templates/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        
+        <h2>Using Standard JSF component</h2>
+
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">project structure</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    ├── java
+                                    │   └── io
+                                    │       └── github
+                                    │           └── ahenteti
+                                    │               └── java
+                                    │                   ├── Controller.java
+                                    │                   └── FacesActivator.java
+                                    └── webapp
+                                        ├── WEB-INF
+                                        │   ├── beans.xml
+                                        │   ├── faces-config.xml
+                                        │   └── web.xml
+                                        ├── index.xhtml
+                                        └── resources
+                                            ├── css
+                                            │   └── default.css
+                                            └── images
+                                                └── ajaxloadingbar.gif
+                            
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xhtml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+                            &lt;!DOCTYPE html
+                                PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" 
+                                  xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                  xmlns:f="http://xmlns.jcp.org/jsf/core"
+                                  lang="en"&gt;
+                            
+                                &lt;h:head&gt;
+                                    &lt;title&gt;Demo&lt;/title&gt;
+                                &lt;/h:head&gt;
+                                &lt;h:body&gt;
+                                    &lt;h:outputStylesheet library="css" name="default.css" /&gt;
+                                    &lt;h:form&gt;
+                                        &lt;h:commandButton value="Download" 
+                                                         action="#{controller.exportAction}" /&gt;
+                                    &lt;/h:form&gt;
+                                &lt;/h:body&gt;
+                            
+                            &lt;/html&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">Controller.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import java.io.BufferedInputStream;
+                            import java.io.BufferedOutputStream;
+                            import java.io.ByteArrayInputStream;
+                            import java.io.IOException;
+                            import java.io.InputStream;
+                            import java.io.OutputStream;
+                            import java.io.Serializable;
+                            import javax.faces.application.FacesMessage;
+                            import javax.faces.context.ExternalContext;
+                            import javax.faces.context.FacesContext;
+                            import javax.faces.view.ViewScoped;
+                            import javax.inject.Inject;
+                            import javax.inject.Named;
+                            import lombok.Data;
+                            
+                            
+                            import static javax.faces.application.FacesMessage.SEVERITY_ERROR;
+                            
+                            @Data
+                            @Named
+                            @ViewScoped
+                            public class Controller implements Serializable {
+                            
+                                private static final long serialVersionUID = 5443351151396868724L;
+                                
+                                @Inject private FacesContext facesContext;
+                                @Inject private ExternalContext externalContext;
+                            
+                                public void exportAction() {
+                                    try {
+                                        externalContext.responseReset();
+                                        externalContext.setResponseContentType("text/plain");
+                                        externalContext.setResponseHeader("Content-Disposition", "attachment; filename=\"export.txt\"");
+                                        String someContent = "some content";
+                                        copy(new ByteArrayInputStream(someContent.getBytes()), externalContext.getResponseOutputStream());
+                                        facesContext.responseComplete();
+                                    } catch (Exception ex) {
+                                        String summary = "error while exporting your file";
+                                        FacesMessage message = new FacesMessage(SEVERITY_ERROR, summary, ex.getLocalizedMessage());
+                                        facesContext.addMessage(null, message);
+                                    }
+                                }
+                            
+                                private void copy(InputStream in, OutputStream out) throws IOException {
+                                    try (BufferedInputStream input = new BufferedInputStream(in);
+                                            BufferedOutputStream output = new BufferedOutputStream(out)) {
+                                        byte[] buffer = new byte[10240];
+                                        for (int length; (length = input.read(buffer)) &gt; 0; ) {
+                                            output.write(buffer, 0, length);
+                                        }
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jsf-download-file-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                                &lt;packaging&gt;war&lt;/packaging&gt;
+                            
+                                &lt;name&gt;\${project.artifactId}&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;javaee.api.version&gt;8.0&lt;/javaee.api.version&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                    &lt;lombok.version&gt;1.18.8&lt;/lombok.version&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;!-- javaee 8 --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;javax&lt;/groupId&gt;
+                                        &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+                                        &lt;version&gt;\${javaee.api.version}&lt;/version&gt;
+                                        &lt;scope&gt;provided&lt;/scope&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;!-- lombok --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;\${lombok.version}&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;
+                                            &lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;
+                                            &lt;inherited&gt;true&lt;/inherited&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;id&gt;deploy&lt;/id&gt;
+                                                    &lt;phase&gt;integration-test&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;redeploy&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                            &lt;configuration&gt;
+                                                &lt;container&gt;
+                                                    &lt;containerId&gt;glassfish5x&lt;/containerId&gt;
+                                                    &lt;type&gt;installed&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}&lt;/home&gt;
+                                                &lt;/container&gt;
+                                                &lt;configuration&gt;
+                                                    &lt;type&gt;existing&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}/glassfish/domains&lt;/home&gt;
+                                                    &lt;properties&gt;
+                                                        &lt;cargo.glassfish.domain.name&gt;domain1&lt;/cargo.glassfish.domain.name&gt;
+                                                        &lt;cargo.remote.password /&gt;
+                                                    &lt;/properties&gt;
+                                                &lt;/configuration&gt;
+                                            &lt;/configuration&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">web.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;web-app version="3.1" 
+                                     xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+                                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                                     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;javax.faces.PROJECT_STAGE&lt;/param-name&gt;
+                                    &lt;param-value&gt;Development&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                                &lt;servlet&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+                                    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+                                &lt;/servlet&gt;
+                                &lt;servlet-mapping&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;url-pattern&gt;*.xhtml&lt;/url-pattern&gt;
+                                &lt;/servlet-mapping&gt;
+                                &lt;session-config&gt;
+                                    &lt;session-timeout&gt;30&lt;/session-timeout&gt;
+                                &lt;/session-config&gt;
+                                &lt;welcome-file-list&gt;
+                                    &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
+                                &lt;/welcome-file-list&gt;
+                            &lt;/web-app&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;faces-config
+                                    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+                                    version="2.3"&gt;
+                            &lt;/faces-config&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">beans.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
+                                   bean-discovery-mode="all" version="2.0"&gt;
+                            &lt;/beans&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">FacesActivator.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import javax.faces.annotation.FacesConfig;
+                            
+                            /**
+                             * The presence of the @FacesConfig annotation on a managed bean deployed within an application enables version specific
+                             * features. In this case, it enables JSF CDI injection and EL resolution using CDI.
+                             */
+                            @FacesConfig(version = FacesConfig.Version.JSF_2_3)
+                            public class FacesActivator {
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+        </app-code-tabs>
+
+        <h2>Using fileDownload Primefaces component</h2>
+
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">project structure</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    ├── java
+                                    │   └── io
+                                    │       └── github
+                                    │           └── ahenteti
+                                    │               └── java
+                                    │                   ├── Controller.java
+                                    │                   └── FacesActivator.java
+                                    └── webapp
+                                        ├── WEB-INF
+                                        │   ├── beans.xml
+                                        │   ├── faces-config.xml
+                                        │   └── web.xml
+                                        ├── index.xhtml
+                                        └── resources
+                                            ├── css
+                                            │   └── default.css
+                                            └── images
+                                                └── ajaxloadingbar.gif
+                            
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xhtml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+                            &lt;!DOCTYPE html
+                                PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                            &lt;html xmlns="http://www.w3.org/1999/xhtml" 
+                                  xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                  xmlns:f="http://xmlns.jcp.org/jsf/core"
+                                  xmlns:p="http://primefaces.org/ui"
+                                  lang="en"&gt;
+                            
+                                &lt;h:head&gt;
+                                    &lt;title&gt;Demo&lt;/title&gt;
+                                &lt;/h:head&gt;
+                                &lt;h:body&gt;
+                                    &lt;h:outputStylesheet library="css" name="default.css" /&gt;
+                                    &lt;p:dialog modal="true" 
+                                              widgetVar="statusDialog" 
+                                              header="Status" 
+                                              draggable="false" 
+                                              closable="false" 
+                                              resizable="false"&gt;
+                                        &lt;p:graphicImage name="/images/ajaxloadingbar.gif" /&gt;
+                                    &lt;/p:dialog&gt;
+                                    &lt;h:form&gt;
+                                        &lt;p:commandButton value="Download" 
+                                                         ajax="false"
+                                                         onclick="PrimeFaces.monitorDownload(start, stop);"
+                                                         actionListener="#{controller.exportAction}"
+                                                         icon="pi pi-arrow-down"&gt;
+                                            &lt;p:fileDownload value="#{controller.file}" /&gt;
+                                        &lt;/p:commandButton&gt;
+                                    &lt;/h:form&gt;
+                            
+                                    &lt;script type="text/javascript"&gt;
+                                        function start() {
+                                            PF('statusDialog').show();
+                                        }
+                                         
+                                        function stop() {
+                                            PF('statusDialog').hide();
+                                        }
+                                    &lt;/script&gt;
+                                &lt;/h:body&gt;
+                            
+                            &lt;/html&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">Controller.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import java.io.ByteArrayInputStream;
+                            import java.io.InputStream;
+                            import java.io.Serializable;
+                            import javax.faces.context.FacesContext;
+                            import javax.faces.view.ViewScoped;
+                            import javax.inject.Inject;
+                            import javax.inject.Named;
+                            import lombok.Data;
+                            import org.primefaces.model.DefaultStreamedContent;
+                            import org.primefaces.model.StreamedContent;
+                            
+                            @Data
+                            @Named
+                            @ViewScoped
+                            public class Controller implements Serializable {
+                            
+                                private static final long serialVersionUID = 5443351151396868724L;
+                                private transient StreamedContent file;
+                            
+                                public void exportAction() {
+                                    InputStream stream = new ByteArrayInputStream("some content".getBytes());
+                                    file = new DefaultStreamedContent(stream, "text/plain", "file.txt");
+                                }
+                            
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jsf-download-file-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                                &lt;packaging&gt;war&lt;/packaging&gt;
+                            
+                                &lt;name&gt;\${project.artifactId}&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;javaee.api.version&gt;8.0&lt;/javaee.api.version&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                    &lt;primefaces.version&gt;7.0&lt;/primefaces.version&gt;
+                                    &lt;all-themes.version&gt;1.0.10&lt;/all-themes.version&gt;
+                                    &lt;lombok.version&gt;1.18.8&lt;/lombok.version&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;!-- javaee 8 --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;javax&lt;/groupId&gt;
+                                        &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+                                        &lt;version&gt;\${javaee.api.version}&lt;/version&gt;
+                                        &lt;scope&gt;provided&lt;/scope&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;!-- lombok --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;\${lombok.version}&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;!-- Primefaces --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.primefaces&lt;/groupId&gt;
+                                        &lt;artifactId&gt;primefaces&lt;/artifactId&gt;
+                                        &lt;version&gt;\${primefaces.version}&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;
+                                        &lt;artifactId&gt;all-themes&lt;/artifactId&gt;
+                                        &lt;version&gt;\${all-themes.version}&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;
+                                            &lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;
+                                            &lt;inherited&gt;true&lt;/inherited&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;id&gt;deploy&lt;/id&gt;
+                                                    &lt;phase&gt;integration-test&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;redeploy&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                            &lt;configuration&gt;
+                                                &lt;container&gt;
+                                                    &lt;containerId&gt;glassfish5x&lt;/containerId&gt;
+                                                    &lt;type&gt;installed&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}&lt;/home&gt;
+                                                &lt;/container&gt;
+                                                &lt;configuration&gt;
+                                                    &lt;type&gt;existing&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}/glassfish/domains&lt;/home&gt;
+                                                    &lt;properties&gt;
+                                                        &lt;cargo.glassfish.domain.name&gt;domain1&lt;/cargo.glassfish.domain.name&gt;
+                                                        &lt;cargo.remote.password /&gt;
+                                                    &lt;/properties&gt;
+                                                &lt;/configuration&gt;
+                                            &lt;/configuration&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                                &lt;repositories&gt;
+                                    &lt;repository&gt;
+                                        &lt;url&gt;http://repository.primefaces.org/&lt;/url&gt;
+                                        &lt;id&gt;PrimeFaces-maven-lib&lt;/id&gt;
+                                        &lt;layout&gt;default&lt;/layout&gt;
+                                        &lt;name&gt;Repository for library PrimeFaces-maven-lib&lt;/name&gt;
+                                    &lt;/repository&gt;
+                                &lt;/repositories&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">web.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;web-app version="3.1" 
+                                     xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+                                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                                     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;javax.faces.PROJECT_STAGE&lt;/param-name&gt;
+                                    &lt;param-value&gt;Development&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;primefaces.THEME&lt;/param-name&gt;
+                                    &lt;param-value&gt;nova-light&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                                &lt;servlet&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+                                    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+                                &lt;/servlet&gt;
+                                &lt;servlet-mapping&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;url-pattern&gt;*.xhtml&lt;/url-pattern&gt;
+                                &lt;/servlet-mapping&gt;
+                                &lt;session-config&gt;
+                                    &lt;session-timeout&gt;30&lt;/session-timeout&gt;
+                                &lt;/session-config&gt;
+                                &lt;welcome-file-list&gt;
+                                    &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
+                                &lt;/welcome-file-list&gt;
+                            &lt;/web-app&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;faces-config
+                                    xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                    xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"
+                                    version="2.3"&gt;
+                            &lt;/faces-config&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">beans.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
+                                   bean-discovery-mode="all" version="2.0"&gt;
+                            &lt;/beans&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">FacesActivator.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import javax.faces.annotation.FacesConfig;
+                            
+                            /**
+                             * The presence of the @FacesConfig annotation on a managed bean deployed within an application enables version specific
+                             * features. In this case, it enables JSF CDI injection and EL resolution using CDI.
+                             */
+                            @FacesConfig(version = FacesConfig.Version.JSF_2_3)
+                            public class FacesActivator {
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+        </app-code-tabs>
+
+
+        <app-more-info>
+            <app-link
+                href="https://www.primefaces.org/showcase/ui/file/download.xhtml"
+                label="Primefaces ShowCases"    
+            ></app-link>
+            <app-link
+                href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/jsf-download-file-demo"
+                label="Github source code"    
+            ></app-link>
+        </app-more-info>
+        
+    </app-article>
+
+</body>
+
+</html>

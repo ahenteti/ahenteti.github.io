@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+${require('templates/head.html')}
+
+<body>
+    <app-header></app-header>
+
+    <app-article>
+        <app-code-tabs>
+            <app-code-tab slot="code-tab">project structure</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    ├── java
+                                    │   └── io
+                                    │       └── github
+                                    │           └── ahenteti
+                                    │               └── java
+                                    │                   └── HelloBean.java
+                                    └── webapp
+                                        ├── WEB-INF
+                                        │   └── web.xml
+                                        ├── index.xhtml
+                                        └── resources
+                                            └── css
+                                                └── default.css
+                            
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jsf-websocket-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                                &lt;packaging&gt;war&lt;/packaging&gt;
+                            
+                                &lt;name&gt;\${project.artifactId}&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;javaee.api.version&gt;8.0&lt;/javaee.api.version&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;!-- javaee 8 --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;javax&lt;/groupId&gt;
+                                        &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+                                        &lt;version&gt;\${javaee.api.version}&lt;/version&gt;
+                                        &lt;scope&gt;provided&lt;/scope&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;!-- lombok --&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;1.18.8&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;
+                                            &lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;
+                                            &lt;inherited&gt;true&lt;/inherited&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;id&gt;deploy&lt;/id&gt;
+                                                    &lt;phase&gt;integration-test&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;redeploy&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                            &lt;configuration&gt;
+                                                &lt;container&gt;
+                                                    &lt;containerId&gt;glassfish5x&lt;/containerId&gt;
+                                                    &lt;type&gt;installed&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}&lt;/home&gt;
+                                                &lt;/container&gt;
+                                                &lt;configuration&gt;
+                                                    &lt;type&gt;existing&lt;/type&gt;
+                                                    &lt;home&gt;\${env.PAYARA_HOME}/glassfish/domains&lt;/home&gt;
+                                                    &lt;properties&gt;
+                                                        &lt;cargo.glassfish.domain.name&gt;domain1&lt;/cargo.glassfish.domain.name&gt;
+                                                        &lt;cargo.remote.password /&gt;
+                                                    &lt;/properties&gt;
+                                                &lt;/configuration&gt;
+                                            &lt;/configuration&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">web.xml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;web-app version="3.1" 
+                                     xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+                                     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+                                     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&gt;
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;javax.faces.PROJECT_STAGE&lt;/param-name&gt;
+                                    &lt;param-value&gt;Development&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;javax.faces.ENABLE_WEBSOCKET_ENDPOINT&lt;/param-name&gt;
+                                    &lt;param-value&gt;true&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                                &lt;servlet&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+                                    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+                                &lt;/servlet&gt;
+                                &lt;servlet-mapping&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;url-pattern&gt;*.xhtml&lt;/url-pattern&gt;
+                                &lt;/servlet-mapping&gt;
+                                &lt;session-config&gt;
+                                    &lt;session-timeout&gt;30&lt;/session-timeout&gt;
+                                &lt;/session-config&gt;
+                                &lt;welcome-file-list&gt;
+                                    &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
+                                &lt;/welcome-file-list&gt;
+                            &lt;/web-app&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="xhtml">
+                    <pre slot="code">
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+                            &lt;!DOCTYPE html
+                                    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                            &lt;html lang="en" xmlns="http://www.w3.org/1999/xhtml" 
+                                  xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                  xmlns:f="http://xmlns.jcp.org/jsf/core"&gt;
+                            
+                                &lt;h:head&gt;
+                                    &lt;h:outputStylesheet library="css" name="default.css"/&gt;
+                                    &lt;title&gt;JSF 2.3: WebSocket Demo&lt;/title&gt;
+                                &lt;/h:head&gt;
+                                &lt;h:body&gt;
+                                    &lt;script&gt;
+                                        function onMessage(message, channel, event) {
+                                            console.log('jsf push message::' + message + ", channel ::" + channel + ", event::" + event);
+                                            document.getElementById("message").innerHTML = message;
+                                        }
+                                    &lt;/script&gt;
+                                    &lt;h1&gt;JSF 2.3: Websocket Demo&lt;/h1&gt;
+                                    &lt;div id="message"/&gt;
+                                    &lt;h:form id="form"&gt;
+                                        &lt;h:commandButton
+                                                id="sendMessage"
+                                                type="submit"
+                                                action="#{helloBean.send()}" value="Send Message"&gt;
+                                            &lt;f:ajax/&gt;
+                                        &lt;/h:commandButton&gt;
+                                    &lt;/h:form&gt;
+                                    &lt;f:websocket channel="myChannel" onmessage="onMessage" /&gt;
+                                &lt;/h:body&gt;
+                            
+                            &lt;/html&gt;
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+            <app-code-tab slot="code-tab">HelloBean.java</app-code-tab>
+            <app-code-panel slot="code-panel">
+                <app-multiline-code language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import java.io.Serializable;
+                            import java.time.LocalDateTime;
+                            import javax.enterprise.context.RequestScoped;
+                            import javax.enterprise.context.SessionScoped;
+                            import javax.faces.push.Push;
+                            import javax.faces.push.PushContext;
+                            import javax.faces.view.ViewScoped;
+                            import javax.inject.Inject;
+                            import javax.inject.Named;
+                            
+                            import lombok.Data;
+                            
+                            @Data
+                            @Named
+                            @RequestScoped
+                            public class HelloBean implements Serializable {
+                            
+                                private static final long serialVersionUID = 5443351151396868724L;
+                            
+                                @Inject @Push private PushContext myChannel;
+                            
+                                public void send() {
+                                    myChannel.send("Hello, from the server by push!");
+                                }
+                            
+                            }
+                        </code>
+                    </pre>
+                </app-multiline-code>
+            </app-code-panel>
+        </app-code-tabs>
+
+
+        <app-more-info>
+            <app-link
+                href="http://jj-blogger.blogspot.com/2016/02/a-look-at-upcoming-jsf-23-push-support.html"
+                label="JSF 2.3 websocket support"    
+            ></app-link>
+        </app-more-info>
+        
+    </app-article>
+
+</body>
+
+</html>
