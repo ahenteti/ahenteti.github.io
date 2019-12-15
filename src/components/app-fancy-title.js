@@ -17,6 +17,10 @@ class AppFancyTitle extends HTMLElement {
           position: relative;
           line-height: 2rem;
           font-size: 2rem;
+          background: linear-gradient(to right, var(--primary-color), #fff);
+          background-clip: text;
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
         }
 
         .fancy-title::before {
