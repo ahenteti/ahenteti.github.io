@@ -40,15 +40,206 @@
   "img/obtaining-digital-certificate-procedure.png": "img/obtaining-digital-certificate-procedure.png",
   "img/ssl-connection.png": "img/ssl-connection.png",
   "img/imt-atlantique-logo.jpg": "img/imt-atlantique-logo.jpg"
-}</script><link href="css/common.ea2cb9e2b7216ede1f8f.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <app-oneline-code code="line of code" language=bash> </app-oneline-code> <app-multiline-code language=bash> <pre slot=code>
-                <code>
-                    line 1. 
-                    line 2. 
-                </code>
-            </pre> </app-multiline-code> <app-code-tabs> <app-code-tab slot=code-tab>project structure</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
+}</script><link href="css/common.ea2cb9e2b7216ede1f8f.css" rel="stylesheet"></head> <body> <app-header></app-header> <app-article> <h2>Using maven-dependency-plugin plugin</h2> <app-code-tabs> <app-code-tab slot=code-tab>project structure</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
                         <code>
                             .
                             ├── pom.xml
                             └── src
+                                └── main
+                                    └── java
+                                        └── io
+                                            └── ahenteti
+                                                └── ahenteti
+                                                    └── java
+                                                        └── App.java
+                            
                         </code>
-                    </pre> </app-multiline-code> </app-code-panel> </app-code-tabs> <app-more-info> <app-link href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo label="How to kill a process in windows 10"></app-link> <app-link href=https://stackoverflow.com/questions/36652580/how-to-add-three-dots-to-text-when-overflow-in-html label="Stackoverflow question"></app-link> </app-more-info> </app-article> <script type="text/javascript" src="js/components.aebfc08c35de0258f12f.js"></script><script type="text/javascript" src="js/common.ea2cb9e2b7216ede1f8f.js"></script><script type="text/javascript" src="js/how-to-create-executable-jar-file-using-maven.a522e21cf2b1434268c1.js"></script></body> </html> 
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>pom.xml</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.ahenteti.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;using-maven-dependency-plugin&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                            
+                                &lt;name&gt;using-maven-dependency-plugin&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+                                        &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
+                                        &lt;version&gt;3.9&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+                                        &lt;artifactId&gt;commons-collections4&lt;/artifactId&gt;
+                                        &lt;version&gt;4.4&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                                            &lt;artifactId&gt;maven-dependency-plugin&lt;/artifactId&gt;
+                                            &lt;version&gt;3.1.1&lt;/version&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;id&gt;copy-dependencies&lt;/id&gt;
+                                                    &lt;phase&gt;prepare-package&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;copy-dependencies&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                    &lt;configuration&gt;
+                                                        &lt;outputDirectory&gt;
+                                                            ${project.build.directory}/libs
+                                                        &lt;/outputDirectory&gt;
+                                                    &lt;/configuration&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                        &lt;/plugin&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                                            &lt;artifactId&gt;maven-jar-plugin&lt;/artifactId&gt;
+                                            &lt;version&gt;3.2.0&lt;/version&gt;
+                                            &lt;configuration&gt;
+                                                &lt;archive&gt;
+                                                    &lt;manifest&gt;
+                                                        &lt;addClasspath&gt;true&lt;/addClasspath&gt;
+                                                        &lt;classpathPrefix&gt;libs/&lt;/classpathPrefix&gt;
+                                                        &lt;mainClass&gt;
+                                                            io.ahenteti.ahenteti.java.App
+                                                        &lt;/mainClass&gt;
+                                                    &lt;/manifest&gt;
+                                                &lt;/archive&gt;
+                                            &lt;/configuration&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                            
+                            &lt;/project&gt;
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>App.java</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=java> <pre slot=code>
+                        <code>
+                            package io.ahenteti.ahenteti.java;
+                            
+                            import org.apache.commons.lang3.StringUtils;
+                            
+                            public class App {
+                                public static void main(String[] args) {
+                                    System.out.println(StringUtils.capitalize("Hello World!"));
+                                }
+                            }
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>command line</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=bash> <pre slot=code>
+                            <code>
+                                mvn clean install
+                                java -jar target/using-maven-dependency-plugin-1.0.jar
+                            </code>
+                        </pre> </app-multiline-code> </app-code-panel> </app-code-tabs> <h2>Using maven-assembly-plugin plugin</h2> <app-code-tabs> <app-code-tab slot=code-tab>project structure</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    └── java
+                                        └── io
+                                            └── ahenteti
+                                                └── ahenteti
+                                                    └── java
+                                                        └── App.java
+                            
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>pom.xml</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.ahenteti.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;using-maven-assembly-plugin&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                            
+                                &lt;name&gt;using-maven-assembly-plugin&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+                                        &lt;artifactId&gt;commons-lang3&lt;/artifactId&gt;
+                                        &lt;version&gt;3.9&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.apache.commons&lt;/groupId&gt;
+                                        &lt;artifactId&gt;commons-collections4&lt;/artifactId&gt;
+                                        &lt;version&gt;4.4&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                            
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.apache.maven.plugins&lt;/groupId&gt;
+                                            &lt;artifactId&gt;maven-assembly-plugin&lt;/artifactId&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;phase&gt;package&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;single&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                    &lt;configuration&gt;
+                                                        &lt;archive&gt;
+                                                            &lt;manifest&gt;
+                                                                &lt;mainClass&gt;
+                                                                    io.ahenteti.ahenteti.java.App
+                                                                &lt;/mainClass&gt;
+                                                            &lt;/manifest&gt;
+                                                        &lt;/archive&gt;
+                                                        &lt;descriptorRefs&gt;
+                                                            &lt;descriptorRef&gt;jar-with-dependencies&lt;/descriptorRef&gt;
+                                                        &lt;/descriptorRefs&gt;
+                                                    &lt;/configuration&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                            
+                            &lt;/project&gt;
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>App.java</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=java> <pre slot=code>
+                        <code>
+                            package io.ahenteti.ahenteti.java;
+                            
+                            import org.apache.commons.lang3.StringUtils;
+                            
+                            public class App {
+                                public static void main(String[] args) {
+                                    System.out.println(StringUtils.capitalize("Hello World!"));
+                                }
+                            }
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> <app-code-tab slot=code-tab>command line</app-code-tab> <app-code-panel slot=code-panel> <app-multiline-code language=bash> <pre slot=code>
+                        <code>
+                            mvn clean install
+                            java -jar target/using-maven-assembly-plugin-1.0-jar-with-dependencies.jar
+                        </code>
+                    </pre> </app-multiline-code> </app-code-panel> </app-code-tabs> <app-more-info> <app-link href=https://www.baeldung.com/executable-jar-with-maven label="Baeldung executable-jar-with-maven article"></app-link> </app-more-info> </app-article> <script type="text/javascript" src="js/components.aebfc08c35de0258f12f.js"></script><script type="text/javascript" src="js/common.ea2cb9e2b7216ede1f8f.js"></script><script type="text/javascript" src="js/how-to-create-executable-jar-file-using-maven.a522e21cf2b1434268c1.js"></script></body> </html> 
