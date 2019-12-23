@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    <app-header></app-header>
+
+    <app-article>
+      <h2>Jars with predefined main class</h2>
+      <p>
+        Every jar must contain a <span class="code">MANIFEST.MF</span> file
+        under the <span class="code">META-INF</span> folder which holds useful
+        information about the jar itself and eventually the main class present
+        inside it. Here is an example of
+        <span class="code">MANIFEST.MF</span> with
+        <span class="code">Main-Class</span> property set on it
+      </p>
+
+      <app-multiline-code language="bash">
+        <pre slot="code">
+          <code>
+            Manifest-Version: 1.0
+            Archiver-Version: Plexus Archiver
+            Built-By: ahenteti
+            Created-By: Apache Maven 3.6.2
+            Build-Jdk: 1.8.0_221
+            <span class="highlight">Main-Class: io.ahenteti.ahenteti.java.App</span>
+          </code>
+        </pre>
+      </app-multiline-code>
+
+      <p>
+        In order to run such jar, just type the following command in your
+        terminal
+      </p>
+      <app-oneline-code code="java -jar <i>jar-name.jar</i>" language="bash">
+      </app-oneline-code>
+
+      <h2>Jars without predefined main class</h2>
+
+      <p>
+        In order to run such jar, you need to know the full path of the main
+        class of this jar and use the following command
+      </p>
+      <app-oneline-code
+        code="java -cp <i>jar-name.jar full-path-to-the-main-class</i>"
+        language="bash"
+      >
+      </app-oneline-code>
+
+      <h2>Jars with dependencies</h2>
+      <p>
+        Suppose that you have a folder <span class="code">lib</span> which
+        exists inside the project and holds third-party libraries used by your
+        application and your jar wouldn't work without including these
+        dependencies<br /><br />
+      </p>
+      <p>
+        <b>Option 1 : </b>Specify the dependencies while running the jar in the
+        command line
+      </p>
+      <app-oneline-code
+        code="java -cp <i>jar-name.jar;lib/* full-path-to-the-main-class</i>"
+        language="bash"
+      >
+      </app-oneline-code>
+
+      <p>
+        <b>Option 2 : </b>Specify the classpath of the jar in the MANIFEST.MF
+        file
+      </p>
+      <app-multiline-code language="bash">
+        <pre slot="code">
+          <code>
+            Manifest-Version: 1.0
+            Archiver-Version: Plexus Archiver
+            Built-By: ahenteti
+            <span class="highlight">Class-Path: libs/*</span>
+            Created-By: Apache Maven 3.6.2
+            Build-Jdk: 1.8.0_221
+            Main-Class: io.ahenteti.ahenteti.java.App
+          </code>
+        </pre>
+      </app-multiline-code>
+
+      <p>
+        In order to run such jar, just type the following command in your
+        terminal
+      </p>
+      <app-oneline-code code="java -jar <i>jar-name.jar</i>" language="bash">
+      </app-oneline-code>
+
+      <app-more-info>
+        <app-link
+          href="https://www.programmergate.com/run-jar-file-command-line/"
+          label="ProgrammerGate run-jar-file-command-line article"
+        ></app-link>
+      </app-more-info>
+    </app-article>
+  </body>
+</html>

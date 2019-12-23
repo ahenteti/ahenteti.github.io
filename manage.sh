@@ -160,18 +160,23 @@ newArticle() {
     read name
   fi
   transformed_name=$(getTransformedName "$name")
-  exist=$(find src/articles -name $transformed_name | wc -l)
+  exist=$(find src/pages/articles -name $transformed_name | wc -l)
   while [ $exist -ne 0 ]; do
     printf "${RED}article name already exists, please choose another name!${NORMAL}\n"
     printf "${GREEN}your article name: ${NORMAL}"
     read name
     transformed_name=$(getTransformedName "$name")
-    exist=$(find src/articles -name $transformed_name | wc -l)
+    exist=$(find src/pages/articles -name $transformed_name | wc -l)
   done
 
   if [ -z $tags ]; then
     printf "\n${GREEN}your article tags (seperated by a space if there are many): ${NORMAL}"
     read -ra tags
+  fi
+
+  if [ -z $category ]; then
+    printf "\n${GREEN}your article category: ${NORMAL}"
+    read -ra category
   fi
 
   if [ -z $containerFolder ]; then
@@ -184,7 +189,7 @@ newArticle() {
   sortedTags=($(sort <<< "${tags[*]}")); 
   unset IFS
 
-  parentFolder="src/articles/$containerFolder/$transformed_name"
+  parentFolder="src/pages/articles/$containerFolder/$transformed_name"
 
   mkdir -p $parentFolder
   articleFile=$parentFolder/$transformed_name.html
@@ -201,7 +206,7 @@ newArticle() {
   tools/jq -n --arg name "$name" \
          --arg publicationDate "$publicationDate" \
          --arg file_name "$file_name" \
-         --arg category "$parentFolder" \
+         --arg category "$category" \
          --arg tags "$(jointBy , ${sortedTags[*]})" \
          '{ name: $name, url: $file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
          > $metadata
