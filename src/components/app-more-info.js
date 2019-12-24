@@ -1,12 +1,12 @@
 class AppMoreInfo extends HTMLElement {
-  constructor () {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-  }
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: "open" });
+        this._commonCss = window.webpackManifest["common.css"];
+    }
 
-  connectedCallback () {
-    this._root.innerHTML = /* html */`
+    connectedCallback() {
+        this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         h2 {
@@ -15,13 +15,12 @@ class AppMoreInfo extends HTMLElement {
         }
         
       </style>
-      <h2>More Information</h2>
+      <h2>Inspiration & Resources</h2>
       <ul>
         <slot></slot>
       </ul>
     `;
-  }
+    }
 }
 
-window.customElements.define('app-more-info', AppMoreInfo);
-
+window.customElements.define("app-more-info", AppMoreInfo);
