@@ -1,202 +1,237 @@
 $imgWidthHeight: 150px;
 
 main {
-  width: 65%;
+    width: 65%;
 }
 
 .about-container {
-  margin-top: 10rem;
-  box-shadow: var(--box-shadow);
-  padding: 8rem;
+    margin-top: 10rem;
+    box-shadow: var(--box-shadow);
+    padding: 8rem;
 }
 
 .about-container,
 .about-container a {
-  color: var(--color-gray-medium);
+    color: var(--color-gray-medium);
 }
 
 .about-container a:hover {
-  color: var(--primary-color);
+    color: var(--primary-color);
 }
 
 .profile-with-general-info {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 
-  & img {
-    width: $imgWidthHeight;
-    height: $imgWidthHeight;
-    border-radius: 100%;
-  }
+    & img {
+        width: $imgWidthHeight;
+        height: $imgWidthHeight;
+        border-radius: 100%;
+    }
 }
 
 .general-info {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  padding-left: 6rem;
-
-  & .name {
-    font-size: 2.3rem;
-    padding-bottom: 1rem;
-  }
-
-  & .text-with-icon {
-    padding-top: 0.3rem;
-
-    & ion-icon {
-      font-size: 2rem;
-      padding-right: 2rem;
-      color: var(--primary-color);
-    }
-  }
-
-  & .text-with-icon,
-  & a {
-    font-size: 1.3rem;
-  }
-}
-
-.summary {
-  margin-top: 5rem;
-
-  & .tags {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    margin: 2rem -0.5rem 0;
-
-    & app-tag {
-      margin: 0.3rem 0.5rem;
-    }
-  }
-}
-
-.work-experiences ul li {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.work-experience,
-.education {
-  margin-top: 4rem;
-  display: flex;
-  flex-wrap: wrap;
-
-  & .work-experience__logo,
-  & .education__logo {
-    width: 14rem;
-    height: 14rem;
-    margin-bottom: 1.5rem;
-  }
-
-  & .height-auto {
-    height: auto;
-  }
-
-  & .work-experience__metadata,
-  & .education__metadata {
-    margin-left: 4rem;
-    flex: auto;
-    min-width: 0;
-  }
-
-  & .work-experience__metadata__title,
-  & .education__metadata__title {
-    font-size: 1.6rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    & .primary-color {
-      color: var(--primary-color);
-    }
-  }
-
-  & .work-experience__metadata__subtitle,
-  & .education__metadata__subtitle {
-    font-size: 1.4rem;
-    margin-top: 1rem;
-  }
-
-  & .work-experience__team-size .size {
-    & .size {
-      font-family: "Anonymous Pro" monospace;
-      color: var(--primary-color);
-    }
-  }
-
-  & .work-experience__daily-tasks {
-    & li {
-      font-size: 1.3rem;
-      margin-bottom: 0.3rem;
-    }
-
-    & li::before {
-      content: "";
-      margin: 0 1.5rem;
-      width: 0;
-      height: 0;
-      border-top: 0.5rem solid transparent;
-      border-bottom: 0.5rem solid transparent;
-      border-left: 0.5rem solid var(--primary-color);
-    }
-  }
-}
-
-[name="heart"] {
-  color: rgb(242, 84, 125);
-  padding: 0 0.4rem;
-}
-
-@media screen and (max-width: 1000px) {
-  main {
-    width: 90%;
-  }
-
-  .about-container {
-    margin-top: 7rem;
-    box-shadow: none;
-    padding: 4rem;
-  }
-
-  .profile-with-general-info {
     flex-direction: column;
-  }
-
-  .general-info {
-    padding-left: 0;
-    margin-top: 4rem;
+    padding-left: 6rem;
 
     & .name {
-      font-size: 3rem;
-      text-align: center;
-      margin-bottom: 2rem;
+        font-size: 2.3rem;
+        padding-bottom: 1rem;
+    }
+
+    & .text-with-icon {
+        padding-top: 0.3rem;
+
+        & ion-icon {
+            font-size: 2rem;
+            padding-right: 2rem;
+            color: var(--primary-color);
+        }
     }
 
     & .text-with-icon,
     & a {
-      font-size: 1.6rem;
+        font-size: 1.3rem;
     }
-  }
+}
 
-  .summary {
-    margin-top: 2.5rem;
-  }
+.summary {
+    margin-top: 5rem;
 
-  .work-experience .work-experience__metadata,
-  .education .education__metadata {
-    margin-left: 0;
-  }
+    & .tags {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 2rem -0.5rem 0;
+
+        & app-tag {
+            margin: 0.3rem 0.5rem;
+        }
+    }
+}
+
+.work-experiences ul li {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.work-experience,
+.education {
+    margin-top: 4rem;
+    display: flex;
+    flex-wrap: wrap;
+
+    & .work-experience__logo,
+    & .education__logo {
+        width: 14rem;
+        height: 14rem;
+        margin-bottom: 1.5rem;
+    }
+
+    & .height-auto {
+        height: auto;
+    }
+
+    & .work-experience__metadata,
+    & .education__metadata {
+        margin-left: 4rem;
+        flex: auto;
+        min-width: 0;
+    }
+
+    & .work-experience__metadata__title,
+    & .education__metadata__title {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        & .primary-color {
+            color: var(--primary-color);
+        }
+    }
+
+    & .work-experience__metadata__subtitle,
+    & .education__metadata__subtitle {
+        font-size: 1.4rem;
+        margin-top: 1rem;
+    }
+
+    & .work-experience__team-size .size {
+        & .size {
+            font-family: 'Anonymous Pro' monospace;
+            color: var(--primary-color);
+        }
+    }
+
+    & .work-experience__daily-tasks {
+        & li {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        & li::before {
+            content: '';
+            margin: 0 1.5rem;
+            width: 0;
+            height: 0;
+            border-top: 0.5rem solid transparent;
+            border-bottom: 0.5rem solid transparent;
+            border-left: 0.5rem solid var(--primary-color);
+        }
+    }
+}
+
+[name='heart'] {
+    color: rgb(242, 84, 125);
+    padding: 0 0.4rem;
+}
+
+.certificate-of-completion-image-container {
+    position: relative;
+    margin-top: 4rem;
+    & img {
+        border: 2px solid var(--color-gray-eee);
+    }
+
+    & .index {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+
+    & .control {
+        background: rgba(0, 0, 0, 0.3);
+        color: white;
+        height: 5rem;
+        width: 5rem;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: 0.3s background;
+    }
+
+    & .control:hover {
+        background: rgba(0, 0, 0, 0.8);
+    }
+
+    & [name='ios-arrow-forward'] {
+        right: 0;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    main {
+        width: 90%;
+    }
+
+    .about-container {
+        margin-top: 7rem;
+        box-shadow: none;
+        padding: 4rem;
+    }
+
+    .profile-with-general-info {
+        flex-direction: column;
+    }
+
+    .general-info {
+        padding-left: 0;
+        margin-top: 4rem;
+
+        & .name {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        & .text-with-icon,
+        & a {
+            font-size: 1.6rem;
+        }
+    }
+
+    .summary {
+        margin-top: 2.5rem;
+    }
+
+    .work-experience .work-experience__metadata,
+    .education .education__metadata {
+        margin-left: 0;
+    }
 }
 
 @media screen and (max-width: 600px) {
-  main {
-    width: 100%;
-  }
+    main {
+        width: 100%;
+    }
 
-  .about-container {
-    margin-top: 4rem;
-    padding: 3rem;
-  }
+    .about-container {
+        margin-top: 4rem;
+        padding: 3rem;
+    }
 }
