@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    ${require('templates/head.html')}
+
+    <body>
+        <app-header></app-header>
+
+        <app-article>
+            <app-multiline-code language="css">
+                <pre slot="code">
+                    <code>
+                        &lt;div style="text-align:center"&gt;
+                            &lt;a href="http://www.example.com"&gt;example&lt;/a&gt;​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+                        &lt;/div&gt;
+                    </code>
+                </pre>
+            </app-multiline-code>
+
+            <app-more-info>
+                <app-link
+                    href="https://stackoverflow.com/questions/9721831/how-do-i-center-an-anchor-element-in-css/9721865"
+                    label="Stackoverflow question"
+                ></app-link>
+            </app-more-info>
+        </app-article>
+    </body>
+</html>
