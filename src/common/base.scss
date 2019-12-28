@@ -1,45 +1,37 @@
 :root {
+    // color constants
     --primary-color: #078eed;
     --primary-color-light: #66bfff;
-
-    --yellow-color: rgb(255, 215, 0);
-    --green-color: rgb(31, 255, 31);
-
-    // --body-background-color: #FBFBFB;
-    --body-background-color: white;
-    --color-gray-dark: #333;
-    --color-gray-medium: #555;
-    --color-gray-light: #888;
-    --color-gray-eee: #eee;
-
+    --primary-code-highlight-color: rgb(255, 215, 0);
+    --code-highlight-color: rgb(31, 255, 31);
+    --body-background-color: #fff;
+    --border-color: #eee;
+    --text-color: #555;
+    --text-color-light: #888;
+    --input-placeholder-color: #888;
+    --title-color: #555;
+    --header-link-color: #333;
+    --tooltip-background-color: #333;
     --code-background-color: #fafafa;
     --code-line-numbers-background-color: #eee;
     --code-selected-tab-background-color: #c4c2c0;
-
     --quote-background-color: #fafafa;
     --quote-color: #888;
     --quote-icon-background-color: #eee;
     --quote-icon-color: #959595;
-
     --tag-background-color: #f2f2f2;
 
-    --border-radius: 0.3rem;
+    // non color constants
     --header-height: 6.5rem;
-
     --transition: all 0.2s ease-in;
-
-    // --box-shadow: 0 2px 3px -1px rgba(0, 0, 0, .2);
     --box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
     --box-shadow-primary-color: 0 0 0 3px rgba(0, 149, 255, 0.15);
     --text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-
     --container-prefix-width: 5rem;
     --code-padding: 1.6rem;
-
-    --border-radius: 3px;
-    --right-border-radius: 0 3px 3px 0;
-    --left-border-radius: 3px 0 0 3px;
-
+    --border-radius: 0.3rem;
+    --right-border-radius: 0 0.3rem 0.3rem 0;
+    --left-border-radius: 0.3rem 0 0 0.3rem;
     --code-top-bottom-margin: 2rem;
 }
 
@@ -117,13 +109,13 @@ img {
 
 .highlight,
 .highlight-green {
-    background: var(--yellow-color);
+    background: var(--primary-code-highlight-color);
     padding: 3px;
     border-radius: 2px;
 }
 
 .highlight-green {
-    background-color: var(--green-color);
+    background-color: var(--code-highlight-color);
 }
 
 .code {
@@ -138,7 +130,7 @@ img {
 }
 
 app-article {
-    color: var(--color-gray-medium);
+    color: var(--text-color);
 }
 
 app-article h2 {
@@ -216,7 +208,7 @@ app-article h3 {
     position: absolute;
     top: calc(50% - 2.5rem);
     left: calc(50% - 2.5rem);
-    border: 1rem solid var(--color-gray-eee);
+    border: 1rem solid var(--border-color);
     border-top: 1rem solid var(--primary-color);
     border-radius: 50%;
     width: 5rem;

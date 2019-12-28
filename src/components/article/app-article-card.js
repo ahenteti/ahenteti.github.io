@@ -1,18 +1,18 @@
 class AppArticleCard extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: "open" });
-    this._commonCss = window.webpackManifest["common.css"];
-  }
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: 'open' });
+        this._commonCss = window.webpackManifest['common.css'];
+    }
 
-  connectedCallback() {
-    this._url = this.getAttribute("url");
-    this._name = this.getAttribute("name");
-    this._publicationDate = this.getAttribute("publicationDate");
-    this._tags = this.getAttribute("tags").split(",");
-    this._relatedArticle = this.getAttribute("related-article") || false;
+    connectedCallback() {
+        this._url = this.getAttribute('url');
+        this._name = this.getAttribute('name');
+        this._publicationDate = this.getAttribute('publicationDate');
+        this._tags = this.getAttribute('tags').split(',');
+        this._relatedArticle = this.getAttribute('related-article') || false;
 
-    this._root.innerHTML = /* html */ `
+        this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
 
@@ -26,7 +26,7 @@ class AppArticleCard extends HTMLElement {
           position: relative;
           transition: box-shadow .2s;
           transition: all .2s ease-in;
-          border: 1px solid var(--color-gray-eee);
+          border: 1px solid var(--border-color);
         }
 
         .container:hover {
@@ -38,7 +38,7 @@ class AppArticleCard extends HTMLElement {
         }
         
         .name {
-          color: var(--color-gray-medium);
+          color: var(--title-color);
           padding-bottom: 1.5rem;
           font-weight: bold;
           font-size: 2rem;
@@ -52,7 +52,7 @@ class AppArticleCard extends HTMLElement {
         .publication-date {
           display: flex;
           flex-wrap: wrap;
-          color: var(--color-gray-light);
+          color: var(--text-color-light);
         }
         
         .publication-date p {
@@ -68,7 +68,7 @@ class AppArticleCard extends HTMLElement {
           display: flex;
           flex-wrap: wrap;
           align-items: center;
-          color: var(--color-gray-light);
+          color: var(--text-color-light);
           font-size: 1.5rem;
           margin: 0 -.5rem;
           margin-bottom: 1.5rem;
@@ -84,9 +84,7 @@ class AppArticleCard extends HTMLElement {
           <p class="name">${this._name}</p>
           <div class="tags">
             <ion-icon name="ios-pricetags"></ion-icon>
-            ${this._tags
-              .map(tag => `<app-tag value="${tag}"></app-tag>`)
-              .join("")}
+            ${this._tags.map(tag => `<app-tag value="${tag}"></app-tag>`).join('')}
           </div>
           <div class="publication-date">
             <ion-icon name="calendar"></ion-icon>
@@ -95,45 +93,42 @@ class AppArticleCard extends HTMLElement {
         </div>
       </a>
     `;
-    this._container = this._root.querySelector(".container");
+        this._container = this._root.querySelector('.container');
 
-    this.alreadyVisible = function() {
-      let position = this.getBoundingClientRect();
-      return (
-        position.top < 0 ||
-        (position.top < window.innerHeight && position.bottom >= 0)
-      );
-    };
+        this.alreadyVisible = function() {
+            let position = this.getBoundingClientRect();
+            return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
+        };
 
-    this.addAlreadyVisibleClass = function() {
-      this._container.classList.add("already-visible");
-    };
+        this.addAlreadyVisibleClass = function() {
+            this._container.classList.add('already-visible');
+        };
 
-    this.addNotYetVisibleClass = function() {
-      this._container.classList.add("not-yet-visible");
-    };
+        this.addNotYetVisibleClass = function() {
+            this._container.classList.add('not-yet-visible');
+        };
 
-    this.addComeInClass = function() {
-      this._container.classList.add("come-in");
-    };
-  }
+        this.addComeInClass = function() {
+            this._container.classList.add('come-in');
+        };
+    }
 }
 
-window.customElements.define("app-article-card", AppArticleCard);
+window.customElements.define('app-article-card', AppArticleCard);
 
 setTimeout(() => {
-  document.querySelectorAll("app-article-card").forEach(card => {
-    if (card.alreadyVisible()) {
-      card.addAlreadyVisibleClass();
-    } else {
-      card.addNotYetVisibleClass();
-    }
-  });
-  window.addEventListener("scroll", function() {
-    document.querySelectorAll("app-article-card").forEach(card => {
-      if (card.alreadyVisible()) {
-        card.addComeInClass();
-      }
+    document.querySelectorAll('app-article-card').forEach(card => {
+        if (card.alreadyVisible()) {
+            card.addAlreadyVisibleClass();
+        } else {
+            card.addNotYetVisibleClass();
+        }
     });
-  });
+    window.addEventListener('scroll', function() {
+        document.querySelectorAll('app-article-card').forEach(card => {
+            if (card.alreadyVisible()) {
+                card.addComeInClass();
+            }
+        });
+    });
 });

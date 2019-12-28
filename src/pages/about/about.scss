@@ -12,7 +12,7 @@ main {
 
 .about-container,
 .about-container a {
-    color: var(--color-gray-medium);
+    color: var(--text-color);
 }
 
 .about-container a:hover {
@@ -167,7 +167,7 @@ main {
         position: relative;
     }
     & img {
-        border: 2px solid var(--color-gray-eee);
+        border: 2px solid var(--border-color);
         transition: 1s opacity;
         position: absolute;
     }

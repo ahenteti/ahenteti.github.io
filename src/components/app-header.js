@@ -1,12 +1,12 @@
 class AppLogo extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: "open" });
-    this._commonCss = window.webpackManifest["common.css"];
-  }
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: 'open' });
+        this._commonCss = window.webpackManifest['common.css'];
+    }
 
-  connectedCallback() {
-    this._root.innerHTML = /* html */ `
+    connectedCallback() {
+        this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
 
@@ -43,7 +43,7 @@ class AppLogo extends HTMLElement {
         }
 
         li a {
-          color: var(--color-gray-dark);
+          color: var(--header-link-color);
           margin: 0 .5rem;
           transition: var(--transition);
           font-weight: bold;
@@ -99,17 +99,17 @@ class AppLogo extends HTMLElement {
       </header>
     `;
 
-    const $appHeader = document.querySelector("app-header");
-    const $header = $appHeader.shadowRoot.querySelector("header");
-    window.addEventListener("scroll", () => {
-      const scroll = window.scrollY;
-      if (scroll > 0) {
-        $header.classList.add("shadow");
-      } else {
-        $header.classList.remove("shadow");
-      }
-    });
-  }
+        const $appHeader = document.querySelector('app-header');
+        const $header = $appHeader.shadowRoot.querySelector('header');
+        window.addEventListener('scroll', () => {
+            const scroll = window.scrollY;
+            if (scroll > 0) {
+                $header.classList.add('shadow');
+            } else {
+                $header.classList.remove('shadow');
+            }
+        });
+    }
 }
 
-window.customElements.define("app-header", AppLogo);
+window.customElements.define('app-header', AppLogo);

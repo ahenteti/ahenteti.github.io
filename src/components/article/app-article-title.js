@@ -1,23 +1,23 @@
 class AppArticleTitle extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: "open" });
-    this._commonCss = window.webpackManifest["common.css"];
-  }
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: 'open' });
+        this._commonCss = window.webpackManifest['common.css'];
+    }
 
-  connectedCallback() {
-    this._title = this.getAttribute("article-title");
-    this._root.innerHTML = /* html */ `
+    connectedCallback() {
+        this._title = this.getAttribute('article-title');
+        this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         .container {
           padding-bottom: 3rem;
           margin-bottom: 3rem;
-          border-bottom: .3rem solid var(--color-gray-eee);
+          border-bottom: .3rem solid var(--border-color);
         }
 
         h1 {
-          color: var(--color-gray-medium);
+          color: var(--title-color);
           line-height: 1;
           font-weight: 100;
           font-size: 6.5rem;
@@ -80,7 +80,7 @@ class AppArticleTitle extends HTMLElement {
         </div>
       </div>
       `;
-  }
+    }
 }
 
-window.customElements.define("app-article-title", AppArticleTitle);
+window.customElements.define('app-article-title', AppArticleTitle);

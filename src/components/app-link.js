@@ -1,14 +1,14 @@
 class AppLink extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: "open" });
-    this._commonCss = window.webpackManifest["common.css"];
-  }
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: 'open' });
+        this._commonCss = window.webpackManifest['common.css'];
+    }
 
-  connectedCallback() {
-    this._href = this.getAttribute("href") || "#";
-    this._label = this.getAttribute("label");
-    this._root.innerHTML = /* html */ `
+    connectedCallback() {
+        this._href = this.getAttribute('href') || '#';
+        this._label = this.getAttribute('label');
+        this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         li {
@@ -20,7 +20,7 @@ class AppLink extends HTMLElement {
         ion-icon {
           font-size: 2rem;
           margin-right: .8rem;
-          color: var(--color-gray-medium);
+          color: var(--header-link-color);
         }
         a {
           font-weight: bold;
@@ -34,7 +34,7 @@ class AppLink extends HTMLElement {
         <a href="${this._href}" target="_blank">${this._label}</a>
       </li>
     `;
-  }
+    }
 }
 
-window.customElements.define("app-link", AppLink);
+window.customElements.define('app-link', AppLink);

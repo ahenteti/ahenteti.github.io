@@ -1,18 +1,18 @@
 class AppFancyTitle extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: "open" });
-    this._commonCss = window.webpackManifest["common.css"];
-  }
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: 'open' });
+        this._commonCss = window.webpackManifest['common.css'];
+    }
 
-  connectedCallback() {
-    this._value = this.getAttribute("value");
-    this._root.innerHTML = /* html */ `
+    connectedCallback() {
+        this._value = this.getAttribute('value');
+        this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         .fancy-title {
           margin: 2.5rem 0;
-          color: var(--color-gray-medium);
+          color: var(--title-color);
           text-transform: uppercase;
           position: relative;
           line-height: 2rem;
@@ -46,28 +46,25 @@ class AppFancyTitle extends HTMLElement {
         <h2 class="fancy-title">${this._value}</h2>
       </div>
     `;
-    this._container = this._root.querySelector(".container");
+        this._container = this._root.querySelector('.container');
 
-    this.alreadyVisible = function() {
-      let position = this.getBoundingClientRect();
-      return (
-        position.top < 0 ||
-        (position.top < window.innerHeight && position.bottom >= 0)
-      );
-    };
+        this.alreadyVisible = function() {
+            let position = this.getBoundingClientRect();
+            return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
+        };
 
-    this.addAlreadyVisibleClass = function() {
-      this._container.classList.add("already-visible");
-    };
+        this.addAlreadyVisibleClass = function() {
+            this._container.classList.add('already-visible');
+        };
 
-    this.addNotYetVisibleClass = function() {
-      this._container.classList.add("not-yet-visible");
-    };
+        this.addNotYetVisibleClass = function() {
+            this._container.classList.add('not-yet-visible');
+        };
 
-    this.addComeInClass = function() {
-      this._container.classList.add("come-in");
-    };
-  }
+        this.addComeInClass = function() {
+            this._container.classList.add('come-in');
+        };
+    }
 }
 
-window.customElements.define("app-fancy-title", AppFancyTitle);
+window.customElements.define('app-fancy-title', AppFancyTitle);

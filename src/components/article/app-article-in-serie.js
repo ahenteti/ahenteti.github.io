@@ -1,17 +1,17 @@
 class AppArticleInSerie extends HTMLElement {
-  constructor () {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-  }
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: 'open' });
+        this._commonCss = window.webpackManifest['common.css'];
+    }
 
-  connectedCallback () {
-    this._prevArticle = this.getAttribute('prev-article') || 'previous article';
-    this._prevArticleLink = this.getAttribute('prev-article-link')
-    this._nextArticle = this.getAttribute('next-article') || 'next article';
-    this._nextArticleLink = this.getAttribute('next-article-link')
-    this._title = this.getAttribute('article-title');
-    this._root.innerHTML = /* html */`
+    connectedCallback() {
+        this._prevArticle = this.getAttribute('prev-article') || 'previous article';
+        this._prevArticleLink = this.getAttribute('prev-article-link');
+        this._nextArticle = this.getAttribute('next-article') || 'next article';
+        this._nextArticleLink = this.getAttribute('next-article-link');
+        this._title = this.getAttribute('article-title');
+        this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         .prev-article, .next-article {
@@ -36,7 +36,7 @@ class AppArticleInSerie extends HTMLElement {
         
         .prev-article ion-icon, .next-article ion-icon {
           font-size: 6rem;
-          color: var(--color-gray-light);
+          color: var(--text-color-light);
         }
 
         .tooltip-container {
@@ -71,11 +71,10 @@ class AppArticleInSerie extends HTMLElement {
       </a>
     `;
 
-    const $appArticleInSerie = document.querySelector('app-article-in-serie');
-    const $prevArticle = $appArticleInSerie.shadowRoot.querySelector('.prev-article');
-    const $nextArticle = $appArticleInSerie.shadowRoot.querySelector('.next-article');
-
-  }
+        const $appArticleInSerie = document.querySelector('app-article-in-serie');
+        const $prevArticle = $appArticleInSerie.shadowRoot.querySelector('.prev-article');
+        const $nextArticle = $appArticleInSerie.shadowRoot.querySelector('.next-article');
+    }
 }
 
 window.customElements.define('app-article-in-serie', AppArticleInSerie);
