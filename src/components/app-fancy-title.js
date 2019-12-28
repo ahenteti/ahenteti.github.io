@@ -17,7 +17,7 @@ class AppFancyTitle extends HTMLElement {
           position: relative;
           line-height: 2rem;
           font-size: 2rem;
-          background: linear-gradient(to right, var(--primary-color), #fff);
+          background: linear-gradient(to right, var(--primary-color), var(--fancy-title-background-color));
           background-clip: text;
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
@@ -39,7 +39,7 @@ class AppFancyTitle extends HTMLElement {
           height: 0.3rem;
           width: var(--fancy-title-underline-width, 75%);
           bottom: -1rem;
-          background: linear-gradient(to right, var(--primary-color), #fff);
+          background: linear-gradient(to right, var(--primary-color), var(--fancy-title-background-color));
         }
       </style>
       <div class="container">

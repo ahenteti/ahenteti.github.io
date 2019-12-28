@@ -152,7 +152,7 @@ class AppMultilineCode extends HTMLElement {
           position: absolute;
           top: var(--code-padding);
           right: var(--code-padding);
-          color: #777;
+          color: var(--code-icon-color);
           cursor: pointer;
           font-size: 2rem;
         }

@@ -7,7 +7,7 @@
     padding: 8px 18px;
     border-radius: 2px;
     border: 2px solid var(--primary-color);
-    background-color: white;
+    background-color: var(--demo-button-background-color);
     color: var(--primary-color);
     transition: all 0.2s;
 }
@@ -24,7 +24,7 @@
 .upload-button:hover,
 .download-link:hover {
     background-color: var(--primary-color);
-    color: white;
+    color: var(--demo-button-on-hover-state-color);
 }
 
 .pdf-metadata {

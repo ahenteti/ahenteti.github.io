@@ -16,7 +16,7 @@ class AppArticle extends HTMLElement {
         @import "${this._commonCss}";
 
         .container {
-          background: white;
+          background: var(--article-background-color);
           width: 70%;
           padding: 8rem;
           border-radius: .4rem;

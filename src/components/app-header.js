@@ -11,7 +11,7 @@ class AppLogo extends HTMLElement {
         @import "${this._commonCss}";
 
         header {
-          background-color: white;
+          background-color: var(--header-background);
           width: 100%;
           padding-left: 10%; 
           padding-right: 10%; 

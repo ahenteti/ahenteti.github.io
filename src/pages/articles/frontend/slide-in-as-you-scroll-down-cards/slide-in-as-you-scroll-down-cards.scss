@@ -1,6 +1,6 @@
 .demo {
     max-height: 500px;
-    background: #eee;
+    background: var(--demo-background-color);
     margin: 0 auto;
     padding: 20px;
     overflow: auto;
@@ -11,7 +11,7 @@
 
 .demo .card {
     min-height: 100px;
-    background: white;
+    background: var(--demo-card-background-color);
 }
 
 .demo .card:nth-child(even) {
@@ -31,5 +31,7 @@
 }
 
 @keyframes visible-after-scroll {
-    to { transform: translateY(0); }
+    to {
+        transform: translateY(0);
+    }
 }

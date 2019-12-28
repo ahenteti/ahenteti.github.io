@@ -7,11 +7,12 @@ table {
     width: 100%;
 }
 table thead {
-    background-color: #eee;
+    background-color: var(--table-head-background-color);
 }
-table th, table td {
+table th,
+table td {
     padding: 1rem;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     vertical-align: top;
 }
 table th {

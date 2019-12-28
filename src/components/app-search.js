@@ -48,7 +48,7 @@ class AppSearchInput extends HTMLElement {
           align-items: center;
           padding: 1.2rem;
           transition: all .2s;
-          background: white;
+          background: var(--search-background-color);
           border: 1px solid var(--border-color);
           border-top-right-radius: 100rem;
           border-bottom-right-radius: 100rem;
@@ -68,7 +68,7 @@ class AppSearchInput extends HTMLElement {
         }
         input {
           width: 100%;
-          color: #272a2f;
+          color: var(--text-color);
           border: none;
           outline: none;
           font-size: 1.6rem;
@@ -220,7 +220,7 @@ class AppSearchSelect extends HTMLElement {
 
         .select-selected.primary-color {
           background-color: var(--primary-color);
-          color: white;
+          color: var(--selected-option-color);
           border: 1px solid var(--primary-color);
         }
 
@@ -239,11 +239,11 @@ class AppSearchSelect extends HTMLElement {
         }
 
         .select-items .select-option {
-          background-color: white;
+          background-color: var(--select-background-color);
         }
         
         .select-items .select-option:hover {
-          background-color: #eee;
+          background-color: var(--background-select-option-on-hover-state-color);
         }
 
         .hidden {

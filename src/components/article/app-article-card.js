@@ -21,7 +21,7 @@ class AppArticleCard extends HTMLElement {
           flex-direction: column;
           justify-content: space-between;
           padding: var(--app-article-card-padding, 3rem);
-          background-color: white;
+          background-color: var(--article-card-background-color);
           border-radius: .3rem;
           position: relative;
           transition: box-shadow .2s;

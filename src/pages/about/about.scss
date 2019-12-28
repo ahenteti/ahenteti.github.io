@@ -190,7 +190,7 @@ main {
 
     & .control {
         background: rgba(0, 0, 0, 0.3);
-        color: white;
+        color: var(--gallery-image-controls-color);
         height: 5rem;
         width: 5rem;
         position: absolute;
