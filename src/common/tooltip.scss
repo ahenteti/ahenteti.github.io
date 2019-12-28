@@ -38,12 +38,16 @@
     transform: translate(0, 50%);
 }
 
+[data-tooltip].tooltip-bottom::before {
+    bottom: initial;
+    top: calc(100% + 0.5rem);
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
 /* Triangle hack to make tooltip look like a speech bubble */
 [data-tooltip]::after {
-    width: 0;
     content: ' ';
-    font-size: 0;
-    line-height: 0;
     position: absolute;
 
     bottom: 100%;
@@ -51,6 +55,7 @@
     transform: translate(-50%, 0);
     border-top: 0.5rem solid var(--tooltip-background-color);
     border-right: 0.5rem solid transparent;
+    border-bottom: none;
     border-left: 0.5rem solid transparent;
 }
 
@@ -59,8 +64,9 @@
     left: 0;
     transform: translate(-100%, 50%);
     border-top: 0.5rem solid transparent;
-    border-left: 0.5rem solid var(--tooltip-background-color);
+    border-right: none;
     border-bottom: 0.5rem solid transparent;
+    border-left: 0.5rem solid var(--tooltip-background-color);
 }
 
 [data-tooltip].tooltip-right::after {
@@ -70,6 +76,18 @@
     border-top: 0.5rem solid transparent;
     border-right: 0.5rem solid var(--tooltip-background-color);
     border-bottom: 0.5rem solid transparent;
+    border-left: none;
+}
+
+[data-tooltip].tooltip-bottom::after {
+    bottom: none;
+    top: 100%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border-top: none;
+    border-right: 0.5rem solid transparent;
+    border-bottom: 0.5rem solid var(--tooltip-background-color);
+    border-left: 0.5rem solid transparent;
 }
 
 /* Show tooltip content on hover */

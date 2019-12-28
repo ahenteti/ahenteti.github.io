@@ -12,7 +12,7 @@ main {
     align-items: center;
 
     & .name {
-        color: rgb(13, 13, 13);
+        color: var(--title-color);
         font-weight: 300;
         font-size: 3.8rem;
         margin-bottom: 4rem;

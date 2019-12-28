@@ -1,3 +1,5 @@
+import './constants.scss';
+import './constants.js';
 import './base.scss';
 import './tooltip.scss';
 import './table.scss';

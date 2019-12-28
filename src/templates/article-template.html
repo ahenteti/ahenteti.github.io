@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  ${require('templates/head.html')}
+    ${require('templates/head.html')}
 
-  <body>
-    <app-header></app-header>
+    <body>
+        <app-header></app-header>
 
-    <app-article>
-      <app-oneline-code code="line of code" language="bash"> </app-oneline-code>
+        <app-article>
+            <app-oneline-code code="line of code" language="bash"> </app-oneline-code>
 
-      <app-multiline-code language="bash">
-        <pre slot="code">
+            <app-multiline-code language="bash">
+                <pre slot="code">
                 <code>
                     line 1. 
                     line 2. 
                 </code>
             </pre>
-      </app-multiline-code>
+            </app-multiline-code>
 
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">project structure</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
-            <pre slot="code">
+            <app-code-tabs>
+                <app-code-tab slot="code-tab">project structure</app-code-tab>
+                <app-code-panel slot="code-panel">
+                    <app-multiline-code language="xml">
+                        <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
                             └── src
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+                    </app-multiline-code>
+                </app-code-panel>
+            </app-code-tabs>
 
-      <app-more-info>
-        <app-link
-          href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo"
-          label="How to kill a process in windows 10"
-        ></app-link>
-        <app-link
-          href="https://stackoverflow.com/questions/36652580/how-to-add-three-dots-to-text-when-overflow-in-html"
-          label="Stackoverflow question"
-        ></app-link>
-      </app-more-info>
-    </app-article>
-  </body>
+            <app-more-info>
+                <app-link
+                    href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo"
+                    label="How to kill a process in windows 10"
+                ></app-link>
+                <app-link
+                    href="https://stackoverflow.com/questions/36652580/how-to-add-three-dots-to-text-when-overflow-in-html"
+                    label="Stackoverflow question"
+                ></app-link>
+            </app-more-info>
+        </app-article>
+    </body>
 </html>

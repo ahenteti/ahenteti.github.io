@@ -72,6 +72,7 @@ class AppSearchInput extends HTMLElement {
           border: none;
           outline: none;
           font-size: 1.6rem;
+          background: var(--search-component-input-background-color);
         } 
 
         ion-icon[name="close"] {

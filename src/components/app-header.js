@@ -1,3 +1,5 @@
+import { LOCAL_STORAGE_BODY_CLASS_ATTRIBUTE } from '../common/constants';
+
 class AppLogo extends HTMLElement {
     constructor() {
         super();
@@ -42,14 +44,14 @@ class AppLogo extends HTMLElement {
           justify-content: space-between;
         }
 
-        li a {
+        li a, li ion-icon {
           color: var(--header-link-color);
           margin: 0 .5rem;
           transition: var(--transition);
           font-weight: bold;
         }
 
-        a:hover {
+        a:hover, ion-icon:hover {
           color: var(--primary-color);
         }
 
@@ -84,13 +86,16 @@ class AppLogo extends HTMLElement {
               </a>
             </li>
             <li class="right">
-              <a class="about" href="/about.html" title="about">
+              <div class="change-theme-color tooltip-bottom" data-tooltip="change theme color">
+                <ion-icon name="contrast"></ion-icon>
+              </div>
+              <a class="about tooltip-bottom" href="/about.html" data-tooltip="contact">
                 <ion-icon name="contact"></ion-icon>
               </a>
-              <a class="github" href="https://github.com/ahenteti" target="_blank" title="github">
+              <a class="github tooltip-bottom" href="https://github.com/ahenteti" target="_blank" data-tooltip="github">
                 <ion-icon name="logo-github"></ion-icon>
               </a>
-              <a class="github" href="https://stackoverflow.com/users/6815416/a-henteti" target="_blank" title="stackoverflow">
+              <a class="github tooltip-bottom" href="https://stackoverflow.com/users/6815416/a-henteti" target="_blank" data-tooltip="stackoverflow">
                 <ion-icon name="logo-buffer"></ion-icon>
               </a>
             </li>
@@ -98,9 +103,14 @@ class AppLogo extends HTMLElement {
         </nav>
       </header>
     `;
-
+        const $body = document.querySelector('body');
         const $appHeader = document.querySelector('app-header');
         const $header = $appHeader.shadowRoot.querySelector('header');
+        const $changeColorTheme = $appHeader.shadowRoot.querySelector('.change-theme-color');
+        $changeColorTheme.addEventListener('click', function() {
+            $body.classList.toggle('dark');
+            window.localStorage.setItem(LOCAL_STORAGE_BODY_CLASS_ATTRIBUTE, $body.className);
+        });
         window.addEventListener('scroll', () => {
             const scroll = window.scrollY;
             if (scroll > 0) {
