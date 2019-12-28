@@ -2,6 +2,8 @@ $imgWidthHeight: 150px;
 
 main {
     width: 65%;
+    background-color: var(--article-background-color);
+    --fancy-title-background-color: var(--article-background-color);
 }
 
 .about-container {
