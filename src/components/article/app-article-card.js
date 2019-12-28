@@ -70,7 +70,6 @@ class AppArticleCard extends HTMLElement {
           align-items: center;
           color: var(--text-color-light);
           font-size: 1.5rem;
-          margin: 0 -.5rem;
           margin-bottom: 1.5rem;
         }
         
