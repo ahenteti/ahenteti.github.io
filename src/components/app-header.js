@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_BODY_CLASS_ATTRIBUTE } from '../common/constants';
+import { LOCAL_STORAGE_THEME } from '../common/constants';
 
 class AppLogo extends HTMLElement {
     constructor() {
@@ -44,14 +44,22 @@ class AppLogo extends HTMLElement {
           justify-content: space-between;
         }
 
-        li a, li ion-icon {
+        li.left a, li.right ion-icon {
           color: var(--header-link-color);
-          margin: 0 .5rem;
+          margin: 0 1rem;
           transition: var(--transition);
           font-weight: bold;
         }
 
-        a:hover, ion-icon:hover {
+        li.left {
+          margin-left: -1rem;
+        }
+
+        li.right {
+          margin-right: -1rem;
+        }
+
+        li.left a:hover, li.right ion-icon:hover {
           color: var(--primary-color);
         }
 
@@ -109,7 +117,7 @@ class AppLogo extends HTMLElement {
         const $changeColorTheme = $appHeader.shadowRoot.querySelector('.change-theme-color');
         $changeColorTheme.addEventListener('click', function() {
             $body.classList.toggle('dark');
-            window.localStorage.setItem(LOCAL_STORAGE_BODY_CLASS_ATTRIBUTE, $body.className);
+            window.localStorage.setItem(LOCAL_STORAGE_THEME, $body.className);
         });
         window.addEventListener('scroll', () => {
             const scroll = window.scrollY;

@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_BODY_CLASS_ATTRIBUTE } from '../common/constants';
+import { LOCAL_STORAGE_THEME } from '../common/constants';
 
 // //////////////////////////////// //
 //        global variables          //
@@ -9,7 +9,9 @@ const $oneLineTexts = document.querySelectorAll('.one-line');
 // //////////////////////////////// //
 //          main actions            //
 // //////////////////////////////// //
-$body.className = localStorage.getItem(LOCAL_STORAGE_BODY_CLASS_ATTRIBUTE);
+const theme = findTheme();
+$body.className = theme;
+localStorage.setItem(LOCAL_STORAGE_THEME, theme);
 $oneLineTexts.forEach(resizeTextFontSize);
 
 // //////////////////////////////// //
@@ -27,4 +29,14 @@ function resizeTextFontSize(text) {
 
 function isOverflown(element) {
     return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+}
+
+function findTheme() {
+    const searchParam = new URLSearchParams(window.location.search);
+    const bodyClass = searchParam.get('theme');
+    if (bodyClass) {
+        return bodyClass;
+    } else {
+        return localStorage.getItem(LOCAL_STORAGE_THEME);
+    }
 }
