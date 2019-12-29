@@ -83,7 +83,7 @@ img {
 
 .code {
     font-family: 'Anonymous Pro', monospace;
-    background: #eee;
+    background: var(--code-background-color);
     padding: 3px;
     border-radius: 2px;
 }

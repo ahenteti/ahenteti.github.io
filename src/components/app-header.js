@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_THEME } from '../common/constants';
+import * as constants from '../common/constants';
 
 class AppLogo extends HTMLElement {
     constructor() {
@@ -116,8 +116,8 @@ class AppLogo extends HTMLElement {
         const $header = $appHeader.shadowRoot.querySelector('header');
         const $changeColorTheme = $appHeader.shadowRoot.querySelector('.change-theme-color');
         $changeColorTheme.addEventListener('click', function() {
-            $body.classList.toggle('dark');
-            window.localStorage.setItem(LOCAL_STORAGE_THEME, $body.className);
+            $body.classList.toggle(constants.LOCAL_STORAGE_THEME_LIGHT);
+            window.localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, $body.className);
         });
         window.addEventListener('scroll', () => {
             const scroll = window.scrollY;

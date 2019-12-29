@@ -76,6 +76,10 @@ class AppArticleCard extends HTMLElement {
           margin: .3rem .5rem;
         }
 
+        .tags ion-icon {
+          margin-right: calc(1rem - .3rem);
+        }
+
       </style>
       <a href="${this._url}">
         <div class="container">

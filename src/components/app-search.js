@@ -1,35 +1,3 @@
-class AppSearch extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
-
-    connectedCallback() {
-        this._root.innerHTML = /* html */ `
-      <style>
-        @import "${this._commonCss}";
-
-        .container {
-          display: flex;
-          align-items: stretch;
-        }
-
-        app-search-input {
-          width: 100%;
-        }
-
-      </style>
-      <div class="container">
-        <app-search-select></app-search-select>
-        <app-search-input></app-search-input>
-      </div>
-    `;
-    }
-}
-
-window.customElements.define('app-search', AppSearch);
-
 class AppSearchInput extends HTMLElement {
     constructor() {
         super();
@@ -50,13 +18,14 @@ class AppSearchInput extends HTMLElement {
           transition: all .2s;
           background: var(--search-background-color);
           border: 1px solid var(--border-color);
+          border-left: none;
           border-top-right-radius: 100rem;
           border-bottom-right-radius: 100rem;
           height: calc(1.2rem * 2 + 1.6rem);
         }
 
         .container.focus, .container:hover {
-          border: 1px solid var(--primary-color-light);
+          border-color: var(--primary-color-light);
         }
 
         ion-icon {
@@ -75,18 +44,6 @@ class AppSearchInput extends HTMLElement {
           background: var(--search-component-input-background-color);
         } 
 
-        ion-icon[name="close"] {
-          font-size: 2.9rem;
-          transition: all .2s ease-in;
-        }
-
-        ion-icon[name="close"].hidden {
-          opacity: 0;
-        }
-
-        ion-icon[name="close"]:hover {
-          color: var(--primary-color);
-        }
       </style>
       <div class="container">
         <input type="text" placeholder="Search articles...">
@@ -104,6 +61,15 @@ class AppSearchSelect extends HTMLElement {
         this._root = this.attachShadow({ mode: 'open' });
         this._commonCss = window.webpackManifest['common.css'];
         this._fontSize = '1.3rem';
+        this._container = this._root.querySelector('.container');
+    }
+
+    addBorderToTheContainer() {
+        this._container.classList.add('with-highlighted-border');
+    }
+
+    removeBorderToTheContainer() {
+        this._container.classList.remove('with-highlighted-border');
     }
 
     _calcTagWidth(tag) {
@@ -216,7 +182,13 @@ class AppSearchSelect extends HTMLElement {
           border-bottom-left-radius: 100rem;
           height: calc(1.2rem * 2 + 1.6rem);
           border: 1px solid var(--tag-background-color);
+          border-right: none;
           white-space: nowrap;
+          transition: all .2s;
+        }
+
+        .container.with-highlighted-border .select-selected {
+          border-color: var(--primary-color-light);
         }
 
         .select-selected.primary-color {
@@ -261,3 +233,56 @@ class AppSearchSelect extends HTMLElement {
 }
 
 window.customElements.define('app-search-select', AppSearchSelect);
+
+class AppSearch extends HTMLElement {
+    constructor() {
+        super();
+        this._root = this.attachShadow({ mode: 'open' });
+        this._commonCss = window.webpackManifest['common.css'];
+    }
+
+    connectedCallback() {
+        this._root.innerHTML = /* html */ `
+            <style>
+              @import "${this._commonCss}";
+
+              .container {
+                display: flex;
+                align-items: stretch;
+              }
+
+              app-search-input {
+                width: 100%;
+              }
+
+            </style>
+            <div class="container">
+              <app-search-select></app-search-select>
+              <app-search-input></app-search-input>
+            </div>
+        `;
+        const $searchComponent = document.querySelector('app-search');
+        const $searchSelectComponent = $searchComponent.shadowRoot.querySelector('app-search-select');
+        const $searchInputComponent = $searchComponent.shadowRoot.querySelector('app-search-input');
+        const $searchInput = $searchInputComponent.shadowRoot.querySelector('input');
+        let isInputFocused = false;
+        $searchInputComponent.addEventListener('mouseover', function() {
+            $searchSelectComponent.addBorderToTheContainer();
+        });
+        $searchInputComponent.addEventListener('mouseleave', function() {
+            if (!isInputFocused) {
+                $searchSelectComponent.removeBorderToTheContainer();
+            }
+        });
+        $searchInput.addEventListener('focus', function() {
+            $searchSelectComponent.addBorderToTheContainer();
+            isInputFocused = true;
+        });
+        $searchInput.addEventListener('blur', function() {
+            $searchSelectComponent.removeBorderToTheContainer();
+            isInputFocused = false;
+        });
+    }
+}
+
+window.customElements.define('app-search', AppSearch);

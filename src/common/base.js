@@ -1,4 +1,4 @@
-import { LOCAL_STORAGE_THEME } from '../common/constants';
+import * as constants from '../common/constants';
 
 // //////////////////////////////// //
 //        global variables          //
@@ -11,7 +11,7 @@ const $oneLineTexts = document.querySelectorAll('.one-line');
 // //////////////////////////////// //
 const theme = findTheme();
 $body.className = theme;
-localStorage.setItem(LOCAL_STORAGE_THEME, theme);
+localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, theme);
 $oneLineTexts.forEach(resizeTextFontSize);
 
 // //////////////////////////////// //
@@ -37,6 +37,6 @@ function findTheme() {
     if (bodyClass) {
         return bodyClass;
     } else {
-        return localStorage.getItem(LOCAL_STORAGE_THEME);
+        return localStorage.getItem(constants.LOCAL_STORAGE_THEME_KEY);
     }
 }

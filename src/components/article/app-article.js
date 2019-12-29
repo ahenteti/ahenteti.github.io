@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as hljs from 'common/vendor/highlight/highlight.min.js';
-import { LOCAL_STORAGE_THEME } from '../../common/constants';
+import * as constants from '../../common/constants';
 
 class AppArticle extends HTMLElement {
     constructor() {
@@ -10,17 +10,17 @@ class AppArticle extends HTMLElement {
         this._commonJs = window.webpackManifest['common.js'];
     }
 
-    calcDarkThemeRelatedArticlesStyles() {
-        const darkTheme = window.localStorage.getItem(LOCAL_STORAGE_THEME).includes('dark');
-        console.log('darkTheme: ' + darkTheme);
-        if (darkTheme) {
+    calcThemeThemeRelatedArticlesStyles() {
+        const lightTheme = window.localStorage
+            .getItem(constants.LOCAL_STORAGE_THEME_KEY)
+            .includes(constants.LOCAL_STORAGE_THEME_LIGHT);
+        if (lightTheme) {
             return /* html */ `
                 <style>
                   .related-articles {
-                    --app-article-card-padding: 2rem;
-                    --article-card-background-color: var(--code-background-color);
-                    --border-color: var(--code-background-color);
-                    --tag-background-color: #394048;
+                    --article-card-background-color: #fcfcfc;
+                    --border-color: #eee;
+                    --tag-background-color: #f2f2f2;
                   }
                 </style>
             `;
@@ -31,7 +31,7 @@ class AppArticle extends HTMLElement {
 
     connectedCallback() {
         this._title = this.getAttribute('article-title');
-        this._darkThemeRelatedArticlesStyles = this.calcDarkThemeRelatedArticlesStyles();
+        this._darkThemeRelatedArticlesStyles = this.calcThemeThemeRelatedArticlesStyles();
         this._root.innerHTML = /* html */ `
           <style>
             @import "${this._commonCss}";
@@ -52,6 +52,10 @@ class AppArticle extends HTMLElement {
             }
 
             .related-articles {
+              --app-article-card-padding: 2rem;
+              --article-card-background-color: var(--code-background-color);
+              --border-color: var(--code-background-color);
+              --tag-background-color: #394048;
               margin-top: 2rem;
               display: grid;
               min-width: 0;
