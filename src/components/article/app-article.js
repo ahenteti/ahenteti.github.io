@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 import * as hljs from 'common/vendor/highlight/highlight.min.js';
+import { LOCAL_STORAGE_THEME } from '../../common/constants';
 
 class AppArticle extends HTMLElement {
     constructor() {
@@ -9,70 +10,92 @@ class AppArticle extends HTMLElement {
         this._commonJs = window.webpackManifest['common.js'];
     }
 
+    calcDarkThemeRelatedArticlesStyles() {
+        const darkTheme = window.localStorage.getItem(LOCAL_STORAGE_THEME).includes('dark');
+        console.log('darkTheme: ' + darkTheme);
+        if (darkTheme) {
+            return /* html */ `
+                <style>
+                  .related-articles {
+                    --app-article-card-padding: 2rem;
+                    --article-card-background-color: var(--code-background-color);
+                    --border-color: var(--code-background-color);
+                    --tag-background-color: #394048;
+                  }
+                </style>
+            `;
+        } else {
+            return '';
+        }
+    }
+
     connectedCallback() {
         this._title = this.getAttribute('article-title');
+        this._darkThemeRelatedArticlesStyles = this.calcDarkThemeRelatedArticlesStyles();
         this._root.innerHTML = /* html */ `
-      <style>
-        @import "${this._commonCss}";
+          <style>
+            @import "${this._commonCss}";
 
-        .container {
-          background: var(--article-background-color);
-          width: 70%;
-          padding: 8rem;
-          border-radius: .4rem;
-          margin: calc(var(--header-height) + 4rem) auto 4rem;
-          box-shadow: var(--box-shadow);
-        }
-        
-        h2 {
-          margin-top: 4rem;
-          padding-top: 2rem;
-          border-top: .3rem solid var(--border-color);
-        }
+            .container {
+              background: var(--article-background-color);
+              width: 70%;
+              padding: 8rem;
+              border-radius: .4rem;
+              margin: calc(var(--header-height) + 4rem) auto 4rem;
+              box-shadow: var(--box-shadow);
+            }
+            
+            h2 {
+              margin-top: 4rem;
+              padding-top: 2rem;
+              border-top: .3rem solid var(--border-color);
+            }
 
-        .related-articles {
-          --app-article-card-padding: 2rem;
-          margin-top: 2rem;
-          display: grid;
-          min-width: 0;
-          grid-gap: 2rem;
-          grid-template-columns: 1fr 1fr;
-        }
+            .related-articles {
+              margin-top: 2rem;
+              display: grid;
+              min-width: 0;
+              grid-gap: 2rem;
+              grid-template-columns: 1fr 1fr;
+            }
 
-        .related-articles .article {
-          min-width: 0;
-        }
+            .related-articles .article {
+              min-width: 0;
+            }
 
-        @media screen and (min-width: 720px) and (max-width: 1200px) {
-          .container {
-            width: 80%;
-            padding: 6rem;
-            margin: calc(var(--header-height) + 3rem) auto 3rem;
-          }
-        }
+            @media screen and (min-width: 720px) and (max-width: 1200px) {
+              .container {
+                width: 80%;
+                padding: 6rem;
+                margin: calc(var(--header-height) + 3rem) auto 3rem;
+              }
+            }
 
-        @media screen and (max-width: 720px) {
-          .container {
-            width: 100%;
-            padding: 4rem;
-            border-radius: 0;
-            margin: var(--header-height) auto 0;
-          }
+            @media screen and (max-width: 720px) {
+              .container {
+                width: 100%;
+                padding: 4rem;
+                border-radius: 0;
+                margin: var(--header-height) auto 0;
+              }
 
-          .related-articles {
-            grid-template-columns: 1fr;
-          }
-        }
+              .related-articles {
+                grid-template-columns: 1fr;
+              }
+            }
 
-      </style>
-      <div class="container">
-        <app-article-title article-title="${this._title}"></app-article-title>
-        <slot></slot>
-        <h2 class="related-articles-title">Related articles</h2>
-        <div class="related-articles">
-        </div>
-      </div>
-    `;
+          </style>
+
+          ${this._darkThemeRelatedArticlesStyles}
+
+          <div class="container">
+            <app-article-title article-title="${this._title}"></app-article-title>
+            <slot></slot>
+            <h2 class="related-articles-title">Related articles</h2>
+            <div class="related-articles">
+            </div>
+          </div>
+        `;
         // //////////////////////////////// //
         //        global variables          //
         // //////////////////////////////// //

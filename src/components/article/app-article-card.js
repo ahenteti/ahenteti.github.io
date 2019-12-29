@@ -22,15 +22,14 @@ class AppArticleCard extends HTMLElement {
           justify-content: space-between;
           padding: var(--app-article-card-padding, 3rem);
           background-color: var(--article-card-background-color);
-          border-radius: .3rem;
           position: relative;
           transition: box-shadow .2s;
           transition: all .2s ease-in;
-          border: 1px solid var(--border-color);
+          border-bottom: 3px solid var(--border-color);
         }
 
         .container:hover {
-          border: 1px solid var(--primary-color-light) !important;
+          border-bottom: 3px solid var(--primary-color-light) !important;
         }
 
         .container:hover .name {

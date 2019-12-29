@@ -44,7 +44,7 @@ body {
     --selected-option-color: var(--white-color);
     --select-background-color: var(--white-color);
     --selected-tag-color: var(--white-color);
-    --article-card-background-color: var(--white-color);
+    --article-card-background-color: #fdfdfd;
     --article-background-color: var(--white-color);
     --gallery-image-controls-color: var(--white-color);
     --demo-card-background-color: var(--white-color);
@@ -82,10 +82,13 @@ body.dark {
     --search-component-input-background-color: #262a2d;
     --select-background-color: #262a2d;
     --background-select-option-on-hover-state-color: #32373b;
-
     --code-background-color: #32373b;
     --code-line-numbers-background-color: #394048;
     --code-selected-tab-background-color: #c4c2c0;
     --code-icon-color: #777;
     --table-head-background-color: #394048;
+
+    --demo-button-background-color: #262a2d;
+    --demo-background-color: #262a2d;
+    --demo-card-background-color: #394048;
 }
