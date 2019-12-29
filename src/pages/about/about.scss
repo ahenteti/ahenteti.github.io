@@ -86,12 +86,12 @@ main {
     margin-top: 4rem;
     display: flex;
     flex-wrap: wrap;
+    align-items: self-start;
 
     & .work-experience__logo,
     & .education__logo {
         width: 14rem;
-        height: 14rem;
-        margin-bottom: 1.5rem;
+        margin-bottom: 3rem;
     }
 
     & .height-auto {

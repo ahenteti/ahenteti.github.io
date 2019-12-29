@@ -86,10 +86,7 @@ class AppLogo extends HTMLElement {
               </a>
             </li>
             <li class="right">
-              <div class="change-theme-color tooltip-bottom" data-tooltip="change theme color">
-                <ion-icon name="contrast"></ion-icon>
-              </div>
-              <a class="about tooltip-bottom" href="/about.html" data-tooltip="contact">
+              <a class="about tooltip-bottom" href="/about.html" data-tooltip="about">
                 <ion-icon name="contact"></ion-icon>
               </a>
               <a class="github tooltip-bottom" href="https://github.com/ahenteti" target="_blank" data-tooltip="github">
@@ -98,6 +95,9 @@ class AppLogo extends HTMLElement {
               <a class="github tooltip-bottom" href="https://stackoverflow.com/users/6815416/a-henteti" target="_blank" data-tooltip="stackoverflow">
                 <ion-icon name="logo-buffer"></ion-icon>
               </a>
+              <div class="change-theme-color tooltip-bottom" data-tooltip="change theme color">
+                <ion-icon name="contrast"></ion-icon>
+              </div>
             </li>
           </ul>
         </nav>
