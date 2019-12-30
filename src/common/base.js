@@ -9,7 +9,7 @@ const $oneLineTexts = document.querySelectorAll('.one-line');
 // //////////////////////////////// //
 //          main actions            //
 // //////////////////////////////// //
-const firstTimeVisitingTheWebsite = isFirstTimeVisitingTheWebsite();
+isFirstTimeVisitingTheWebsite();
 $body.className = findTheme();
 $oneLineTexts.forEach(resizeTextFontSize);
 
@@ -41,10 +41,5 @@ function findTheme() {
 }
 
 function isFirstTimeVisitingTheWebsite() {
-    let res = false;
-    if (localStorage.getItem(constants.LOCAL_STORAGE_FIRST_TIME_VISITING_THE_WEBSITE) == null) {
-        res = true;
-    }
-    localStorage.setItem(constants.LOCAL_STORAGE_FIRST_TIME_VISITING_THE_WEBSITE, false);
-    return res;
+    localStorage.setItem(constants.LOCAL_STORAGE_FIRST_TIME_VISITING_THE_WEBSITE, 'false');
 }

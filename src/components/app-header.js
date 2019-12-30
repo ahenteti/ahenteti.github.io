@@ -9,115 +9,134 @@ class AppLogo extends HTMLElement {
 
     connectedCallback() {
         this._root.innerHTML = /* html */ `
-      <style>
-        @import "${this._commonCss}";
+            <style>
+                @import "${this._commonCss}";
 
-        header {
-          background-color: var(--header-background);
-          width: 100%;
-          padding-left: 10%; 
-          padding-right: 10%; 
-          position: fixed;
-          top: 0;
-          z-index: 100;
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          transition: box-shadow .2s ease-in;
-        }
+                header {
+                    background-color: var(--header-background);
+                    width: 100%;
+                    padding-left: 10%; 
+                    padding-right: 10%; 
+                    position: fixed;
+                    top: 0;
+                    z-index: 100;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    transition: box-shadow .2s ease-in;
+                }
 
-        header.shadow {
-          box-shadow: var(--box-shadow);
-        }
-        
-        nav {
-          width: 100%;
-        }
+                header.shadow {
+                    box-shadow: var(--box-shadow);
+                }
+                
+                nav {
+                    width: 100%;
+                }
 
-        ul {
-          width: 100%;
-          margin: 0 auto;
-          min-height: var(--header-height);
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-          justify-content: space-between;
-        }
+                ul {
+                    width: 100%;
+                    margin: 0 auto;
+                    min-height: var(--header-height);
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: space-between;
+                }
 
-        li.left a, li.right ion-icon {
-          color: var(--header-link-color);
-          margin: 0 1rem;
-          transition: var(--transition);
-          font-weight: bold;
-        }
+                li.left a, li.right ion-icon {
+                    color: var(--header-link-color);
+                    margin: 0 1rem;
+                    transition: var(--transition);
+                    font-weight: bold;
+                }
 
-        li.left {
-          margin-left: -1rem;
-        }
+                li.left {
+                    margin-left: -1rem;
+                }
 
-        li.right {
-          margin-right: -1rem;
-        }
+                li.right {
+                    margin-right: -1rem;
+                }
 
-        li.left a:hover, li.right ion-icon:hover {
-          color: var(--primary-color);
-        }
+                li.left a:hover, li.right ion-icon:hover {
+                    color: var(--primary-color);
+                }
 
-        .home {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-        }
+                .home {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                }
 
-        app-logo {
-          margin-right: 1rem;
-        }
+                app-logo {
+                    margin-right: 1rem;
+                }
 
-        ion-icon {
-          font-size: 2.5rem;
-        }
+                ion-icon {
+                    font-size: 2.5rem;
+                }
 
-        .right {
-          display: flex;
-          flex-wrap: wrap;
-          align-items: center;
-        }
+                .right {
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                }
 
-      </style>
-      <header>
-        <nav>
-          <ul>
-            <li class="left">
-              <a class="home" href="/">
-                <app-logo></app-logo>
-                <span>ahenteti notes</span>
-              </a>
-            </li>
-            <li class="right">
-              <a class="about tooltip-bottom" href="/about.html" data-tooltip="about">
-                <ion-icon name="contact"></ion-icon>
-              </a>
-              <a class="github tooltip-bottom" href="https://github.com/ahenteti" target="_blank" data-tooltip="github">
-                <ion-icon name="logo-github"></ion-icon>
-              </a>
-              <a class="github tooltip-bottom" href="https://stackoverflow.com/users/6815416/a-henteti" target="_blank" data-tooltip="stackoverflow">
-                <ion-icon name="logo-buffer"></ion-icon>
-              </a>
-              <div class="change-theme-color tooltip-bottom" data-tooltip="change theme color">
-                <ion-icon name="contrast"></ion-icon>
-              </div>
-            </li>
-          </ul>
-        </nav>
-      </header>
-    `;
+                .change-theme-container.first-visit {
+                    position: relative;
+                }
+
+                .change-theme-container app-highlight-feature {
+                    display: none;
+                }
+                .change-theme-container.first-visit app-highlight-feature {
+                    display: block;
+                    position: absolute;
+                    bottom: calc(-10rem - 2rem);
+                    left: -30rem;
+                }
+
+            </style>
+            <header>
+                <nav>
+                <ul>
+                    <li class="left">
+                    <a class="home" href="/">
+                        <app-logo></app-logo>
+                        <span>ahenteti notes</span>
+                    </a>
+                    </li>
+                    <li class="right">
+                    <a class="about tooltip-bottom" href="/about.html" data-tooltip="about">
+                        <ion-icon name="contact"></ion-icon>
+                    </a>
+                    <a class="github tooltip-bottom" href="https://github.com/ahenteti" target="_blank" data-tooltip="github">
+                        <ion-icon name="logo-github"></ion-icon>
+                    </a>
+                    <a class="github tooltip-bottom" href="https://stackoverflow.com/users/6815416/a-henteti" target="_blank" data-tooltip="stackoverflow">
+                        <ion-icon name="logo-buffer"></ion-icon>
+                    </a>
+                    <div class="change-theme-container">
+                        <div class="change-theme-color tooltip-bottom" data-tooltip="change theme color">
+                            <ion-icon name="contrast"></ion-icon>
+                        </div>
+                        <app-highlight-feature></app-highlight-feature>
+                    </div>
+                    </li>
+                </ul>
+                </nav>
+            </header>
+        `;
         const $body = document.querySelector('body');
         const $appHeader = document.querySelector('app-header');
         const $header = $appHeader.shadowRoot.querySelector('header');
+        const $changeThemeContainer = $appHeader.shadowRoot.querySelector('.change-theme-container');
         const $changeColorTheme = $appHeader.shadowRoot.querySelector('.change-theme-color');
         $changeColorTheme.addEventListener('click', function() {
             $body.classList.toggle(constants.LOCAL_STORAGE_THEME_LIGHT);
             window.localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, $body.className);
+            $changeThemeContainer.classList.remove('first-visit');
         });
         window.addEventListener('scroll', () => {
             const scroll = window.scrollY;
@@ -127,6 +146,9 @@ class AppLogo extends HTMLElement {
                 $header.classList.remove('shadow');
             }
         });
+        if (localStorage.getItem(constants.LOCAL_STORAGE_FIRST_TIME_VISITING_THE_WEBSITE) === null) {
+            $changeThemeContainer.classList.add('first-visit');
+        }
     }
 }
 
