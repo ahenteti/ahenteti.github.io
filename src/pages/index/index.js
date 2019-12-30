@@ -53,7 +53,7 @@ function handleTagSelectionEvent(event) {
 
 function handleSearchInputKeyupEvent() {
     const articles = findArticles();
-    if (articles.length == 0) {
+    if (isEmpty(articles)) {
         renderNoResult($searchInput.value);
     } else {
         renderArticles(articles);
@@ -225,4 +225,13 @@ function checkElementVisibility(element) {
     } else {
         element.addNotYetVisibleClass();
     }
+}
+
+function isEmpty(map) {
+    for (var key in map) {
+        if (map.hasOwnProperty(key)) {
+            return false;
+        }
+    }
+    return true;
 }
