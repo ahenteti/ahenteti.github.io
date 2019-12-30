@@ -109,36 +109,45 @@ EOF
 deploy () {
   set -e
 
-  echo -e "${GREEN}\nget last commit message...${NORMAL}"
-  message=$(git log -1 --pretty=%B)
-
-  echo -e "${GREEN}\nnpm build...${NORMAL}"
+  echo -e "${GREEN}\nnpm build${NORMAL}"
   npm run build
 
-  tmpDir=$(mktemp -d)
-  echo -e "${GREEN}\nsave generated files to $tmpDir...${NORMAL}"
-  cp -r dist/* $tmpDir
+  echo -e "${GREEN}\ngit worktree add --checkout deploy-to-gh-pages origin/master${NORMAL}"
+  git worktree add --checkout deploy-to-gh-pages origin/master
 
-  echo -e "${GREEN}\ncheckout master branch...${NORMAL}"
+  echo -e "${GREEN}\nrm -rf deploy-to-gh-pages/*${NORMAL}"
+  rm -rf deploy-to-gh-pages/*
+
+  echo -e "${GREEN}\ncp -r dist/* deploy-to-gh-pages/${NORMAL}"
+  cp -r dist/* deploy-to-gh-pages/
+
+  echo -e "${GREEN}\ncd deploy-to-gh-pages/${NORMAL}"
+  cd deploy-to-gh-pages/
+
+  echo -e "${GREEN}\ngit checkout -b deploy-to-gh-pages${NORMAL}"
+  git checkout -b deploy-to-gh-pages
+
+
+  echo -e "${GREEN}\ngit add .${NORMAL}"
+  git add .
+
+  echo -e "${GREEN}\ngit commit -am \"deploying new version of the website to github pages\"${NORMAL}"
+  git commit -am "deploying new version of the website to github pages"
+
+  echo -e "${GREEN}\ngit checkout master${NORMAL}"
   git checkout master
 
-  echo -e "${GREEN}\nremove all files except .git folder and .gitignore file...${NORMAL}"
-  find . -not -name ".gitignore" -not -name "manage.sh" -not -path "./.git/*" -not -path "./node_modules/*" -type f -exec rm -rf {} \;
-  echo -e "${GREEN}\nremove all empty directories...${NORMAL}"
-  find ./ -type d  -not -path "./.git/*" -not -path "./node_modules/*" -empty -exec rm -f {} \;
+  echo -e "${GREEN}\ngit reset deploy-to-gh-pages --hard${NORMAL}"
+  git reset deploy-to-gh-pages --hard
 
-  echo -e "${GREEN}\ncopy $tmpDir files in the current directory...${NORMAL}"
-  cp -r $tmpDir/* .
-
-  set +e
-  echo -e "${GREEN}\ngit add and commit...${NORMAL}"
-  git add -- . ':!manage.sh'
-  git commit -m "$message"
+  echo -e "${GREEN}\ngit push${NORMAL}"
   git push
 
-  set -e
-  echo -e "${GREEN}\ndelete $tmpDir folder...${NORMAL}"
-  rm -rf $tmpDir
+  echo -e "${GREEN}\ncd ..${NORMAL}"
+  cd ..
+
+  echo -e "${GREEN}\nrm -rf deploy-to-gh-pages${NORMAL}"
+  rm -rf deploy-to-gh-pages
 
   echo -e "${GREEN}\nDone!${NORMAL}"
 }
