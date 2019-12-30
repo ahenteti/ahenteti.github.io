@@ -28,7 +28,7 @@ class AppHighlightFeature extends HTMLElement {
                 .container::after {
                     content: '';
                     position: absolute;
-                    top: -1.3rem;
+                    top: -1rem;
                     left: ${this._trianglePosition};
                     border-top: none;
                     border-right: 2rem solid transparent;

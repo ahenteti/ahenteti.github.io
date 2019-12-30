@@ -75,7 +75,7 @@ class AppArticleTitle extends HTMLElement {
         <div class="metadata">
           <div class="tags">
           </div>
-          <div data-tooltip="publication date" class="publication-date">
+          <div data-tooltip="publication date" class="tooltip-top publication-date">
           </div>
         </div>
       </div>

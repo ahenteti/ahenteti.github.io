@@ -168,7 +168,7 @@ class AppMultilineCode extends HTMLElement {
         <pre class="line-numbers">
           <slot class="code" name="code"></slot>
         </pre>
-        <div class="copy-code-icon" data-tooltip="Copy the code to clipboard">
+        <div class="copy-code-icon tooltip-top" data-tooltip="Copy the code to clipboard">
           <ion-icon name="ios-copy"></ion-icon>
         </div>
       </div>
