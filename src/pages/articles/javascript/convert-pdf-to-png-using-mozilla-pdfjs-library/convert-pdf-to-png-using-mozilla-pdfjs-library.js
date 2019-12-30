@@ -2,7 +2,7 @@ import './convert-pdf-to-png-using-mozilla-pdfjs-library.scss';
 
 const uploadButtonDOMElement = document.querySelector('.upload-button');
 const uploadInputDOMElement = document.querySelector('.upload-input');
-const loaderDOMElement = document.querySelector('.loader');
+const loaderDOMElement = document.querySelector('.loader-demo');
 const pdfMetadataDOMElement = document.querySelector('.pdf-metadata');
 const totalPagesDOMElement = document.querySelector('.pdf-total-pages');
 const currentPageDOMElement = document.querySelector('.pdf-current-page');

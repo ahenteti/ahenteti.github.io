@@ -17,27 +17,36 @@
         <app-header></app-header>
 
         <app-article>
-            <button class="upload-button">Select Your PDF</button>
-            <input class="upload-input" type="file" />
-            <div class="loader"></div>
-
-            <div class="pdf-container">
-                <div class="pdf-metadata">
-                    <div class="pdf-navigation-buttons">
-                        <ion-icon class="pdf-navigation-button pdf-prev" name="ios-arrow-dropleft-circle"></ion-icon>
-                        <ion-icon class="pdf-navigation-button pdf-next" name="ios-arrow-dropright-circle"></ion-icon>
-                    </div>
-                    <a class="download-link" href="#">Download PNG</a>
-                    <div class="pdf-current-page-container">
-                        Page <span class="pdf-current-page"></span> of <span class="pdf-total-pages"></span>
-                    </div>
-                </div>
-                <canvas class="pdf-canvas"></canvas>
-            </div>
-
-            <h2>Code source</h2>
-
             <app-code-tabs>
+                <app-code-tab slot="code-tab">Result</app-code-tab>
+                <app-code-panel class="result" slot="code-panel">
+                    <div class="demo">
+                        <button class="upload-button">Select Your PDF</button>
+                        <input class="upload-input" type="file" />
+                        <div class="loader-demo"></div>
+
+                        <div class="pdf-container">
+                            <div class="pdf-metadata">
+                                <div class="pdf-navigation-buttons">
+                                    <ion-icon
+                                        class="pdf-navigation-button pdf-prev"
+                                        name="ios-arrow-dropleft-circle"
+                                    ></ion-icon>
+                                    <ion-icon
+                                        class="pdf-navigation-button pdf-next"
+                                        name="ios-arrow-dropright-circle"
+                                    ></ion-icon>
+                                </div>
+                                <a class="download-link" href="#">Download PNG</a>
+                                <div class="pdf-current-page-container">
+                                    Page <span class="pdf-current-page"></span> of <span class="pdf-total-pages"></span>
+                                </div>
+                            </div>
+                            <canvas class="pdf-canvas"></canvas>
+                        </div>
+                    </div>
+                </app-code-panel>
+
                 <app-code-tab slot="code-tab">index.html</app-code-tab>
                 <app-code-panel slot="code-panel">
                     <app-multiline-code language="html">
