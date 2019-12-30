@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+    ${require('templates/head.html')}
+
+    <body>
+        <app-header></app-header>
+
+        <app-article>
+            <app-code-tabs>
+                <app-code-tab slot="code-tab">Result</app-code-tab>
+                <app-code-panel class="result" slot="code-panel">
+                    <style>
+                        .demo {
+                            padding: 4rem;
+                        }
+
+                        .demo .arrows {
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                        }
+
+                        .demo .arrow-up {
+                            width: 0;
+                            height: 0;
+                            border-top: none;
+                            border-right: 2rem solid transparent;
+                            border-bottom: 2rem solid var(--demo-card-background-color);
+                            border-left: 2rem solid transparent;
+                        }
+
+                        .demo .arrow-right {
+                            width: 0;
+                            height: 0;
+                            border-top: 2rem solid transparent;
+                            border-right: none;
+                            border-bottom: 2rem solid transparent;
+                            border-left: 2rem solid var(--demo-card-background-color);
+                        }
+
+                        .demo .arrow-bottom {
+                            width: 0;
+                            height: 0;
+                            border-top: 2rem solid var(--demo-card-background-color);
+                            border-right: 2rem solid transparent;
+                            border-bottom: none;
+                            border-left: 2rem solid transparent;
+                        }
+
+                        .demo .arrow-left {
+                            width: 0;
+                            height: 0;
+                            border-top: 2rem solid transparent;
+                            border-right: 2rem solid var(--demo-card-background-color);
+                            border-bottom: 2rem solid transparent;
+                            border-left: none;
+                        }
+                    </style>
+                    <div class="demo">
+                        <div class="arrows">
+                            <div class="arrow-up"></div>
+                            <div class="arrow-right"></div>
+                            <div class="arrow-bottom"></div>
+                            <div class="arrow-left"></div>
+                        </div>
+                    </div>
+                </app-code-panel>
+                <app-code-tab slot="code-tab">index.html</app-code-tab>
+                <app-code-panel slot="code-panel">
+                    <app-multiline-code language="html">
+                        <pre slot="code">
+                        <code>
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+                                &lt;head&gt;
+                                    &lt;meta charset="UTF-8" /&gt;
+                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+                                    &lt;title&gt;Document&lt;/title&gt;
+                                    &lt;link rel="stylesheet" href="style.css" /&gt;
+                                &lt;/head&gt;
+                            
+                                &lt;body&gt;
+                                    &lt;main&gt;
+                                        &lt;h2&gt;CSS triangles&lt;/h2&gt;
+                                        &lt;div class="arrows"&gt;
+                                            &lt;div class="arrow-up"&gt;&lt;/div&gt;
+                                            &lt;div class="arrow-right"&gt;&lt;/div&gt;
+                                            &lt;div class="arrow-bottom"&gt;&lt;/div&gt;
+                                            &lt;div class="arrow-left"&gt;&lt;/div&gt;
+                                        &lt;/div&gt;
+                                    &lt;/main&gt;
+                                &lt;/body&gt;
+                            &lt;/html&gt;
+                        </code>
+                    </pre>
+                    </app-multiline-code>
+                </app-code-panel>
+                <app-code-tab slot="code-tab">style.css</app-code-tab>
+                <app-code-panel slot="code-panel">
+                    <app-multiline-code language="css">
+                        <pre slot="code">
+                        <code>
+                            *,
+                            *::before,
+                            *::after {
+                                margin: 0;
+                                padding: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            html {
+                                font-size: 62.5%;
+                                line-height: 1.4;
+                            }
+                            
+                            body {
+                                font-family: sans-serif;
+                                background-color: #eee;
+                            }
+                            
+                            main {
+                                width: 70%;
+                                margin: 4rem auto;
+                                padding: 4rem;
+                                background-color: white;
+                            }
+                            
+                            h2 {
+                                margin-bottom: 2rem;
+                            }
+                            
+                            .arrows {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                            }
+                            
+                            .arrow-up {
+                                width: 0;
+                                height: 0;
+                                border-top: none;
+                                border-right: 2rem solid transparent;
+                                border-bottom: 2rem solid #eee;
+                                border-left: 2rem solid transparent;
+                            }
+                            
+                            .arrow-right {
+                                width: 0;
+                                height: 0;
+                                border-top: 2rem solid transparent;
+                                border-right: none;
+                                border-bottom: 2rem solid transparent;
+                                border-left: 2rem solid #eee;
+                            }
+                            
+                            .arrow-bottom {
+                                width: 0;
+                                height: 0;
+                                border-top: 2rem solid #eee;
+                                border-right: 2rem solid transparent;
+                                border-bottom: none;
+                                border-left: 2rem solid transparent;
+                            }
+                            
+                            .arrow-left {
+                                width: 0;
+                                height: 0;
+                                border-top: 2rem solid transparent;
+                                border-right: 2rem solid #eee;
+                                border-bottom: 2rem solid transparent;
+                                border-left: none;
+                            }
+                        </code>
+                    </pre>
+                    </app-multiline-code>
+                </app-code-panel>
+            </app-code-tabs>
+        </app-article>
+        <app-more-info>
+            <app-link
+                href="https://css-tricks.com/snippets/css/css-triangle/"
+                label="CSS-TRICKS CSS Triangle article"
+            ></app-link>
+        </app-more-info>
+    </body>
+</html>
