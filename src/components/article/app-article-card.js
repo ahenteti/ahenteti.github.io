@@ -117,20 +117,3 @@ class AppArticleCard extends HTMLElement {
 }
 
 window.customElements.define('app-article-card', AppArticleCard);
-
-setTimeout(() => {
-    document.querySelectorAll('app-article-card').forEach(card => {
-        if (card.alreadyVisible()) {
-            card.addAlreadyVisibleClass();
-        } else {
-            card.addNotYetVisibleClass();
-        }
-    });
-    window.addEventListener('scroll', function() {
-        document.querySelectorAll('app-article-card').forEach(card => {
-            if (card.alreadyVisible()) {
-                card.addComeInClass();
-            }
-        });
-    });
-});

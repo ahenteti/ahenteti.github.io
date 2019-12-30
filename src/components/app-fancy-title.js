@@ -49,7 +49,7 @@ class AppFancyTitle extends HTMLElement {
         this._container = this._root.querySelector('.container');
 
         this.alreadyVisible = function() {
-            let position = this.getBoundingClientRect();
+            const position = this.getBoundingClientRect();
             return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
         };
 

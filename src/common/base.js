@@ -9,9 +9,8 @@ const $oneLineTexts = document.querySelectorAll('.one-line');
 // //////////////////////////////// //
 //          main actions            //
 // //////////////////////////////// //
-const theme = findTheme();
-$body.className = theme;
-localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, theme);
+const firstTimeVisitingTheWebsite = isFirstTimeVisitingTheWebsite();
+$body.className = findTheme();
 $oneLineTexts.forEach(resizeTextFontSize);
 
 // //////////////////////////////// //
@@ -33,10 +32,19 @@ function isOverflown(element) {
 
 function findTheme() {
     const searchParam = new URLSearchParams(window.location.search);
-    const bodyClass = searchParam.get('theme');
-    if (bodyClass) {
-        return bodyClass;
-    } else {
-        return localStorage.getItem(constants.LOCAL_STORAGE_THEME_KEY);
+    let res = searchParam.get('theme');
+    if (!res) {
+        res = localStorage.getItem(constants.LOCAL_STORAGE_THEME_KEY);
     }
+    localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, res);
+    return res;
+}
+
+function isFirstTimeVisitingTheWebsite() {
+    let res = false;
+    if (localStorage.getItem(constants.LOCAL_STORAGE_FIRST_TIME_VISITING_THE_WEBSITE) == null) {
+        res = true;
+    }
+    localStorage.setItem(constants.LOCAL_STORAGE_FIRST_TIME_VISITING_THE_WEBSITE, false);
+    return res;
 }
