@@ -45,7 +45,7 @@ jobs:
           git config user.email ahmad.henteti@gmail.com
 
           echo -e "\\033[1;36mgit remote set-url origin https://*****@github.com/ahenteti.github.io\\033[0;02m"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ahenteti/ahenteti.github.io
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ahenteti/ahenteti.github.io.git
 
           echo -e "\\033[1;36mgit commit -am deploying new version of the website to github pages\\033[0;02m"
           git commit -am "deploying new version of the website to github pages"
