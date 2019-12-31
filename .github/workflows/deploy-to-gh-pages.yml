@@ -12,6 +12,12 @@ jobs:
 
       - name: Build
         run: |
+          echo -e "\\033[1;36mnode --version\\033[0;02m"
+          node --version
+
+          echo -e "\\033[1;36mnpm --version\\033[0;02m"
+          npm --version
+
           npm install
           npm run-script build
 
