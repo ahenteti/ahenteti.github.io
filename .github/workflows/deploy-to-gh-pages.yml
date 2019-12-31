@@ -10,7 +10,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: Build
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Check Node & NPM versions
         run: |
           echo -e "\\033[1;36mnode --version\\033[0;02m"
           node --version
@@ -18,6 +23,8 @@ jobs:
           echo -e "\\033[1;36mnpm --version\\033[0;02m"
           npm --version
 
+      - name: Build
+        run: |
           npm install
           npm run-script build
 
