@@ -47,7 +47,7 @@ class AppSearchInput extends HTMLElement {
       </style>
       <div class="container">
         <input type="text" placeholder="Search articles...">
-        <ion-icon name="funnel"></ion-icon>
+        <ion-icon name="search"></ion-icon>
       </div>
     `;
   }
