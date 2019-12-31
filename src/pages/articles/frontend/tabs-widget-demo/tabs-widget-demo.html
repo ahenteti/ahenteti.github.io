@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  ${require('templates/head.html')}
+  ${require('includes/head.html')}
 
   <body>
     <app-header></app-header>
@@ -23,7 +23,7 @@
               background: #fafafa;
             }
 
-            .result [role="tab"] {
+            .result [role='tab'] {
               position: relative;
               margin: 0;
               padding: 1em;
@@ -33,40 +33,25 @@
               transition: all 0.2s ease-in;
             }
 
-            .result [role="tab"]:hover,
-            .result [role="tab"][aria-selected="true"] {
+            .result [role='tab']:hover,
+            .result [role='tab'][aria-selected='true'] {
               background: #fafafa;
             }
 
-            .result [role="tabpanel"] {
+            .result [role='tabpanel'] {
               padding: 1rem;
               font-size: 1.5rem;
             }
           </style>
           <div class="tablist" role="tablist">
             <div class="tabs">
-              <button
-                role="tab"
-                aria-selected="true"
-                aria-controls="tab1-tab"
-                id="tab1"
-              >
+              <button role="tab" aria-selected="true" aria-controls="tab1-tab" id="tab1">
                 tab1
               </button>
-              <button
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab2-tab"
-                id="tab2"
-              >
+              <button role="tab" aria-selected="false" aria-controls="tab2-tab" id="tab2">
                 tab2
               </button>
-              <button
-                role="tab"
-                aria-selected="false"
-                aria-controls="tab3-tab"
-                id="tab3"
-              >
+              <button role="tab" aria-selected="false" aria-controls="tab3-tab" id="tab3">
                 tab3
               </button>
             </div>
@@ -74,50 +59,36 @@
               <div role="tabpanel" id="tab1-tab" aria-labelledby="tab1">
                 tab1 content
               </div>
-              <div
-                role="tabpanel"
-                id="tab2-tab"
-                aria-labelledby="tab2"
-                hidden="true"
-              >
+              <div role="tabpanel" id="tab2-tab" aria-labelledby="tab2" hidden="true">
                 tab2 content
               </div>
-              <div
-                role="tabpanel"
-                id="tab3-tab"
-                aria-labelledby="tab3"
-                hidden="true"
-              >
+              <div role="tabpanel" id="tab3-tab" aria-labelledby="tab3" hidden="true">
                 tab3 content
               </div>
             </div>
           </div>
           <script>
             (function() {
-              var tabs = Array.from(
-                document.querySelectorAll('.result [role="tab"]')
-              );
-              var panels = Array.from(
-                document.querySelectorAll('.result [role="tabpanel"]')
-              );
+              var tabs = Array.from(document.querySelectorAll('.result [role="tab"]'));
+              var panels = Array.from(document.querySelectorAll('.result [role="tabpanel"]'));
 
               for (i = 0; i < tabs.length; i++) {
-                tabs[i].addEventListener("click", event => activateTab(event));
+                tabs[i].addEventListener('click', event => activateTab(event));
               }
 
               function activateTab(event) {
                 event.stopPropagation();
                 var tab = event.target;
                 deactivateTabs();
-                tab.setAttribute("aria-selected", "true");
-                var controls = tab.getAttribute("aria-controls");
-                document.getElementById(controls).removeAttribute("hidden");
+                tab.setAttribute('aria-selected', 'true');
+                var controls = tab.getAttribute('aria-controls');
+                document.getElementById(controls).removeAttribute('hidden');
               }
 
               function deactivateTabs() {
                 for (i = 0; i < tabs.length; i++) {
-                  tabs[i].setAttribute("aria-selected", "false");
-                  panels[i].setAttribute("hidden", "true");
+                  tabs[i].setAttribute('aria-selected', 'false');
+                  panels[i].setAttribute('hidden', 'true');
                 }
               }
             })();
@@ -266,6 +237,7 @@
           label="Example of Tabs with Automatic Activation from W3C"
         ></app-link>
       </app-more-info>
+      ${require('includes/comments-engine.html')}
     </app-article>
   </body>
 </html>

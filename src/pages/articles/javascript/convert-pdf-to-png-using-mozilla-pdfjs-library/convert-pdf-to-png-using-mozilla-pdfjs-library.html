@@ -1,56 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
-        <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-        <!-- load webcomponents bundle, which includes all the necessary polyfills -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.worker.js"></script>
-        <title>ahenteti notes</title>
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="/img/favicon.png" />
+    <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <!-- load webcomponents bundle, which includes all the necessary polyfills -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.worker.js"></script>
+    <title>ahenteti notes</title>
+  </head>
 
-    <body>
-        <app-header></app-header>
+  <body>
+    <app-header></app-header>
 
-        <app-article>
-            <app-code-tabs>
-                <app-code-tab slot="code-tab">Result</app-code-tab>
-                <app-code-panel class="result" slot="code-panel">
-                    <div class="demo">
-                        <button class="upload-button">Select Your PDF</button>
-                        <input class="upload-input" type="file" />
-                        <div class="loader-demo"></div>
+    <app-article>
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">Result</app-code-tab>
+        <app-code-panel class="result" slot="code-panel">
+          <div class="demo">
+            <button class="upload-button">Select Your PDF</button>
+            <input class="upload-input" type="file" />
+            <div class="loader-demo"></div>
 
-                        <div class="pdf-container">
-                            <div class="pdf-metadata">
-                                <div class="pdf-navigation-buttons">
-                                    <ion-icon
-                                        class="pdf-navigation-button pdf-prev"
-                                        name="ios-arrow-dropleft-circle"
-                                    ></ion-icon>
-                                    <ion-icon
-                                        class="pdf-navigation-button pdf-next"
-                                        name="ios-arrow-dropright-circle"
-                                    ></ion-icon>
-                                </div>
-                                <a class="download-link" href="#">Download PNG</a>
-                                <div class="pdf-current-page-container">
-                                    Page <span class="pdf-current-page"></span> of <span class="pdf-total-pages"></span>
-                                </div>
-                            </div>
-                            <canvas class="pdf-canvas"></canvas>
-                        </div>
-                    </div>
-                </app-code-panel>
+            <div class="pdf-container">
+              <div class="pdf-metadata">
+                <div class="pdf-navigation-buttons">
+                  <ion-icon class="pdf-navigation-button pdf-prev" name="ios-arrow-dropleft-circle"></ion-icon>
+                  <ion-icon class="pdf-navigation-button pdf-next" name="ios-arrow-dropright-circle"></ion-icon>
+                </div>
+                <a class="download-link" href="#">Download PNG</a>
+                <div class="pdf-current-page-container">
+                  Page <span class="pdf-current-page"></span> of <span class="pdf-total-pages"></span>
+                </div>
+              </div>
+              <canvas class="pdf-canvas"></canvas>
+            </div>
+          </div>
+        </app-code-panel>
 
-                <app-code-tab slot="code-tab">index.html</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="html">
-                        <pre slot="code">
+        <app-code-tab slot="code-tab">index.html</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="html">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -91,12 +85,12 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">main.css</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="css">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">main.css</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="css">
+            <pre slot="code">
                         <code>
                             :root {
                                 --primary-color: #078eed;
@@ -223,12 +217,12 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">main.js</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="js">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">main.js</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="js">
+            <pre slot="code">
                         <code>
                             const uploadButtonDOMElement = document.querySelector('.upload-button');
                             const uploadInputDOMElement = document.querySelector('.upload-input');
@@ -327,16 +321,17 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-            </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-            <app-more-info>
-                <app-link
-                    href="https://github.com/mozilla/pdf.js/blob/master/examples/learning/helloworld.html"
-                    label="Mozilla PDF.js github tutorial"
-                ></app-link>
-            </app-more-info>
-        </app-article>
-    </body>
+      <app-more-info>
+        <app-link
+          href="https://github.com/mozilla/pdf.js/blob/master/examples/learning/helloworld.html"
+          label="Mozilla PDF.js github tutorial"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
+    </app-article>
+  </body>
 </html>

@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-
-        <app-code-tabs>
-            <app-code-tab slot="code-tab">project structure</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
@@ -45,12 +43,12 @@ ${require('templates/head.html')}
                                                 └── default.css
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
                                 &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -138,12 +136,12 @@ ${require('templates/head.html')}
                             &lt;/project&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">web.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">web.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -172,12 +170,12 @@ ${require('templates/head.html')}
                             &lt;/web-app&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version='1.0' encoding='UTF-8'?&gt;
                             &lt;!--
@@ -208,12 +206,12 @@ ${require('templates/head.html')}
                             &lt;/faces-config&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">beans.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">beans.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
@@ -223,12 +221,12 @@ ${require('templates/head.html')}
                             &lt;/beans&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
@@ -243,12 +241,12 @@ ${require('templates/head.html')}
                             &lt;/persistence&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xhtml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xhtml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
                             &lt;!DOCTYPE html
@@ -343,12 +341,12 @@ ${require('templates/head.html')}
                             &lt;/html&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">CustomerService.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">CustomerService.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.service;
                             
@@ -396,12 +394,12 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">Customer.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">Customer.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.model;
                             
@@ -455,12 +453,12 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">CustomerController.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">CustomerController.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.controller;
                             
@@ -520,12 +518,12 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">ConfigurationBean.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">ConfigurationBean.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.config;
                             
@@ -540,23 +538,21 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-        </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-        <app-more-info>
-            <app-link
-                href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/jsf-crud-app-demo"
-                label="Github source code"    
-            ></app-link>
-            <app-link
-                href="https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/"
-                label="Simple crud table with JSF 2.3 and primefaces"    
-            ></app-link>
-        </app-more-info>
-        
+      <app-more-info>
+        <app-link
+          href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/jsf-crud-app-demo"
+          label="Github source code"
+        ></app-link>
+        <app-link
+          href="https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/"
+          label="Simple crud table with JSF 2.3 and primefaces"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
     </app-article>
-
-</body>
-
+  </body>
 </html>

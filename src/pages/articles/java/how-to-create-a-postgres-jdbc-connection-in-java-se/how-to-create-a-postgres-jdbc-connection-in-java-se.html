@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-        <app-multiline-code language="java">
-            <pre slot="code">
+      <app-multiline-code language="java">
+        <pre slot="code">
                 <code>
                     /**
                         * jdbc driver demo
@@ -32,8 +31,8 @@ ${require('templates/head.html')}
                     }
                 </code>
             </pre>
-        </app-multiline-code>
+      </app-multiline-code>
+      ${require('includes/comments-engine.html')}
     </app-article>
-</body>
-
+  </body>
 </html>

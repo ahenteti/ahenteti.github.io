@@ -1,35 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-    ${require('templates/head.html')}
+  ${require('includes/head.html')}
 
-    <body>
-        <app-header></app-header>
+  <body>
+    <app-header></app-header>
 
-        <app-article>
-            <app-code-tabs>
-                <app-code-tab slot="code-tab">Result</app-code-tab>
-                <app-code-panel class="result" slot="code-panel">
-                    <div class="demo">
-                        <div class="buttons">
-                            <button class="tooltip-top-demo" data-tooltip-demo="tooltip message">
-                                Tooltip on the top
-                            </button>
-                            <button class="tooltip-right-demo" data-tooltip-demo="tooltip message">
-                                Tooltip on the right
-                            </button>
-                            <button class="tooltip-bottom-demo" data-tooltip-demo="tooltip message">
-                                Tooltip on the bottom
-                            </button>
-                            <button class="tooltip-left-demo" data-tooltip-demo="tooltip message">
-                                Tooltip on the left
-                            </button>
-                        </div>
-                    </div>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">index.html</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="html">
-                        <pre slot="code">
+    <app-article>
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">Result</app-code-tab>
+        <app-code-panel class="result" slot="code-panel">
+          <div class="demo">
+            <div class="buttons">
+              <button class="tooltip-top-demo" data-tooltip-demo="tooltip message">
+                Tooltip on the top
+              </button>
+              <button class="tooltip-right-demo" data-tooltip-demo="tooltip message">
+                Tooltip on the right
+              </button>
+              <button class="tooltip-bottom-demo" data-tooltip-demo="tooltip message">
+                Tooltip on the bottom
+              </button>
+              <button class="tooltip-left-demo" data-tooltip-demo="tooltip message">
+                Tooltip on the left
+              </button>
+            </div>
+          </div>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">index.html</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="html">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -56,12 +56,12 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">tooltip.css</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="css">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">tooltip.css</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="css">
+            <pre slot="code">
                         <code>
                             :root {
                                 --tooltip-background-color: rgba(51, 51, 51, 0.8);
@@ -202,12 +202,12 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">base.css</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="css">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">base.css</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="css">
+            <pre slot="code">
                         <code>
                             :root {
                                 --primary-color: #078eed;
@@ -266,16 +266,14 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-            </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-            <app-more-info>
-                <app-link
-                    href="https://www.w3schools.com/css/css_tooltip.asp"
-                    label="w3schools css-tooltip article"
-                ></app-link>
-            </app-more-info>
-        </app-article>
-    </body>
+      <app-more-info>
+        <app-link href="https://www.w3schools.com/css/css_tooltip.asp" label="w3schools css-tooltip article"></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
+    </app-article>
+  </body>
 </html>

@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    ${require('templates/head.html')}
+  ${require('includes/head.html')}
 
-    <body>
-        <app-header></app-header>
+  <body>
+    <app-header></app-header>
 
-        <app-article>
-            <h2>Your First Plugin</h2>
+    <app-article>
+      <h2>Your First Plugin</h2>
 
-            <app-code-tabs>
-                <app-code-tab slot="code-tab">HelloWorldMojo.java</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="java">
-                        <pre slot="code">
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">HelloWorldMojo.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             package io.github.ahenteti.java;
                             
@@ -39,12 +39,12 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">project structure</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="xml">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
@@ -59,12 +59,12 @@
                             
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="xml">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                                      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
@@ -92,17 +92,17 @@
                             &lt;/project&gt;
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-            </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-            <h2>Execute Your First Plugin</h2>
+      <h2>Execute Your First Plugin</h2>
 
-            <app-code-tabs>
-                <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="xml">
-                        <pre slot="code">
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             
@@ -143,12 +143,12 @@
                             &lt;/project&gt;
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">App.java</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="java">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">App.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             package io.github.ahenteti.java;
                             
@@ -165,12 +165,12 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">project structure</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="xml">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
@@ -185,13 +185,13 @@
                             
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-                <app-code-tab slot="code-tab">maven output</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="xml">
-                        <pre slot="code">
+        <app-code-tab slot="code-tab">maven output</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             \$ mvn process-resources
                             [INFO] Scanning for projects...
@@ -214,16 +214,17 @@
                             [INFO] ------------------------------------------------------------------------
                           </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-            </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-            <app-more-info>
-                <app-link
-                    href="https://maven.apache.org/guides/plugin/guide-java-plugin-development.html"
-                    label="Apache guide-java-plugin-development article"
-                ></app-link>
-            </app-more-info>
-        </app-article>
-    </body>
+      <app-more-info>
+        <app-link
+          href="https://maven.apache.org/guides/plugin/guide-java-plugin-development.html"
+          label="Apache guide-java-plugin-development article"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
+    </app-article>
+  </body>
 </html>

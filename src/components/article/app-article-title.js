@@ -1,13 +1,13 @@
 class AppArticleTitle extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
+  constructor() {
+    super();
+    this._root = this.attachShadow({ mode: 'open' });
+    this._commonCss = window.webpackManifest['common.css'];
+  }
 
-    connectedCallback() {
-        this._title = this.getAttribute('article-title');
-        this._root.innerHTML = /* html */ `
+  connectedCallback() {
+    this._title = this.getAttribute('article-title');
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         .container {
@@ -80,7 +80,7 @@ class AppArticleTitle extends HTMLElement {
         </div>
       </div>
       `;
-    }
+  }
 }
 
 window.customElements.define('app-article-title', AppArticleTitle);

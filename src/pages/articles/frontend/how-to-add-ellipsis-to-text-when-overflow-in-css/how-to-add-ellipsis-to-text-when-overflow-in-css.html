@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-    ${require('templates/head.html')}
+  ${require('includes/head.html')}
 
-    <body>
-        <app-header></app-header>
+  <body>
+    <app-header></app-header>
 
-        <app-article>
-            <h2>Ellipsis for Single Line Text</h2>
-            <p>The current solution is based on <span class="code">text-overflow</span> CSS property</p>
-            <br />
-            <app-code-tabs>
-                <app-code-tab slot="code-tab">Result</app-code-tab>
-                <app-code-panel class="result" slot="code-panel">
-                    <style>
-                        .demo {
-                            padding: 4rem 0;
-                        }
-                        .single-line {
-                            width: 50%;
-                            margin: 0 auto;
-                            padding: 3rem;
-                            background-color: var(--demo-card-background-color);
-                        }
-                        p.overflow-single-line {
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-                    </style>
-                    <div class="demo">
-                        <div class="single-line">
-                            <p class="overflow-single-line">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi
-                                reiciendis facilis ad accusantium quibusdam velit! Sapiente optio quis nam quam, enim
-                                iste? Similique quidem explicabo eligendi quaerat!
-                            </p>
-                        </div>
-                    </div>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">index.html</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="html">
-                        <pre slot="code">
+    <app-article>
+      <h2>Ellipsis for Single Line Text</h2>
+      <p>The current solution is based on <span class="code">text-overflow</span> CSS property</p>
+      <br />
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">Result</app-code-tab>
+        <app-code-panel class="result" slot="code-panel">
+          <style>
+            .demo {
+              padding: 4rem 0;
+            }
+            .single-line {
+              width: 50%;
+              margin: 0 auto;
+              padding: 3rem;
+              background-color: var(--demo-card-background-color);
+            }
+            p.overflow-single-line {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          </style>
+          <div class="demo">
+            <div class="single-line">
+              <p class="overflow-single-line">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis ad
+                accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem explicabo
+                eligendi quaerat!
+              </p>
+            </div>
+          </div>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">index.html</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="html">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -67,12 +67,12 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">style.css</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="css">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">style.css</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="css">
+            <pre slot="code">
                         <code>
                             *,
                             *::before,
@@ -122,82 +122,82 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-            </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-            <h2>Ellipsis for Multi Line Text</h2>
+      <h2>Ellipsis for Multi Line Text</h2>
 
-            <p>The current solution is based on <span class="code">javascript</span> to truncate long texts</p>
-            <br />
-            <app-code-tabs>
-                <app-code-tab slot="code-tab">project structure</app-code-tab>
-                <app-code-panel class="result" slot="code-panel">
-                    <style>
-                        .demo {
-                            line-height: 1.4;
-                            padding: 4rem 0;
-                        }
-                        .multi-line {
-                            width: 50%;
-                            margin: 0 auto;
-                            padding: 3rem;
-                            background-color: var(--demo-card-background-color);
-                        }
-                        p.overflow-single-line {
-                            white-space: nowrap;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                        }
-                    </style>
-                    <div class="demo">
-                        <div class="multi-line">
-                            <p class="overflow-multi-line" data-max-lines="3">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi
-                                reiciendis facilis asdfdsfd accusantium quibusdam velit! Sapiente optio quis nam quam,
-                                enim iste? Similique quidem explicabo eligendi quaerat!
-                            </p>
-                        </div>
-                    </div>
-                    <script>
-                        const $overflowMultiLineTexts = document.querySelectorAll('.overflow-multi-line');
-                        setTimeout(() => $overflowMultiLineTexts.forEach(ellipsizeTextBox), 0);
+      <p>The current solution is based on <span class="code">javascript</span> to truncate long texts</p>
+      <br />
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel class="result" slot="code-panel">
+          <style>
+            .demo {
+              line-height: 1.4;
+              padding: 4rem 0;
+            }
+            .multi-line {
+              width: 50%;
+              margin: 0 auto;
+              padding: 3rem;
+              background-color: var(--demo-card-background-color);
+            }
+            p.overflow-single-line {
+              white-space: nowrap;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          </style>
+          <div class="demo">
+            <div class="multi-line">
+              <p class="overflow-multi-line" data-max-lines="3">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis
+                asdfdsfd accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem
+                explicabo eligendi quaerat!
+              </p>
+            </div>
+          </div>
+          <script>
+            const $overflowMultiLineTexts = document.querySelectorAll('.overflow-multi-line');
+            setTimeout(() => $overflowMultiLineTexts.forEach(ellipsizeTextBox), 0);
 
-                        function ellipsizeTextBox(element) {
-                            console.log(element.offsetHeight);
-                            const maxLines = parseInt(element.dataset.maxLines) || 3;
-                            const elementLineHeight = calcElementLineHeight(element);
-                            let currentElementLines = calcCurrentElementLines(element, elementLineHeight);
-                            const wordArray = element.innerHTML.split(' ');
-                            element.style.textAlign = 'justify';
-                            console.log('elementLineHeight: ' + elementLineHeight + ', maxLines: ' + maxLines);
-                            while (currentElementLines > maxLines) {
-                                wordArray.pop();
-                                element.innerHTML = wordArray.join(' ') + ' ...';
-                                currentElementLines = calcCurrentElementLines(element, elementLineHeight);
-                            }
-                        }
+            function ellipsizeTextBox(element) {
+              console.log(element.offsetHeight);
+              const maxLines = parseInt(element.dataset.maxLines) || 3;
+              const elementLineHeight = calcElementLineHeight(element);
+              let currentElementLines = calcCurrentElementLines(element, elementLineHeight);
+              const wordArray = element.innerHTML.split(' ');
+              element.style.textAlign = 'justify';
+              console.log('elementLineHeight: ' + elementLineHeight + ', maxLines: ' + maxLines);
+              while (currentElementLines > maxLines) {
+                wordArray.pop();
+                element.innerHTML = wordArray.join(' ') + ' ...';
+                currentElementLines = calcCurrentElementLines(element, elementLineHeight);
+              }
+            }
 
-                        function calcCurrentElementLines(element, elementLineHeight) {
-                            return Math.floor(element.offsetHeight / elementLineHeight);
-                        }
+            function calcCurrentElementLines(element, elementLineHeight) {
+              return Math.floor(element.offsetHeight / elementLineHeight);
+            }
 
-                        function calcElementLineHeight(element) {
-                            let res = element.style.lineHeight;
-                            if (isNaN(parseInt(res))) {
-                                res = document.defaultView.getComputedStyle(element).getPropertyValue('line-height');
-                            }
-                            if (isNaN(parseInt(res))) {
-                                res = 20;
-                            }
-                            return parseInt(res);
-                        }
-                    </script>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">index.html</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="html">
-                        <pre slot="code">
+            function calcElementLineHeight(element) {
+              let res = element.style.lineHeight;
+              if (isNaN(parseInt(res))) {
+                res = document.defaultView.getComputedStyle(element).getPropertyValue('line-height');
+              }
+              if (isNaN(parseInt(res))) {
+                res = 20;
+              }
+              return parseInt(res);
+            }
+          </script>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">index.html</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="html">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -224,12 +224,12 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">script.js</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="js">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">script.js</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="js">
+            <pre slot="code">
                         <code>
                             const \$overflowMultiLineTexts = document.querySelectorAll('.overflow-multi-line');
                             setTimeout(() => \$overflowMultiLineTexts.forEach(ellipsizeTextBox), 0);
@@ -263,12 +263,12 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">style.css</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="css">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">style.css</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="css">
+            <pre slot="code">
                         <code>
                             *,
                             *::before,
@@ -312,20 +312,21 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-            </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-            <app-more-info>
-                <app-link
-                    href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo"
-                    label="Github source code"
-                ></app-link>
-                <app-link
-                    href="http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/"
-                    label="Pure CSS for multiline truncation with ellipsis article by David Tintner & Sagi Shrieber"
-                ></app-link>
-            </app-more-info>
-        </app-article>
-    </body>
+      <app-more-info>
+        <app-link
+          href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo"
+          label="Github source code"
+        ></app-link>
+        <app-link
+          href="http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/"
+          label="Pure CSS for multiline truncation with ellipsis article by David Tintner & Sagi Shrieber"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
+    </app-article>
+  </body>
 </html>

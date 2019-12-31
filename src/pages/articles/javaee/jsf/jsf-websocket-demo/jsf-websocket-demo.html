@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-        <app-code-tabs>
-            <app-code-tab slot="code-tab">project structure</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
@@ -33,12 +32,12 @@ ${require('templates/head.html')}
                             
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
                                 &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -109,12 +108,12 @@ ${require('templates/head.html')}
                             &lt;/project&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">web.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">web.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;web-app version="3.1" 
@@ -147,12 +146,12 @@ ${require('templates/head.html')}
                             &lt;/web-app&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xhtml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xhtml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
                             &lt;!DOCTYPE html
@@ -188,12 +187,12 @@ ${require('templates/head.html')}
                             &lt;/html&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">HelloBean.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">HelloBean.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             package io.github.ahenteti.java;
                             
@@ -225,20 +224,17 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-        </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-
-        <app-more-info>
-            <app-link
-                href="http://jj-blogger.blogspot.com/2016/02/a-look-at-upcoming-jsf-23-push-support.html"
-                label="JSF 2.3 websocket support"    
-            ></app-link>
-        </app-more-info>
-        
+      <app-more-info>
+        <app-link
+          href="http://jj-blogger.blogspot.com/2016/02/a-look-at-upcoming-jsf-23-push-support.html"
+          label="JSF 2.3 websocket support"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
     </app-article>
-
-</body>
-
+  </body>
 </html>

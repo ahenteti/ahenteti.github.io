@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-        <h2>Introduction</h2>
-        <p>This tutorial demonstrate the use of the commonly used facelet taglib tags, especially :</p>
-        <table>
-            <thead>
-                <th>tag</th>
-                <th>description</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="monospace">ui:include</td>
-                    <td>Includes contents of one xhtml page into another xhtml page</td>
-                </tr>
-                <tr>
-                    <td class="monospace">ui:composition</td>
-                    <td>Loads a template using template attribute. It can also define a group of components to be inserted in xhtml page</td>
-                </tr>
-                <tr>
-                    <td class="monospace">ui:insert</td>
-                    <td>Used in template file. It defines contents to be placed in a template</td>
-                </tr>
-                <tr>
-                    <td class="monospace">ui:define</td>
-                    <td>
-                        The define tag defines content that is inserted into a page by a template. The define tag can be used inside
-                        <span class="monospace">ui:composition</span>, <span class="monospace">ui:component</span>, <span class="monospace">ui:decorate</span>, and <span class="monospace">ui:fragment</span> tags.
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+      <h2>Introduction</h2>
+      <p>This tutorial demonstrate the use of the commonly used facelet taglib tags, especially :</p>
+      <table>
+        <thead>
+          <th>tag</th>
+          <th>description</th>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="monospace">ui:include</td>
+            <td>Includes contents of one xhtml page into another xhtml page</td>
+          </tr>
+          <tr>
+            <td class="monospace">ui:composition</td>
+            <td>
+              Loads a template using template attribute. It can also define a group of components to be inserted in
+              xhtml page
+            </td>
+          </tr>
+          <tr>
+            <td class="monospace">ui:insert</td>
+            <td>Used in template file. It defines contents to be placed in a template</td>
+          </tr>
+          <tr>
+            <td class="monospace">ui:define</td>
+            <td>
+              The define tag defines content that is inserted into a page by a template. The define tag can be used
+              inside
+              <span class="monospace">ui:composition</span>, <span class="monospace">ui:component</span>,
+              <span class="monospace">ui:decorate</span>, and <span class="monospace">ui:fragment</span> tags.
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-        <h2>Demo</h2>
-        <app-code-tabs>
-            <app-code-tab slot="code-tab">project structure</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+      <h2>Demo</h2>
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
@@ -64,12 +68,12 @@ ${require('templates/head.html')}
                                             └── web.xml
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">template.xhtml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xhtml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">template.xhtml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xhtml">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
                                   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
@@ -95,13 +99,13 @@ ${require('templates/head.html')}
                             &lt;/html&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">header.xhtml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xhtml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">header.xhtml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xhtml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;!DOCTYPE html&gt;
@@ -115,13 +119,13 @@ ${require('templates/head.html')}
                             &lt;/html&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">footer.xhtml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xhtml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">footer.xhtml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xhtml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;!DOCTYPE html&gt;
@@ -135,13 +139,13 @@ ${require('templates/head.html')}
                             &lt;/html&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xhtml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xhtml">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
                               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
@@ -161,13 +165,13 @@ ${require('templates/head.html')}
                             &lt;/html&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">web.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">web.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
                             &lt;web-app version=&quot;3.1&quot; 
@@ -193,13 +197,13 @@ ${require('templates/head.html')}
                             &lt;/web-app&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xhtml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xhtml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version='1.0' encoding='UTF-8'?&gt;
                             &lt;faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
@@ -208,13 +212,13 @@ ${require('templates/head.html')}
                             &lt;/faces-config&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
                                 &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
@@ -285,24 +289,18 @@ ${require('templates/head.html')}
                             &lt;/project&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-        </app-code-tabs>
-
-        <app-more-info>
-            <app-link
-                href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/facelet-templating-system"
-                label="Github source code"    
-            ></app-link>
-            <app-link
-                href="https://javaee.github.io/tutorial/jsf-facelets004.html"
-                label="JavaEE 8 tutorial"    
-            ></app-link>
-        </app-more-info>
-        
+      <app-more-info>
+        <app-link
+          href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/facelet-templating-system"
+          label="Github source code"
+        ></app-link>
+        <app-link href="https://javaee.github.io/tutorial/jsf-facelets004.html" label="JavaEE 8 tutorial"></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
     </app-article>
-
-</body>
-
+  </body>
 </html>

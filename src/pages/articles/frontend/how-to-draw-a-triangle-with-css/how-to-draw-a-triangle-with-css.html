@@ -1,74 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    ${require('templates/head.html')}
+  ${require('includes/head.html')}
 
-    <body>
-        <app-header></app-header>
+  <body>
+    <app-header></app-header>
 
-        <app-article>
-            <app-code-tabs>
-                <app-code-tab slot="code-tab">Result</app-code-tab>
-                <app-code-panel class="result" slot="code-panel">
-                    <style>
-                        .demo {
-                            padding: 4rem;
-                        }
+    <app-article>
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">Result</app-code-tab>
+        <app-code-panel class="result" slot="code-panel">
+          <style>
+            .demo {
+              padding: 4rem;
+            }
 
-                        .demo .arrows {
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                        }
+            .demo .arrows {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+            }
 
-                        .demo .arrow-up {
-                            width: 0;
-                            height: 0;
-                            border-top: none;
-                            border-right: 2rem solid transparent;
-                            border-bottom: 2rem solid var(--demo-card-background-color);
-                            border-left: 2rem solid transparent;
-                        }
+            .demo .arrow-up {
+              width: 0;
+              height: 0;
+              border-top: none;
+              border-right: 2rem solid transparent;
+              border-bottom: 2rem solid var(--demo-card-background-color);
+              border-left: 2rem solid transparent;
+            }
 
-                        .demo .arrow-right {
-                            width: 0;
-                            height: 0;
-                            border-top: 2rem solid transparent;
-                            border-right: none;
-                            border-bottom: 2rem solid transparent;
-                            border-left: 2rem solid var(--demo-card-background-color);
-                        }
+            .demo .arrow-right {
+              width: 0;
+              height: 0;
+              border-top: 2rem solid transparent;
+              border-right: none;
+              border-bottom: 2rem solid transparent;
+              border-left: 2rem solid var(--demo-card-background-color);
+            }
 
-                        .demo .arrow-bottom {
-                            width: 0;
-                            height: 0;
-                            border-top: 2rem solid var(--demo-card-background-color);
-                            border-right: 2rem solid transparent;
-                            border-bottom: none;
-                            border-left: 2rem solid transparent;
-                        }
+            .demo .arrow-bottom {
+              width: 0;
+              height: 0;
+              border-top: 2rem solid var(--demo-card-background-color);
+              border-right: 2rem solid transparent;
+              border-bottom: none;
+              border-left: 2rem solid transparent;
+            }
 
-                        .demo .arrow-left {
-                            width: 0;
-                            height: 0;
-                            border-top: 2rem solid transparent;
-                            border-right: 2rem solid var(--demo-card-background-color);
-                            border-bottom: 2rem solid transparent;
-                            border-left: none;
-                        }
-                    </style>
-                    <div class="demo">
-                        <div class="arrows">
-                            <div class="arrow-up"></div>
-                            <div class="arrow-right"></div>
-                            <div class="arrow-bottom"></div>
-                            <div class="arrow-left"></div>
-                        </div>
-                    </div>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">index.html</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="html">
-                        <pre slot="code">
+            .demo .arrow-left {
+              width: 0;
+              height: 0;
+              border-top: 2rem solid transparent;
+              border-right: 2rem solid var(--demo-card-background-color);
+              border-bottom: 2rem solid transparent;
+              border-left: none;
+            }
+          </style>
+          <div class="demo">
+            <div class="arrows">
+              <div class="arrow-up"></div>
+              <div class="arrow-right"></div>
+              <div class="arrow-bottom"></div>
+              <div class="arrow-left"></div>
+            </div>
+          </div>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">index.html</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="html">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -94,12 +94,12 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-                <app-code-tab slot="code-tab">style.css</app-code-tab>
-                <app-code-panel slot="code-panel">
-                    <app-multiline-code language="css">
-                        <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">style.css</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="css">
+            <pre slot="code">
                         <code>
                             *,
                             *::before,
@@ -173,15 +173,16 @@
                             }
                         </code>
                     </pre>
-                    </app-multiline-code>
-                </app-code-panel>
-            </app-code-tabs>
-        </app-article>
-        <app-more-info>
-            <app-link
-                href="https://css-tricks.com/snippets/css/css-triangle/"
-                label="CSS-TRICKS CSS Triangle article"
-            ></app-link>
-        </app-more-info>
-    </body>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
+      <app-more-info>
+        <app-link
+          href="https://css-tricks.com/snippets/css/css-triangle/"
+          label="CSS-TRICKS CSS Triangle article"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
+    </app-article>
+  </body>
 </html>

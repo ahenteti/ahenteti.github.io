@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-        <h2>How to convert a string to lower case</h2>
-        <app-oneline-code code="echo 'HELLO WORLD!' | tr '[:upper:]' '[:lower:]'" language="bash">
-        </app-oneline-code>
-        
-        <h2>How to uppercase the first character in a variable</h2>
-        <app-oneline-code code="foo=\$(tr '[:lower:]' '[:upper:]' &lt;&lt;&lt; \${foo:0:1})\${foo:1}" language="bash">
-        </app-oneline-code>
-    
-        <h2>How to split a string on delimiter</h2>
-        <app-multiline-code language="bash">
-            <pre slot="code">
+      <h2>How to convert a string to lower case</h2>
+      <app-oneline-code code="echo 'HELLO WORLD!' | tr '[:upper:]' '[:lower:]'" language="bash"> </app-oneline-code>
+
+      <h2>How to uppercase the first character in a variable</h2>
+      <app-oneline-code code="foo=\$(tr '[:lower:]' '[:upper:]' &lt;&lt;&lt; \${foo:0:1})\${foo:1}" language="bash">
+      </app-oneline-code>
+
+      <h2>How to split a string on delimiter</h2>
+      <app-multiline-code language="bash">
+        <pre slot="code">
                 <code>
                     IFS='-' read -ra array &lt;&lt;&lt; "a-b-c"; unset IFS
                     for i in \${array[@]}; do
@@ -25,11 +23,11 @@ ${require('templates/head.html')}
                     done
                 </code>
             </pre>
-        </app-multiline-code>
-    
-        <h2>How to remove particular characters from a string</h2>
-        <app-multiline-code language="bash">
-            <pre slot="code">
+      </app-multiline-code>
+
+      <h2>How to remove particular characters from a string</h2>
+      <app-multiline-code language="bash">
+        <pre slot="code">
                 <code>
                     # using tr
                     echo "Hello World!" | tr -d !
@@ -38,28 +36,28 @@ ${require('templates/head.html')}
                     echo "Hello World!" | sed 's/!//g'
                 </code>
             </pre>
-        </app-multiline-code>
-        
-        <h2>How to prevent read command to eat backslashes</h2>
-        <p>you should use the <span class="code">-r</span> option of the read command</p>
-        <app-oneline-code code="read <span class='highlight'>-r</span> path" language="bash">
-        </app-oneline-code>
-        
-        <h2>How to insert multiple lines into a file after specified pattern</h2>
-        <p>https://stackoverflow.com/questions/22497246/insert-multiple-lines-into-a-file-after-specified-pattern-using-shell-script</p>
-        
-        <h2>How to extract filename and extension in Bash</h2>
-        <app-multiline-code language="bash">
-            <pre slot="code">
+      </app-multiline-code>
+
+      <h2>How to prevent read command to eat backslashes</h2>
+      <p>you should use the <span class="code">-r</span> option of the read command</p>
+      <app-oneline-code code="read <span class='highlight'>-r</span> path" language="bash"> </app-oneline-code>
+
+      <h2>How to insert multiple lines into a file after specified pattern</h2>
+      <p>
+        https://stackoverflow.com/questions/22497246/insert-multiple-lines-into-a-file-after-specified-pattern-using-shell-script
+      </p>
+
+      <h2>How to extract filename and extension in Bash</h2>
+      <app-multiline-code language="bash">
+        <pre slot="code">
                 <code>
                     filename=\$(basename "\$fullfile")
                     extension="\${filename##*.}"
                     filename="\${filename%.*}"
                 </code>
             </pre>
-        </app-multiline-code>
+      </app-multiline-code>
+      ${require('includes/comments-engine.html')}
     </app-article>
-
-</body>
-
+  </body>
 </html>

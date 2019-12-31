@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-        <app-multiline-code>
-            <pre slot="code">
+      <app-multiline-code>
+        <pre slot="code">
                 <code>
                     &lt;!DOCTYPE html&gt;
                     &lt;html lang="en"&gt;
@@ -66,8 +65,8 @@ ${require('templates/head.html')}
                     &lt;/html&gt;
                 </code>
             </pre>
-        </app-multiline-code>     
+      </app-multiline-code>
+      ${require('includes/comments-engine.html')}
     </app-article>
-</body>
-
+  </body>
 </html>

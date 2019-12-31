@@ -1,19 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-        <h2>JDBC without JPA</h2>
+      <h2>JDBC without JPA</h2>
 
-        <app-code-tabs>
-            <app-code-tab slot="code-tab">Main.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">Main.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             public class Main {
                                 public static void main(String[] args) throws ClassNotFoundException, SQLException {
@@ -65,12 +64,12 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">Book.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">Book.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             @Data
                             @AllArgsConstructor
@@ -80,12 +79,12 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
@@ -117,13 +116,13 @@ ${require('templates/head.html')}
                             &lt;/project&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">project structure</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
@@ -138,16 +137,16 @@ ${require('templates/head.html')}
                                                         └── Main.java
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-        </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-        <h2>JDBC with JPA</h2>
-        <app-code-tabs>
-            <app-code-tab slot="code-tab">Main.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+      <h2>JDBC with JPA</h2>
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">Main.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             public class Main {
 
@@ -169,13 +168,13 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">Book.java</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="java">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">Book.java</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="java">
+            <pre slot="code">
                         <code>
                             <span class="highlight">@Entity</span>
                             @Data
@@ -187,13 +186,13 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
 
@@ -244,13 +243,13 @@ ${require('templates/head.html')}
                             &lt;/project&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
+          </app-multiline-code>
+        </app-code-panel>
 
-            <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+        <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
                             &lt;persistence 
@@ -269,12 +268,12 @@ ${require('templates/head.html')}
                             &lt;/persistence&gt;                                
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">project structure</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">project structure</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="xml">
+            <pre slot="code">
                         <code>
                             .
                             ├── pom.xml
@@ -293,19 +292,17 @@ ${require('templates/head.html')}
                                             └── persistence.xml
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-        </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-        <app-more-info>
-            <app-link
-                href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/jdbc-with-and-without-jpa-demo"
-                label="Github source code"    
-            ></app-link>
-        </app-more-info>
-        
+      <app-more-info>
+        <app-link
+          href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/jdbc-with-and-without-jpa-demo"
+          label="Github source code"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
     </app-article>
-
-</body>
-
+  </body>
 </html>

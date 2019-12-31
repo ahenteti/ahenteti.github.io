@@ -1,40 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
+  ${require('includes/head.html')}
 
-${require('templates/head.html')}
+  <link rel="stylesheet" href="css/slide-in-as-you-scroll-down-cards.css" />
 
-<link rel="stylesheet" href="css/slide-in-as-you-scroll-down-cards.css">
-
-<body>
+  <body>
     <app-header></app-header>
 
     <app-article>
-
-        <app-code-tabs>
-            <app-code-tab slot="code-tab">Result</app-code-tab>
-            <app-code-panel class="result" slot="code-panel">
-                <section class="demo">
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div> 
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                    <div class="card"></div>
-                </section>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">html</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="html">
-                    <pre slot="code">
+      <app-code-tabs>
+        <app-code-tab slot="code-tab">Result</app-code-tab>
+        <app-code-panel class="result" slot="code-panel">
+          <section class="demo">
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+            <div class="card"></div>
+          </section>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">html</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="html">
+            <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -80,12 +78,12 @@ ${require('templates/head.html')}
                             &lt;/html&gt;
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">css</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="css">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">css</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="css">
+            <pre slot="code">
                         <code>
                             *, *::before, *::after {
                               padding: 0;
@@ -134,12 +132,12 @@ ${require('templates/head.html')}
                             }
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-            <app-code-tab slot="code-tab">javascript</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="js">
-                    <pre slot="code">
+          </app-multiline-code>
+        </app-code-panel>
+        <app-code-tab slot="code-tab">javascript</app-code-tab>
+        <app-code-panel slot="code-panel">
+          <app-multiline-code language="js">
+            <pre slot="code">
                         <code>
                             function alreadyVisible (card) {
                               let position = card.getBoundingClientRect();
@@ -168,19 +166,17 @@ ${require('templates/head.html')}
                             })
                         </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>
-        </app-code-tabs>
+          </app-multiline-code>
+        </app-code-panel>
+      </app-code-tabs>
 
-        <app-more-info>
-            <app-link
-                href="https://css-tricks.com/slide-in-as-you-scroll-down-boxes/"
-                label="Slide-in as you scroll down cards"    
-            ></app-link>
-        </app-more-info>
-        
+      <app-more-info>
+        <app-link
+          href="https://css-tricks.com/slide-in-as-you-scroll-down-boxes/"
+          label="Slide-in as you scroll down cards"
+        ></app-link>
+      </app-more-info>
+      ${require('includes/comments-engine.html')}
     </app-article>
-
-</body>
-
+  </body>
 </html>
