@@ -141,13 +141,19 @@ deploy () {
   git reset deploy-to-gh-pages --hard
 
   echo -e "${GREEN}\ngit push${NORMAL}"
-  git push
+  git push -f
 
   echo -e "${GREEN}\ncd ..${NORMAL}"
   cd ..
 
   echo -e "${GREEN}\nrm -rf deploy-to-gh-pages${NORMAL}"
   rm -rf deploy-to-gh-pages
+
+  echo -e "${GREEN}\ngit checkout -b deploy-to-gh-pages${NORMAL}"
+  git worktree remove deploy-to-gh-pages --force
+
+  echo -e "${GREEN}\ngit branch -D deploy-to-gh-pages${NORMAL}"
+  git branch -D deploy-to-gh-pages
 
   echo -e "${GREEN}\nDone!${NORMAL}"
 }

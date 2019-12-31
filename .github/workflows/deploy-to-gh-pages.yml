@@ -16,9 +16,51 @@ jobs:
           npm run-script build
 
       - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@releases/v3
-        with:
-          BASE_BRANCH: dev
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          BRANCH: master
-          FOLDER: dist
+        run: |
+          echo -e "\\033[1;36mgit worktree add --checkout deploy-to-gh-pages origin/master\\033[0;02m"
+          git worktree add --checkout deploy-to-gh-pages origin/master
+
+          echo -e "\\033[1;36mrm -rf deploy-to-gh-pages/*\\033[0;02m"
+          rm -rf deploy-to-gh-pages/*
+
+          echo -e "\\033[1;36mcp -r dist/* deploy-to-gh-pages/\\033[0;02m"
+          cp -r dist/* deploy-to-gh-pages/
+
+          echo -e "\\033[1;36mcd deploy-to-gh-pages/\\033[0;02m"
+          cd deploy-to-gh-pages/
+
+          echo -e "\\033[1;36mgit checkout -b deploy-to-gh-pages\\033[0;02m"
+          git checkout -b deploy-to-gh-pages
+
+          echo -e "\\033[1;36mgit log dev | head -n1 > version.txt\\033[0;02m"
+          git log origin/dev | head -n1 > version.txt
+
+          echo -e "\\033[1;36mgit add .\\033[0;02m"
+          git add .
+
+          echo -e "\\033[1;36mgit config user.name ahenteti\\033[0;02m"
+          git config user.name ahenteti
+
+          echo -e "\\033[1;36mgit config user.email ahmad.henteti@gmail.com\\033[0;02m"
+          git config user.email ahmad.henteti@gmail.com
+
+          echo -e "\\033[1;36mgit remote set-url origin https://*****@github.com/ahenteti.github.io\\033[0;02m"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/ahenteti/ahenteti.github.io
+
+          echo -e "\\033[1;36mgit commit -am deploying new version of the website to github pages\\033[0;02m"
+          git commit -am "deploying new version of the website to github pages"
+
+          echo -e "\\033[1;36mgit checkout master\\033[0;02m"
+          git checkout master
+
+          echo -e "\\033[1;36mgit reset deploy-to-gh-pages --hard\\033[0;02m"
+          git reset deploy-to-gh-pages --hard
+
+          echo -e "\\033[1;36mgit push\\033[0;02m"
+          git push
+
+          echo -e "\\033[1;36mcd ..\\033[0;02m"
+          cd ..
+
+          echo -e "\\033[1;36mrm -rf deploy-to-gh-pages\\033[0;02m"
+          rm -rf deploy-to-gh-pages

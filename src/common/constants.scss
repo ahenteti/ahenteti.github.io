@@ -1,7 +1,7 @@
 body {
   // color constants
   --white-color: #fff;
-  --primary-color: #078eed;
+
   --primary-color-light: #66bfff;
   --primary-code-highlight-color: #394048;
   --code-highlight-color: #504048;
@@ -100,5 +100,5 @@ body.light {
   --demo-button-background-color: var(--white-color);
   --fancy-title-background-color: var(--white-color);
   --search-component-input-background-color: var(--white-color);
-  --loader-primary-color: rgb(230, 230, 230);
+  --loader-primary-color: #eee;
 }
