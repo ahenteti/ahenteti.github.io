@@ -1,18 +1,18 @@
 class AppArticleCard extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
+  constructor() {
+    super();
+    this._root = this.attachShadow({ mode: 'open' });
+    this._commonCss = window.webpackManifest['common.css'];
+  }
 
-    connectedCallback() {
-        this._url = this.getAttribute('url');
-        this._name = this.getAttribute('name');
-        this._publicationDate = this.getAttribute('publicationDate');
-        this._tags = this.getAttribute('tags').split(',');
-        this._relatedArticle = this.getAttribute('related-article') || false;
+  connectedCallback() {
+    this._url = this.getAttribute('url');
+    this._name = this.getAttribute('name');
+    this._publicationDate = this.getAttribute('publicationDate');
+    this._tags = this.getAttribute('tags').split(',');
+    this._relatedArticle = this.getAttribute('related-article') || false;
 
-        this._root.innerHTML = /* html */ `
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
 
@@ -95,25 +95,25 @@ class AppArticleCard extends HTMLElement {
         </div>
       </a>
     `;
-        this._container = this._root.querySelector('.container');
+    this._container = this._root.querySelector('.container');
 
-        this.alreadyVisible = function() {
-            let position = this.getBoundingClientRect();
-            return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
-        };
+    this.alreadyVisible = function() {
+      const position = this.getBoundingClientRect();
+      return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
+    };
 
-        this.addAlreadyVisibleClass = function() {
-            this._container.classList.add('already-visible');
-        };
+    this.addAlreadyVisibleClass = function() {
+      this._container.classList.add('already-visible');
+    };
 
-        this.addNotYetVisibleClass = function() {
-            this._container.classList.add('not-yet-visible');
-        };
+    this.addNotYetVisibleClass = function() {
+      this._container.classList.add('not-yet-visible');
+    };
 
-        this.addComeInClass = function() {
-            this._container.classList.add('come-in');
-        };
-    }
+    this.addComeInClass = function() {
+      this._container.classList.add('slide-in');
+    };
+  }
 }
 
 window.customElements.define('app-article-card', AppArticleCard);

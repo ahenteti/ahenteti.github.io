@@ -1,15 +1,10 @@
-class AppLogo extends HTMLElement {
-  constructor () {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-    this._size = this.getAttribute('size') || '25px';
-  }
+import AppElement from './app-element';
 
-  connectedCallback () {
-    this._root.innerHTML = /* html */`
+class AppLogo extends AppElement {
+  connectedCallback() {
+    this._size = this.getAttribute('size') || '25px';
+    this._root.innerHTML = /* html */ `
       <style>
-        @import "${this._commonCss}";
         .container {
           position: relative;
           width: ${this._size};

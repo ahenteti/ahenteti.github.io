@@ -1,15 +1,11 @@
-class AppFancyTitle extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
+import AppElement from './app-element';
 
-    connectedCallback() {
-        this._value = this.getAttribute('value');
-        this._root.innerHTML = /* html */ `
+class AppFancyTitle extends AppElement {
+  connectedCallback() {
+    super.connectedCallback();
+    this._value = this.getAttribute('value');
+    this._root.innerHTML += /* html */ `
       <style>
-        @import "${this._commonCss}";
         .fancy-title {
           margin: 2.5rem 0;
           color: var(--title-color);
@@ -46,25 +42,25 @@ class AppFancyTitle extends HTMLElement {
         <h2 class="fancy-title">${this._value}</h2>
       </div>
     `;
-        this._container = this._root.querySelector('.container');
+    this._container = this._root.querySelector('.container');
 
-        this.alreadyVisible = function() {
-            const position = this.getBoundingClientRect();
-            return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
-        };
+    this.alreadyVisible = function() {
+      const position = this.getBoundingClientRect();
+      return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
+    };
 
-        this.addAlreadyVisibleClass = function() {
-            this._container.classList.add('already-visible');
-        };
+    this.addAlreadyVisibleClass = function() {
+      this._container.classList.add('already-visible');
+    };
 
-        this.addNotYetVisibleClass = function() {
-            this._container.classList.add('not-yet-visible');
-        };
+    this.addNotYetVisibleClass = function() {
+      this._container.classList.add('not-yet-visible');
+    };
 
-        this.addComeInClass = function() {
-            this._container.classList.add('come-in');
-        };
-    }
+    this.addComeInClass = function() {
+      this._container.classList.add('slide-in');
+    };
+  }
 }
 
 window.customElements.define('app-fancy-title', AppFancyTitle);

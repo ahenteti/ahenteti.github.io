@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as hljs from 'common/vendor/highlight/highlight.min.js';
-import * as constants from '../../common/constants';
+import * as constants from '../../../common/constants';
 
 class AppArticle extends HTMLElement {
   constructor() {

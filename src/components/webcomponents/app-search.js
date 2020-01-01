@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 class AppSearchInput extends HTMLElement {
   constructor() {
     super();
@@ -73,7 +74,7 @@ class AppSearchSelect extends HTMLElement {
   }
 
   _calcTagWidth(tag) {
-    let text = document.createElement('span');
+    const text = document.createElement('span');
     text.style.fontSize = this._fontSize;
     document.body.appendChild(text);
     text.style.position = 'absolute';
@@ -84,20 +85,20 @@ class AppSearchSelect extends HTMLElement {
   }
 
   _buildSelectedOptionDiv() {
-    let span = document.createElement('span');
+    const span = document.createElement('span');
     span.innerHTML = 'all';
-    let dropdownArrowIcon = document.createElement('ion-icon');
+    const dropdownArrowIcon = document.createElement('ion-icon');
     dropdownArrowIcon.setAttribute('name', 'arrow-dropdown');
     dropdownArrowIcon.style.fontSize = '2rem';
     dropdownArrowIcon.style.marginLeft = '10px';
 
-    let dropupArrowIcon = document.createElement('ion-icon');
+    const dropupArrowIcon = document.createElement('ion-icon');
     dropupArrowIcon.setAttribute('class', 'hidden');
     dropupArrowIcon.setAttribute('name', 'arrow-dropup');
     dropupArrowIcon.style.fontSize = '2rem';
     dropupArrowIcon.style.marginLeft = '10px';
 
-    let option = document.createElement('div');
+    const option = document.createElement('div');
     option.appendChild(span);
     option.appendChild(dropdownArrowIcon);
     option.appendChild(dropupArrowIcon);
@@ -122,10 +123,10 @@ class AppSearchSelect extends HTMLElement {
     const dropupArrowIcon = selectedOption.querySelector('[name=arrow-dropup]');
 
     let maxTagWidth = 0;
-    let selectOptions = document.createElement('div');
+    const selectOptions = document.createElement('div');
     selectOptions.setAttribute('class', 'select-items hidden');
     ALL_TAGS.forEach(tag => {
-      let option = document.createElement('div');
+      const option = document.createElement('div');
       option.innerHTML = tag;
       maxTagWidth = Math.max(maxTagWidth, this._calcTagWidth(tag));
       option.setAttribute('class', 'select-option tag');
@@ -140,7 +141,7 @@ class AppSearchSelect extends HTMLElement {
     });
 
     selectOptions.addEventListener('click', function(e) {
-      let span = selectedOption.querySelector('span');
+      const span = selectedOption.querySelector('span');
       span.innerHTML = e.target.innerHTML;
     });
 

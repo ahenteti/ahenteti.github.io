@@ -1,0 +1,18 @@
+.slide-in {
+  animation: slide-in 0.8s ease forwards;
+}
+
+.already-visible {
+  transform: translateY(0);
+  animation: none;
+}
+
+.not-yet-visible {
+  transform: translateY(150px);
+}
+
+@keyframes slide-in {
+  to {
+    transform: translateY(0);
+  }
+}

@@ -1,12 +1,12 @@
 class __COMPONENT_CLASS_NAME__ extends HTMLElement {
-  constructor () {
+  constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
     this._commonCss = window.webpackManifest['common.css'];
   }
 
-  connectedCallback () {
-    this._root.innerHTML = /* html */`
+  connectedCallback() {
+    this._root.innerHTML = /* html */ `
       <style>
         @import "${this._commonCss}";
         

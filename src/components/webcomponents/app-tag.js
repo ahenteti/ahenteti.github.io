@@ -1,15 +1,10 @@
-class AppTag extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
+import AppElement from './app-element';
 
-    connectedCallback() {
-        this._value = this.getAttribute('value');
-        this._root.innerHTML = /* html */ `
+class AppTag extends AppElement {
+  connectedCallback() {
+    this._value = this.getAttribute('value');
+    this._root.innerHTML += /* html */ `
       <style>
-        @import "${this._commonCss}";
         :host(:hover) span, :host(.selected) span {
           background-color: var(--primary-color);
           color: var(--selected-tag-color);
@@ -25,7 +20,7 @@ class AppTag extends HTMLElement {
       </style>
       <span class="tag">${this._value}</span>
     `;
-    }
+  }
 }
 
 window.customElements.define('app-tag', AppTag);

@@ -102,3 +102,12 @@ body.light {
   --search-component-input-background-color: var(--white-color);
   --loader-primary-color: #eee;
 }
+
+html {
+  @media screen and (max-width: 720px) {
+    --font-size: 52%;
+  }
+  @media screen and (min-width: 720px) {
+    --font-size: 62.5%;
+  }
+}

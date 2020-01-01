@@ -1,4 +1,4 @@
-import * as constants from '../common/constants';
+import * as constants from '../../common/constants';
 
 class AppLogo extends HTMLElement {
   constructor() {
@@ -146,8 +146,9 @@ class AppLogo extends HTMLElement {
         $header.classList.remove('shadow');
       }
     });
-    if (localStorage.getItem(constants.LOCAL_STORAGE_FIRST_TIME_VISITING_THE_WEBSITE) === null) {
+    if (localStorage.getItem(constants.LOCAL_STORAGE_CHANGE_THEME_FEATURE) === null) {
       $changeThemeContainer.classList.add('first-visit');
+      localStorage.setItem(constants.LOCAL_STORAGE_CHANGE_THEME_FEATURE, '');
     }
   }
 }
