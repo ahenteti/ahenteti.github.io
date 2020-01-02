@@ -172,7 +172,7 @@ function renderCategory(category) {
 function calcArticleMarkup(article) {
   return /* html */ `
   <article-card-webcomponent class="article"
-    url="${article.url}"
+    slug="${article.slug}"
     name="${article.name}"
     publicationDate="${article.publicationDate}"
     tags="${article.tags}"

@@ -1,6 +1,6 @@
 {
   "name": "How to create executable jar file using maven",
-  "url": "how-to-create-executable-jar-file-using-maven.html",
+  "slug": "how-to-create-executable-jar-file-using-maven.html",
   "tags": "executable-jar,java,maven",
   "category": "java",
   "publicationDate": "Dec 23, 2019"

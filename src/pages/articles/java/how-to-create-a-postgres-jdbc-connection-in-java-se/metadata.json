@@ -1,6 +1,6 @@
 {
   "name": "How to create a postgres JDBC connection in Java SE",
-  "url": "how-to-create-a-postgres-jdbc-connection-in-java-se.html",
+  "slug": "how-to-create-a-postgres-jdbc-connection-in-java-se.html",
   "tags": "java,jdbc",
   "category": "java",
   "publicationDate": "août 25, 2019"

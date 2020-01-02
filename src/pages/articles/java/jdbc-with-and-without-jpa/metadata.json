@@ -1,6 +1,6 @@
 {
   "name": "JDBC with and without JPA",
-  "url": "jdbc-with-and-without-jpa.html",
+  "slug": "jdbc-with-and-without-jpa.html",
   "tags": "java,jdbc,jpa",
   "category": "java",
   "publicationDate": "août 31, 2019"

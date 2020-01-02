@@ -6,7 +6,7 @@ class AppArticleCard extends HTMLElement {
   }
 
   connectedCallback() {
-    this._url = this.getAttribute('url');
+    this._slug = this.getAttribute('slug');
     this._name = this.getAttribute('name');
     this._publicationDate = this.getAttribute('publicationDate');
     this._tags = this.getAttribute('tags').split(',');
@@ -81,7 +81,7 @@ class AppArticleCard extends HTMLElement {
         }
 
       </style>
-      <a href="${this._url}">
+      <a href="${this._slug}">
         <div class="container">
           <p class="name">${this._name}</p>
           <div class="tags">

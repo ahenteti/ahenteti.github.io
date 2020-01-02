@@ -1,6 +1,6 @@
 {
   "name": "JSF Primefaces demo",
-  "url": "jsf-primefaces-demo.html",
+  "slug": "jsf-primefaces-demo.html",
   "tags": "javaee,demo,jsf,primefaces",
   "category": "javaee",
   "publicationDate": "Oct 01, 2019"

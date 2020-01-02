@@ -1,6 +1,6 @@
 {
   "name": "OpenSSL quick tips",
-  "url": "openssl-quick-tips.html",
+  "slug": "openssl-quick-tips.html",
   "tags": "https,quick-tips,ssl",
   "category": "https",
   "publicationDate": "Sep 29, 2019"

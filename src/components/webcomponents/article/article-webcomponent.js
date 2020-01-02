@@ -191,7 +191,7 @@ class AppArticle extends HTMLElement {
 
     function findArticleMetadata() {
       for (const article of ALL_ARTICLES) {
-        if (window.location.pathname.includes(article.url)) {
+        if (window.location.pathname.includes(article.slug)) {
           return article;
         }
       }
@@ -201,7 +201,7 @@ class AppArticle extends HTMLElement {
     function renderArticle(article) {
       const markup = /* html */ `
       <article-card-webcomponent class="article related-article"
-        url="${article.url}"
+        slug="${article.slug}"
         name="${article.name}"
         publicationDate="${article.publicationDate}"
         tags="${article.tags}"
