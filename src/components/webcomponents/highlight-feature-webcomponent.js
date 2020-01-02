@@ -1,4 +1,4 @@
-import AppElement from './app-element';
+import AppElement from './element-webcomponent';
 
 class AppHighlightFeature extends AppElement {
   connectedCallback() {
@@ -57,4 +57,4 @@ class AppHighlightFeature extends AppElement {
   }
 }
 
-window.customElements.define('app-highlight-feature', AppHighlightFeature);
+window.customElements.define('highlight-feature-webcomponent', AppHighlightFeature);

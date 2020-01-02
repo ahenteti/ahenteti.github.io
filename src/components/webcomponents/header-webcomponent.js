@@ -69,7 +69,7 @@ class AppLogo extends HTMLElement {
                     align-items: center;
                 }
 
-                app-logo {
+                logo-webcomponent {
                     margin-right: 1rem;
                 }
 
@@ -87,10 +87,10 @@ class AppLogo extends HTMLElement {
                     position: relative;
                 }
 
-                .change-theme-container app-highlight-feature {
+                .change-theme-container highlight-feature-webcomponent {
                     display: none;
                 }
-                .change-theme-container.first-visit app-highlight-feature {
+                .change-theme-container.first-visit highlight-feature-webcomponent {
                     display: block;
                     position: absolute;
                     bottom: calc(-10rem - 2rem);
@@ -103,7 +103,7 @@ class AppLogo extends HTMLElement {
                 <ul>
                     <li class="left">
                     <a class="home" href="/">
-                        <app-logo></app-logo>
+                        <logo-webcomponent></logo-webcomponent>
                         <span>ahenteti notes</span>
                     </a>
                     </li>
@@ -121,7 +121,7 @@ class AppLogo extends HTMLElement {
                         <div class="change-theme-color tooltip-bottom" data-tooltip="change theme color">
                             <ion-icon name="contrast"></ion-icon>
                         </div>
-                        <app-highlight-feature></app-highlight-feature>
+                        <highlight-feature-webcomponent></highlight-feature-webcomponent>
                     </div>
                     </li>
                 </ul>
@@ -129,7 +129,7 @@ class AppLogo extends HTMLElement {
             </header>
         `;
     const $body = document.querySelector('body');
-    const $appHeader = document.querySelector('app-header');
+    const $appHeader = document.querySelector('header-webcomponent');
     const $header = $appHeader.shadowRoot.querySelector('header');
     const $changeThemeContainer = $appHeader.shadowRoot.querySelector('.change-theme-container');
     const $changeColorTheme = $appHeader.shadowRoot.querySelector('.change-theme-color');
@@ -153,4 +153,4 @@ class AppLogo extends HTMLElement {
   }
 }
 
-window.customElements.define('app-header', AppLogo);
+window.customElements.define('header-webcomponent', AppLogo);

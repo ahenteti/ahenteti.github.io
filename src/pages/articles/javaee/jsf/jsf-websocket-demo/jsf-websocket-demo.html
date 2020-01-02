@@ -3,13 +3,13 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">project structure</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+    <article-webcomponent>
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             .
@@ -32,11 +32,11 @@
                             
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">pom.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
@@ -108,11 +108,11 @@
                             &lt;/project&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">web.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">web.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -146,11 +146,11 @@
                             &lt;/web-app&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xhtml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">index.xhtml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xhtml">
             <pre slot="code">
                         <code>
                             &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
@@ -187,11 +187,11 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">HelloBean.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">HelloBean.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             package io.github.ahenteti.java;
@@ -224,17 +224,17 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="http://jj-blogger.blogspot.com/2016/02/a-look-at-upcoming-jsf-23-push-support.html"
           label="JSF 2.3 websocket support"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

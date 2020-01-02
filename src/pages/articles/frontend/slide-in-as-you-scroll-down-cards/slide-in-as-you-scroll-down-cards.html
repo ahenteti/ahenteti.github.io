@@ -2,15 +2,13 @@
 <html lang="en">
   ${require('includes/head.html')}
 
-  <link rel="stylesheet" href="css/slide-in-as-you-scroll-down-cards.css" />
-
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">Result</app-code-tab>
-        <app-code-panel class="result" slot="code-panel">
+    <article-webcomponent>
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
+        <code-panel-webcomponent class="result" slot="code-panel">
           <section class="demo">
             <div class="card"></div>
             <div class="card"></div>
@@ -28,10 +26,10 @@
             <div class="card"></div>
             <div class="card"></div>
           </section>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">html</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="html">
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">html</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="html">
             <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
@@ -78,11 +76,11 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">css</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="css">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">css</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="css">
             <pre slot="code">
                         <code>
                             *, *::before, *::after {
@@ -132,11 +130,11 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">javascript</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="js">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">javascript</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="js">
             <pre slot="code">
                         <code>
                             function alreadyVisible (card) {
@@ -166,17 +164,17 @@
                             })
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://css-tricks.com/slide-in-as-you-scroll-down-boxes/"
           label="Slide-in as you scroll down cards"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

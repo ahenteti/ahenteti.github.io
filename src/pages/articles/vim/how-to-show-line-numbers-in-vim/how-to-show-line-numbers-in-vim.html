@@ -3,19 +3,19 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
+    <article-webcomponent>
       <h2>Solution for opened files</h2>
       <p>Switch to <i>command mode</i>, if it is not the case, in your vim editor and set the following command</p>
-      <app-oneline-code code=":set number" language="vim"> </app-oneline-code>
+      <oneline-code-webcomponent code=":set number" language="vim"></oneline-code-webcomponent>
 
       <h2>Default solution</h2>
       <p>
         Add the following line to your vim configuration file
       </p>
-      <app-oneline-code code="echo ':set number' >> ~/.vimrc" language="bash"> </app-oneline-code>
+      <oneline-code-webcomponent code="echo ':set number' >> ~/.vimrc" language="bash"></oneline-code-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

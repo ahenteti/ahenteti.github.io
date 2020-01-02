@@ -54,9 +54,9 @@ class AppArticleInSerie extends HTMLElement {
         }
         
       </style>
-      <app-article article-title="${this._title}">
+      <article-webcomponent article-title="${this._title}">
         <slot></slot>
-      </app-article>
+      </article-webcomponent>
       <a class="prev-article" href="${this._prevArticleLink}">
         <div class="tooltip-container">
           <div class="tooltip-right" data-tooltip="${this._prevArticle}"></div>
@@ -71,10 +71,10 @@ class AppArticleInSerie extends HTMLElement {
       </a>
     `;
 
-        const $appArticleInSerie = document.querySelector('app-article-in-serie');
+        const $appArticleInSerie = document.querySelector('article-in-serie-webcomponent');
         const $prevArticle = $appArticleInSerie.shadowRoot.querySelector('.prev-article');
         const $nextArticle = $appArticleInSerie.shadowRoot.querySelector('.next-article');
     }
 }
 
-window.customElements.define('app-article-in-serie', AppArticleInSerie);
+window.customElements.define('article-in-serie-webcomponent', AppArticleInSerie);

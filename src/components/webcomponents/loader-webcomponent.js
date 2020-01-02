@@ -1,4 +1,4 @@
-import AppElement from './app-element';
+import AppElement from './element-webcomponent';
 
 class AppLoader extends AppElement {
   connectedCallback() {
@@ -47,4 +47,4 @@ class AppLoader extends AppElement {
   }
 }
 
-window.customElements.define('app-loader', AppLoader);
+window.customElements.define('loader-webcomponent', AppLoader);

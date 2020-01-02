@@ -12,15 +12,15 @@ class AppOnelineCode extends HTMLElement {
     this._language = this.getAttribute('language');
     this._code = this.getAttribute('code');
     this._root.innerHTML = /* html */`
-      <app-multiline-code language="${this.language}">
+      <multiline-code-webcomponent language="${this.language}">
         <pre slot="code">
           <code>
             ${this._code}
           </code>
         </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
     `;
   }
 }
 
-window.customElements.define('app-oneline-code', AppOnelineCode);
+window.customElements.define('oneline-code-webcomponent', AppOnelineCode);

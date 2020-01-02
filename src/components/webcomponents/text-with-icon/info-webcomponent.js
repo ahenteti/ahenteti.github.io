@@ -15,12 +15,12 @@ class AppInfo extends HTMLElement {
           --text-color: var(--info-component-text-color);
         }
       </style>
-      <app-text-with-icon icon="ios-information-circle">
+      <text-with-icon-webcomponent icon="ios-information-circle">
         <slot></slot>
-      </app-text-with-icon>
+      </text-with-icon-webcomponent>
       
     `;
     }
 }
 
-window.customElements.define('app-info', AppInfo);
+window.customElements.define('info-webcomponent', AppInfo);

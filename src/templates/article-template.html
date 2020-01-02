@@ -3,24 +3,24 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-oneline-code code="line of code" language="bash"> </app-oneline-code>
+    <article-webcomponent>
+      <oneline-code-webcomponent code="line of code" language="bash"></oneline-code-webcomponent>
 
-      <app-multiline-code language="bash">
+      <multiline-code-webcomponent language="bash">
         <pre slot="code">
                 <code>
                     line 1. 
                     line 2. 
                 </code>
             </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
 
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">project structure</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             .
@@ -28,21 +28,21 @@
                             └── src
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo"
           label="How to kill a process in windows 10"
-        ></app-link>
-        <app-link
+        ></link-webcomponent>
+        <link-webcomponent
           href="https://stackoverflow.com/questions/36652580/how-to-add-three-dots-to-text-when-overflow-in-html"
           label="Stackoverflow question"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

@@ -3,19 +3,19 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
+    <article-webcomponent>
       <h2>Definition</h2>
-      <app-quote author="Douglas Crockford">
+      <quote author="Douglas-webcomponent Crockford">
         <p>
           An inner function always has access to the vars and parameters of its outer function, even after the outer
           function has returned
         </p>
-      </app-quote>
+      </quote-webcomponent>
 
       <h2>closure function</h2>
-      <app-multiline-code>
+      <multiline-code-webcomponent>
         <pre slot="code">
                 <code>
                     function closureFunction() {
@@ -26,10 +26,10 @@
                     }
                 </code>
             </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
 
       <h2>non-closure function</h2>
-      <app-multiline-code>
+      <multiline-code-webcomponent>
         <pre slot="code">
                 <code>
                     function nonClosureFunction() {
@@ -38,8 +38,8 @@
                     }
                 </code>
             </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

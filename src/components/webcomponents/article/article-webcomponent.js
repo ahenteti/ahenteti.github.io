@@ -52,7 +52,7 @@ class AppArticle extends HTMLElement {
         }
 
         .related-articles {
-          --app-article-card-padding: 2rem;
+          --article-card-padding: 2rem;
           --article-card-background-color: var(--code-background-color);
           --border-color: var(--code-background-color);
           --tag-background-color: #394048;
@@ -93,7 +93,7 @@ class AppArticle extends HTMLElement {
       ${this._darkThemeRelatedArticlesStyles}
 
       <div class="container">
-        <app-article-title article-title="${this._title}"></app-article-title>
+        <article-title-webcomponent article-title="${this._title}"></article-title-webcomponent>
         <slot></slot>
         <h2 class="related-articles-title">Related articles</h2>
         <div class="related-articles"></div>
@@ -103,10 +103,10 @@ class AppArticle extends HTMLElement {
     // //////////////////////////////// //
     //        global variables          //
     // //////////////////////////////// //
-    const $appMultilineCode = document.querySelectorAll('app-multiline-code');
-    const $appOnelineCode = document.querySelectorAll('app-oneline-code');
-    const $articleComponent = document.querySelector('app-article');
-    const $articleTitleComponent = $articleComponent.shadowRoot.querySelector('app-article-title');
+    const $appMultilineCode = document.querySelectorAll('multiline-code-webcomponent');
+    const $appOnelineCode = document.querySelectorAll('oneline-code-webcomponent');
+    const $articleComponent = document.querySelector('article-webcomponent');
+    const $articleTitleComponent = $articleComponent.shadowRoot.querySelector('article-title-webcomponent');
     const $articleTitle = $articleTitleComponent.shadowRoot.querySelector('h1');
     const $articlePublicationDate = $articleTitleComponent.shadowRoot.querySelector('.publication-date');
     const $articleTagsContainer = $articleTitleComponent.shadowRoot.querySelector('.tags');
@@ -156,7 +156,7 @@ class AppArticle extends HTMLElement {
       $articlePublicationDate.innerHTML = currentArticleMetadata.publicationDate;
       $articleTagsContainer.innerHTML = currentArticleMetadata.tags
         .split(',')
-        .map(tag => `<app-tag value="${tag}"></app-tag>`)
+        .map(tag => `<tag-webcomponent value="${tag}"></tag-webcomponent>`)
         .join('');
     }
 
@@ -200,16 +200,16 @@ class AppArticle extends HTMLElement {
 
     function renderArticle(article) {
       const markup = /* html */ `
-      <app-article-card class="article related-article"
+      <article-card-webcomponent class="article related-article"
         url="${article.url}"
         name="${article.name}"
         publicationDate="${article.publicationDate}"
         tags="${article.tags}"
-      ></app-article-card>
+      ></article-card-webcomponent>
       `;
       $relatedArticlesContainer.insertAdjacentHTML('afterbegin', markup);
     }
   }
 }
 
-window.customElements.define('app-article', AppArticle);
+window.customElements.define('article-webcomponent', AppArticle);

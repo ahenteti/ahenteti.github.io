@@ -54,7 +54,7 @@ class AppSearchInput extends HTMLElement {
   }
 }
 
-window.customElements.define('app-search-input', AppSearchInput);
+window.customElements.define('search-input-webcomponent', AppSearchInput);
 
 class AppSearchSelect extends HTMLElement {
   constructor() {
@@ -233,7 +233,7 @@ class AppSearchSelect extends HTMLElement {
   }
 }
 
-window.customElements.define('app-search-select', AppSearchSelect);
+window.customElements.define('search-select-webcomponent', AppSearchSelect);
 
 class AppSearch extends HTMLElement {
   constructor() {
@@ -252,19 +252,19 @@ class AppSearch extends HTMLElement {
                 align-items: stretch;
               }
 
-              app-search-input {
+              search-input-webcomponent {
                 width: 100%;
               }
 
             </style>
             <div class="container">
-              <app-search-select></app-search-select>
-              <app-search-input></app-search-input>
+              <search-select-webcomponent></search-select-webcomponent>
+              <search-input-webcomponent></search-input-webcomponent>
             </div>
         `;
-    const $searchComponent = document.querySelector('app-search');
-    const $searchSelectComponent = $searchComponent.shadowRoot.querySelector('app-search-select');
-    const $searchInputComponent = $searchComponent.shadowRoot.querySelector('app-search-input');
+    const $searchComponent = document.querySelector('search-webcomponent');
+    const $searchSelectComponent = $searchComponent.shadowRoot.querySelector('search-select-webcomponent');
+    const $searchInputComponent = $searchComponent.shadowRoot.querySelector('search-input-webcomponent');
     const $searchInput = $searchInputComponent.shadowRoot.querySelector('input');
     let isInputFocused = false;
     $searchInputComponent.addEventListener('mouseover', function() {
@@ -286,4 +286,4 @@ class AppSearch extends HTMLElement {
   }
 }
 
-window.customElements.define('app-search', AppSearch);
+window.customElements.define('search-webcomponent', AppSearch);

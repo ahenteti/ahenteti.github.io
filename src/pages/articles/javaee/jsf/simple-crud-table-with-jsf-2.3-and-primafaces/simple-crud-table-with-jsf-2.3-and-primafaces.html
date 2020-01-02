@@ -3,13 +3,13 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">project structure</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+    <article-webcomponent>
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             .
@@ -43,11 +43,11 @@
                                                 └── default.css
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">pom.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
@@ -136,11 +136,11 @@
                             &lt;/project&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">web.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">web.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -170,11 +170,11 @@
                             &lt;/web-app&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">faces-config.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">faces-config.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version='1.0' encoding='UTF-8'?&gt;
@@ -206,11 +206,11 @@
                             &lt;/faces-config&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">beans.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">beans.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -221,11 +221,11 @@
                             &lt;/beans&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">persistence.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
@@ -241,11 +241,11 @@
                             &lt;/persistence&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">index.xhtml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xhtml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">index.xhtml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xhtml">
             <pre slot="code">
                         <code>
                             &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
@@ -341,11 +341,11 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">CustomerService.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">CustomerService.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.service;
@@ -394,11 +394,11 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">Customer.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Customer.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.model;
@@ -453,11 +453,11 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">CustomerController.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">CustomerController.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.controller;
@@ -518,11 +518,11 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">ConfigurationBean.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">ConfigurationBean.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             package io.github.ahenteti.java.config;
@@ -538,21 +538,21 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/jsf-crud-app-demo"
           label="Github source code"
-        ></app-link>
-        <app-link
+        ></link-webcomponent>
+        <link-webcomponent
           href="https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/"
           label="Simple crud table with JSF 2.3 and primefaces"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

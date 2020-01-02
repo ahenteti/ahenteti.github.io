@@ -3,10 +3,10 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-multiline-code language="css">
+    <article-webcomponent>
+      <multiline-code-webcomponent language="css">
         <pre slot="code">
                     <code>
                         &lt;div style="text-align:center"&gt;
@@ -14,15 +14,15 @@
                         &lt;/div&gt;
                     </code>
                 </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://stackoverflow.com/questions/9721831/how-do-i-center-an-anchor-element-in-css/9721865"
           label="Stackoverflow question"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

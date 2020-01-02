@@ -15,12 +15,12 @@ class AppWarn extends HTMLElement {
           --text-color: var(--warn-component-text-color);
         }
       </style>
-      <app-text-with-icon icon="ios-alert">
+      <text-with-icon-webcomponent icon="ios-alert">
         <slot></slot>
-      </app-text-with-icon>
+      </text-with-icon-webcomponent>
       
     `;
     }
 }
 
-window.customElements.define('app-warn', AppWarn);
+window.customElements.define('warn-webcomponent', AppWarn);

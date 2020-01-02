@@ -3,15 +3,15 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
+    <article-webcomponent>
       <h2>JDBC without JPA</h2>
 
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">Main.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Main.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             public class Main {
@@ -64,11 +64,11 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">Book.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Book.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             @Data
@@ -79,11 +79,11 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">pom.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
@@ -116,12 +116,12 @@
                             &lt;/project&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
 
-        <app-code-tab slot="code-tab">project structure</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             .
@@ -137,15 +137,15 @@
                                                         └── Main.java
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
       <h2>JDBC with JPA</h2>
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">Main.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Main.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             public class Main {
@@ -168,12 +168,12 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
 
-        <app-code-tab slot="code-tab">Book.java</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="java">
+        <code-tab-webcomponent slot="code-tab">Book.java</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="java">
             <pre slot="code">
                         <code>
                             <span class="highlight">@Entity</span>
@@ -186,12 +186,12 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
 
-        <app-code-tab slot="code-tab">pom.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+        <code-tab-webcomponent slot="code-tab">pom.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8" ?&gt;
@@ -243,12 +243,12 @@
                             &lt;/project&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
 
-        <app-code-tab slot="code-tab">persistence.xml</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+        <code-tab-webcomponent slot="code-tab">persistence.xml</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             &lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;
@@ -268,11 +268,11 @@
                             &lt;/persistence&gt;                                
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">project structure</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="xml">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="xml">
             <pre slot="code">
                         <code>
                             .
@@ -292,17 +292,17 @@
                                             └── persistence.xml
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/jdbc-with-and-without-jpa-demo"
           label="Github source code"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

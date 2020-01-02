@@ -39,7 +39,7 @@ displayedCertificate.dataset.index = 0;
 const displayedCertificateIndex = document.querySelector('.certificate-of-completion-image-container .index');
 displayedCertificateIndex.innerHTML = `1 / ${CERTIFICATES_OF_COMPLETION.length}`;
 
-const loader = document.querySelector('.certificate-of-completion-image-container app-loader');
+const loader = document.querySelector('.certificate-of-completion-image-container loader-webcomponent');
 
 certificatesOfCompletionArrowBack.addEventListener('click', () => handleCertificatesOfCompletionNavigation(BACK_ARROW));
 

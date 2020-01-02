@@ -9,35 +9,35 @@ YELLOW="\\033[1;33m"
 
 PROJECT_FILE="__PROJECT_FILE__"
 PROJECT_FILE_INDENTATION="                    "
-START_APP_MULTILINE_CODE_TAG='        <app-multiline-code language="bash">
+START_APP_MULTILINE_CODE_TAG='        <multiline-code-webcomponent language="bash">
             <pre slot="code">
                 <code>'
 END_APP_MULTILINE_CODE_TAG='                </code>
             </pre>
-        </app-multiline-code>'
+        </multiline-code-webcomponent>'
 
 PROJECT_FILES="__PROJECT_FILES__"
 PROJECT_FILES_INDENTATION="                            "
-START_APP_CODE_TABS_TAG='        <app-code-tabs>'
-START_PROJECT_STRUCTURE_APP_CODE_TAB_TAG='            <app-code-tab slot="code-tab">project structure</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="xml">
+START_APP_CODE_TABS_TAG='        <code-tabs-webcomponent>'
+START_PROJECT_STRUCTURE_APP_CODE_TAB_TAG='            <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+                <multiline-code-webcomponent language="xml">
                     <pre slot="code">
                         <code>'
 END_PROJECT_STRUCTURE_APP_CODE_TAB_TAG='                        </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>'
-END_APP_CODE_TABS_TAG='        </app-code-tabs>'
-START_APP_CODE_TAB_TAG='            <app-code-tab slot="code-tab">__SOURCE_FILENAME__</app-code-tab>
-            <app-code-panel slot="code-panel">
-                <app-multiline-code language="__SOURCE_FILENAME_EXTENSION__">
+                </multiline-code-webcomponent>
+            </code-panel-webcomponent>'
+END_APP_CODE_TABS_TAG='        </code-tabs-webcomponent>'
+START_APP_CODE_TAB_TAG='            <code-tab-webcomponent slot="code-tab">__SOURCE_FILENAME__</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+                <multiline-code-webcomponent language="__SOURCE_FILENAME_EXTENSION__">
                     <pre slot="code">
                         <code>'
 END_APP_CODE_TAB_TAG='                        </code>
                     </pre>
-                </app-multiline-code>
-            </app-code-panel>'
+                </multiline-code-webcomponent>
+            </code-panel-webcomponent>'
 
 name=
 tags=
@@ -228,7 +228,7 @@ newArticle() {
   echo -e "${GREEN}\nDone${NORMAL}"
 } 
 
-newComponent() {
+newebcomponent() {
   if [ -z $name ]; then
     printf "\n${GREEN}your component name: ${NORMAL}"
     read name
@@ -402,7 +402,7 @@ case $1 in
   new-article | na )
     newArticle ;;
   new-component | nc )
-    newComponent ;;
+    newebcomponent ;;
   deploy | d )
     deploy ;;
   copy-project-file | cpf )

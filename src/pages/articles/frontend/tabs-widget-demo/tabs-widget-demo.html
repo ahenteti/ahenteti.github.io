@@ -3,12 +3,12 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">Result</app-code-tab>
-        <app-code-panel class="result" slot="code-panel">
+    <article-webcomponent>
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
+        <code-panel-webcomponent class="result" slot="code-panel">
           <style>
             .result .tablist {
               padding: 3rem;
@@ -93,11 +93,11 @@
               }
             })();
           </script>
-        </app-code-panel>
+        </code-panel-webcomponent>
 
-        <app-code-tab selected="true" slot="code-tab">index.html</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="html">
+        <code-tab-webcomponent selected="true" slot="code-tab">index.html</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="html">
             <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
@@ -145,12 +145,12 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
 
-        <app-code-tab slot="code-tab">main.css</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="css">
+        <code-tab-webcomponent slot="code-tab">main.css</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="css">
             <pre slot="code">
                         <code>
                             *, *::before, *::after {
@@ -191,12 +191,12 @@
                                 
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
 
-        <app-code-tab slot="code-tab">main.js</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="javascript">
+        <code-tab-webcomponent slot="code-tab">main.js</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="javascript">
             <pre slot="code">
                         <code>
                             (function () {
@@ -223,21 +223,21 @@
                             })();
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/tabs-widget-demo"
           label="Github source code"
-        ></app-link>
-        <app-link
+        ></link-webcomponent>
+        <link-webcomponent
           href="https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html"
           label="Example of Tabs with Automatic Activation from W3C"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

@@ -20,7 +20,7 @@ class AppArticleCard extends HTMLElement {
           display: flex;
           flex-direction: column;
           justify-content: space-between;
-          padding: var(--app-article-card-padding, 3rem);
+          padding: var(--article-card-padding, 3rem);
           background-color: var(--article-card-background-color);
           position: relative;
           transition: box-shadow .2s;
@@ -72,7 +72,7 @@ class AppArticleCard extends HTMLElement {
           margin-bottom: 1.5rem;
         }
         
-        .tags app-tag {
+        .tags tag-webcomponent {
           margin: .3rem .5rem;
         }
 
@@ -86,7 +86,7 @@ class AppArticleCard extends HTMLElement {
           <p class="name">${this._name}</p>
           <div class="tags">
             <ion-icon name="ios-pricetags"></ion-icon>
-            ${this._tags.map(tag => `<app-tag value="${tag}"></app-tag>`).join('')}
+            ${this._tags.map(tag => `<tag-webcomponent value="${tag}"></tag-webcomponent>`).join('')}
           </div>
           <div class="publication-date">
             <ion-icon name="calendar"></ion-icon>
@@ -116,4 +116,4 @@ class AppArticleCard extends HTMLElement {
   }
 }
 
-window.customElements.define('app-article-card', AppArticleCard);
+window.customElements.define('article-card-webcomponent', AppArticleCard);

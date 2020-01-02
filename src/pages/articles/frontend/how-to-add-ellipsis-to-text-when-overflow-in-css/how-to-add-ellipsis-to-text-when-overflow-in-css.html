@@ -3,15 +3,15 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
+    <article-webcomponent>
       <h2>Ellipsis for Single Line Text</h2>
       <p>The current solution is based on <span class="code">text-overflow</span> CSS property</p>
       <br />
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">Result</app-code-tab>
-        <app-code-panel class="result" slot="code-panel">
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
+        <code-panel-webcomponent class="result" slot="code-panel">
           <style>
             .demo {
               padding: 4rem 0;
@@ -37,10 +37,10 @@
               </p>
             </div>
           </div>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">index.html</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="html">
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="html">
             <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
@@ -67,11 +67,11 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">style.css</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="css">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">style.css</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="css">
             <pre slot="code">
                         <code>
                             *,
@@ -122,17 +122,17 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
       <h2>Ellipsis for Multi Line Text</h2>
 
       <p>The current solution is based on <span class="code">javascript</span> to truncate long texts</p>
       <br />
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">project structure</app-code-tab>
-        <app-code-panel class="result" slot="code-panel">
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
+        <code-panel-webcomponent class="result" slot="code-panel">
           <style>
             .demo {
               line-height: 1.4;
@@ -164,13 +164,11 @@
             setTimeout(() => $overflowMultiLineTexts.forEach(ellipsizeTextBox), 0);
 
             function ellipsizeTextBox(element) {
-              console.log(element.offsetHeight);
               const maxLines = parseInt(element.dataset.maxLines) || 3;
               const elementLineHeight = calcElementLineHeight(element);
               let currentElementLines = calcCurrentElementLines(element, elementLineHeight);
               const wordArray = element.innerHTML.split(' ');
               element.style.textAlign = 'justify';
-              console.log('elementLineHeight: ' + elementLineHeight + ', maxLines: ' + maxLines);
               while (currentElementLines > maxLines) {
                 wordArray.pop();
                 element.innerHTML = wordArray.join(' ') + ' ...';
@@ -193,10 +191,10 @@
               return parseInt(res);
             }
           </script>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">index.html</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="html">
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="html">
             <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
@@ -224,11 +222,11 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">script.js</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="js">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">script.js</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="js">
             <pre slot="code">
                         <code>
                             const \$overflowMultiLineTexts = document.querySelectorAll('.overflow-multi-line');
@@ -263,11 +261,11 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">style.css</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="css">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">style.css</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="css">
             <pre slot="code">
                         <code>
                             *,
@@ -312,21 +310,21 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo"
           label="Github source code"
-        ></app-link>
-        <app-link
+        ></link-webcomponent>
+        <link-webcomponent
           href="http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/"
           label="Pure CSS for multiline truncation with ellipsis article by David Tintner & Sagi Shrieber"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

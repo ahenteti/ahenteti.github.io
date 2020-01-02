@@ -1,4 +1,4 @@
-import AppElement from './app-element';
+import AppElement from './element-webcomponent';
 
 class AppMoreInfo extends AppElement {
   connectedCallback() {
@@ -21,4 +21,4 @@ class AppMoreInfo extends AppElement {
   }
 }
 
-window.customElements.define('app-more-info', AppMoreInfo);
+window.customElements.define('more-info-webcomponent', AppMoreInfo);

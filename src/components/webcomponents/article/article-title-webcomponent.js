@@ -50,7 +50,7 @@ class AppArticleTitle extends HTMLElement {
           margin: 0 -.5rem;
         }
 
-        .tags app-tag {
+        .tags tag-webcomponent {
           margin: .3rem .5rem;
         }
 
@@ -83,4 +83,4 @@ class AppArticleTitle extends HTMLElement {
   }
 }
 
-window.customElements.define('app-article-title', AppArticleTitle);
+window.customElements.define('article-title-webcomponent', AppArticleTitle);

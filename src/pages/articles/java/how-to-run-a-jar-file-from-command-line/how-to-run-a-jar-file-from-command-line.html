@@ -3,9 +3,9 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
+    <article-webcomponent>
       <h2>Jars with predefined main class</h2>
       <p>
         Every jar must contain a <span class="code">MANIFEST.MF</span> file under the
@@ -14,7 +14,7 @@
         <span class="code">Main-Class</span> property set on it
       </p>
 
-      <app-multiline-code language="bash">
+      <multiline-code-webcomponent language="bash">
         <pre slot="code">
           <code>
             Manifest-Version: 1.0
@@ -25,12 +25,12 @@
             <span class="highlight">Main-Class: io.ahenteti.ahenteti.java.App</span>
           </code>
         </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
 
       <p>
         In order to run such jar, just type the following command in your terminal
       </p>
-      <app-oneline-code code="java -jar <i>jar-name.jar</i>" language="bash"> </app-oneline-code>
+      <oneline-code-webcomponent code="java -jar <i>jar-name.jar</i>" language="bash"></oneline-code-webcomponent>
 
       <h2>Jars without predefined main class</h2>
 
@@ -38,8 +38,8 @@
         In order to run such jar, you need to know the full path of the main class of this jar and use the following
         command
       </p>
-      <app-oneline-code code="java -cp <i>jar-name.jar full-path-to-the-main-class</i>" language="bash">
-      </app-oneline-code>
+      <oneline-code-webcomponent code="java -cp <i>jar-name.jar full-path-to-the-main-class</i>" language="bash">
+      </oneline-code-webcomponent>
 
       <h2>Jars with dependencies</h2>
       <p>
@@ -48,11 +48,11 @@
         dependencies<br /><br />
       </p>
       <p><b>Option 1 : </b>Specify the dependencies while running the jar in the command line</p>
-      <app-oneline-code code="java -cp <i>jar-name.jar;lib/* full-path-to-the-main-class</i>" language="bash">
-      </app-oneline-code>
+      <oneline-code-webcomponent code="java -cp <i>jar-name.jar;lib/* full-path-to-the-main-class</i>" language="bash">
+      </oneline-code-webcomponent>
 
       <p><b>Option 2 : </b>Specify the classpath of the jar in the MANIFEST.MF file</p>
-      <app-multiline-code language="bash">
+      <multiline-code-webcomponent language="bash">
         <pre slot="code">
           <code>
             Manifest-Version: 1.0
@@ -64,20 +64,20 @@
             Main-Class: io.ahenteti.ahenteti.java.App
           </code>
         </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
 
       <p>
         In order to run such jar, just type the following command in your terminal
       </p>
-      <app-oneline-code code="java -jar <i>jar-name.jar</i>" language="bash"> </app-oneline-code>
+      <oneline-code-webcomponent code="java -jar <i>jar-name.jar</i>" language="bash"></oneline-code-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://www.programmergate.com/run-jar-file-command-line/"
           label="ProgrammerGate run-jar-file-command-line article"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

@@ -3,12 +3,12 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-code-tabs>
-        <app-code-tab slot="code-tab">Result</app-code-tab>
-        <app-code-panel class="result" slot="code-panel">
+    <article-webcomponent>
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
+        <code-panel-webcomponent class="result" slot="code-panel">
           <style>
             .demo {
               padding: 4rem;
@@ -64,10 +64,10 @@
               <div class="arrow-left"></div>
             </div>
           </div>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">index.html</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="html">
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="html">
             <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
@@ -94,11 +94,11 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-        <app-code-tab slot="code-tab">style.css</app-code-tab>
-        <app-code-panel slot="code-panel">
-          <app-multiline-code language="css">
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">style.css</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="css">
             <pre slot="code">
                         <code>
                             *,
@@ -173,16 +173,16 @@
                             }
                         </code>
                     </pre>
-          </app-multiline-code>
-        </app-code-panel>
-      </app-code-tabs>
-      <app-more-info>
-        <app-link
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://css-tricks.com/snippets/css/css-triangle/"
           label="CSS-TRICKS CSS Triangle article"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

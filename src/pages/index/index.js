@@ -9,15 +9,17 @@ import './index.scss';
 const $searchSection = document.querySelector('.search');
 const $articles = document.querySelector('.articles');
 const $noResult = document.querySelector('.no-result');
-const $searchComponent = document.querySelector('app-search');
+const $searchComponent = document.querySelector('search-webcomponent');
 const $searchSelectedOption = $searchComponent.shadowRoot
-  .querySelector('app-search-select')
+  .querySelector('search-select-webcomponent')
   .shadowRoot.querySelector('.select-selected')
   .querySelector('span');
 const $searchInputContainer = $searchComponent.shadowRoot
-  .querySelector('app-search-input')
+  .querySelector('search-input-webcomponent')
   .shadowRoot.querySelector('.container');
-const $searchInput = $searchComponent.shadowRoot.querySelector('app-search-input').shadowRoot.querySelector('input');
+const $searchInput = $searchComponent.shadowRoot
+  .querySelector('search-input-webcomponent')
+  .shadowRoot.querySelector('input');
 
 // ////////////////////////////// //
 //         main actions           //
@@ -70,7 +72,7 @@ function handleSearchInputBlurEvent() {
 
 function selectTags(value) {
   document.querySelectorAll('.article').forEach(article => {
-    article.shadowRoot.querySelectorAll('app-tag').forEach(tag => {
+    article.shadowRoot.querySelectorAll('tag-webcomponent').forEach(tag => {
       if (tag.shadowRoot.querySelector('span').innerText == value) {
         tag.classList.add('selected');
       }
@@ -163,18 +165,18 @@ function renderArticles(articles) {
 }
 
 function renderCategory(category) {
-  const markup = /* html */ `<app-fancy-title value="${category}"></app-fancy-title>`;
+  const markup = /* html */ `<fancy-title-webcomponent value="${category}"></fancy-title-webcomponent>`;
   $articles.insertAdjacentHTML('beforeend', markup);
 }
 
 function calcArticleMarkup(article) {
   return /* html */ `
-  <app-article-card class="article"
+  <article-card-webcomponent class="article"
     url="${article.url}"
     name="${article.name}"
     publicationDate="${article.publicationDate}"
     tags="${article.tags}"
-  ></app-article-card>
+  ></article-card-webcomponent>
   `;
 }
 
@@ -205,12 +207,12 @@ function handleLocationSearchParam() {
 }
 
 function animateArticles() {
-  document.querySelectorAll('app-fancy-title').forEach(checkElementVisibility);
-  document.querySelectorAll('app-article-card').forEach(checkElementVisibility);
+  document.querySelectorAll('fancy-title-webcomponent').forEach(checkElementVisibility);
+  document.querySelectorAll('article-card-webcomponent').forEach(checkElementVisibility);
 
   window.addEventListener('scroll', function() {
-    document.querySelectorAll('app-fancy-title').forEach(addCssComeInClassIfVisible);
-    document.querySelectorAll('app-article-card').forEach(addCssComeInClassIfVisible);
+    document.querySelectorAll('fancy-title-webcomponent').forEach(addCssComeInClassIfVisible);
+    document.querySelectorAll('article-card-webcomponent').forEach(addCssComeInClassIfVisible);
   });
 }
 function addCssComeInClassIfVisible(element) {

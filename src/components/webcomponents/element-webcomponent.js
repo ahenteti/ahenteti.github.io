@@ -21,4 +21,4 @@ export default class AppElement extends HTMLElement {
   }
 }
 
-window.customElements.define('app-element', AppElement);
+window.customElements.define('element-webcomponent', AppElement);

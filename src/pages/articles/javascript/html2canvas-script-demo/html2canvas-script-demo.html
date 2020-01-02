@@ -3,10 +3,10 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
-      <app-multiline-code>
+    <article-webcomponent>
+      <multiline-code-webcomponent>
         <pre slot="code">
                 <code>
                     &lt;!DOCTYPE html&gt;
@@ -65,8 +65,8 @@
                     &lt;/html&gt;
                 </code>
             </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

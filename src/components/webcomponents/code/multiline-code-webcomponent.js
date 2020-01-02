@@ -177,4 +177,4 @@ class AppMultilineCode extends HTMLElement {
     }
 }
 
-window.customElements.define('app-multiline-code', AppMultilineCode);
+window.customElements.define('multiline-code-webcomponent', AppMultilineCode);

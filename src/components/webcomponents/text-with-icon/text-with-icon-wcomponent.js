@@ -1,12 +1,12 @@
 class AppTextWithIcon extends HTMLElement {
   constructor() {
     super();
-    this._root = this.attachShadow({ mode: "open" });
-    this._commonCss = window.webpackManifest["common.css"];
+    this._root = this.attachShadow({ mode: 'open' });
+    this._commonCss = window.webpackManifest['common.css'];
   }
 
   connectedCallback() {
-    this._icon = this.getAttribute("icon");
+    this._icon = this.getAttribute('icon');
     this._root.innerHTML = /* html */ `
     <style>
         @import "${this._commonCss}";
@@ -58,4 +58,4 @@ class AppTextWithIcon extends HTMLElement {
   }
 }
 
-window.customElements.define("app-text-with-icon", AppTextWithIcon);
+window.customElements.define('text-with-icon-webcomponent', AppTextWithIcon);

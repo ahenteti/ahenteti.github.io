@@ -21,4 +21,4 @@ class AppArticleSubTitle extends HTMLElement {
   }
 }
 
-window.customElements.define('app-article-subtitle', AppArticleSubTitle);
+window.customElements.define('article-subtitle-webcomponent', AppArticleSubTitle);

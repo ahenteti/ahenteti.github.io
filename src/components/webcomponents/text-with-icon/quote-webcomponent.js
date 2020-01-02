@@ -25,12 +25,12 @@ class AppQuote extends HTMLElement {
           color: var(--primary-color);
         }
       </style>
-      <app-text-with-icon icon="ios-quote">
+      <text-with-icon-webcomponent icon="ios-quote">
         <slot></slot>
         <p class=author>— ${this._author}</p>
-      </app-text-with-icon>
+      </text-with-icon-webcomponent>
     `;
     }
 }
 
-window.customElements.define('app-quote', AppQuote);
+window.customElements.define('quote-webcomponent', AppQuote);

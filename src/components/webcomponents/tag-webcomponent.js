@@ -1,4 +1,4 @@
-import AppElement from './app-element';
+import AppElement from './element-webcomponent';
 
 class AppTag extends AppElement {
   connectedCallback() {
@@ -23,4 +23,4 @@ class AppTag extends AppElement {
   }
 }
 
-window.customElements.define('app-tag', AppTag);
+window.customElements.define('tag-webcomponent', AppTag);

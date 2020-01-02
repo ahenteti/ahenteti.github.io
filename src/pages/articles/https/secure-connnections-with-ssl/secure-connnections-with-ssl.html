@@ -3,9 +3,9 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
+    <article-webcomponent>
       <h2>Encryption decryption overview</h2>
       <img src="./encryption_decryption_overview.png" alt="encryption decryption overview" />
 
@@ -48,19 +48,19 @@
       </table>
 
       <h2>Hash functions</h2>
-      <app-quote author="wikipedia">
+      <quote-webcomponent author="wikipedia">
         <p>
           A hash function is any function that can be used to map data of an <b>arbitrary size</b> to
           <b>fixed-size values</b>. The values returned by these functions cannot be <b>reverse engineered</b> to the
           original message
         </p>
-      </app-quote>
+      </quote-webcomponent>
 
       <h2>Digital Signature</h2>
       <img src="./digital-signature.png" alt="digital signature" />
 
       <h2>Digital Certificates</h2>
-      <app-quote author="wikipedia">
+      <quote-webcomponent author="wikipedia">
         <p class="mb-1">
           A digital certificate is an electronic document used to prove the ownership of a <b>public key</b>
         </p>
@@ -71,7 +71,7 @@
           <li>information about the entity has verified the certificate's contents, called the <b>issuer</b></li>
           <li>the digital signature of the <b>issuer</b></li>
         </ul>
-      </app-quote>
+      </quote-webcomponent>
 
       <h2>Procedure of obtaining a digital certificate</h2>
       <img src="./obtaining-digital-certificate-procedure.png" alt="" />
@@ -79,15 +79,21 @@
       <h2>SSL connection</h2>
       <img src="./ssl-connection.png" alt="" />
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://www.guru99.com/difference-encryption-decryption.html"
           label="difference between encryption and decryption"
-        ></app-link>
-        <app-link href="https://en.wikipedia.org/wiki/Hash_function" label="Hash functions"></app-link>
-        <app-link href="https://en.wikipedia.org/wiki/Digital_Certificate" label="Digital certificate"></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+        <link-webcomponent
+          href="https://en.wikipedia.org/wiki/Hash_function"
+          label="Hash functions"
+        ></link-webcomponent>
+        <link-webcomponent
+          href="https://en.wikipedia.org/wiki/Digital_Certificate"
+          label="Digital certificate"
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>

@@ -21,14 +21,14 @@ const entries = glob.sync('./src/pages/{index,about,articles}/**/*.js').reduce((
   return acc;
 }, {});
 entries.common = './src/common/common.js';
-entries.components = './src/components/components.js';
+entries.webcomponents = './src/components/webcomponents/webcomponents.js';
 
 const htmlWebpackPlugins = glob.sync('./src/pages/{index,about,articles}/**/*.html').reduce((acc, filePath) => {
   acc.push(
     new HtmlWebpackPlugin({
       filename: path.basename(filePath),
       template: filePath,
-      chunks: ['components', 'common', getBasenameWithoutExtension(filePath, '.html')],
+      chunks: ['webcomponents', 'common', getBasenameWithoutExtension(filePath, '.html')],
       chunksSortMode: 'manual'
     })
   );

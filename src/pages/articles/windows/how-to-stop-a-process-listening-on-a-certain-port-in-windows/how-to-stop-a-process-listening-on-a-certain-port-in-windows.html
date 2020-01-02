@@ -3,22 +3,22 @@
   ${require('includes/head.html')}
 
   <body>
-    <app-header></app-header>
+    <header-webcomponent></header-webcomponent>
 
-    <app-article>
+    <article-webcomponent>
       <h2>Find the process id from the server port</h2>
-      <app-oneline-code
+      <oneline-code-webcomponent
         code="netstat -a -b -o | findstr <span class='highlight-green'>server-port</span>"
         language="bash"
       >
-      </app-oneline-code>
+      </oneline-code-webcomponent>
 
       <h2>Kill the process</h2>
-      <app-oneline-code code="taskkill /F /PID <span class='highlight'>process-id</span>" language="bash">
-      </app-oneline-code>
+      <oneline-code-webcomponent code="taskkill /F /PID <span class='highlight'>process-id</span>" language="bash">
+      </oneline-code-webcomponent>
 
       <h2>Output example</h2>
-      <app-multiline-code language="bash">
+      <multiline-code-webcomponent language="bash">
         <pre slot="code">
                 <code>
                     » netstat -a -b -o | findstr <span class="highlight-green">60071</span>
@@ -27,19 +27,19 @@
                     » taskkill /F /PID <span class="highlight">4264</span>
                 </code>
             </pre>
-      </app-multiline-code>
+      </multiline-code-webcomponent>
 
-      <app-more-info>
-        <app-link
+      <more-info-webcomponent>
+        <link-webcomponent
           href="https://winaero.com/blog/kill-process-windows-10/"
           label="How to kill a process in windows 10"
-        ></app-link>
-        <app-link
+        ></link-webcomponent>
+        <link-webcomponent
           href="https://stackoverflow.com/questions/48198/how-can-you-find-out-which-process-is-listening-on-a-port-on-windows"
           label="How to find out which process is listening on a port on windows"
-        ></app-link>
-      </app-more-info>
+        ></link-webcomponent>
+      </more-info-webcomponent>
       ${require('includes/comments-engine.html')}
-    </app-article>
+    </article-webcomponent>
   </body>
 </html>
