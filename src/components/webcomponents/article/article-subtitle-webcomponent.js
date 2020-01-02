@@ -1,4 +1,4 @@
-class AppArticleSubTitle extends HTMLElement {
+class ArticleSubTitleWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -21,4 +21,4 @@ class AppArticleSubTitle extends HTMLElement {
   }
 }
 
-window.customElements.define('article-subtitle-webcomponent', AppArticleSubTitle);
+window.customElements.define('article-subtitle-webcomponent', ArticleSubTitleWebComponent);

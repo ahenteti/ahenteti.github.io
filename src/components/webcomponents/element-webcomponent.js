@@ -1,4 +1,4 @@
-export default class AppElement extends HTMLElement {
+export default class ElementWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -21,4 +21,4 @@ export default class AppElement extends HTMLElement {
   }
 }
 
-window.customElements.define('element-webcomponent', AppElement);
+window.customElements.define('element-webcomponent', ElementWebComponent);

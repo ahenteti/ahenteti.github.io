@@ -1,5 +1,5 @@
 /* eslint-disable no-return-assign */
-class AppCodeTabs extends HTMLElement {
+class CodeTabsWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -94,9 +94,9 @@ class AppCodeTabs extends HTMLElement {
   }
 }
 
-window.customElements.define('code-tabs-webcomponent', AppCodeTabs);
+window.customElements.define('code-tabs-webcomponent', CodeTabsWebComponent);
 
-class AppCodeTab extends HTMLElement {
+class CodeTabWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -142,9 +142,9 @@ class AppCodeTab extends HTMLElement {
   }
 }
 
-window.customElements.define('code-tab-webcomponent', AppCodeTab);
+window.customElements.define('code-tab-webcomponent', CodeTabWebComponent);
 
-class AppCodePanel extends HTMLElement {
+class CodePanelWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -174,4 +174,4 @@ class AppCodePanel extends HTMLElement {
   }
 }
 
-window.customElements.define('code-panel-webcomponent', AppCodePanel);
+window.customElements.define('code-panel-webcomponent', CodePanelWebComponent);

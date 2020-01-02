@@ -1,4 +1,4 @@
-class AppTextWithIcon extends HTMLElement {
+class TextWithIconWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -58,4 +58,4 @@ class AppTextWithIcon extends HTMLElement {
   }
 }
 
-window.customElements.define('text-with-icon-webcomponent', AppTextWithIcon);
+window.customElements.define('text-with-icon-webcomponent', TextWithIconWebComponent);

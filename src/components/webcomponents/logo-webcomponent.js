@@ -1,6 +1,6 @@
-import AppElement from './element-webcomponent';
+import ElementWebComponent from './element-webcomponent';
 
-class AppLogo extends AppElement {
+class LogoWebComponent extends ElementWebComponent {
   connectedCallback() {
     this._size = this.getAttribute('size') || '25px';
     this._root.innerHTML = /* html */ `
@@ -59,4 +59,4 @@ class AppLogo extends AppElement {
   }
 }
 
-window.customElements.define('logo-webcomponent', AppLogo);
+window.customElements.define('logo-webcomponent', LogoWebComponent);

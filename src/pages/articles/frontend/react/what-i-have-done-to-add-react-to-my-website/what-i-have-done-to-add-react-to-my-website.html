@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('includes/head.html')}
+
+  <body>
+    <header-webcomponent></header-webcomponent>
+
+    <article-webcomponent>
+      <h2>Before adding React</h2>
+      <p>
+        I was already using webpack and bable to bundle and transpile my project and here are the steps that I have
+        followed to add <a href="https://reactjs.org/">React</a> and discover its components which are more and more
+        popular today ;)
+      </p>
+      <h3 class="step">Add react & react-dom dependencies</h3>
+      <oneline-code-webcomponent
+        code="npm install --save-dev react react-dom"
+        language="bash"
+      ></oneline-code-webcomponent>
+
+      <h3 class="step">Add @babel/preset-react preset dependency</h3>
+      <oneline-code-webcomponent
+        code="npm install --save-dev @babel/preset-react"
+        language="bash"
+      ></oneline-code-webcomponent>
+
+      <h3 class="step">Update .babelrc configuration file</h3>
+      <multiline-code-webcomponent language="json">
+        <pre slot="code">
+          <code>
+            {
+              "presets": ["@babel/preset-env", <span class="highlight">"@babel/preset-react"</span>]
+            }
+          </code>
+        </pre>
+      </multiline-code-webcomponent>
+
+      <h2>After these changes</h2>
+      <p>I was able to add my first <a href="https://reactjs.org/">React</a> component to my website</p>
+      <br />
+      <br />
+
+      <code-tabs-webcomponent>
+        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
+        <code-panel-webcomponent class="result" slot="code-panel">
+          <div class="demo">
+            <div id="first-react-component"></div>
+          </div>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">react component code</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="javascript">
+            <pre slot="code">
+              <code>
+                import * as React from 'react';
+                
+                const HelloReact = () => &lt;button&gt;Hello React&lt;button&gt;;
+
+                export default HelloReact;
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+        <code-tab-webcomponent slot="code-tab">code added in the current html page</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="html">
+            <pre slot="code">
+              <code>
+                &lt;div id="first-react-component"&gt;&lt;/div&gt;
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+
+        <code-tab-webcomponent slot="code-tab">code added in the current javascript page</code-tab-webcomponent>
+        <code-panel-webcomponent slot="code-panel">
+          <multiline-code-webcomponent language="javascript">
+            <pre slot="code">
+              <code>
+                import * as React from 'react';
+                import * as ReactDOM from 'react-dom';
+                import HelloReact from './hello-reactcomponent';
+
+                const reactComponentContainer = document.getElementById('first-react-component');
+                ReactDOM.render(&lt;HelloReact /&gt;, reactComponentContainer);
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+        </code-panel-webcomponent>
+      </code-tabs-webcomponent>
+
+      <more-info-webcomponent>
+        <link-webcomponent
+          href="https://blog.jakoblind.no/babel-preset-env/"
+          label="Babel step-by-step from jakoblind blog"
+        ></link-webcomponent>
+      </more-info-webcomponent>
+
+      ${require('includes/comments-engine.html')}
+    </article-webcomponent>
+  </body>
+</html>

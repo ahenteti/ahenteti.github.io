@@ -1,4 +1,4 @@
-class AppArticleTitle extends HTMLElement {
+class ArticleTitleWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -83,4 +83,4 @@ class AppArticleTitle extends HTMLElement {
   }
 }
 
-window.customElements.define('article-title-webcomponent', AppArticleTitle);
+window.customElements.define('article-title-webcomponent', ArticleTitleWebComponent);

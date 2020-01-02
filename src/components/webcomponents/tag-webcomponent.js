@@ -1,6 +1,6 @@
-import AppElement from './element-webcomponent';
+import ElementWebComponent from './element-webcomponent';
 
-class AppTag extends AppElement {
+class TagWebComponent extends ElementWebComponent {
   connectedCallback() {
     this._value = this.getAttribute('value');
     this._root.innerHTML += /* html */ `
@@ -23,4 +23,4 @@ class AppTag extends AppElement {
   }
 }
 
-window.customElements.define('tag-webcomponent', AppTag);
+window.customElements.define('tag-webcomponent', TagWebComponent);

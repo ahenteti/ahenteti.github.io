@@ -1,6 +1,6 @@
-import AppElement from './element-webcomponent';
+import ElementWebComponent from './element-webcomponent';
 
-class AppLink extends AppElement {
+class LinkWebComponent extends ElementWebComponent {
   connectedCallback() {
     this._href = this.getAttribute('href') || '#';
     this._label = this.getAttribute('label');
@@ -36,4 +36,4 @@ class AppLink extends AppElement {
   }
 }
 
-window.customElements.define('link-webcomponent', AppLink);
+window.customElements.define('link-webcomponent', LinkWebComponent);

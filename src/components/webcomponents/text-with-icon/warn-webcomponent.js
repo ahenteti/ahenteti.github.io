@@ -1,4 +1,4 @@
-class AppWarn extends HTMLElement {
+class WarnWebComponent extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ mode: 'open' });
@@ -23,4 +23,4 @@ class AppWarn extends HTMLElement {
     }
 }
 
-window.customElements.define('warn-webcomponent', AppWarn);
+window.customElements.define('warn-webcomponent', WarnWebComponent);

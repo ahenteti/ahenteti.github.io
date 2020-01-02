@@ -46,6 +46,10 @@ td {
   font-size: 1.6rem;
 }
 
+p {
+  line-height: 1.5;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -76,6 +80,10 @@ img {
   background: var(--code-background-color);
   padding: 3px;
   border-radius: 2px;
+}
+
+h2 .code {
+  font-size: 2rem;
 }
 
 .monospace {

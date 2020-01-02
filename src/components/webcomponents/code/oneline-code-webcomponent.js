@@ -1,17 +1,17 @@
-class AppOnelineCode extends HTMLElement {
-  constructor () {
+class OnelineCodeWebComponent extends HTMLElement {
+  constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
   }
 
-  get language () {
+  get language() {
     return this._language;
-  };
+  }
 
-  connectedCallback () {
+  connectedCallback() {
     this._language = this.getAttribute('language');
     this._code = this.getAttribute('code');
-    this._root.innerHTML = /* html */`
+    this._root.innerHTML = /* html */ `
       <multiline-code-webcomponent language="${this.language}">
         <pre slot="code">
           <code>
@@ -23,4 +23,4 @@ class AppOnelineCode extends HTMLElement {
   }
 }
 
-window.customElements.define('oneline-code-webcomponent', AppOnelineCode);
+window.customElements.define('oneline-code-webcomponent', OnelineCodeWebComponent);

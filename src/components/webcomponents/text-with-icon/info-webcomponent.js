@@ -1,12 +1,12 @@
-class AppInfo extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
+class InfoWebComponent extends HTMLElement {
+  constructor() {
+    super();
+    this._root = this.attachShadow({ mode: 'open' });
+    this._commonCss = window.webpackManifest['common.css'];
+  }
 
-    connectedCallback() {
-        this._root.innerHTML = /* html */ `
+  connectedCallback() {
+    this._root.innerHTML = /* html */ `
       <style>
         :host {
           --icon-background-color: var(--info-component-icon-background-color);
@@ -20,7 +20,7 @@ class AppInfo extends HTMLElement {
       </text-with-icon-webcomponent>
       
     `;
-    }
+  }
 }
 
-window.customElements.define('info-webcomponent', AppInfo);
+window.customElements.define('info-webcomponent', InfoWebComponent);

@@ -1,6 +1,6 @@
-import AppElement from './element-webcomponent';
+import ElementWebComponent from './element-webcomponent';
 
-class AppFancyTitle extends AppElement {
+class FancyTitleWebComponent extends ElementWebComponent {
   connectedCallback() {
     super.connectedCallback();
     this._value = this.getAttribute('value');
@@ -63,4 +63,4 @@ class AppFancyTitle extends AppElement {
   }
 }
 
-window.customElements.define('fancy-title-webcomponent', AppFancyTitle);
+window.customElements.define('fancy-title-webcomponent', FancyTitleWebComponent);

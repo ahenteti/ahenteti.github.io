@@ -1,4 +1,4 @@
-class AppQuote extends HTMLElement {
+class QuoteWebComponent extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ mode: 'open' });
@@ -33,4 +33,4 @@ class AppQuote extends HTMLElement {
     }
 }
 
-window.customElements.define('quote-webcomponent', AppQuote);
+window.customElements.define('quote-webcomponent', QuoteWebComponent);

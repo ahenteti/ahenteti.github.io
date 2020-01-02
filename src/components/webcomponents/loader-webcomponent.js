@@ -1,6 +1,6 @@
-import AppElement from './element-webcomponent';
+import ElementWebComponent from './element-webcomponent';
 
-class AppLoader extends AppElement {
+class LoaderWebComponent extends ElementWebComponent {
   connectedCallback() {
     super.connectedCallback();
     this._root.innerHTML += /* html */ `
@@ -47,4 +47,4 @@ class AppLoader extends AppElement {
   }
 }
 
-window.customElements.define('loader-webcomponent', AppLoader);
+window.customElements.define('loader-webcomponent', LoaderWebComponent);

@@ -2,7 +2,7 @@
 import * as hljs from 'common/vendor/highlight/highlight.min.js';
 import * as constants from '../../../common/constants';
 
-class AppArticle extends HTMLElement {
+class ArticleWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -212,4 +212,4 @@ class AppArticle extends HTMLElement {
   }
 }
 
-window.customElements.define('article-webcomponent', AppArticle);
+window.customElements.define('article-webcomponent', ArticleWebComponent);

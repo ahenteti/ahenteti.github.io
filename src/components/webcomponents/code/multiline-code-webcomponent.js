@@ -1,4 +1,4 @@
-class AppMultilineCode extends HTMLElement {
+class MultilineCodeWebComponent extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ mode: 'open' });
@@ -177,4 +177,4 @@ class AppMultilineCode extends HTMLElement {
     }
 }
 
-window.customElements.define('multiline-code-webcomponent', AppMultilineCode);
+window.customElements.define('multiline-code-webcomponent', MultilineCodeWebComponent);

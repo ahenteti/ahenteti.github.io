@@ -223,7 +223,7 @@ newArticle() {
          --arg file_name "$file_name" \
          --arg category "$category" \
          --arg tags "$(jointBy , ${sortedTags[*]})" \
-         '{ name: $name, url: $file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
+         '{ name: $name, slug: $file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
          > $metadata
   echo -e "${GREEN}\nDone${NORMAL}"
 } 

@@ -1,4 +1,4 @@
-class AppArticleInSerie extends HTMLElement {
+class ArticleInSerieWebComponent extends HTMLElement {
     constructor() {
         super();
         this._root = this.attachShadow({ mode: 'open' });
@@ -77,4 +77,4 @@ class AppArticleInSerie extends HTMLElement {
     }
 }
 
-window.customElements.define('article-in-serie-webcomponent', AppArticleInSerie);
+window.customElements.define('article-in-serie-webcomponent', ArticleInSerieWebComponent);

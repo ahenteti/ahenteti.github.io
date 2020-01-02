@@ -1,6 +1,6 @@
-import AppElement from './element-webcomponent';
+import ElementWebComponent from './element-webcomponent';
 
-class AppMoreInfo extends AppElement {
+class MoreInfoWebComponent extends ElementWebComponent {
   connectedCallback() {
     this._root.innerHTML += /* html */ `
       <style>
@@ -21,4 +21,4 @@ class AppMoreInfo extends AppElement {
   }
 }
 
-window.customElements.define('more-info-webcomponent', AppMoreInfo);
+window.customElements.define('more-info-webcomponent', MoreInfoWebComponent);

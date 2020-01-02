@@ -1,6 +1,6 @@
 import * as constants from '../../common/constants';
 
-class AppLogo extends HTMLElement {
+class LogoWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -153,4 +153,4 @@ class AppLogo extends HTMLElement {
   }
 }
 
-window.customElements.define('header-webcomponent', AppLogo);
+window.customElements.define('header-webcomponent', LogoWebComponent);

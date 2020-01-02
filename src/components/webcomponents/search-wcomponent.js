@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-class AppSearchInput extends HTMLElement {
+class SearchInputWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -54,9 +54,9 @@ class AppSearchInput extends HTMLElement {
   }
 }
 
-window.customElements.define('search-input-webcomponent', AppSearchInput);
+window.customElements.define('search-input-webcomponent', SearchInputWebComponent);
 
-class AppSearchSelect extends HTMLElement {
+class SearchSelectWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -233,9 +233,9 @@ class AppSearchSelect extends HTMLElement {
   }
 }
 
-window.customElements.define('search-select-webcomponent', AppSearchSelect);
+window.customElements.define('search-select-webcomponent', SearchSelectWebComponent);
 
-class AppSearch extends HTMLElement {
+class SearchWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -286,4 +286,4 @@ class AppSearch extends HTMLElement {
   }
 }
 
-window.customElements.define('search-webcomponent', AppSearch);
+window.customElements.define('search-webcomponent', SearchWebComponent);

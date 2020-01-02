@@ -1,4 +1,4 @@
-class AppArticleCard extends HTMLElement {
+class ArticleCardWebComponent extends HTMLElement {
   constructor() {
     super();
     this._root = this.attachShadow({ mode: 'open' });
@@ -116,4 +116,4 @@ class AppArticleCard extends HTMLElement {
   }
 }
 
-window.customElements.define('article-card-webcomponent', AppArticleCard);
+window.customElements.define('article-card-webcomponent', ArticleCardWebComponent);
