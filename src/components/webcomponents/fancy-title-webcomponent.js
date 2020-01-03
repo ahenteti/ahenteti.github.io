@@ -6,6 +6,8 @@ class FancyTitleWebComponent extends ElementWebComponent {
     this._value = this.getAttribute('value');
     this._root.innerHTML += /* html */ `
       <style>
+        @import "${this._commonCss}";
+        
         .fancy-title {
           margin: 2.5rem 0;
           color: var(--title-color);

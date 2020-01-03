@@ -244,24 +244,26 @@ class SearchWebComponent extends HTMLElement {
 
   connectedCallback() {
     this._root.innerHTML = /* html */ `
-            <style>
-              @import "${this._commonCss}";
+      <style>
+        @import "${this._commonCss}";
 
-              .container {
-                display: flex;
-                align-items: stretch;
-              }
+        .container {
+          max-width: 60rem;
+          margin: 0 auto;
+          display: flex;
+          align-items: stretch;
+        }
 
-              search-input-webcomponent {
-                width: 100%;
-              }
+        search-input-webcomponent {
+          width: 100%;
+        }
 
-            </style>
-            <div class="container">
-              <search-select-webcomponent></search-select-webcomponent>
-              <search-input-webcomponent></search-input-webcomponent>
-            </div>
-        `;
+      </style>
+      <div class="container">
+        <search-select-webcomponent></search-select-webcomponent>
+        <search-input-webcomponent></search-input-webcomponent>
+      </div>
+  `;
     const $searchComponent = document.querySelector('search-webcomponent');
     const $searchSelectComponent = $searchComponent.shadowRoot.querySelector('search-select-webcomponent');
     const $searchInputComponent = $searchComponent.shadowRoot.querySelector('search-input-webcomponent');

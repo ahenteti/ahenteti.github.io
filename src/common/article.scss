@@ -1,6 +1,5 @@
 article-webcomponent {
   color: var(--text-color);
-  counter-reset: steps;
 }
 
 article-webcomponent h2 {
@@ -30,6 +29,10 @@ article-webcomponent h3 {
   font-size: 1.6rem;
   padding-bottom: 1rem;
   margin-top: 2rem;
+}
+
+article-webcomponent .steps {
+  counter-reset: steps;
 }
 
 article-webcomponent h3.step::before {

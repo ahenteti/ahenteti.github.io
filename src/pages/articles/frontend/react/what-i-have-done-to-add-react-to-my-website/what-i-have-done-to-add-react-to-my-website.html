@@ -9,31 +9,33 @@
       <h2>Before adding React</h2>
       <p>
         I was already using webpack and bable to bundle and transpile my project and here are the steps that I have
-        followed to add <a href="https://reactjs.org/">React</a> and discover its components which are more and more
-        popular today ;)
+        followed to add <a href="https://reactjs.org/">React</a> to this project to discover its components which are
+        more and more popular today ;)
       </p>
-      <h3 class="step">Add react & react-dom dependencies</h3>
-      <oneline-code-webcomponent
-        code="npm install --save-dev react react-dom"
-        language="bash"
-      ></oneline-code-webcomponent>
+      <div class="steps">
+        <h3 class="step">Add react & react-dom dependencies</h3>
+        <oneline-code-webcomponent
+          code="npm install --save-dev react react-dom"
+          language="bash"
+        ></oneline-code-webcomponent>
 
-      <h3 class="step">Add @babel/preset-react preset dependency</h3>
-      <oneline-code-webcomponent
-        code="npm install --save-dev @babel/preset-react"
-        language="bash"
-      ></oneline-code-webcomponent>
+        <h3 class="step">Add @babel/preset-react preset dependency</h3>
+        <oneline-code-webcomponent
+          code="npm install --save-dev @babel/preset-react"
+          language="bash"
+        ></oneline-code-webcomponent>
 
-      <h3 class="step">Update .babelrc configuration file</h3>
-      <multiline-code-webcomponent language="json">
-        <pre slot="code">
-          <code>
-            {
-              "presets": ["@babel/preset-env", <span class="highlight">"@babel/preset-react"</span>]
-            }
-          </code>
-        </pre>
-      </multiline-code-webcomponent>
+        <h3 class="step">Update .babelrc configuration file</h3>
+        <multiline-code-webcomponent language="json">
+          <pre slot="code">
+            <code>
+              {
+                "presets": ["@babel/preset-env", <span class="highlight">"@babel/preset-react"</span>]
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+      </div>
 
       <h2>After these changes</h2>
       <p>I was able to add my first <a href="https://reactjs.org/">React</a> component to my website</p>

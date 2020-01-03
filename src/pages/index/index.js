@@ -131,10 +131,18 @@ function findArticles() {
     }
     articlesByCategory[article.category].push(article);
   }
-  const sortedArticlesByCategory = Object.entries(articlesByCategory)
-    .sort(([category1], [category2]) => articlesByCategory[category1].length < articlesByCategory[category2].length)
-    .reduce((obj, [key, value]) => Object.assign(obj, { [key]: value }), {});
+  const sortable = [];
+  for (const category in articlesByCategory) {
+    sortable.push([category, articlesByCategory[category]]);
+  }
+  sortable.sort(function(a, b) {
+    return b[1].length - a[1].length;
+  });
 
+  const sortedArticlesByCategory = {};
+  sortable.forEach(function(item) {
+    sortedArticlesByCategory[item[0]] = item[1];
+  });
   return sortedArticlesByCategory;
 }
 
@@ -207,12 +215,14 @@ function handleLocationSearchParam() {
 }
 
 function animateArticles() {
-  document.querySelectorAll('fancy-title-webcomponent').forEach(checkElementVisibility);
-  document.querySelectorAll('article-card-webcomponent').forEach(checkElementVisibility);
+  const fancyTitles = document.querySelectorAll('fancy-title-webcomponent');
+  const articles = document.querySelectorAll('article-card-webcomponent');
+  fancyTitles.forEach(checkElementVisibility);
+  articles.forEach(checkElementVisibility);
 
   window.addEventListener('scroll', function() {
-    document.querySelectorAll('fancy-title-webcomponent').forEach(addCssComeInClassIfVisible);
-    document.querySelectorAll('article-card-webcomponent').forEach(addCssComeInClassIfVisible);
+    fancyTitles.forEach(addCssComeInClassIfVisible);
+    articles.forEach(addCssComeInClassIfVisible);
   });
 }
 function addCssComeInClassIfVisible(element) {

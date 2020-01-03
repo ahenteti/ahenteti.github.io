@@ -158,10 +158,19 @@ function toArticlesByCategory(allArticles) {
     }
     articlesByCategory[article.category].push(article);
   }
-  const sortedArticlesByCategory = Object.entries(articlesByCategory)
-    .sort(([category1], [category2]) => articlesByCategory[category1].length < articlesByCategory[category2].length)
-    .reduce((obj, [key, value]) => Object.assign(obj, { [key]: value }), {});
 
+  const sortable = [];
+  for (const category in articlesByCategory) {
+    sortable.push([category, articlesByCategory[category]]);
+  }
+  sortable.sort(function(a, b) {
+    return b[1].length - a[1].length;
+  });
+
+  const sortedArticlesByCategory = {};
+  sortable.forEach(function(item) {
+    sortedArticlesByCategory[item[0]] = item[1];
+  });
   return sortedArticlesByCategory;
 }
 
