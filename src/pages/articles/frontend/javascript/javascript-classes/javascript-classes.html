@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('includes/head.html')}
+
+  <body>
+    <header-webcomponent></header-webcomponent>
+
+    <article-webcomponent>
+      <h2>Before ES6 specification</h2>
+      <multiline-code-webcomponent language="javascript">
+        <pre slot="code">
+          <code>
+            function Animal(name) {
+              this.name = name;
+            }
+            
+            Animal.prototype.getName = function() {
+              return this.name;
+            }
+            
+            const dog = new Animal('Dog');
+            dog.getName();
+          </code>
+        </pre>
+      </multiline-code-webcomponent>
+
+      <h2>After ES6 specification</h2>
+      <multiline-code-webcomponent language="javascript">
+        <pre slot="code">
+          <code>
+            class Animal {
+              constructor(name) {
+                this.name = name;
+              }
+              getName() {
+                return this.name;
+              }
+            }
+            
+            const dog = new Animal('Dog');
+            dog.getName(); 
+          </code>
+        </pre>
+      </multiline-code-webcomponent>
+
+      <h2>ES6 static methods</h2>
+      <multiline-code-webcomponent language="javascript">
+        <pre slot="code">
+          <code>
+            class Animal {
+              constructor(name) {
+                this.name = name;
+              }
+              getName() {
+                return this.name;
+              }
+              static getNames() {
+                for (const animal of arguments) {
+                  console.log(animal.getName());
+                }
+              }
+            }
+            
+            const dog = new Animal('Dog');
+            const cat = new Animal('Cat');
+            Animal.getNames(dog, cat);
+          </code>
+        </pre>
+      </multiline-code-webcomponent>
+
+      <more-info-webcomponent>
+        <link-webcomponent
+          href="https://medium.com/beginners-guide-to-mobile-web-development/javascript-introduction-to-es6-classes-ecb2db9fe985"
+          label="Medium javascript-introduction-to-es6-classes article"
+        ></link-webcomponent>
+      </more-info-webcomponent>
+      ${require('includes/comments-engine.html')}
+    </article-webcomponent>
+  </body>
+</html>
