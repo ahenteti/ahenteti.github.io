@@ -26,7 +26,7 @@ entries.webcomponents = './src/components/webcomponents/webcomponents.js';
 const htmlWebpackPlugins = glob.sync('./src/pages/{index,about,articles}/**/*.html').reduce((acc, filePath) => {
   acc.push(
     new HtmlWebpackPlugin({
-      filename: path.basename(filePath),
+      filename: calcHtmlWebpackPluginFilename(filePath),
       template: filePath,
       chunks: ['webcomponents', 'common', getBasenameWithoutExtension(filePath, '.html')],
       chunksSortMode: 'manual'
@@ -39,10 +39,8 @@ module.exports = {
   entry: entries,
   output: {
     path: path.resolve(__dirname, 'dist'),
+    publicPath: '/',
     filename: 'js/[name].[chunkhash].js'
-  },
-  resolve: {
-    modules: [path.resolve('./src'), path.resolve('./node_modules')]
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -113,6 +111,9 @@ module.exports = {
   },
   watchOptions: {
     ignored: ['./src/components/components.js']
+  },
+  resolve: {
+    modules: [path.resolve('./src'), path.resolve('./node_modules')]
   }
 };
 
@@ -202,4 +203,11 @@ function getArticlesTags() {
   let tagsArray = Array.from(tags);
   tagsArray.sort();
   return ['all', ...tagsArray];
+}
+
+function calcHtmlWebpackPluginFilename(filePath) {
+  if (filePath.includes('articles/')) {
+    return 'articles/' + path.basename(filePath);
+  }
+  return path.basename(filePath);
 }
