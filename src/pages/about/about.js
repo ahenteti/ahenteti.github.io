@@ -1,19 +1,19 @@
 import './about.scss';
 
 const CERTIFICATES_OF_COMPLETION = [
-  'img/certificate-design-patterns-java-behavioral.jpg',
-  'img/certificate-apache-web-server-install-config.jpg',
-  'img/certificate-build-asynchronous-restful-services-jersey.jpg',
-  'img/certificate-context-dependency-injection-1-1.jpg',
-  'img/certificate-droidcon-boston-2019-session-13.jpg',
-  'img/certificate-getting-started-spring-webflux.jpg',
-  'img/certificate-java-api-websockets-introduction.jpg',
-  'img/certificate-java-persistence-api-21.jpg',
-  'img/certificate-javascript-module-fundamentals.jpg',
-  'img/certificate-javaserver-faces-getting-started-java-ee.jpg',
-  'img/certificate-jcache-fundamentals.jpg',
-  'img/certificate-react-flux-building-applications.jpg',
-  'img/certificate-structuring-javascript.jpg'
+  'assets/img/certificate-design-patterns-java-behavioral.jpg',
+  'assets/img/certificate-apache-web-server-install-config.jpg',
+  'assets/img/certificate-build-asynchronous-restful-services-jersey.jpg',
+  'assets/img/certificate-context-dependency-injection-1-1.jpg',
+  'assets/img/certificate-droidcon-boston-2019-session-13.jpg',
+  'assets/img/certificate-getting-started-spring-webflux.jpg',
+  'assets/img/certificate-java-api-websockets-introduction.jpg',
+  'assets/img/certificate-java-persistence-api-21.jpg',
+  'assets/img/certificate-javascript-module-fundamentals.jpg',
+  'assets/img/certificate-javaserver-faces-getting-started-java-ee.jpg',
+  'assets/img/certificate-jcache-fundamentals.jpg',
+  'assets/img/certificate-react-flux-building-applications.jpg',
+  'assets/img/certificate-structuring-javascript.jpg'
 ];
 
 const BACK_ARROW = 'back';

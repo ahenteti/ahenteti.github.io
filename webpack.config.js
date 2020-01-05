@@ -56,7 +56,7 @@ module.exports = {
       ALL_ARTICLES_BY_CATEGORY: JSON.stringify(toArticlesByCategory(getArticlesMetadata())),
       ALL_TAGS: JSON.stringify(getArticlesTags())
     }),
-    new CopyWebpackPlugin([{ from: 'src/img', to: 'img' }])
+    new CopyWebpackPlugin([{ from: 'src/assets/', to: 'assets/' }])
   ],
   module: {
     rules: [
@@ -95,11 +95,11 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif)$/i,
-        loader: 'file-loader?name=img/[name].[ext]'
+        loader: 'file-loader?name=assets/img/[name].[ext]'
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,
-        loader: 'file-loader?name=fonts/[name].[ext]'
+        loader: 'file-loader?name=assets/fonts/[name].[ext]'
       }
     ]
   },
