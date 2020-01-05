@@ -1,5 +1,7 @@
 import * as React from 'react';
 
-const HelloReact = () => <button>Hello React</button>;
+import style from './hello-reactcomponent.module.css';
+
+const HelloReact = () => <h1 class={style.h1}>Hello React</h1>;
 
 export default HelloReact;

@@ -70,8 +70,26 @@ module.exports = {
       {
         test: /\.s?[ac]ss$/,
         use: ExtractTextPlugin.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                importLoaders: 1,
+                modules: true
+              }
+            },
+            'postcss-loader',
+            'sass-loader'
+          ]
+        }),
+        include: /\.module\.css$/
+      },
+      {
+        test: /\.s?[ac]ss$/,
+        use: ExtractTextPlugin.extract({
           use: ['css-loader', 'postcss-loader', 'sass-loader']
-        })
+        }),
+        exclude: /\.module\.css$/
       },
       {
         test: /\.html$/,
