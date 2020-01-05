@@ -1,4 +1,5 @@
 import './article.scss';
+import './article.js';
 import './comments.scss';
 import './common.scss';
 import * as constants from './constants.js';

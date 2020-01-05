@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  ${require('includes/head.html')}
+  ${require('templates/head.html')}
 
   <body>
     <header-webcomponent></header-webcomponent>
@@ -39,7 +39,6 @@
 
       <h2>How to amend a commit without changing last commit message</h2>
       <oneline-code-webcomponent code="git commit -a --amend --no-edit" language="bash"></oneline-code-webcomponent>
-      ${require('includes/comments-engine.html')}
     </article-webcomponent>
   </body>
 </html>

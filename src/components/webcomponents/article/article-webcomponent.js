@@ -40,8 +40,10 @@ class ArticleWebComponent extends HTMLElement {
           background: var(--article-background-color);
           width: 70%;
           padding: 8rem;
-          border-radius: .4rem;
-          margin: calc(var(--header-height) + 4rem) auto 4rem;
+          padding-bottom: 0;
+          border-top-left-radius: .4rem;
+          border-top-right-radius: .4rem;
+          margin: calc(var(--header-height) + 4rem) auto 0;
           box-shadow: var(--box-shadow);
         }
         
@@ -71,7 +73,8 @@ class ArticleWebComponent extends HTMLElement {
           .container {
             width: 80%;
             padding: 6rem;
-            margin: calc(var(--header-height) + 3rem) auto 3rem;
+            padding-bottom: 0;
+            margin: calc(var(--header-height) + 3rem) auto 0;
           }
         }
 
@@ -79,6 +82,7 @@ class ArticleWebComponent extends HTMLElement {
           .container {
             width: 100%;
             padding: 4rem;
+            padding-bottom: 0;
             border-radius: 0;
             margin: var(--header-height) auto 0;
           }
@@ -97,7 +101,6 @@ class ArticleWebComponent extends HTMLElement {
         <slot></slot>
         <h2 class="related-articles-title">Related articles</h2>
         <div class="related-articles"></div>
-        <slot name="comments"></slot>
       </div>
     `;
     // //////////////////////////////// //
@@ -113,21 +116,16 @@ class ArticleWebComponent extends HTMLElement {
     const $relatedArticlesContainer = $articleComponent.shadowRoot.querySelector('.related-articles');
     const $relatedArticlesTitle = $articleComponent.shadowRoot.querySelector('.related-articles-title');
 
-    // //////////////////////////////// //
-    //          main actions            //
-    // //////////////////////////////// //
+    // main actions
     highlightCodeSectionsAsync();
     renderArticleMetadata();
     renderRelatedArticles();
+    renderArticleCommentsContainer();
 
-    // ////////////////////////////// //
-    //        event listeners         //
-    // ////////////////////////////// //
+    // event listeners
     document.addEventListener('click', handleTagClickEvent);
 
-    // //////////////////////////////// //
-    //         util functions           //
-    // //////////////////////////////// //
+    // util functions
     function highlightCodeSectionsAsync() {
       setTimeout(() => {
         $appMultilineCode.forEach(el => {
@@ -170,9 +168,13 @@ class ArticleWebComponent extends HTMLElement {
           break;
         }
       }
-      if (currentArticleMetadata.relatedArticles.length == 0) {
+      if (currentArticleMetadata.relatedArticles.length === 0) {
         $relatedArticlesTitle.setAttribute('hidden', 'true');
       }
+    }
+
+    function renderArticleCommentsContainer() {
+      $articleComponent.insertAdjacentHTML('afterend', '<div class="article-comments"></div>');
     }
 
     function handleTagClickEvent(event) {

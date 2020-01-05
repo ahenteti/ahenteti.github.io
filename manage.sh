@@ -272,7 +272,7 @@ newReactComponent() {
   # add reactcomponent suffix
   componentFileName=$componentName"-reactcomponent"
   componentJsFileName=$componentName"-reactcomponent.js"
-  componentCssFileName=$componentName"-reactcomponent.common.scss"
+  componentCssFileName=$componentName"-reactcomponent.module.scss"
   componentClassName=$componentClassName"ReactComponent"
 
   componentJsFile=src/components/reactcomponents/$componentFileName/$componentJsFileName

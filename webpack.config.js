@@ -80,14 +80,14 @@ module.exports = {
             'sass-loader'
           ]
         }),
-        include: /\.module\.css$/
+        include: /\.module\.s?[ac]ss$/
       },
       {
         test: /\.s?[ac]ss$/,
         use: ExtractTextPlugin.extract({
           use: ['css-loader', 'postcss-loader', 'sass-loader']
         }),
-        exclude: /\.module\.css$/
+        exclude: /\.module\.s?[ac]ss$/
       },
       {
         test: /\.html$/,

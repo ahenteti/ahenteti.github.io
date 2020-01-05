@@ -11,9 +11,10 @@ class ArticleSubTitleWebComponent extends HTMLElement {
       <style>
         h2 {
           font-size: 2rem;
-          margin-top: 4rem;
           padding-top: 2rem;
           border-top: .3rem solid var(--border-color);
+          margin: 0;
+          color: var(--text-color);
         }
       </style>
       <h2>${this._title}</h2>
