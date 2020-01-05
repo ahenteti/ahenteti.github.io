@@ -228,7 +228,7 @@ newArticle() {
   echo -e "${GREEN}\nDone${NORMAL}"
 } 
 
-newebcomponent() {
+newWebComponent() {
   if [ -z $name ]; then
     printf "\n${GREEN}your component name: ${NORMAL}"
     read name
@@ -242,12 +242,47 @@ newebcomponent() {
     componentClassName=$componentClassName$(tr '[:lower:]' '[:upper:]' <<< ${i:0:1})${i:1}
   done
 
+  # add webcomponent suffix
+  componentName=$componentName"-webcomponent"
+  componentClassName=$componentClassName"WebComponent"
 
-  componentFile=src/components/$componentName.js
-  cp src/templates/component-template.js $componentFile
+  componentFile=src/components/webcomponents/$componentName.js
+  cp src/templates/webcomponent-template.js $componentFile
 
   sed -i "s/__COMPONENT_CLASS_NAME__/$componentClassName/g" $componentFile
   sed -i "s/__COMPONENT_NAME__/$componentName/g" $componentFile
+
+  echo -e "${GREEN}\nDone${NORMAL}"
+}
+
+newReactComponent() {
+  if [ -z $name ]; then
+    printf "\n${GREEN}your component name: ${NORMAL}"
+    read name
+  fi
+
+  componentName=$(echo "$name" | tr '[:upper:]' '[:lower:]')
+  
+  componentClassName=""
+  IFS='-' read -ra componentNameSplitted <<< "$componentName"; unset IFS
+  for i in ${componentNameSplitted[@]}; do
+    componentClassName=$componentClassName$(tr '[:lower:]' '[:upper:]' <<< ${i:0:1})${i:1}
+  done
+
+  # add reactcomponent suffix
+  componentFileName=$componentName"-reactcomponent"
+  componentJsFileName=$componentName"-reactcomponent.js"
+  componentCssFileName=$componentName"-reactcomponent.common.scss"
+  componentClassName=$componentClassName"ReactComponent"
+
+  componentJsFile=src/components/reactcomponents/$componentFileName/$componentJsFileName
+  componentCssFile=src/components/reactcomponents/$componentFileName/$componentCssFileName
+  mkdir -p src/components/reactcomponents/$componentFileName
+  cp src/templates/reactcomponent-template.js $componentJsFile
+  cp src/templates/reactcomponent-template.common.css $componentCssFile
+
+  sed -i "s/__COMPONENT_NAME__/$componentClassName/g" $componentJsFile
+  sed -i "s/__COMPONENT_CSS_FILES_NAME__/$componentCssFileName/g" $componentJsFile
 
   echo -e "${GREEN}\nDone${NORMAL}"
 }
@@ -401,8 +436,10 @@ done
 case $1 in 
   new-article | na )
     newArticle ;;
-  new-component | nc )
-    newebcomponent ;;
+  new-webcomponent | nwc )
+    newWebComponent ;;
+  new-reactcomponent | nrc )
+    newReactComponent ;;
   deploy | d )
     deploy ;;
   copy-project-file | cpf )
