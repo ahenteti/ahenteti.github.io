@@ -1,0 +1,87 @@
+.header {
+  background-color: var(--header-background);
+  width: 100%;
+  padding-left: 10%;
+  padding-right: 10%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  transition: box-shadow 0.2s ease-in;
+}
+
+.header.shadow {
+  box-shadow: var(--box-shadow);
+}
+
+.header nav {
+  width: 100%;
+}
+
+.header ul {
+  width: 100%;
+  margin: 0 auto;
+  min-height: var(--header-height);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left a,
+.right ion-icon {
+  color: var(--header-link-color);
+  margin: 0 1rem;
+  transition: var(--transition);
+  font-weight: bold;
+}
+
+.left {
+  margin-left: -1rem;
+}
+
+.right {
+  margin-right: -1rem;
+}
+
+.left a:hover,
+.right ion-icon:hover {
+  color: var(--primary-color);
+}
+
+.home {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.header logo-webcomponent {
+  margin-right: 1rem;
+}
+
+.header ion-icon {
+  font-size: 2.5rem;
+}
+
+.right {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.changeThemeContainer.first-visit {
+  position: relative;
+}
+
+.changeThemeContainer highlight-feature-webcomponent {
+  display: none;
+}
+
+.changeThemeContainer.first-visit highlight-feature-webcomponent {
+  display: block;
+  position: absolute;
+  bottom: calc(-10rem - 2rem);
+  left: -30rem;
+}

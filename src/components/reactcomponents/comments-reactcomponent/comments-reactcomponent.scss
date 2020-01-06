@@ -1,4 +1,9 @@
-.comments {
+.comments-reactcomponent {
+  margin-top: -1px;
+  overflow: hidden;
+}
+
+.comments-reactcomponent .inner {
   background: var(--article-background-color);
   width: 70%;
   padding: 8rem;
@@ -6,10 +11,11 @@
   margin: 0 auto calc(var(--header-height) + 4rem);
   border-bottom-left-radius: 0.4rem;
   border-bottom-right-radius: 0.4rem;
+  box-shadow: var(--box-shadow);
 }
 
 @media screen and (min-width: 720px) and (max-width: 1200px) {
-  .comments {
+  .comments-reactcomponent {
     width: 80%;
     padding: 6rem;
     padding-top: 4rem;
@@ -18,7 +24,7 @@
 }
 
 @media screen and (max-width: 720px) {
-  .comments {
+  .comments-reactcomponent {
     width: 100%;
     padding: 4rem;
     border-radius: 0;

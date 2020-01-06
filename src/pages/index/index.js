@@ -1,6 +1,8 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-return-assign */
 /* eslint-disable no-undef */
+import 'components/webcomponents/webcomponents.js';
+import 'common/common.js';
 import './index.scss';
 
 // ////////////////////////////// //
@@ -30,7 +32,7 @@ $searchInput.addEventListener('keyup', delay(handleSearchInputKeyupEvent, 500));
 $searchInput.addEventListener('focus', handleSearchInputFocusEvent);
 $searchInput.addEventListener('blur', handleSearchInputBlurEvent);
 handleLocationSearchParam();
-animateArticles();
+setTimeout(animateArticles, 0);
 
 // ////////////////////////////// //
 //        util functions          //

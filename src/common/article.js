@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import CommentsReactComponent from './../components/reactcomponents/comments-reactcomponent/comments-reactcomponent';
+import { Provider } from 'react-redux';
+import CommentsReduxContainer from 'redux/containers/CommentsReduxContainer';
+import store from 'redux/store';
 
 const $articleComments = document.querySelector('.article-comments');
 if ($articleComments) {
-  ReactDOM.render(<CommentsReactComponent />, $articleComments);
+  ReactDOM.render(
+    <Provider store={store}>
+      <CommentsReduxContainer />
+    </Provider>,
+    $articleComments
+  );
 }

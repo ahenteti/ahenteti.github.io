@@ -2,23 +2,29 @@ import './article.scss';
 import './article.js';
 import './comments.scss';
 import './common.scss';
-import * as constants from './constants.js';
+import * as commonConstants from 'common/constants.js';
+import * as themeConstants from 'redux/constants/ThemeConstants';
 import './constants.scss';
 import './slide-in.scss';
 import './table.scss';
 import './tooltip.scss';
-import './vendor/highlight/atom-one-light.min.css';
 import './vendor/font.css';
-
-// global variables
-const $body = document.querySelector('body');
-const $oneLineTexts = document.querySelectorAll('.one-line');
+import store from 'redux/store';
 
 // main actions
-$body.className = findTheme();
+const $oneLineTexts = document.querySelectorAll('.one-line');
+updateBodyCssClass();
+store.subscribe(updateBodyCssClass);
 $oneLineTexts.forEach(resizeTextFontSize);
 
 // functions
+function updateBodyCssClass() {
+  const theme = store.getState().theme;
+  const $body = document.querySelector('body');
+  $body.className = theme;
+  localStorage.setItem(commonConstants.LOCAL_STORAGE_THEME_KEY, theme);
+}
+
 function resizeTextFontSize(text) {
   let fontSize = parseInt(window.getComputedStyle(text).fontSize);
   for (let i = fontSize; i >= 0; i--) {
@@ -35,10 +41,13 @@ function isOverflown(element) {
 
 function findTheme() {
   const searchParam = new URLSearchParams(window.location.search);
-  let res = searchParam.get('theme');
-  if (!res) {
-    res = localStorage.getItem(constants.LOCAL_STORAGE_THEME_KEY);
+  const themeInput = searchParam.get('theme') || localStorage.getItem(commonConstants.LOCAL_STORAGE_THEME_KEY);
+  let theme;
+  if (themeConstants.DARK === themeInput) {
+    theme = themeConstants.DARK;
+  } else {
+    theme = themeConstants.LIGHT;
   }
-  localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, res);
-  return res;
+  localStorage.setItem(commonConstants.LOCAL_STORAGE_THEME_KEY, theme);
+  return theme;
 }

@@ -1,3 +1,5 @@
+import 'components/webcomponents/webcomponents.js';
+import 'common/common.js';
 import './what-i-have-done-to-add-react-to-my-website.scss';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';

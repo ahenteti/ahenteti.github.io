@@ -1,19 +1,13 @@
 /* eslint-disable no-return-assign */
-class CodeTabsWebComponent extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
+import ElementWebComponent from '../element-webcomponent';
 
+class CodeTabsWebComponent extends ElementWebComponent {
+  connectedCallback() {
     this._tabSlot = this.shadowRoot.querySelector('slot[name=tab]');
     this._panelSlot = this.shadowRoot.querySelector('slot[name=panel]');
-  }
-
-  connectedCallback() {
-    this._root.innerHTML = /* html */ `
+    super.connectedCallback();
+    this._root.innerHTML += /* html */ `
       <style>
-        @import "${this._commonCss}";
-
         .tab-container {
           display: flex;
           flex-wrap: wrap;

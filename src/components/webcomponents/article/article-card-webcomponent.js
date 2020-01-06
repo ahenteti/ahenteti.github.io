@@ -1,20 +1,16 @@
-class ArticleCardWebComponent extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-  }
+import ElementWebComponent from '../element-webcomponent';
 
+class ArticleCardWebComponent extends ElementWebComponent {
   connectedCallback() {
+    super.connectedCallback();
     this._slug = this.getAttribute('slug');
     this._name = this.getAttribute('name');
     this._publicationDate = this.getAttribute('publicationDate');
     this._tags = this.getAttribute('tags').split(',');
     this._relatedArticle = this.getAttribute('related-article') || false;
 
-    this._root.innerHTML = /* html */ `
+    this._root.innerHTML += /* html */ `
       <style>
-        @import "${this._commonCss}";
 
         .container {
           display: flex;
@@ -26,6 +22,11 @@ class ArticleCardWebComponent extends HTMLElement {
           transition: box-shadow .2s;
           transition: all .2s ease-in;
           border-bottom: 3px solid var(--border-color);
+        }
+
+        a {
+          text-decoration: none;
+          transition: color 0.2s ease-in;
         }
 
         .container:hover {
@@ -49,6 +50,7 @@ class ArticleCardWebComponent extends HTMLElement {
         }
 
         .publication-date {
+          font-size: 1.5rem;
           display: flex;
           flex-wrap: wrap;
           color: var(--text-color-light);
@@ -80,6 +82,26 @@ class ArticleCardWebComponent extends HTMLElement {
           margin-right: calc(1rem - .3rem);
         }
 
+        .slide-in {
+          animation: slide-in 0.8s ease forwards;
+        }
+
+        .already-visible {
+          transform: translateY(0);
+          animation: none;
+        }
+
+        .not-yet-visible {
+          transform: translateY(var(--slide-in-translate-y));
+        }
+
+        @keyframes slide-in {
+          to {
+            transform: translateY(0);
+          }
+        }
+
+
       </style>
       <a href="${this._slug}">
         <div class="container">
@@ -99,7 +121,7 @@ class ArticleCardWebComponent extends HTMLElement {
 
     this.alreadyVisible = function() {
       const position = this.getBoundingClientRect();
-      return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
+      return position.top < 0 || (position.top < window.innerHeight - 50 && position.bottom >= 0);
     };
 
     this.addAlreadyVisibleClass = function() {

@@ -8,7 +8,7 @@
 }
 
 .not-yet-visible {
-  transform: translateY(150px);
+  transform: translateY(var(--slide-in-translate-y));
 }
 
 @keyframes slide-in {

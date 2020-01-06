@@ -279,7 +279,7 @@ newReactComponent() {
   componentCssFile=src/components/reactcomponents/$componentFileName/$componentCssFileName
   mkdir -p src/components/reactcomponents/$componentFileName
   cp src/templates/reactcomponent-template.js $componentJsFile
-  cp src/templates/reactcomponent-template.common.css $componentCssFile
+  cp src/templates/reactcomponent-template.module.scss $componentCssFile
 
   sed -i "s/__COMPONENT_NAME__/$componentClassName/g" $componentJsFile
   sed -i "s/__COMPONENT_CSS_FILES_NAME__/$componentCssFileName/g" $componentJsFile

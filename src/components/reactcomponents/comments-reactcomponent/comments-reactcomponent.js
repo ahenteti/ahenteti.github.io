@@ -1,27 +1,46 @@
 import * as React from 'react';
 
-import style from './comments-reactcomponent.module.scss';
+import './comments-reactcomponent.scss';
+import * as themeConstants from '../../../redux/constants/ThemeConstants';
 
 class CommentsReactComponent extends React.Component {
   componentDidMount() {
+    this._calcUtterancesScript();
+  }
+
+  componentDidUpdate() {
+    this._calcUtterancesScript();
+  }
+
+  render() {
+    return (
+      <div className='comments-reactcomponent'>
+        <div className='inner'>
+          <article-subtitle-webcomponent subtitle='Comments'></article-subtitle-webcomponent>
+          <div ref={el => (this.utterancesContainer = el)}></div>
+        </div>
+      </div>
+    );
+  }
+
+  _calcUtterancesScript() {
+    this.utterancesContainer.innerHTML = '';
     const js = document.createElement('script');
     js.setAttribute('type', 'text/javascript');
     js.setAttribute('src', 'https://utteranc.es/client.js');
     js.setAttribute('repo', 'ahenteti/ahenteti.github.io');
     js.setAttribute('issue-term', 'pathname');
-    js.setAttribute('theme', this.props.theme || 'dark-blue');
+    js.setAttribute('theme', this._calcUtterancesTheme(this.props.theme));
     js.setAttribute('crossorigin', 'anonymous');
     js.setAttribute('async', 'true');
     this.utterancesContainer.appendChild(js);
   }
 
-  render() {
-    return (
-      <div class={style.comments}>
-        <article-subtitle-webcomponent subtitle='Comments'></article-subtitle-webcomponent>
-        <div ref={el => (this.utterancesContainer = el)}></div>
-      </div>
-    );
+  _calcUtterancesTheme(projectTheme) {
+    if (projectTheme === themeConstants.DARK) {
+      return 'dark-blue';
+    }
+    return 'github-light';
   }
 }
 

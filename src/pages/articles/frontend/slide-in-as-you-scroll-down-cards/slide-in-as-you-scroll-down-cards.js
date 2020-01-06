@@ -1,3 +1,5 @@
+import 'components/webcomponents/webcomponents.js';
+import 'common/common.js';
 import './slide-in-as-you-scroll-down-cards.scss';
 
 const demo = document.querySelector('.demo');

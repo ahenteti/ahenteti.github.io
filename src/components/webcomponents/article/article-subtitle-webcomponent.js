@@ -1,13 +1,9 @@
-class ArticleSubTitleWebComponent extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-  }
+import ElementWebComponent from '../element-webcomponent';
 
+class ArticleSubTitleWebComponent extends ElementWebComponent {
   connectedCallback() {
     this._title = this.getAttribute('subtitle');
-    this._root.innerHTML = /* html */ `
+    this._root.innerHTML += /* html */ `
       <style>
         h2 {
           font-size: 2rem;

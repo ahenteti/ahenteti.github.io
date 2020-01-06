@@ -1,15 +1,9 @@
 /* eslint-disable no-undef */
+import ElementWebComponent from '../element-webcomponent';
 import * as hljs from 'common/vendor/highlight/highlight.min.js';
 import * as constants from '../../../common/constants';
 
-class ArticleWebComponent extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-    this._commonJs = window.webpackManifest['common.js'];
-  }
-
+class ArticleWebComponent extends ElementWebComponent {
   calcThemeThemeRelatedArticlesStyles() {
     const lightTheme = window.localStorage
       .getItem(constants.LOCAL_STORAGE_THEME_KEY)
@@ -30,11 +24,188 @@ class ArticleWebComponent extends HTMLElement {
   }
 
   connectedCallback() {
+    super.connectedCallback();
     this._title = this.getAttribute('article-title');
     this._darkThemeRelatedArticlesStyles = this.calcThemeThemeRelatedArticlesStyles();
-    this._root.innerHTML = /* html */ `
+    this._root.innerHTML += /* html */ `
       <style>
-        @import "${this._commonCss}";
+
+        [data-tooltip] {
+            position: relative;
+        }
+
+        [data-tooltip]::before,
+        [data-tooltip]::after {
+            text-transform: initial;
+            z-index: 99;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s, opacity 0.2s;
+        }
+
+        [data-tooltip]:hover::before,
+        [data-tooltip]:hover::after {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        [data-tooltip].tooltip-top::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background-color: var(--tooltip-background-color);
+            color: var(--tooltip-color);
+            padding: 0.8rem 1.6rem;
+            border-radius: 0.3rem;
+            white-space: nowrap;
+            font-size: 1.4rem;
+
+            bottom: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        [data-tooltip].tooltip-top::after {
+            content: '';
+            position: absolute;
+            border-top: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+            border-right: var(--tooltip-triangle-height) solid transparent;
+            border-bottom: none;
+            border-left: var(--tooltip-triangle-height) solid transparent;
+
+            bottom: calc(100% + var(--tooltip-margin));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        [data-tooltip].tooltip-right::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background-color: var(--tooltip-background-color);
+            color: var(--tooltip-color);
+            padding: 0.8rem 1.6rem;
+            border-radius: 0.3rem;
+            white-space: nowrap;
+            font-size: 1.4rem;
+
+            top: 50%;
+            left: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+            transform: translateY(-50%);
+        }
+
+        [data-tooltip].tooltip-right::after {
+            content: '';
+            position: absolute;
+            border-top: var(--tooltip-triangle-height) solid transparent;
+            border-right: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+            border-bottom: var(--tooltip-triangle-height) solid transparent;
+            border-left: none;
+
+            top: 50%;
+            left: calc(100% + var(--tooltip-margin));
+            transform: translateY(-50%);
+        }
+
+        [data-tooltip].tooltip-bottom::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background-color: var(--tooltip-background-color);
+            color: var(--tooltip-color);
+            padding: 0.8rem 1.6rem;
+            border-radius: 0.3rem;
+            white-space: nowrap;
+            font-size: 1.4rem;
+
+            top: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        [data-tooltip].tooltip-bottom::after {
+            content: '';
+            position: absolute;
+            border-top: none;
+            border-right: var(--tooltip-triangle-height) solid transparent;
+            border-bottom: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+            border-left: var(--tooltip-triangle-height) solid transparent;
+
+            top: calc(100% + var(--tooltip-margin));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        [data-tooltip].tooltip-left::before {
+            content: attr(data-tooltip);
+            position: absolute;
+            background-color: var(--tooltip-background-color);
+            color: var(--tooltip-color);
+            padding: 0.8rem 1.6rem;
+            border-radius: 0.3rem;
+            white-space: nowrap;
+            font-size: 1.4rem;
+
+            top: 50%;
+            right: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+            transform: translateY(-50%);
+        }
+
+        [data-tooltip].tooltip-left::after {
+            content: '';
+            position: absolute;
+            border-top: var(--tooltip-triangle-height) solid transparent;
+            border-right: none;
+            border-bottom: var(--tooltip-triangle-height) solid transparent;
+            border-left: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+
+            top: 50%;
+            right: calc(100% + var(--tooltip-margin));
+            transform: translateY(-50%);
+        }
+
+        .container {
+          color: var(--text-color);
+        }
+
+        h2 {
+          margin-top: 3rem;
+          margin-bottom: 0.8rem;
+          padding-bottom: 0.8rem;
+          font-weight: bold;
+          font-size: 2rem;
+        }
+
+        h2::first-letter {
+          text-transform: uppercase;
+        }
+
+        ul li {
+          line-height: 2rem;
+          list-style-type: none;
+          list-style-position: inside;
+          padding-left: 1.5rem;
+        }
+
+        ul li::before {
+          content: '■';
+          padding-right: 1rem;
+        }
+
+        h3 {
+          font-size: 1.6rem;
+          padding-bottom: 1rem;
+          margin-top: 2rem;
+        }
+
+        .steps {
+          counter-reset: steps;
+        }
+
+        h3.step::before {
+          counter-increment: steps 1;
+          content: counter(steps) '.';
+          font-size: 3rem;
+          color: var(--primary-color);
+          padding-right: 1rem;
+        }
 
         .container {
           background: var(--article-background-color);

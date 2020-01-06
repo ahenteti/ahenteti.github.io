@@ -22,13 +22,14 @@ const entries = glob.sync('./src/pages/{index,about,articles}/**/*.js').reduce((
 }, {});
 entries.common = './src/common/common.js';
 entries.webcomponents = './src/components/webcomponents/webcomponents.js';
+entries.highlightStyle = './src/common/vendor/highlight/atom-one-light.min.js';
 
 const htmlWebpackPlugins = glob.sync('./src/pages/{index,about,articles}/**/*.html').reduce((acc, filePath) => {
   acc.push(
     new HtmlWebpackPlugin({
       filename: calcHtmlWebpackPluginFilename(filePath),
       template: filePath,
-      chunks: ['webcomponents', 'common', getBasenameWithoutExtension(filePath, '.html')],
+      chunks: ['highlightStyle', getBasenameWithoutExtension(filePath, '.html')],
       chunksSortMode: 'manual'
     })
   );
@@ -117,6 +118,7 @@ module.exports = {
   }
 };
 
+// devtool: 'source-map'
 function getBasenameWithoutExtension(filePath, extension) {
   return path.basename(filePath, extension);
 }

@@ -1,3 +1,5 @@
+import 'components/webcomponents/webcomponents.js';
+import 'common/common.js';
 import './about.scss';
 
 const CERTIFICATES_OF_COMPLETION = [

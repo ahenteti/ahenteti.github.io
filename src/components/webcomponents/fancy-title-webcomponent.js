@@ -6,8 +6,6 @@ class FancyTitleWebComponent extends ElementWebComponent {
     this._value = this.getAttribute('value');
     this._root.innerHTML += /* html */ `
       <style>
-        @import "${this._commonCss}";
-        
         .fancy-title {
           margin: 2.5rem 0;
           color: var(--title-color);
@@ -39,6 +37,26 @@ class FancyTitleWebComponent extends ElementWebComponent {
           bottom: -1rem;
           background: linear-gradient(to right, var(--primary-color), var(--fancy-title-background-color));
         }
+
+        .slide-in {
+          animation: slide-in 0.8s ease forwards;
+        }
+
+        .already-visible {
+          transform: translateY(0);
+          animation: none;
+        }
+
+        .not-yet-visible {
+          transform: translateY(var(--slide-in-translate-y));
+        }
+
+        @keyframes slide-in {
+          to {
+            transform: translateY(0);
+          }
+        }
+
       </style>
       <div class="container">
         <h2 class="fancy-title">${this._value}</h2>
