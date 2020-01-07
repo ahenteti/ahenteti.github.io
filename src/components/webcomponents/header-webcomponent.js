@@ -22,7 +22,7 @@ class LogoWebComponent extends ElementWebComponent {
 
         nav {
           width: 80%;
-          max-width: 1400px;
+          max-width: var(--max-width);
           margin: 0 auto;
         }
 

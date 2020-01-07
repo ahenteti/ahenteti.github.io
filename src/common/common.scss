@@ -27,7 +27,7 @@ a {
 
 main {
   width: 80%;
-  max-width: 1400px;
+  max-width: var(--max-width);
   margin: var(--header-height) auto;
 }
 

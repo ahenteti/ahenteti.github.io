@@ -10,137 +10,6 @@ class ArticleWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
       <style>
 
-        [data-tooltip] {
-            position: relative;
-        }
-
-        [data-tooltip]::before,
-        [data-tooltip]::after {
-            text-transform: initial;
-            z-index: 99;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0s, opacity 0.2s;
-        }
-
-        [data-tooltip]:hover::before,
-        [data-tooltip]:hover::after {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        [data-tooltip].tooltip-top::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            background-color: var(--tooltip-background-color);
-            color: var(--tooltip-color);
-            padding: 0.8rem 1.6rem;
-            border-radius: 0.3rem;
-            white-space: nowrap;
-            font-size: 1.4rem;
-
-            bottom: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        [data-tooltip].tooltip-top::after {
-            content: '';
-            position: absolute;
-            border-top: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-            border-right: var(--tooltip-triangle-height) solid transparent;
-            border-bottom: none;
-            border-left: var(--tooltip-triangle-height) solid transparent;
-
-            bottom: calc(100% + var(--tooltip-margin));
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        [data-tooltip].tooltip-right::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            background-color: var(--tooltip-background-color);
-            color: var(--tooltip-color);
-            padding: 0.8rem 1.6rem;
-            border-radius: 0.3rem;
-            white-space: nowrap;
-            font-size: 1.4rem;
-
-            top: 50%;
-            left: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-            transform: translateY(-50%);
-        }
-
-        [data-tooltip].tooltip-right::after {
-            content: '';
-            position: absolute;
-            border-top: var(--tooltip-triangle-height) solid transparent;
-            border-right: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-            border-bottom: var(--tooltip-triangle-height) solid transparent;
-            border-left: none;
-
-            top: 50%;
-            left: calc(100% + var(--tooltip-margin));
-            transform: translateY(-50%);
-        }
-
-        [data-tooltip].tooltip-bottom::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            background-color: var(--tooltip-background-color);
-            color: var(--tooltip-color);
-            padding: 0.8rem 1.6rem;
-            border-radius: 0.3rem;
-            white-space: nowrap;
-            font-size: 1.4rem;
-
-            top: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        [data-tooltip].tooltip-bottom::after {
-            content: '';
-            position: absolute;
-            border-top: none;
-            border-right: var(--tooltip-triangle-height) solid transparent;
-            border-bottom: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-            border-left: var(--tooltip-triangle-height) solid transparent;
-
-            top: calc(100% + var(--tooltip-margin));
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        [data-tooltip].tooltip-left::before {
-            content: attr(data-tooltip);
-            position: absolute;
-            background-color: var(--tooltip-background-color);
-            color: var(--tooltip-color);
-            padding: 0.8rem 1.6rem;
-            border-radius: 0.3rem;
-            white-space: nowrap;
-            font-size: 1.4rem;
-
-            top: 50%;
-            right: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-            transform: translateY(-50%);
-        }
-
-        [data-tooltip].tooltip-left::after {
-            content: '';
-            position: absolute;
-            border-top: var(--tooltip-triangle-height) solid transparent;
-            border-right: none;
-            border-bottom: var(--tooltip-triangle-height) solid transparent;
-            border-left: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-
-            top: 50%;
-            right: calc(100% + var(--tooltip-margin));
-            transform: translateY(-50%);
-        }
-
         .container {
           color: var(--text-color);
         }
@@ -189,6 +58,7 @@ class ArticleWebComponent extends ElementWebComponent {
 
         .container {
           background: var(--article-background-color);
+          max-width: var(--max-width);
           width: 70%;
           padding: 8rem;
           padding-bottom: 0;
@@ -205,10 +75,6 @@ class ArticleWebComponent extends ElementWebComponent {
         }
 
         .related-articles {
-          --article-card-padding: 2rem;
-          --article-card-background-color: var(--code-background-color);
-          --border-color: var(--code-background-color);
-          --tag-background-color: #394048;
           margin-top: 2rem;
           display: grid;
           min-width: 0;
