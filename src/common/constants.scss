@@ -53,6 +53,9 @@ body {
   --fancy-title-background-color: #1c1f23;
   --search-component-input-background-color: #262a2d;
   --loader-primary-color: #394048;
+  --related-article-card-background-color: #32373b;
+  --related-article-border-color: #32373b;
+  --related-article-tag-background-color: #394048;
 
   // non color constants
   --header-height: 6.5rem;
@@ -102,6 +105,9 @@ body.light {
   --fancy-title-background-color: var(--white-color);
   --search-component-input-background-color: var(--white-color);
   --loader-primary-color: #eee;
+  --related-article-card-background-color: #fcfcfc;
+  --related-article-border-color: #eee;
+  --related-article-tag-background-color: #f2f2f2;
 }
 
 html {

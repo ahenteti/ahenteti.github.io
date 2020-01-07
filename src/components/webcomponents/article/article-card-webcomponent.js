@@ -7,7 +7,6 @@ class ArticleCardWebComponent extends ElementWebComponent {
     this._name = this.getAttribute('name');
     this._publicationDate = this.getAttribute('publicationDate');
     this._tags = this.getAttribute('tags').split(',');
-    this._relatedArticle = this.getAttribute('related-article') || false;
 
     this._root.innerHTML += /* html */ `
       <style>

@@ -4,29 +4,9 @@ import * as hljs from 'common/vendor/highlight/highlight.min.js';
 import * as constants from '../../../common/constants';
 
 class ArticleWebComponent extends ElementWebComponent {
-  calcThemeThemeRelatedArticlesStyles() {
-    const lightTheme = window.localStorage
-      .getItem(constants.LOCAL_STORAGE_THEME_KEY)
-      .includes(constants.LOCAL_STORAGE_THEME_LIGHT);
-    if (lightTheme) {
-      return /* html */ `
-        <style>
-          .related-articles {
-            --article-card-background-color: #fcfcfc;
-            --border-color: #eee;
-            --tag-background-color: #f2f2f2;
-          }
-        </style>
-      `;
-    } else {
-      return '';
-    }
-  }
-
   connectedCallback() {
     super.connectedCallback();
     this._title = this.getAttribute('article-title');
-    this._darkThemeRelatedArticlesStyles = this.calcThemeThemeRelatedArticlesStyles();
     this._root.innerHTML += /* html */ `
       <style>
 
@@ -265,8 +245,6 @@ class ArticleWebComponent extends ElementWebComponent {
 
       </style>
 
-      ${this._darkThemeRelatedArticlesStyles}
-
       <div class="container">
         <article-title-webcomponent article-title="${this._title}"></article-title-webcomponent>
         <slot></slot>
@@ -373,12 +351,12 @@ class ArticleWebComponent extends ElementWebComponent {
 
     function renderArticle(article) {
       const markup = /* html */ `
-      <article-card-webcomponent class="article related-article"
+      <related-article-card-webcomponent class="article related-article"
         slug="${article.slug}"
         name="${article.name}"
         publicationDate="${article.publicationDate}"
         tags="${article.tags}"
-      ></article-card-webcomponent>
+      ></related-article-card-webcomponent>
       `;
       $relatedArticlesContainer.insertAdjacentHTML('afterbegin', markup);
     }
