@@ -5,7 +5,8 @@ import * as commonConstants from 'common/constants';
 import { createStore } from 'redux';
 
 const initialState = {
-  theme: findTheme()
+  theme: findTheme(),
+  unknownChangeThemeColorFeature: unknownChangeThemeColorFeature()
 };
 
 export default createStore(reducer, initialState);
@@ -22,11 +23,19 @@ function findTheme() {
   return theme;
 }
 
+function unknownChangeThemeColorFeature() {
+  if (localStorage.getItem(commonConstants.LOCAL_STORAGE_CHANGE_THEME_FEATURE) === null) {
+    localStorage.setItem(commonConstants.LOCAL_STORAGE_CHANGE_THEME_FEATURE, '');
+    return true;
+  }
+  return false;
+}
+
 function reducer(state = initialState, action) {
   switch (action.type) {
     case actionTypes.CHANGE_THEME_COLOR:
       const newTheme = themeConstants.DARK === action.currentTheme ? themeConstants.LIGHT : themeConstants.DARK;
-      return Object.assign({}, state, { theme: newTheme });
+      return Object.assign({}, state, { theme: newTheme, unknownChangeThemeColorFeature: false });
     default:
       return state;
   }

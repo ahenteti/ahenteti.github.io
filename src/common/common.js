@@ -1,3 +1,8 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import store from 'redux/store';
+import { Provider } from 'react-redux';
+
 import './article.scss';
 import './article.js';
 import './comments.scss';
@@ -6,21 +11,38 @@ import * as commonConstants from 'common/constants.js';
 import * as themeConstants from 'redux/constants/ThemeConstants';
 import './constants.scss';
 import './slide-in.scss';
+import './bounce.scss';
 import './table.scss';
 import './tooltip.scss';
 import './vendor/font.css';
-import store from 'redux/store';
+import HeaderReduxContainer from '../redux/containers/HeaderReduxContainer';
+
+// global variables
+const $body = document.querySelector('body');
 
 // main actions
-const $oneLineTexts = document.querySelectorAll('.one-line');
+renderHeaderComponent();
+resizeOneLineFontSize();
 updateBodyCssClass();
 store.subscribe(updateBodyCssClass);
-$oneLineTexts.forEach(resizeTextFontSize);
 
 // functions
+function resizeOneLineFontSize() {
+  const $oneLineTexts = document.querySelectorAll('.one-line');
+  $oneLineTexts.forEach(resizeTextFontSize);
+}
+
+function renderHeaderComponent() {
+  ReactDOM.render(
+    <Provider store={store}>
+      <HeaderReduxContainer firstVisit={store.getState().firstVisit} />
+    </Provider>,
+    document.querySelector('header')
+  );
+}
+
 function updateBodyCssClass() {
   const theme = store.getState().theme;
-  const $body = document.querySelector('body');
   $body.className = theme;
   localStorage.setItem(commonConstants.LOCAL_STORAGE_THEME_KEY, theme);
 }

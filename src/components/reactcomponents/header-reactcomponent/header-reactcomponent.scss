@@ -1,0 +1,86 @@
+.header-reactcomponent {
+  & {
+    background-color: var(--header-background);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    transition: box-shadow 0.2s ease-in;
+  }
+
+  &.shadow {
+    box-shadow: var(--box-shadow);
+  }
+
+  & nav {
+    width: 80%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  & ul {
+    width: 100%;
+    margin: 0 auto;
+    min-height: var(--header-height);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  & .left a,
+  & .right ion-icon {
+    color: var(--header-link-color);
+    margin: 0 1rem;
+    transition: var(--transition);
+    font-weight: bold;
+  }
+
+  & .left {
+    margin-left: -1rem;
+  }
+
+  & .right {
+    margin-right: -1rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  & .left a:hover,
+  & .right ion-icon:hover {
+    color: var(--primary-color);
+  }
+
+  & .home {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  & logo-webcomponent {
+    margin-right: 1rem;
+  }
+
+  & ion-icon {
+    font-size: 2.5rem;
+  }
+
+  & .change-theme-container {
+    position: relative;
+
+    & highlight-feature-webcomponent {
+      display: none;
+    }
+
+    &.unknown-change-theme-color-feature highlight-feature-webcomponent {
+      display: block;
+      position: absolute;
+      bottom: calc(-10rem - 2rem);
+      left: -30rem;
+    }
+  }
+}

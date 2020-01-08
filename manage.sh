@@ -213,6 +213,9 @@ newArticle() {
 
   touch $parentFolder/$transformed_name.scss
   touch $parentFolder/$transformed_name.js
+  echo "import 'components/webcomponents/webcomponents.js';" > $parentFolder/$transformed_name.js
+  echo "import 'common/common.js';" >> $parentFolder/$transformed_name.js
+
   metadata=$parentFolder/metadata.json
   touch $metadata
 
@@ -272,17 +275,19 @@ newReactComponent() {
   # add reactcomponent suffix
   componentFileName=$componentName"-reactcomponent"
   componentJsFileName=$componentName"-reactcomponent.js"
-  componentCssFileName=$componentName"-reactcomponent.module.scss"
+  componentCssFileName=$componentName"-reactcomponent.scss"
   componentClassName=$componentClassName"ReactComponent"
 
   componentJsFile=src/components/reactcomponents/$componentFileName/$componentJsFileName
   componentCssFile=src/components/reactcomponents/$componentFileName/$componentCssFileName
   mkdir -p src/components/reactcomponents/$componentFileName
   cp src/templates/reactcomponent-template.js $componentJsFile
-  cp src/templates/reactcomponent-template.module.scss $componentCssFile
+  cp src/templates/reactcomponent-template.scss $componentCssFile
 
   sed -i "s/__COMPONENT_NAME__/$componentClassName/g" $componentJsFile
   sed -i "s/__COMPONENT_CSS_FILES_NAME__/$componentCssFileName/g" $componentJsFile
+  sed -i "s/__COMPONENT_NAME_WITH_DASHES__/$componentFileName/g" $componentJsFile
+  sed -i "s/__COMPONENT_NAME_WITH_DASHES__/$componentFileName/g" $componentCssFile
 
   echo -e "${GREEN}\nDone${NORMAL}"
 }
