@@ -1,0 +1,63 @@
+.search-tags-reactcomponent {
+  background-color: var(--tag-background-color);
+  position: relative;
+  font-size: 1.2rem;
+  padding: 0 1rem 0 2rem;
+  border-top-left-radius: 100rem;
+  border-bottom-left-radius: 100rem;
+
+  &.background-primary-color {
+    background-color: var(--primary-color);
+    color: var(--selected-option-color);
+
+    & .selected-tag,
+    & ion-icon {
+      color: white;
+    }
+  }
+
+  & .selected-tag {
+    white-space: nowrap;
+    transition: all 0.2s;
+    padding-top: var(--search-top-bottom-padding);
+    padding-bottom: var(--search-top-bottom-padding);
+    padding-right: 0.8rem;
+    color: var(--tag-color);
+  }
+
+  & ion-icon {
+    color: var(--tag-color);
+    font-size: 2rem;
+  }
+
+  & .selected-tag-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  & .tags {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 99;
+    box-shadow: var(--box-shadow);
+    max-height: 200px;
+    overflow: auto;
+    color: var(--tag-color);
+  }
+
+  & .tag {
+    white-space: nowrap;
+    padding: 1rem 3.5rem 1rem 2rem;
+    background-color: var(--select-background-color);
+  }
+
+  & .tag:hover {
+    background-color: var(--background-select-option-on-hover-state-color);
+  }
+
+  & .hidden {
+    display: none;
+  }
+}

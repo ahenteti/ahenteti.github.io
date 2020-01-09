@@ -6,7 +6,7 @@ const mapStateToProps = state => ({
   unknownChangeThemeColorFeature: state.unknownChangeThemeColorFeature
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
     changeThemeColor: () => dispatch(changeThemeColor())
   };

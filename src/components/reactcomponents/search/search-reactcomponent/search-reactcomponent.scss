@@ -1,0 +1,22 @@
+.search-reactcomponent {
+  display: flex;
+  display: flex;
+  align-items: center;
+  border-radius: 100rem;
+  border: 1px solid var(--border-color);
+  background-color: var(--search-background-color);
+  transition: border-color 0.2s;
+
+  &.focus,
+  &:hover {
+    border-color: var(--primary-color-light);
+  }
+
+  & ion-icon[name='search'] {
+    font-size: 2.5rem;
+    color: var(--input-placeholder-color);
+    opacity: 1; /* Firefox */
+    flex: 0 0 3rem;
+    padding-right: 1rem;
+  }
+}

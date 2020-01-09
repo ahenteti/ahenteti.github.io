@@ -1,0 +1,54 @@
+.article-card-reactcomponent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--article-card-padding, 3rem);
+  background-color: var(--article-card-background-color);
+  position: relative;
+  transition: box-shadow 0.2s;
+  transition: all 0.2s ease-in;
+  border-bottom: 3px solid var(--border-color);
+  min-width: 0;
+
+  &:hover {
+    border-bottom: 3px solid var(--primary-color-light);
+    & .name {
+      color: var(--primary-color);
+    }
+  }
+
+  & .name {
+    color: var(--title-color);
+    padding-bottom: 1.5rem;
+    font-weight: bold;
+    font-size: 2rem;
+    flex-grow: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.2s ease-in;
+  }
+
+  & .publication-date,
+  & .tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    color: var(--text-color-light);
+  }
+
+  & .tags {
+    margin-bottom: 1.5rem;
+  }
+
+  & p {
+    font-size: 1.3rem;
+    margin: 0;
+  }
+
+  & ion-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: color 0.2s ease-in;
+  }
+}

@@ -22,6 +22,7 @@ body {
   --quote-color: #888;
   --quote-icon-background-color: #eee;
   --quote-icon-color: #959595;
+  --tag-color: #888;
   --tag-background-color: #32373b;
   --table-head-background-color: #394048;
   --tooltip-color: var(--white-color);
@@ -73,6 +74,7 @@ body {
   --tooltip-margin: 5px;
   --slide-in-translate-y: 100px;
   --max-width: 1400px;
+  --search-top-bottom-padding: 1rem;
 }
 
 body.light {

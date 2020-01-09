@@ -5,11 +5,11 @@ import * as themeConstants from '../../../redux/constants/ThemeConstants';
 
 class CommentsReactComponent extends React.Component {
   componentDidMount() {
-    this._calcUtterancesScript();
+    this.calcUtterancesScript();
   }
 
   componentDidUpdate() {
-    this._calcUtterancesScript();
+    this.calcUtterancesScript();
   }
 
   render() {
@@ -23,20 +23,20 @@ class CommentsReactComponent extends React.Component {
     );
   }
 
-  _calcUtterancesScript() {
+  calcUtterancesScript() {
     this.utterancesContainer.innerHTML = '';
     const js = document.createElement('script');
     js.setAttribute('type', 'text/javascript');
     js.setAttribute('src', 'https://utteranc.es/client.js');
     js.setAttribute('repo', 'ahenteti/ahenteti.github.io');
     js.setAttribute('issue-term', 'pathname');
-    js.setAttribute('theme', this._calcUtterancesTheme(this.props.theme));
+    js.setAttribute('theme', this.calcUtterancesTheme(this.props.theme));
     js.setAttribute('crossorigin', 'anonymous');
     js.setAttribute('async', 'true');
     this.utterancesContainer.appendChild(js);
   }
 
-  _calcUtterancesTheme(projectTheme) {
+  calcUtterancesTheme(projectTheme) {
     if (projectTheme === themeConstants.DARK) {
       return 'dark-blue';
     }

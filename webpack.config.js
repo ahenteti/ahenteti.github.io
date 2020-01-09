@@ -117,8 +117,8 @@ module.exports = {
     modules: [path.resolve('./src'), path.resolve('./node_modules')]
   }
 };
-
 // devtool: 'source-map'
+
 function getBasenameWithoutExtension(filePath, extension) {
   return path.basename(filePath, extension);
 }

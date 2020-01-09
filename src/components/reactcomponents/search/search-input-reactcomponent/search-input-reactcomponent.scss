@@ -1,0 +1,23 @@
+.search-input-reactcomponent {
+  flex: 1;
+
+  &.focus,
+  &:hover {
+    border-color: var(--primary-color-light);
+  }
+
+  &::placeholder {
+    color: var(--input-placeholder-color);
+    opacity: 1; /* Firefox */
+  }
+
+  & input {
+    padding: var(--search-top-bottom-padding);
+    width: 100%;
+    color: var(--text-color);
+    border: none;
+    outline: none;
+    font-size: 1.6rem;
+    background: var(--search-component-input-background-color);
+  }
+}
