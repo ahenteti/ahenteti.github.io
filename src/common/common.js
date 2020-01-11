@@ -23,7 +23,7 @@ const $body = document.querySelector('body');
 
 // main actions
 renderHeaderComponent();
-resizeOneLineFontSize();
+setTimeout(resizeOneLineFontSize, 0);
 updateBodyCssClass();
 store.subscribe(updateBodyCssClass);
 
@@ -54,11 +54,17 @@ function resizeTextFontSize(text) {
     if (isOverflown(text)) {
       fontSize--;
       text.style.fontSize = fontSize + 'px';
+      console.log('font-size: ' + fontSize);
     }
   }
 }
 
 function isOverflown(element) {
+  console.log(element);
+  console.log('element.scrollHeight: ' + element.scrollHeight);
+  console.log('element.clientHeight: ' + element.clientHeight);
+  console.log('element.scrollWidth: ' + element.scrollWidth);
+  console.log('element.clientWidth: ' + element.clientWidth);
   return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }
 
