@@ -4,7 +4,45 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="shortcut icon" type="image/png" href="/assets/img/favicon.png" />
   <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
-  <!-- load webcomponents bundle, which includes all the necessary polyfills -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
   <title>ahenteti notes</title>
+  <style>
+    .pre-page-load-animation {
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      width: 100%;
+      height: 100%;
+      z-index: 9999;
+      background: var(--body-background-color);
+    }
+
+    .pre-page-load-animation::after {
+      position: absolute;
+      content: '';
+      top: calc(50% - 2.5rem);
+      left: calc(50% - 2.5rem);
+      border: 1rem solid var(--loader-primary-color);
+      border-top: 1rem solid var(--primary-color);
+      border-radius: 50%;
+      width: 5rem;
+      height: 5rem;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>
+    $(window).load(function() {
+      $('.pre-page-load-animation').fadeOut('slow');
+    });
+  </script>
 </head>
