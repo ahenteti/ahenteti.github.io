@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import './pre-page-loader.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -18,14 +19,13 @@ import './tooltip.scss';
 import './vendor/font.css';
 import HeaderReduxContainer from 'components/reactcomponents/redux/containers/HeaderReduxContainer';
 
-// global variables
-const $body = document.querySelector('body');
-
 // main actions
-renderHeaderComponent();
-setTimeout(resizeOneLineFontSize, 0);
-updateBodyCssClass();
-store.subscribe(updateBodyCssClass);
+$(window).load(() => {
+  renderHeaderComponent();
+  resizeOneLineFontSize();
+  updateBodyCssClass();
+  store.subscribe(updateBodyCssClass);
+});
 
 // functions
 function resizeOneLineFontSize() {
@@ -44,7 +44,7 @@ function renderHeaderComponent() {
 
 function updateBodyCssClass() {
   const theme = store.getState().theme;
-  $body.className = theme;
+  document.querySelector('body').className = theme;
   localStorage.setItem(commonConstants.LOCAL_STORAGE_THEME_KEY, theme);
 }
 
@@ -60,11 +60,6 @@ function resizeTextFontSize(text) {
 }
 
 function isOverflown(element) {
-  console.log(element);
-  console.log('element.scrollHeight: ' + element.scrollHeight);
-  console.log('element.clientHeight: ' + element.clientHeight);
-  console.log('element.scrollWidth: ' + element.scrollWidth);
-  console.log('element.clientWidth: ' + element.clientWidth);
   return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
 }
 

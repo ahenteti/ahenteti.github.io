@@ -1,7 +1,10 @@
+/* eslint-disable no-undef */
 import 'components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './about.scss';
 
+const BACK_ARROW = 'back';
+const FORWARD_ARROW = 'forward';
 const CERTIFICATES_OF_COMPLETION = [
   'assets/img/certificate-design-patterns-java-behavioral.jpg',
   'assets/img/certificate-apache-web-server-install-config.jpg',
@@ -18,36 +21,37 @@ const CERTIFICATES_OF_COMPLETION = [
   'assets/img/certificate-structuring-javascript.jpg'
 ];
 
-const BACK_ARROW = 'back';
-const FORWARD_ARROW = 'forward';
+$(window).load(function() {
+  const certificatesOfCompletionArrowBack = document.querySelector(
+    '.certificate-of-completion-image-container [name="ios-arrow-back"]'
+  );
 
-const certificatesOfCompletionArrowBack = document.querySelector(
-  '.certificate-of-completion-image-container [name="ios-arrow-back"]'
-);
+  const certificatesOfCompletionArrowForward = document.querySelector(
+    '.certificate-of-completion-image-container [name=ios-arrow-forward]'
+  );
 
-const certificatesOfCompletionArrowForward = document.querySelector(
-  '.certificate-of-completion-image-container [name=ios-arrow-forward]'
-);
+  const certificateContainer = document.querySelector('.certificate-container');
 
-const certificateContainer = document.querySelector('.certificate-container');
+  const displayedCertificate = document.querySelector('.displayed-certificate');
+  displayedCertificate.onload = () => {
+    certificateContainer.style.height = window.getComputedStyle(displayedCertificate).height;
+  };
+  displayedCertificate.src = CERTIFICATES_OF_COMPLETION[0];
+  displayedCertificate.dataset.index = 0;
 
-const displayedCertificate = document.querySelector('.displayed-certificate');
-displayedCertificate.onload = () => {
-  certificateContainer.style.height = window.getComputedStyle(displayedCertificate).height;
-};
-displayedCertificate.src = CERTIFICATES_OF_COMPLETION[0];
-displayedCertificate.dataset.index = 0;
+  const displayedCertificateIndex = document.querySelector('.certificate-of-completion-image-container .index');
+  displayedCertificateIndex.innerHTML = `1 / ${CERTIFICATES_OF_COMPLETION.length}`;
 
-const displayedCertificateIndex = document.querySelector('.certificate-of-completion-image-container .index');
-displayedCertificateIndex.innerHTML = `1 / ${CERTIFICATES_OF_COMPLETION.length}`;
+  const loader = document.querySelector('.certificate-of-completion-image-container loader-webcomponent');
 
-const loader = document.querySelector('.certificate-of-completion-image-container loader-webcomponent');
+  certificatesOfCompletionArrowBack.addEventListener('click', () =>
+    handleCertificatesOfCompletionNavigation(BACK_ARROW)
+  );
 
-certificatesOfCompletionArrowBack.addEventListener('click', () => handleCertificatesOfCompletionNavigation(BACK_ARROW));
-
-certificatesOfCompletionArrowForward.addEventListener('click', () =>
-  handleCertificatesOfCompletionNavigation(FORWARD_ARROW)
-);
+  certificatesOfCompletionArrowForward.addEventListener('click', () =>
+    handleCertificatesOfCompletionNavigation(FORWARD_ARROW)
+  );
+});
 
 function handleCertificatesOfCompletionNavigation(arrow) {
   const currentDisplayedCertificate = document.querySelector('.displayed-certificate');
