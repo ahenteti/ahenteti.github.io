@@ -1,6 +1,24 @@
 body {
-  // color constants
+  --header-height: 6.5rem;
+  --transition: all 0.2s ease-in;
+  --box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  --box-shadow-primary-color: 0 0 0 3px rgba(0, 149, 255, 0.15);
+  --text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+  --container-prefix-width: 5rem;
+  --code-padding: 1.6rem;
+  --border-radius: 0.3rem;
+  --right-border-radius: 0 0.3rem 0.3rem 0;
+  --left-border-radius: 0.3rem 0 0 0.3rem;
+  --code-top-bottom-margin: 2rem;
+  --tooltip-triangle-height: 0.7rem;
+  --tooltip-margin: 5px;
+  --slide-in-translate-y: 100px;
+  --max-width: 1400px;
+  --search-top-bottom-padding: 1rem;
   --white-color: #fff;
+}
+
+body.dark {
   --primary-color: #078eed;
   --primary-color-light: #66bfff;
   --primary-code-highlight-color: #394048;
@@ -42,6 +60,7 @@ body {
   --quote-component-text-color: #999;
   --quote-component-text-font-style: italic;
   --search-background-color: #262a2d;
+  --search-border-color: #262a2d;
   --selected-option-color: var(--white-color);
   --select-background-color: #262a2d;
   --selected-tag-color: var(--white-color);
@@ -57,54 +76,60 @@ body {
   --related-article-card-background-color: #32373b;
   --related-article-border-color: #32373b;
   --related-article-tag-background-color: #394048;
-
-  // non color constants
-  --header-height: 6.5rem;
-  --transition: all 0.2s ease-in;
-  --box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
-  --box-shadow-primary-color: 0 0 0 3px rgba(0, 149, 255, 0.15);
-  --text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
-  --container-prefix-width: 5rem;
-  --code-padding: 1.6rem;
-  --border-radius: 0.3rem;
-  --right-border-radius: 0 0.3rem 0.3rem 0;
-  --left-border-radius: 0.3rem 0 0 0.3rem;
-  --code-top-bottom-margin: 2rem;
-  --tooltip-triangle-height: 0.7rem;
-  --tooltip-margin: 5px;
-  --slide-in-translate-y: 100px;
-  --max-width: 1400px;
-  --search-top-bottom-padding: 1rem;
 }
 
 body.light {
+  --primary-color: #078eed;
+  --primary-color-light: #66bfff;
   --primary-code-highlight-color: rgb(255, 215, 0);
   --code-highlight-color: rgb(31, 255, 31);
   --body-background-color: var(--white-color);
   --border-color: #eee;
   --text-color: #555;
+  --text-color-light: #888;
+  --input-placeholder-color: #888;
   --title-color: #555;
   --header-background: var(--white-color);
   --header-link-color: #333;
+  --tooltip-background-color: #333;
   --code-background-color: #fafafa;
   --code-line-numbers-background-color: #eee;
   --code-selected-tab-background-color: #c4c2c0;
   --code-icon-color: #777;
+  --quote-background-color: #fafafa;
+  --quote-color: #888;
+  --quote-icon-background-color: #eee;
+  --quote-icon-color: #959595;
+  --tag-color: #888;
   --tag-background-color: #f2f2f2;
   --table-head-background-color: #eee;
+  --tooltip-color: var(--white-color);
   --background-select-option-on-hover-state-color: #eee;
   --demo-background-color: #eee;
+  --info-component-icon-background-color: #3282c9;
+  --info-component-icon-color: var(--white-color);
+  --info-component-text-background-color: #f3f8fd;
+  --info-component-text-color: #004085;
   --warn-component-icon-background-color: #ffe399;
+  --warn-component-icon-color: var(--white-color);
+  --warn-component-text-background-color: #fff6e0;
+  --warn-component-text-color: #856404;
   --quote-component-icon-background-color: #eee;
   --quote-component-icon-color: #959595;
   --quote-component-text-background-color: #fafafa;
   --quote-component-text-color: #888;
+  --quote-component-text-font-style: italic;
   --search-background-color: var(--white-color);
+  --search-border-color: #eee;
+  --selected-option-color: var(--white-color);
   --select-background-color: var(--white-color);
+  --selected-tag-color: var(--white-color);
   --article-card-background-color: #fcfcfd;
   --article-background-color: var(--white-color);
+  --gallery-image-controls-color: var(--white-color);
   --demo-card-background-color: #eee;
   --demo-button-background-color: var(--white-color);
+  --demo-button-on-hover-state-color: var(--white-color);
   --fancy-title-background-color: var(--white-color);
   --search-component-input-background-color: var(--white-color);
   --loader-primary-color: #eee;
