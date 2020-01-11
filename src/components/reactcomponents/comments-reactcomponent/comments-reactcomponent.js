@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './comments-reactcomponent.scss';
-import * as themeConstants from '../../../redux/constants/ThemeConstants';
+import * as themeConstants from 'components/reactcomponents/redux/constants/ThemeConstants';
 
 class CommentsReactComponent extends React.Component {
   componentDidMount() {

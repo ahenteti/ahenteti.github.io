@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable indent */
-import * as actionTypes from 'redux/constants/ActionTypes';
-import * as themeConstants from 'redux/constants/ThemeConstants';
+import * as actionTypes from 'components/reactcomponents/redux/constants/ActionTypes';
+import * as themeConstants from 'components/reactcomponents/redux/constants/ThemeConstants';
 import * as commonConstants from 'common/constants';
 import { createStore } from 'redux';
 import { findArticles } from '../utils/articles-utils';

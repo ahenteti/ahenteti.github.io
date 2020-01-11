@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './article-cards-reactcomponent.scss';
-import ArticleCardsByCategoryReactComponent from '../article-cards-by-category-reactcomponent/article-cards-by-category-reactcomponent';
+import ArticleCardsByCategoryReactComponent from './article-cards-by-category-reactcomponent/article-cards-by-category-reactcomponent';
 
 class ArticleCardsReactComponent extends React.Component {
   render() {

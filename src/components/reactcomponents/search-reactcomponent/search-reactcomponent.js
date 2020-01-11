@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import './search-reactcomponent.scss';
-import SearchInputReactComponent from '../search-input-reactcomponent/search-input-reactcomponent';
-import SearchTagsReactComponent from '../search-tags-reactcomponent/search-tags-reactcomponent';
+import SearchInputReactComponent from './search-input-reactcomponent/search-input-reactcomponent';
+import SearchTagsReactComponent from './search-tags-reactcomponent/search-tags-reactcomponent';
 
 class SearchReactComponent extends React.Component {
   constructor(props) {

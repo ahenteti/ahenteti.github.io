@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import SearchReactComponent from '../../components/reactcomponents/search/search-reactcomponent/search-reactcomponent';
+import SearchReactComponent from 'components/reactcomponents/search-reactcomponent/search-reactcomponent';
 import { selectTag, onArticlesFilterChange } from '../actions/index';
 
 const mapStateToProps = state => ({

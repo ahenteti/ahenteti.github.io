@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from 'redux/store';
+import store from 'components/reactcomponents/redux/store';
 import { Provider } from 'react-redux';
 
 import './article.scss';
@@ -8,14 +8,14 @@ import './article.js';
 import './comments.scss';
 import './common.scss';
 import * as commonConstants from 'common/constants.js';
-import * as themeConstants from 'redux/constants/ThemeConstants';
+import * as themeConstants from 'components/reactcomponents/redux/constants/ThemeConstants';
 import './constants.scss';
 import './slide-in.scss';
 import './bounce.scss';
 import './table.scss';
 import './tooltip.scss';
 import './vendor/font.css';
-import HeaderReduxContainer from '../redux/containers/HeaderReduxContainer';
+import HeaderReduxContainer from 'components/reactcomponents/redux/containers/HeaderReduxContainer';
 
 // global variables
 const $body = document.querySelector('body');

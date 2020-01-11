@@ -3,14 +3,14 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from 'redux/store';
+import store from 'components/reactcomponents/redux/store';
 import { Provider } from 'react-redux';
 
 import 'components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './index.scss';
-import ArticleCardsReduxContainer from '../../redux/containers/ArticleCardsReduxContainer';
-import SearchReduxContainer from '../../redux/containers/SearchReduxContainer';
+import ArticleCardsReduxContainer from 'components/reactcomponents/redux/containers/ArticleCardsReduxContainer';
+import SearchReduxContainer from 'components/reactcomponents/redux/containers/SearchReduxContainer';
 
 // main actions
 renderArticlesComponent();
