@@ -3,7 +3,8 @@
   ${require('templates/head.html')}
 
   <body>
-    <div class="pre-page-load-animation"></div>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
     <header></header>
 
     <article-webcomponent>
@@ -41,5 +42,6 @@
       <h2>How to amend a commit without changing last commit message</h2>
       <oneline-code-webcomponent code="git commit -a --amend --no-edit" language="bash"></oneline-code-webcomponent>
     </article-webcomponent>
+    </div>
   </body>
 </html>

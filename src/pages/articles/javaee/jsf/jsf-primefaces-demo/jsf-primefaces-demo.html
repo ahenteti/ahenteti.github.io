@@ -3,7 +3,8 @@
   ${require('templates/head.html')}
 
   <body>
-    <div class="pre-page-load-animation"></div>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
     <header></header>
 
     <article-webcomponent>
@@ -214,5 +215,6 @@
         </code-panel-webcomponent>
       </code-tabs-webcomponent>
     </article-webcomponent>
+    </div>
   </body>
 </html>

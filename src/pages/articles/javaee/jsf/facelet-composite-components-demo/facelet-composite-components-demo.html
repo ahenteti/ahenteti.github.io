@@ -3,7 +3,8 @@
   ${require('templates/head.html')}
 
   <body>
-    <div class="pre-page-load-animation"></div>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
     <header></header>
 
     <article-webcomponent>
@@ -209,5 +210,6 @@
         <link-webcomponent href="https://javaee.github.io/tutorial/jsf-facelets005.html" label="JavaEE 8 tutorial"></link-webcomponent>
       </more-info-webcomponent>
     </article-webcomponent>
+    </div>
   </body>
 </html>

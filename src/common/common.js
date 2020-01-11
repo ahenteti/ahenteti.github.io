@@ -1,3 +1,4 @@
+import './pre-page-loader.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import store from 'components/reactcomponents/redux/store';
