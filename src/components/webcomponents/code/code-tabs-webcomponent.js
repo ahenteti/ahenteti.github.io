@@ -10,7 +10,6 @@ class CodeTabsWebComponent extends ElementWebComponent {
       <style>
         .tab-container {
           display: flex;
-          flex-wrap: wrap;
           background: var(--code-background-color);
           border-bottom: .3rem solid var(--code-line-numbers-background-color);
           border-radius: 3px 3px 0 0;

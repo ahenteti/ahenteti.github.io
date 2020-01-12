@@ -226,7 +226,7 @@ newArticle() {
          --arg file_name "$file_name" \
          --arg category "$category" \
          --arg tags "$(jointBy , ${sortedTags[*]})" \
-         '{ name: $name, slug: $file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
+         '{ name: $name, slug: /articles/$file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
          > $metadata
   echo -e "${GREEN}\nDone${NORMAL}"
 } 
@@ -350,7 +350,7 @@ echoProjectStructure () {
   projectPath=$(calcFolderInput project)
   currentDirectory=$(pwd)
   cd $projectPath
-  tree -I "target|test|*.iml|nb-configuration.xml" | grep -v "directories," \
+  tree -I "target|test|*.iml|nb-configuration.xml|build|node_modules" | grep -v "directories," \
       | sed 's/`--/└──/g; s/|--/├──/g' >> $projectStructure
   cd $currentDirectory
   sed -i "s/^/$PROJECT_FILES_INDENTATION/" $projectStructure
@@ -371,7 +371,7 @@ escapeReservedHtmlCharactersAndAddIndentation() {
     indentation="$PROJECT_FILE_INDENTATION"
   fi
   tmp=$(mktemp)
-  content=$(cat $1 | sed 's/</\&lt;/g; s/>/\&gt;/g; s/\$/\\$/g' | sed 's/|/│/g')
+  content=$(cat $1 | sed 's/</\&lt;/g; s/>/\&gt;/g; s/\$/\\$/g; s/`//g' | sed 's/|/│/g')
   echo -e "$content" > $tmp
   sed -i "s/^/$indentation/" $tmp
   echo $tmp
