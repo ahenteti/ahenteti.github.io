@@ -21,6 +21,9 @@ const CERTIFICATES_OF_COMPLETION = [
   'assets/img/certificate-structuring-javascript.jpg'
 ];
 
+let loader;
+let displayedCertificateIndex;
+
 $(window).load(function() {
   const certificatesOfCompletionArrowBack = document.querySelector(
     '.certificate-of-completion-image-container [name="ios-arrow-back"]'
@@ -39,10 +42,10 @@ $(window).load(function() {
   displayedCertificate.src = CERTIFICATES_OF_COMPLETION[0];
   displayedCertificate.dataset.index = 0;
 
-  const displayedCertificateIndex = document.querySelector('.certificate-of-completion-image-container .index');
+  displayedCertificateIndex = document.querySelector('.certificate-of-completion-image-container .index');
   displayedCertificateIndex.innerHTML = `1 / ${CERTIFICATES_OF_COMPLETION.length}`;
 
-  const loader = document.querySelector('.certificate-of-completion-image-container loader-webcomponent');
+  loader = document.querySelector('.certificate-of-completion-image-container loader-webcomponent');
 
   certificatesOfCompletionArrowBack.addEventListener('click', () =>
     handleCertificatesOfCompletionNavigation(BACK_ARROW)
