@@ -54,7 +54,6 @@ function resizeTextFontSize(text) {
     if (isOverflown(text)) {
       fontSize--;
       text.style.fontSize = fontSize + 'px';
-      console.log('font-size: ' + fontSize);
     }
   }
 }
