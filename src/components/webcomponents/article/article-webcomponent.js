@@ -69,9 +69,10 @@ class ArticleWebComponent extends ElementWebComponent {
         }
         
         h2 {
-          margin-top: 4rem;
-          padding-top: 2rem;
-          border-top: .3rem solid var(--border-color);
+          margin: 3rem 0 1.6rem;
+          font-size: 3rem;
+          font-weight: bold;
+          line-height: 1.235;
         }
 
         .related-articles {

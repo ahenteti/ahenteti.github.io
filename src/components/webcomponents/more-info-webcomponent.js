@@ -5,8 +5,10 @@ class MoreInfoWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
       <style>
         h2 {
-          margin-top: 3rem;
-          font-size: 2rem;
+          margin: 3rem 0 1.6rem;
+          font-size: 3rem;
+          font-weight: bold;
+          line-height: 1.235;
         }
         ul {
           list-style-type: none;

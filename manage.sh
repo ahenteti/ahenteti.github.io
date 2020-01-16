@@ -223,10 +223,10 @@ newArticle() {
   file_name="$transformed_name.html"
   tools/jq -n --arg name "$name" \
          --arg publicationDate "$publicationDate" \
-         --arg file_name "$file_name" \
+         --arg file_name "articles/$file_name" \
          --arg category "$category" \
          --arg tags "$(jointBy , ${sortedTags[*]})" \
-         '{ name: $name, slug: /articles/$file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
+         '{ name: $name, slug: $file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
          > $metadata
   echo -e "${GREEN}\nDone${NORMAL}"
 } 

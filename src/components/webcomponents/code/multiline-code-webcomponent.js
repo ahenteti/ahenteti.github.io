@@ -229,11 +229,16 @@ class MultilineCodeWebComponent extends ElementWebComponent {
           border-radius: var(--border-radius);
         }
         
+        .container > pre > code::-webkit-scrollbar {
+          display: none;
+        }
+
         .container > pre > code {
           width: 100%;
           overflow-x: auto;
           overflow-x: overlay;
           padding: var(--code-padding);
+          scrollbar-width: none;
         }
 
         .container > pre.line-numbers {

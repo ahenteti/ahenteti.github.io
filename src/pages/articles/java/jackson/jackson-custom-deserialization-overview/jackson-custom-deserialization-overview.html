@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+
+      <article-webcomponent>
+        <h2>Overview</h2>
+        <p>
+          As Java Developer, exposing and consuming REST API are becoming very essential in our job and I personally,
+          find that the <span class="code">Jackson</span> library (among others for sure) has helped us a lot to
+          complete tasks like marshalling/unmarshalling java objects
+        </p>
+        <p>
+          Recently, I wanted to play with the <a href="https://jsonplaceholder.typicode.com">JsonPlaceholder</a> API and
+          for me, before consuming the <span class="code">/user</span> API, I should have a model class that match with
+          the API response
+        </p>
+
+        <multiline-code-webcomponent language="json">
+          <pre slot="code">
+                <code>
+                  {
+                    "id": 1,
+                    "name": "Leanne Graham",
+                    "username": "Bret",
+                    "email": "Sincere@april.biz",
+                    "address": {
+                      "street": "Kulas Light",
+                      "suite": "Apt. 556",
+                      "city": "Gwenborough",
+                      "zipcode": "92998-3874",
+                      "geo": {
+                        "lat": "-37.3159",
+                        "lng": "81.1496"
+                      }
+                    },
+                    "phone": "1-770-736-8031 x56442",
+                    "website": "hildegard.org",
+                    "company": {
+                      "name": "Romaguera-Crona",
+                      "catchPhrase": "Multi-layered client-server neural-net",
+                      "bs": "harness real-time e-markets"
+                    }
+                  }
+                </code>
+            </pre>
+        </multiline-code-webcomponent>
+
+        <p>
+          But wait, what I really need, is only some attributes, why should I implement such huge model with its nested
+          definition ? In fact, what I really want is to define my model like this
+        </p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              @Data
+              public class User {
+                  private String username;
+                  private String email;
+                  private String website;
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <p>To do this, we just need to add the following jackson annotation to our model</p>
+
+        <oneline-code-webcomponent
+          code="@JsonIgnoreProperties(ignoreUnknown = true)"
+          language="java"
+        ></oneline-code-webcomponent>
+
+        <p>And Jackson will do the unmarshalling properly</p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public class Main {
+                  public static void main(String[] args) throws IOException {
+                      String json = new String(Files.readAllBytes(Paths.get("src/main/resources/user.json")));
+                      ObjectMapper jsonMapper = new ObjectMapper();
+                      User user = jsonMapper.readValue(json, User.class);
+                  }
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <p>After that, I wanted to add the company name to my model</p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              @Data
+              @JsonIgnoreProperties(ignoreUnknown = true)
+              public class User {
+                  private String username;
+                  private String email;
+                  private String website;
+                  private String company;
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <p>
+          After making some researches on the internet, I find out in this
+          <a href="https://www.baeldung.com/jackson-deserialization">bealdung tutorial</a> what I need. In fact, Jackson
+          gives us a very simple way to customize the deserialization process: what we really need is to
+        </p>
+
+        <div class="steps">
+          <h3 class="step">Implement the <span class="code">StdDeserializer</span> class</h3>
+
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                public class UserDeserializer extends StdDeserializer&lt;User&gt; {
+                
+                    public UserDeserializer() {
+                        this(null);
+                    }
+                    
+                    public UserDeserializer(Class&lt;?&gt; vc) {
+                        super(vc);
+                    }
+                
+                    @Override
+                    public User deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+                        JsonNode userNode = jsonParser.getCodec().readTree(jsonParser);
+                        String username = userNode.get("username").asText();
+                        String email = userNode.get("email").asText();
+                        String website = userNode.get("website").asText();
+                        JsonNode companyNode = userNode.get("company");
+                        String company = companyNode.get("name").asText();
+                        return new User(username, email, website, company);
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+
+          <h3 class="step">
+            And to register this deserializer on the Jackson <span class="code">ObjectMapper</span> class
+          </h3>
+
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                ObjectMapper mapper = new ObjectMapper();
+                SimpleModule module = new SimpleModule();
+                module.addDeserializer(User.class, new UserDeserializer());
+                mapper.registerModule(module);
+                User user = mapper.readValue(json, User.class);
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+        </div>
+
+        <h2>Conclusion</h2>
+        <p>That's it for this article, I hope you enjoy it :)</p>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.baeldung.com/jackson-deserialization"
+            label="bealdung jackson-deserialization article"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://stackoverflow.com/questions/36652580/how-to-add-three-dots-to-text-when-overflow-in-html"
+            label="Stackoverflow question"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
