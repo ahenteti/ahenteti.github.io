@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+
+      <article-webcomponent>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              new String(Files.readAllBytes(Paths.get("file.txt")));
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
