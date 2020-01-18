@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+
+      <article-webcomponent>
+        <h2>Overview</h2>
+        <p class="mb-0">
+          In this demo, I will show you how we can implement the Producer-Consumer pattern in java. This pattern is baed
+          a <span class="code">Storage</span> where
+        </p>
+        <ul>
+          <li>
+            multiple <span class="code">Producer</span> can add items and wait if no space is available on the storage
+          </li>
+          <li>
+            multiple <span class="code">Consumer</span> can process items and wait if no item is available on the
+            storage
+          </li>
+        </ul>
+
+        <h2>Storage implementation steps</h2>
+        <p>
+          The difficulty in this pattern is how to implement the <span class="code">Storage</span>
+          <span class="code">add</span> and <span class="code">remove</span> methods
+        </p>
+
+        <div class="steps">
+          <h3 class="step">Initial version</h3>
+          <p>In this initial version, we are not going to handle concurrency and Storage maxSize problems</p>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                  private final Queue&lt;E&gt; queue;
+
+                  public void add(E e) {
+                      queue.add(e);
+                  }
+              
+                  public E remove() {
+                      return queue.remove();
+                  }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+
+          <h3 class="step">Handle Concurrency</h3>
+          <p>
+            Since they are going to be multiple threads trying to access the queue, we need to protect it from the
+            simultaneous access. For this, we are going to add <span class="code">Lock</span> in our implementation. So
+            any thread which want to modify the queue by adding or removing an item from it, first it needs to acquire
+            the <span class="code">Lock</span> to access the queue and release it when it finishes
+          </p>
+
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                  private final Queue&lt;E&gt; queue;
+                  private final Lock lock;
+
+                  public void add(E e) {
+                      lock.lock();
+                      try {
+                          queue.add(e);
+                      } finally {
+                          lock.unlock();
+                      }
+                  }
+              
+                  public E remove() {
+                      lock.lock();
+                      try {
+                          return queue.remove();
+                      } finally {
+                          lock.unlock();
+                      }
+                  }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+
+          <h3 class="step">Handle Storage capacity</h3>
+          <p class="mb-0">The last feature that we need to implement in our <span class="code">Storage</span> is</p>
+          <ul>
+            <li>if the queue is full, we had to block the thread in the <span class="code">add</span> operation</li>
+            <li>if the queue is empty, we had to block the thread in the <span class="code">remove</span> operation</li>
+          </ul>
+          <p>
+            In this implementation, we will use <span class="code">Condition</span> that comes along
+            <span class="code">Lock</span> object. So we are going to create two conditions:
+          </p>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                Condition notFull = this.lock.newCondition();
+                Condition notEmpty = this.lock.newCondition();
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+          <p>
+            In the <span class="code">add</span> operation, if the queue is full, we will wait for the
+            <span class="code">notFull</span> condition to be triggered. So the thread will wait for someone to say that
+            the queue is not full any more, so that it can proceed and <span class="code">add</span> its item. For this
+            we will use <span class="code">notFull.await()</span> which releases the <span class="code">Lock</span> and
+            let the thread goes to the wait state if the condition is not yet satisfied
+          </p>
+          <p>
+            Similarly, in the <span class="code">remove</span> operation, if the queue is empty, we will wait for the
+            <span class="code">notEmpty</span> condition to be triggered. So the thread will wait for someone to say
+            that the queue is not empty any more, so that it can proceed and <span class="code">take</span> an item. For
+            this we will use <span class="code">notEmpty.await()</span> which releases the
+            <span class="code">Lock</span> and let the thread goes to the wait state if the condition is not yet
+            satisfied
+          </p>
+          <p class="mb-0">
+            At this point, our producers and consumers will be waiting for new condition to be satisfied, but we need to
+            trigger these conditions at certain point in our code. That's why we are going to trigger the
+          </p>
+          <ul>
+            <li><span class="code">notEmpty</span> condition on the <span class="code">add</span> operation</li>
+            <li><span class="code">notFull</span> condition on the <span class="code">remove</span> operation</li>
+          </ul>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                private final Queue&lt;E&gt; queue;
+                private final int maxSize;
+                private final Lock lock;
+                private final Condition notFull;
+                private final Condition notEmpty;
+            
+                public void add(E e) throws InterruptedException {
+                    lock.lock();
+                    try {
+                        while (queue.size() == maxSize) {
+                            this.notFull.await();
+                        }
+                        queue.add(e);
+                        notEmpty.signal();
+                    } finally {
+                        lock.unlock();
+                    }
+                }
+            
+                public E remove() throws InterruptedException {
+                    lock.lock();
+                    try {
+                        while (queue.isEmpty()) {
+                            notEmpty.await();
+                        }
+                        E e = queue.remove();
+                        notFull.signal();
+                        return e;
+                    } finally {
+                        lock.unlock();
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+        </div>
+
+        <h2>Full Implementation</h2>
+        <code-tabs-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Storage.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            public interface Storage&lt;E&gt; {
+                            
+                                /**
+                                 * Inserts the specified element into this queue, waiting if necessary
+                                 * for space to become available.
+                                 *
+                                 * @param e the element to add
+                                 * @throws InterruptedException if interrupted while waiting
+                                 */
+                                void add(E e) throws InterruptedException;
+                            
+                                /**
+                                 * Retrieves and removes the head of this queue, waiting if necessary
+                                 * until an element becomes available.
+                                 *
+                                 * @return the head of this queue
+                                 * @throws InterruptedException if interrupted while waiting
+                                 */
+                                E remove() throws InterruptedException;
+                            
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">StorageImpl.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import java.util.LinkedList;
+                            import java.util.Queue;
+                            import java.util.concurrent.locks.Condition;
+                            import java.util.concurrent.locks.Lock;
+                            import java.util.concurrent.locks.ReentrantLock;
+                            
+                            /**
+                             * Storage implementation based java.util.concurrent.ArrayStorage implementation
+                             */
+                            public class StorageImpl&lt;E&gt; implements Storage&lt;E&gt; {
+                            
+                                private final Queue&lt;E&gt; queue;
+                                private final int maxSize;
+                                private final Lock lock;
+                                private final Condition notFull;
+                                private final Condition notEmpty;
+                            
+                                public StorageImpl(int maxSize) {
+                                    this.queue = new LinkedList&lt;&gt;();
+                                    this.maxSize = maxSize;
+                                    this.lock = new ReentrantLock(true);
+                                    this.notFull = this.lock.newCondition();
+                                    this.notEmpty = this.lock.newCondition();
+                                }
+                            
+                                @Override
+                                public void add(E e) throws InterruptedException {
+                                    lock.lock();
+                                    try {
+                                        while (queue.size() == maxSize) {
+                                            this.notFull.await();
+                                        }
+                                        queue.add(e);
+                                        notEmpty.signal();
+                                    } finally {
+                                        lock.unlock();
+                                    }
+                                }
+                            
+                                @Override
+                                public E remove() throws InterruptedException {
+                                    lock.lock();
+                                    try {
+                                        while (queue.isEmpty()) {
+                                            notEmpty.await();
+                                        }
+                                        E e = queue.remove();
+                                        notFull.signal();
+                                        return e;
+                                    } finally {
+                                        lock.unlock();
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Producer.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            public class Producer implements Runnable {
+                            
+                                private final String name;
+                                private final Storage&lt;String&gt; queue;
+                                private final int processDuration;
+                            
+                                public Producer(String name, Storage&lt;String&gt; queue, int processDuration) {
+                                    this.name = name;
+                                    this.queue = queue;
+                                    this.processDuration = processDuration;
+                                }
+                            
+                                @Override
+                                public void run() {
+                                    int index = 0;
+                                    while (true) {
+                                        try {
+                                            queue.add("item" + index++ + " from " + name);
+                                            Thread.sleep(processDuration);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Consumer.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            public class Consumer implements Runnable {
+                                private final Storage&lt;String&gt; queue;
+                                private final int processDuration;
+                            
+                                public Consumer(Storage&lt;String&gt; queue, int processDuration) {
+                                    this.queue = queue;
+                                    this.processDuration = processDuration;
+                                }
+                            
+                                @Override
+                                public void run() {
+                                    while (true) {
+                                        try {
+                                            String item = queue.remove();
+                                            System.out.println("processing: " + item);
+                                            Thread.sleep(processDuration);
+                                        } catch (InterruptedException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Main.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            
+                            public class Main {
+                            
+                                public static void main(String[] args) throws InterruptedException {
+                                    Storage&lt;String&gt; queue = new StorageImpl&lt;&gt;(10);
+                            
+                                    new Thread(new Producer("producer1", queue, 100)).start();
+                                    new Thread(new Producer("producer2", queue, 200)).start();
+                                    new Thread(new Consumer(queue, 300)).start();
+                                    new Thread(new Consumer(queue, 400)).start();
+                            
+                                    Thread.sleep(3000);
+                                    System.exit(0);
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+
+          <code-tab-webcomponent slot="code-tab">Output</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                <code>
+                  processing: item0 from producer1
+                  processing: item0 from producer2
+                  processing: item1 from producer1
+                  processing: item2 from producer1
+                  processing: item1 from producer2
+                  processing: item3 from producer1
+                  processing: item4 from producer1
+                  processing: item2 from producer2
+                  processing: item5 from producer1
+                  processing: item6 from producer1
+                  processing: item3 from producer2
+                  processing: item7 from producer1
+                </code>
+              </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+        </code-tabs-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.youtube.com/watch?v=UOr9kMCCa5g&t=463s"
+            label="Defog Teck - Implement Producer Consumer pattern youtube video"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/ArrayStorage.html"
+            label="java.util.concurrent.ArrayStorage source code"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/producer-consumer-demo"
+            label="Github source code"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>

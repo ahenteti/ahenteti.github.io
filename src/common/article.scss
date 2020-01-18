@@ -12,33 +12,3 @@ article-webcomponent h2 {
 article-webcomponent h2::first-letter {
   text-transform: uppercase;
 }
-
-article-webcomponent ul li {
-  line-height: 2rem;
-  list-style-type: none;
-  list-style-position: inside;
-  padding-left: 1.5rem;
-}
-
-article-webcomponent ul li::before {
-  content: '■';
-  padding-right: 1rem;
-}
-
-article-webcomponent h3 {
-  font-size: 1.6rem;
-  padding-bottom: 1rem;
-  margin-top: 2rem;
-}
-
-article-webcomponent .steps {
-  counter-reset: steps;
-}
-
-article-webcomponent h3.step::before {
-  counter-increment: steps 1;
-  content: counter(steps) '.';
-  font-size: 3rem;
-  color: var(--primary-color);
-  padding-right: 1rem;
-}
