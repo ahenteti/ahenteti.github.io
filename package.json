@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node --max-old-space-size=2048 node_modules/webpack/bin/webpack.js -p",
+    "build": "node --max-old-space-size=2048 node_modules/webpack/bin/webpack.js -d",
     "dev": "webpack -d",
     "start": "webpack-dev-server --open"
   },

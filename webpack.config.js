@@ -196,13 +196,11 @@ function toArticlesByCategory(allArticles) {
 }
 
 function getArticlesTags() {
-  const tags = glob.sync('./src/pages/articles/**/metadata.json').reduce((tags, filePath) => {
-    JSON.parse(fs.readFileSync(filePath))
-      .tags.split(',')
-      .forEach(tag => tags.add(tag));
+  const tags = getArticlesMetadata().reduce((tags, article) => {
+    article.tags.split(',').forEach(tag => tags.add(tag));
     return tags;
   }, new Set());
-  let tagsArray = Array.from(tags);
+  const tagsArray = Array.from(tags);
   tagsArray.sort();
   return ['all', ...tagsArray];
 }
