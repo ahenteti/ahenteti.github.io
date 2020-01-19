@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+
+      <article-webcomponent>
+        <h2>Using java Regex</h2>
+
+        <h3>Code</h3>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public boolean isValidIpv4Address(String ipAddress) {
+                  String zeroTo255Pattern = "(\\d{1,2}|[0-1]\\d{2}|2[0-4]\\d|25[0-5])";
+                  String ipv4AddressPattern = zeroTo255Pattern + "\\." + zeroTo255Pattern + "\\." + zeroTo255Pattern + "\\." + zeroTo255Pattern;
+                  return ipAddress.matches(ipv4AddressPattern);
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h3>Explanation</h3>
+        <ul>
+          <li><span class="code">\\d{1,2}</span> matches one or two digits</li>
+          <li><span class="code">[0-1]\\d{2}</span> matches three digits starting with 0 or 1</li>
+          <li><span class="code">2[0-4]\\d</span> matches numbers between 200 and 249</li>
+          <li><span class="code">25[0-5]</span> matches numbers between 250 and 255</li>
+        </ul>
+
+        <h2>Using InetAddress.getByName method</h2>
+        <p>
+          The <span class="code">InetAddress.getByName</span> method treats also IPv6 addresses. For me, we should use
+          this solution for production code
+        </p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public boolean isValidIpAddress(String ipAddress) {
+                  try {
+                      InetAddress.getByName(ipAddress);
+                      return true;
+                  } catch (UnknownHostException e) {
+                      return false;
+                  }
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.hackerrank.com/challenges/java-regex/forum"
+            label="Hackerrank java-regex challenge"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://www.hackerrank.com/challenges/java-regex/forum"
+            label="@dorku solution"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
