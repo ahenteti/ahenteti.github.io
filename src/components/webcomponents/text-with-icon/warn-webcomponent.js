@@ -1,12 +1,9 @@
-class WarnWebComponent extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
+import ElementWebComponent from '../element-webcomponent';
 
-    connectedCallback() {
-        this._root.innerHTML = /* html */ `
+class WarnWebComponent extends ElementWebComponent {
+  connectedCallback() {
+    super.connectedCallback();
+    this._root.innerHTML += /* html */ `
       <style>
         :host {
           --icon-background-color: var(--warn-component-icon-background-color);
@@ -20,7 +17,7 @@ class WarnWebComponent extends HTMLElement {
       </text-with-icon-webcomponent>
       
     `;
-    }
+  }
 }
 
 window.customElements.define('warn-webcomponent', WarnWebComponent);

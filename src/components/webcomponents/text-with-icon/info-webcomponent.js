@@ -1,12 +1,9 @@
-class InfoWebComponent extends HTMLElement {
-  constructor() {
-    super();
-    this._root = this.attachShadow({ mode: 'open' });
-    this._commonCss = window.webpackManifest['common.css'];
-  }
+import ElementWebComponent from '../element-webcomponent';
 
+class InfoWebComponent extends ElementWebComponent {
   connectedCallback() {
-    this._root.innerHTML = /* html */ `
+    super.connectedCallback();
+    this._root.innerHTML += /* html */ `
       <style>
         :host {
           --icon-background-color: var(--info-component-icon-background-color);

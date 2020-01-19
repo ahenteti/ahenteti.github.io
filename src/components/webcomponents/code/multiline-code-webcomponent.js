@@ -209,6 +209,17 @@ class MultilineCodeWebComponent extends ElementWebComponent {
             transform: translateY(-50%);
         }
 
+        .highlight,
+        .highlight-green {
+          background: var(--primary-code-highlight-color);
+          padding: 3px;
+          border-radius: 2px;
+        }
+
+        .highlight-green {
+          background-color: var(--code-highlight-color);
+        }
+
         .container {
           font-size: 1.6rem;
           position: relative;

@@ -1,15 +1,11 @@
-class QuoteWebComponent extends HTMLElement {
-    constructor() {
-        super();
-        this._root = this.attachShadow({ mode: 'open' });
-        this._commonCss = window.webpackManifest['common.css'];
-    }
+import ElementWebComponent from '../element-webcomponent';
 
-    connectedCallback() {
-        this._author = this.getAttribute('author');
-        this._root.innerHTML = /* html */ `
+class QuoteWebComponent extends ElementWebComponent {
+  connectedCallback() {
+    super.connectedCallback();
+    this._author = this.getAttribute('author');
+    this._root.innerHTML += /* html */ `
       <style>
-        @import "${this._commonCss}";
         :host {
           --icon-background-color: var(--quote-component-icon-background-color);
           --icon-color: var(--quote-component-icon-color);
@@ -30,7 +26,7 @@ class QuoteWebComponent extends HTMLElement {
         <p class=author>— ${this._author}</p>
       </text-with-icon-webcomponent>
     `;
-    }
+  }
 }
 
 window.customElements.define('quote-webcomponent', QuoteWebComponent);

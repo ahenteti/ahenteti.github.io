@@ -157,7 +157,7 @@ function getArticlesMetadata() {
       relatedArticles.delete(article);
       const relatedArticlesWithoutRelatedArticlesProperty = [];
       for (const article of relatedArticles) {
-        const { relatedArticlesProperty, ...articleWithoutRelatedArticlesProperty } = article;
+        const { relatedArticles, ...articleWithoutRelatedArticlesProperty } = article;
         relatedArticlesWithoutRelatedArticlesProperty.push(articleWithoutRelatedArticlesProperty);
       }
       article.relatedArticles = relatedArticlesWithoutRelatedArticlesProperty;

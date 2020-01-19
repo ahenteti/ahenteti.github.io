@@ -9,7 +9,7 @@
 
       <article-webcomponent>
         <h2>Overview</h2>
-        <p class="mb-0">
+        <p class="mb-s">
           In this demo, I will show you how we can implement the Producer-Consumer pattern in java. This pattern is baed
           a <span class="code">Storage</span> where
         </p>
@@ -84,7 +84,7 @@
           </multiline-code-webcomponent>
 
           <h3 class="step">Handle Storage capacity</h3>
-          <p class="mb-0">The last feature that we need to implement in our <span class="code">Storage</span> is</p>
+          <p class="mb-s">The last feature that we need to implement in our <span class="code">Storage</span> is</p>
           <ul>
             <li>if the queue is full, we had to block the thread in the <span class="code">add</span> operation</li>
             <li>if the queue is empty, we had to block the thread in the <span class="code">remove</span> operation</li>
@@ -116,7 +116,7 @@
             <span class="code">Lock</span> and let the thread goes to the wait state if the condition is not yet
             satisfied
           </p>
-          <p class="mb-0">
+          <p class="mb-s">
             At this point, our producers and consumers will be waiting for new condition to be satisfied, but we need to
             trigger these conditions at certain point in our code. That's why we are going to trigger the
           </p>
@@ -393,7 +393,7 @@
           ></link-webcomponent>
           <link-webcomponent
             href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/producer-consumer-demo"
-            label="Github source code"
+            label="Article source code"
           ></link-webcomponent>
         </more-info-webcomponent>
       </article-webcomponent>

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>SimpleDateFormat Javadoc</h2>
+        <quote-webcomponent author="SimpleDateFormat javadoc">
+          <p class="mb-s">
+            Date formats are not <b>synchronized</b>. It is recommended to create separate format instances for each
+            thread. If multiple threads access a format concurrently, it must be synchronized externally.
+          </p>
+        </quote-webcomponent>
+
+        <h2>SimpleDateFormat thread safety issue Example</h2>
+        <p>
+          In the following example, we are going to parse the same <span class="code">stringDate</span> by multiple
+          threads and using a single instance of <span class="code">SimpleDateFormat</span>
+        </p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+              public static void main(String[] args) {
+                  final String stringDate = "2020-01-19T19:00:00";
+                  ExecutorService executorService = Executors.newFixedThreadPool(2);
+                  Runnable task = () -> parseDate(stringDate);
+                  IntStream.rangeClosed(1, 10).forEach(i -> executorService.submit(task));
+                  executorService.shutdown();
+              }
+          
+              private static void parseDate(String stringDate) {
+                  try {
+                      Date date = formatter.parse(stringDate);
+                      System.out.println("Date: " + date);
+                  } catch (Exception e) {
+                      e.printStackTrace();
+                  }
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <p>If we run the program above, we are expecting 10 messages like this in the console</p>
+        <oneline-code-webcomponent
+          code="Date: Sun Jan 19 19:00:00 CET 2020"
+          language="bash"
+        ></oneline-code-webcomponent>
+
+        <p>But instead we obtain this random output (it changes every execution)</p>
+
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              Date: Sun Jan 19 19:00:00 CET 2020
+              <span class="highlight">Date: Mon Jul 10 09:16:33 CET 190728635</span>
+              Date: Sun Jan 19 19:00:00 CET 2020
+              java.lang.NumberFormatException: multiple points
+                at sun.misc.FloatingDecimal.readJavaFormatString(FloatingDecimal.java:1890)
+                at sun.misc.FloatingDecimal.parseDouble(FloatingDecimal.java:110)
+                at java.lang.Double.parseDouble(Double.java:538)
+                at java.text.DigitList.getDouble(DigitList.java:169)
+                at java.text.DecimalFormat.parse(DecimalFormat.java:2089)
+                at java.text.SimpleDateFormat.subParse(SimpleDateFormat.java:1869)
+                at java.text.SimpleDateFormat.parse(SimpleDateFormat.java:1514)
+                at java.text.DateFormat.parse(DateFormat.java:364)
+                at io.github.ahenteti.java.SimpleDateFormatStep1.parseDate(SimpleDateFormatStep1.java:23)
+                at io.github.ahenteti.java.SimpleDateFormatStep1.lambda$main$0(SimpleDateFormatStep1.java:16)
+                at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+                at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+                at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+                at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+                at java.lang.Thread.run(Thread.java:748)
+              java.lang.NumberFormatException: multiple points
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h3>So how we should use <span class="code">SimpleDateFormat</span> in multi-threaded environment ?</h3>
+        <p>From my research on the Internet, I found out these three options</p>
+        <ul>
+          <li>Create a new instance of <span class="code">SimpleDateFormat</span> for each thread execution</li>
+          <li>
+            Synchronize concurrent access using the <span class="code">synchronized</span> keyword or using
+            <span class="code">Lock</span>s
+          </li>
+          <li>
+            Use <span class="code">ThreadLocal</span>, so each thread in the thread pool use its own copy of the
+            <span class="code">SimpleDateFormat</span> instance
+          </li>
+        </ul>
+
+        <div class="steps">
+          <h3 class="step">New instance for each thread execution</h3>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                public static void main(String[] args) {
+                    final String stringDate = "2020-01-19T19:00:00";
+                    ExecutorService executorService = Executors.newFixedThreadPool(5);
+                    Runnable task = () -> parseDate(stringDate);
+                    IntStream.rangeClosed(1, 100).forEach(i -> executorService.submit(task));
+                    executorService.shutdown();
+                }
+            
+                private static void parseDate(String stringDate) {
+                    try {
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+                        Date date = formatter.parse(stringDate);
+                        System.out.println("Date: " + date);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+          <p>
+            As you may noticed, with this solution, we will create N
+            <span class="code">SimpleDateFormat</span> instances (100 instances in the example above). So we have
+            introduced introduced another problem which is <i>Too Much Memory Usage</i> problem
+          </p>
+
+          <h3 class="step">Synchronize concurrent access</h3>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+                public static void main(String[] args) {
+                    final String stringDate = "2020-01-19T19:00:00";
+                    ExecutorService executorService = Executors.newFixedThreadPool(5);
+                    Runnable task = () -> parseDate(stringDate);
+                    IntStream.rangeClosed(1, 100).forEach(i -> executorService.submit(task));
+                    executorService.shutdown();
+                }
+            
+                private static void parseDate(String stringDate) {
+                    try {
+                        <span class="highlight">synchronized (formatter) {</span>
+                            Date date = formatter.parse(stringDate);
+                            System.out.println("Date: " + date);
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+          <p>
+            With solution, we have kept our <span class="code">SimpleFormatDate</span> global instance, but have
+            restrict the access to this instance to threads: only one thread can access it each time and will make other
+            threads in the waiting state waiting for that thread finishes his work with this global instance.
+          </p>
+          <p>
+            But as we know, synchronization slow down performances, and that's why we are going to use the
+            <span class="code">ThreadLocal</span> solution which is for me the best solution for our initial problem
+          </p>
+
+          <h3 class="step">Use ThreadLocal class</h3>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                private static ThreadLocal&lt;SimpleDateFormat&gt; formatter = ThreadLocal
+                        .withInitial(() -> new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"));
+      
+                public static void main(String[] args) {
+                    final String stringDate = "2020-01-19T19:00:00";
+                    ExecutorService executorService = Executors.newFixedThreadPool(5);
+                    Runnable task = () -> parseDate(stringDate);
+                    IntStream.rangeClosed(1, 100).forEach(i -> executorService.submit(task));
+                    executorService.shutdown();
+                }
+            
+                private static void parseDate(String stringDate) {
+                    try {
+                        Date date = formatter.get().parse(stringDate);
+                        System.out.println("Date: " + date);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+          <p>
+            With solution, we only created 10 <span class="code">SimpleDateFormat</span> instances has been created
+            instead of the 100 instances that has been created in the first solution
+          </p>
+          <info-webcomponent>
+            <p class="mb-0">
+              But if you already use java 8 or above version, please don't use SimpleDateFormat, but consider using the
+              DateTimeFormatter which has been introduced since java 8 and designed to be thread-safe
+            </p>
+          </info-webcomponent>
+        </div>
+        <conclusion-webcomponent></conclusion-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.callicoder.com/java-simpledateformat-thread-safety-issues/"
+            label="Callicoder simpledateformat-thread-safety-issues article"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://www.youtube.com/watch?v=sjMe9aecW_A&t=11s"
+            label="Defog Tech ThreadLocal in Java Youtube video"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/simpledateformat-thread-safety-issues"
+            label="Article source code"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
