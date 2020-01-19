@@ -21,6 +21,7 @@ body {
 body.dark {
   --primary-color: #078eed;
   --primary-color-light: #66bfff;
+  --primary-color-dark: #0c7ccb;
   --primary-code-highlight-color: #394048;
   --code-highlight-color: #504048;
   --body-background-color: #1c1f23;
@@ -81,6 +82,7 @@ body.dark {
 body.light {
   --primary-color: #078eed;
   --primary-color-light: #66bfff;
+  --primary-color-dark: #0c7ccb;
   --primary-code-highlight-color: rgb(255, 215, 0);
   --code-highlight-color: rgb(31, 255, 31);
   --body-background-color: var(--white-color);

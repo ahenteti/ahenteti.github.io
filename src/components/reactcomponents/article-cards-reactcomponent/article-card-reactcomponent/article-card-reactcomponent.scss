@@ -1,4 +1,5 @@
 .article-card-reactcomponent {
+  --new-article-elevation: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -50,5 +51,35 @@
     font-size: 1.5rem;
     margin-right: 1rem;
     transition: color 0.2s ease-in;
+  }
+
+  & .new-article-wrapper {
+    display: none;
+    position: absolute;
+    top: calc(var(--new-article-elevation) * -1);
+    right: 3rem;
+    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.3));
+  }
+
+  & .new-article {
+    background-color: var(--primary-color);
+    padding-top: 1rem;
+    padding-right: 1rem;
+    padding-bottom: 2rem;
+    padding-left: 2rem;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: var(--box-shadow);
+    clip-path: polygon(
+      var(--new-article-elevation) 0,
+      100% 0,
+      100% 60%,
+      60% 100%,
+      var(--new-article-elevation) 60%,
+      var(--new-article-elevation) var(--new-article-elevation),
+      0 var(--new-article-elevation)
+    );
   }
 }

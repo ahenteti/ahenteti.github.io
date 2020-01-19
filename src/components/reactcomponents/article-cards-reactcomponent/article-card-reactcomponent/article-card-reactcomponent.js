@@ -33,6 +33,9 @@ class ArticleCardReactComponent extends React.Component {
               <ion-icon name='calendar'></ion-icon>
               <p>{this.props.article.publicationDate}</p>
             </div>
+            <div ref={el => (this.newArticleWrapper = el)} className='new-article-wrapper'>
+              <div className='new-article'>New</div>
+            </div>
           </div>
         </a>
       </div>
@@ -40,6 +43,7 @@ class ArticleCardReactComponent extends React.Component {
   }
 
   componentDidMount() {
+    this.highlightNewArticle();
     setTimeout(() => {
       if (alreadyVisible(this.container)) {
         addAlreadyVisibleClass(this.container);
@@ -48,6 +52,15 @@ class ArticleCardReactComponent extends React.Component {
       }
       window.addEventListener('scroll', this.scrollHandler);
     }, 0);
+  }
+
+  highlightNewArticle() {
+    const publicationDate = new Date(this.props.article.publicationDate);
+    const lastTwoWeeks = new Date();
+    lastTwoWeeks.setDate(new Date().getDate() - 14);
+    if (publicationDate > lastTwoWeeks) {
+      this.newArticleWrapper.style.display = 'block';
+    }
   }
 
   componentWillUnmount() {
