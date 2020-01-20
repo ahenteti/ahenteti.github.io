@@ -55,10 +55,7 @@ class ArticleCardReactComponent extends React.Component {
   }
 
   highlightNewArticle() {
-    const publicationDate = new Date(this.props.article.publicationDate);
-    const lastTwoWeeks = new Date();
-    lastTwoWeeks.setDate(new Date().getDate() - 14);
-    if (publicationDate > lastTwoWeeks) {
+    if (this.props.article.recent) {
       this.newArticleWrapper.style.display = 'block';
     }
   }

@@ -166,6 +166,14 @@ function getArticlesMetadata() {
       const articleTags = article.tags.toLowerCase().split(',');
       const articleKeys = articleNameKeys.concat(articleTags);
       article.searchKey = articleKeys.join(' ');
+
+      const publicationDate = new Date(article.publicationDate);
+      const lastTwoWeeks = new Date().setDate(new Date().getDate() - 14);
+      if (publicationDate > lastTwoWeeks) {
+        article.recent = true;
+      } else {
+        article.recent = false;
+      }
     }
   }
   return ARTICLES_METADATA;

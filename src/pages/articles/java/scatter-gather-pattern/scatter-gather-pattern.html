@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Overview</h2>
+        <p>
+          Suppose that you have to implement a function that returns the price of a product from different e-commerce
+          websites. Such problem could be solved by making successive http requests like this :
+        </p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public List&lt;Double&gt; getProductPrices(String productId, String... websites) {
+                  List&lt;Double&gt; prices = new ArrayList&lt;&gt;();
+                  for (String website : websites) {
+                      prices.add(getProductPrice(productId, website));
+                  }
+                  return prices;
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+        <p>
+          But we quickly discover that we have performance issue here: in fact, for each request, the thread blocks
+          until he gets the response back, after that he sent another request. So what we really need is to fire
+          asynchronously N http requests at the beginning and collect the responses at the end
+        </p>
+        <img src="./get-prices-workflow.svg" alt="" />
+
+        <br />
+        <br />
+        <span class="highlight">WIP...</span>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
