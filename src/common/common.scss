@@ -93,6 +93,7 @@ img {
   max-width: 100%;
   display: block;
   margin: 0 auto;
+  margin-bottom: 1.6rem;
 }
 
 .nowrap {
@@ -106,6 +107,7 @@ img {
 .highlight,
 .highlight-green {
   background: var(--primary-code-highlight-color);
+  color: white;
   padding: 3px;
   border-radius: 2px;
 }
