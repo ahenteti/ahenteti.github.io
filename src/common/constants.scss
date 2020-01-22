@@ -77,6 +77,8 @@ body.dark {
   --related-article-card-background-color: #32373b;
   --related-article-border-color: #32373b;
   --related-article-tag-background-color: #394048;
+  --header-small-screens-background: #262a2d;
+  --header-small-screens-li-on-hover-state: #32373b;
 }
 
 body.light {
@@ -138,6 +140,8 @@ body.light {
   --related-article-card-background-color: #fcfcfc;
   --related-article-border-color: #eee;
   --related-article-tag-background-color: #f2f2f2;
+  --header-small-screens-background: #f2f2f2;
+  --header-small-screens-li-on-hover-state: #eee;
 }
 
 html {

@@ -22,17 +22,22 @@ class HeaderReactComponent extends React.Component {
     return (
       <div ref={el => (this.header = el)} className='header-reactcomponent'>
         <nav>
+          <a className='logo' href='/'>
+            <logo-webcomponent></logo-webcomponent>
+            <span>ahenteti notes</span>
+          </a>
+          <input type='checkbox' id='check' />
+          <label htmlFor='check' className='checkbtn'>
+            <ion-icon name='menu'></ion-icon>
+          </label>
           <ul>
-            <li className='left'>
-              <a className='home' href='/'>
-                <logo-webcomponent></logo-webcomponent>
-                <span>ahenteti notes</span>
-              </a>
-            </li>
-            <li className='right'>
+            <li>
               <a className='about tooltip-bottom' href='/about.html' data-tooltip='about'>
                 <ion-icon name='contact'></ion-icon>
+                <span>About</span>
               </a>
+            </li>
+            <li>
               <a
                 className='github tooltip-bottom'
                 href='https://github.com/ahenteti'
@@ -40,7 +45,10 @@ class HeaderReactComponent extends React.Component {
                 data-tooltip='github'
               >
                 <ion-icon name='logo-github'></ion-icon>
+                <span>Github</span>
               </a>
+            </li>
+            <li>
               <a
                 className='github tooltip-bottom'
                 href='https://stackoverflow.com/users/6815416/a-henteti'
@@ -48,7 +56,10 @@ class HeaderReactComponent extends React.Component {
                 data-tooltip='stackoverflow'
               >
                 <ion-icon name='logo-buffer'></ion-icon>
+                <span>StackOverflow</span>
               </a>
+            </li>
+            <li>
               <div
                 ref={el => (this.changeThemeContainer = el)}
                 className={
@@ -66,6 +77,7 @@ class HeaderReactComponent extends React.Component {
                 </div>
                 <highlight-feature-webcomponent></highlight-feature-webcomponent>
               </div>
+              <span onClick={this.props.changeThemeColor}>Change theme color</span>
             </li>
           </ul>
         </nav>

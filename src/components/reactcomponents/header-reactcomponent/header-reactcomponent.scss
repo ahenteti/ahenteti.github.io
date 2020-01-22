@@ -1,15 +1,10 @@
 .header-reactcomponent {
-  & {
-    background-color: var(--header-background);
-    width: 100%;
-    position: fixed;
-    top: 0;
-    z-index: 100;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    transition: box-shadow 0.2s ease-in;
-  }
+  background-color: var(--header-background);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  transition: box-shadow 0.2s ease-in;
 
   &.shadow {
     box-shadow: var(--box-shadow);
@@ -19,58 +14,50 @@
     width: 80%;
     max-width: var(--max-width);
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: var(--header-height);
+  }
+
+  & .logo {
+    display: flex;
+    align-items: center;
+    &:hover span {
+      color: var(--primary-color);
+    }
+  }
+
+  & .logo span {
+    color: var(--header-link-color);
+    transition: var(--transition);
+    font-weight: bold;
+    font-size: 1.8rem;
+    padding-left: 1.3rem;
   }
 
   & ul {
-    width: 100%;
-    margin: 0 auto;
-    min-height: var(--header-height);
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-  }
-
-  & li::before {
-    all: unset;
-  }
-
-  & .left a,
-  & .right ion-icon {
-    color: var(--header-link-color);
-    margin: 0 1rem;
-    transition: var(--transition);
-    font-weight: bold;
-  }
-
-  & .left {
-    margin-left: -1rem;
-  }
-
-  & .right {
-    margin-right: -1rem;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  & .left a:hover,
-  & .right ion-icon:hover {
-    color: var(--primary-color);
-  }
-
-  & .home {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-
-  & logo-webcomponent {
-    margin-right: 1rem;
   }
 
   & ion-icon {
+    color: var(--header-link-color);
+    transition: var(--transition);
+    font-weight: bold;
     font-size: 2.5rem;
+    margin: 0 0.7rem;
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
+
+  & ul {
+    margin-right: -0.7rem;
+  }
+
+  & li span {
+    display: none;
   }
 
   & .change-theme-container {
@@ -85,6 +72,71 @@
       position: absolute;
       bottom: calc(-10rem - 2rem);
       left: -30rem;
+    }
+  }
+
+  & #check,
+  & .checkbtn {
+    display: none;
+  }
+
+  @media screen and (max-width: 700px) {
+    & .checkbtn {
+      display: block;
+    }
+
+    & #check:checked ~ ul {
+      left: 0;
+    }
+
+    & ul {
+      display: initial;
+      background-color: var(--header-small-screens-background);
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      top: var(--header-height);
+      left: -100%;
+      text-align: center;
+      transition: all 0.5s;
+      flex-direction: column;
+    }
+
+    & li span {
+      display: inline;
+    }
+
+    & li ion-icon {
+      display: none;
+    }
+
+    & ion-icon {
+      margin: 0;
+    }
+
+    & li a,
+    & li span {
+      color: var(--text-color);
+      cursor: pointer;
+    }
+
+    & li {
+      line-height: 5rem;
+      transition: var(--transition);
+      font-weight: bold;
+      font-size: 3rem;
+      &:hover {
+        background-color: var(--header-small-screens-li-on-hover-state);
+      }
+    }
+
+    & [data-tooltip]::before,
+    & [data-tooltip]::after {
+      display: none;
+    }
+
+    & .change-theme-container.unknown-change-theme-color-feature highlight-feature-webcomponent {
+      display: none;
     }
   }
 }
