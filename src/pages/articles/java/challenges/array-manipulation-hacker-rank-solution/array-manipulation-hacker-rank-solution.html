@@ -89,19 +89,19 @@
             <code>
               static long arrayManipulation(int n, int[][] queries) {
                   int[] arr = new int[n];
-                  for (int i = 0; i < queries.length; i++) {
+                  for (int i = 0; i &lt; queries.length; i++) {
                       int a = queries[i][0];
                       int b = queries[i][1];
                       int k = queries[i][2];
                       arr[a - 1] += k;
-                      if (b < n) arr[b] -= k;
+                      if (b &lt; n) arr[b] -= k;
           
                   }
                   long sum = 0;
                   long max = 0;
-                  for (int i = 0; i < n; i++) {
+                  for (int i = 0; i &lt; n; i++) {
                       sum += arr[i];
-                      if (max < sum) max = sum;
+                      if (max &lt; sum) max = sum;
                   }
                   return max;
               }
