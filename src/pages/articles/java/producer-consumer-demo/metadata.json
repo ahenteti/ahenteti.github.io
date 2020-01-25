@@ -1,6 +1,6 @@
 {
   "name": "Producer Consumer demo",
-  "slug": "articles/producer-consumer-demo.html",
+  "slug": "/articles/producer-consumer-demo.html",
   "tags": "java,concurrency",
   "category": "java",
   "publicationDate": "Jan 18, 2020"
