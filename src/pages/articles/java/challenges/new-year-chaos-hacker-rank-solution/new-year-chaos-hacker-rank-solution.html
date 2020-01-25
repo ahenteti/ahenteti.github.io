@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Problem</h2>
+        <p>
+          It's New Year's Day and everyone's in line for the Wonderland rollercoaster ride! There are a number of people
+          queued up, and each person wears a sticker indicating their initial position in the queue. Initial positions
+          increment by <span class="code">1</span> from <span class="code">1</span> at the front of the line to
+          <span class="code">n</span> at the back.
+        </p>
+        <p>
+          Any person in the queue can bribe the person directly in front of them to swap positions. If two people swap
+          positions, they still wear the same sticker denoting their original places in line. One person can bribe at
+          most two others. For example, if <span class="code">n = 8</span> and <span class="code">Person 5</span> bribes
+          <span class="code">Person 4</span>, the queue will look like this: <span class="code">1 2 3 5 4 6 7 8</span>.
+        </p>
+        <p>
+          Fascinated by this chaotic queue, you decide you must know the minimum number of bribes that took place to get
+          the queue into its current state!
+        </p>
+
+        <h2>Function Description</h2>
+        <p>
+          Complete the function minimumBribes in the editor below. It must print an integer representing the minimum
+          number of bribes necessary, or <span class="code">Too chaotic</span> if the line configuration is not
+          possible. minimumBribes has the following parameter(s):
+        </p>
+        <ul>
+          <li>
+            q: an array of integers
+          </li>
+        </ul>
+
+        <h2>Input Format</h2>
+        <p>
+          The first line contains an integer <span class="code">t</span>, the number of test cases. Each of the next
+          <span class="code">t</span> pairs of lines are as follows:
+        </p>
+        <ul>
+          <li>The first line contains an integer <span class="code">t</span>, the number of people in the queue</li>
+          <li>
+            The second line has <span class="code">n</span> space-separated integers describing the final state of the
+            queue.
+          </li>
+        </ul>
+
+        <h2>Output Format</h2>
+        <p>
+          Print an integer denoting the minimum number of bribes needed to get the queue into its final state. Print
+          <span class="code">Too chaotic</span> if the state is invalid, i.e. it requires a person to have bribed more
+          than <span class="code">2</span> people.
+        </p>
+
+        <h2>Sample Input</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              2
+              5
+              2 1 5 3 4
+              5
+              2 5 1 3 4
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Sample Output</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              3
+              Too chaotic
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Observation</h2>
+        <p class="mb-s">
+          One possible solution for this problem could be based on this statement: the number of brides a person has
+          made is the number of arr:
+        </p>
+        <ul>
+          <li>sitting on the right of that person</li>
+          <li>and having a sticker less that the current person sticker</li>
+        </ul>
+
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public static final int MAX_PERSON_BRIBES = 2;
+
+              static void minimumBribes(int[] arr) {
+                  int res = 0;
+                  for (int i = 0; i &lt; arr.length - 1; i++) {
+                      try {
+                          res += getCurrentPersonBribes(arr, i);
+                      } catch (TooChaoticException e) {
+                          System.out.println("Too chaotic");
+                          return;
+                      }
+                  }
+                  System.out.println(res);
+              }
+          
+              static int getCurrentPersonBribes(int[] arr, int j) throws TooChaoticException {
+                  int res = 0;
+                  for (int i = j + 1; i &lt; arr.length; i++) {
+                      if (arr[j] > arr[i]) {
+                          res++;
+                      }
+                      if (res &gt; MAX_PERSON_BRIBES) {
+                          throw new TooChaoticException();
+                      }
+                  }
+                  return res;
+              }
+          
+              public static class TooChaoticException extends Exception {
+                  
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <p class="mb-s">
+          But such solution fails with status <span class="code">Terminated due to timeout</span> in the Hacker Rank
+          website. In fact even with this condition:
+        </p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              if (res > MAX_PERSON_BRIBES) {
+                  throw new TooChaoticException();
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+        <p class="mt-s">the time complexity of this solution is <span class="code">O(n^2)</span></p>
+
+        <p>
+          Before going further, I want to be honest with you: I find it very difficult to continue working with numbers
+          which are 0-based for arrays and 1-based for person stickers. So I have introduced a new model to help us
+          avoid working directly with <span class="code">arr[i]</span> which represents the initial person position and
+          <span class="code">i + 1</span> which represents the current person position
+        </p>
+
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public static class Person {
+                  int currentPosition;
+                  int initialPosition;
+          
+                  public Person(int currentPosition, int initialPosition) {
+                      this.currentPosition = currentPosition;
+                      this.initialPosition = initialPosition;
+                  }
+          
+                  static Person[] from(int[] persons) {
+                      Person[] res = new Person[persons.length];
+                      for (int i = 0; i &lt; persons.length; i++) {
+                          res[i] = new Person(i + 1, persons[i]);
+                      }
+                      return res;
+                  }
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <p>
+          In the next solution, we are going to return back to the initial persons positions and calculate through this
+          process the number of bribes that has been made. As in this problem, persons making bribes go from left to
+          right, we will start from the end of the array and try to revert these persons movements. Here is the full
+          implementation of this solution
+        </p>
+
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public static class Person {
+                  int currentPosition;
+                  int initialPosition;
+          
+                  public Person(int currentPosition, int initialPosition) {
+                      this.currentPosition = currentPosition;
+                      this.initialPosition = initialPosition;
+                  }
+          
+                  static Person[] from(int[] persons) {
+                      Person[] res = new Person[persons.length];
+                      for (int i = 0; i &lt; persons.length; i++) {
+                          res[i] = new Person(i + 1, persons[i]);
+                      }
+                      return res;
+                  }
+          
+                  static void swap(Person person1, Person person2) {
+                      int tmpPosition = person1.initialPosition;
+                      person1.initialPosition = person2.initialPosition;
+                      person2.initialPosition = tmpPosition;
+                  }
+          
+                  static Person get(Person[] persons, int pos) {
+                      try {
+                          return persons[pos];
+                      } catch (IndexOutOfBoundsException e) {
+                          return null;
+                      }
+                  }
+              }
+        
+              static void minimumBribes(int[] arr) {
+                  Person[] persons = Person.from(arr);
+                  int n = persons.length;
+                  int res = 0;
+                  for (int i = n - 1; i &gt;= 0; i--) {
+                      Person currentPerson = persons[i];
+                      if (currentPerson.currentPosition != currentPerson.initialPosition) {
+                          // we are in the case of a bribe
+                          Person nextPerson = Person.get(persons, i - 1);
+                          Person nextNextPerson = Person.get(persons, i - 2);
+                          if (nextPerson != null && nextPerson.initialPosition == currentPerson.currentPosition) {
+                              res++;
+                              Person.swap(nextPerson, currentPerson);
+                          } else if (nextNextPerson != null && nextNextPerson.initialPosition == currentPerson.currentPosition) {
+                              res += 2;
+                              Person.swap(nextNextPerson, nextPerson);
+                              Person.swap(nextPerson, currentPerson);
+                          } else {
+                              System.out.println("Too chaotic");
+                              return;
+                          }
+                      }
+                  }
+                  System.out.println(res);
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.hackerrank.com/challenges/new-year-chaos/problem"
+            label="New Year Chaos Hacker Rank Problem"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
