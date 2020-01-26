@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Problem</h2>
+        <p>
+          Cryptographic hash functions are mathematical operations run on digital data; by comparing the computed hash
+          (i.e., the output produced by executing a hashing algorithm) to a known and expected hash value, a person can
+          determine the data's integrity. For example, computing the hash of a downloaded file and comparing the result
+          to a previously published hash result can show whether the download has been modified or tampered with. In
+          addition, cryptographic hash functions are extremely collision-resistant; in other words, it should be
+          extremely difficult to produce the same hash output from two different input values using a cryptographic hash
+          function.
+        </p>
+        <p>
+          Secure Hash Algorithm 2 (SHA-2) is a set of cryptographic hash functions designed by the National Security
+          Agency (NSA). It consists of six identical hashing algorithms (i.e., SHA-256, SHA-512, SHA-224, SHA-384,
+          SHA-512/224, SHA-512/256) with a variable digest size. SHA-256 is a <span class="code">256</span>-bit (
+          <span class="code">32</span> byte) hashing algorithm which can calculate a hash code for an input of up to
+          <span class="code">264 - 1</span> bits. It undergoes <span class="code">64</span> rounds of hashing and
+          calculates a hash code that is a <span class="code">64</span>-digit hexadecimal number.
+        </p>
+        <p>Given a string, <span class="code">s</span>, print its SHA-256 hash value.</p>
+
+        <h2>Input Format</h2>
+        <p>A single alphanumeric string denoting <span class="code">s</span>.</p>
+
+        <h2>Output Format</h2>
+        <p>Print the SHA-256 encryption value of <span class="code">s</span> on a new line.</p>
+
+        <h2>Sample Input</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              HelloWorld
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Sample Output</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Solution</h2>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public static void main(String[] args) throws NoSuchAlgorithmException {
+                  Scanner in = new Scanner(System.in);
+                  String valueToEncrypt = in.next();
+                  in.close();
+                  MessageDigest messageDigest = MessageDigest.getInstance("SHA-256");
+                  byte[] hash = messageDigest.digest(valueToEncrypt.getBytes());
+                  for (byte b : hash) System.out.printf("%02x", b);
+                  System.out.println();
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.hackerrank.com/challenges/sha-256/problem"
+            label="Java SHA-256 Hacker Rank Problem"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/java-challenges/src/main/java/io/github/ahenteti/java/hackerrank/JavaMessageDigestSolution.java"
+            label="Article source code"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
