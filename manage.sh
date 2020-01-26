@@ -221,13 +221,15 @@ newArticle() {
 
   publicationDate=$(date '+%b %d, %Y')
   file_name="$transformed_name.html"
+  slug="articles/$file_name"
   tools/jq -n --arg name "$name" \
          --arg publicationDate "$publicationDate" \
-         --arg file_name "articles/$file_name" \
+         --arg slug "$slug" \
          --arg category "$category" \
          --arg tags "$(jointBy , ${sortedTags[*]})" \
-         '{ name: $name, slug: $file_name, tags: $tags, category: $category, publicationDate: $publicationDate }' \
+         '{ name: $name, slug: $slug, tags: $tags, category: $category, publicationDate: $publicationDate }' \
          > $metadata
+  sed -i 's%articles/%/articles/%' $metadata
   echo -e "${GREEN}\nDone${NORMAL}"
 } 
 
