@@ -3,7 +3,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: var(--article-card-padding, 3rem);
   background-color: var(--article-card-background-color);
   position: relative;
   transition: box-shadow 0.2s;
@@ -16,6 +15,10 @@
     & .name {
       color: var(--primary-color);
     }
+  }
+
+  & .container {
+    padding: var(--article-card-padding, 3rem);
   }
 
   & .name {

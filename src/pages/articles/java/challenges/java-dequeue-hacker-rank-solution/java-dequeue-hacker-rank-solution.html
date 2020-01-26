@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Solution</h2>
+        <p>
+          In computer science, a double-ended queue (dequeue, often abbreviated to deque, pronounced deck) is an
+          abstract data type that generalizes a queue, for which elements can be added to or removed from either the
+          front (head) or back (tail). Deque interfaces can be implemented using various types of collections such as
+          <span class="code">LinkedList</span> or <span class="code">ArrayDeque</span> classes. For example, deque can
+          be declared as:
+        </p>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              Deque deque = new LinkedList<>();
+              or
+              Deque deque = new ArrayDeque<>();
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+        <p>
+          You can find more details about Deque
+          <a href="https://docs.oracle.com/javase/7/docs/api/java/util/Deque.html">here</a>.
+        </p>
+        <p>
+          In this problem, you are given <span class="code">N</span> integers. You need to find the maximum number of
+          unique integers among all the possible contiguous subarrays of size <span class="code">M</span>.
+        </p>
+        <h2>Input Format</h2>
+        <p>
+          The first line of input contains two integers <span class="code">N</span> and <span class="code">M</span> :
+          representing the total number of integers and the size of the subarray, respectively. The next line contains
+          <span class="code">N</span>
+          space separated integers.
+        </p>
+
+        <h2>Output Format</h2>
+        <p>
+          Print the maximum number of unique integers among all possible contiguous subarrays of size
+          <span class="code">M</span>.
+        </p>
+
+        <h2>Sample Input</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              6 3
+              5 3 5 2 3 2
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Sample Output</h2>
+        <oneline-code-webcomponent code="3" language="bash"></oneline-code-webcomponent>
+
+        <h2>Explanation</h2>
+        <p class="mb-s">In the sample testcase, there are 4 subarrays of contiguous numbers</p>
+        <ul>
+          <li><span class="code">[5, 3, 5]</span> has 2 unique numbers</li>
+          <li><span class="code">[3, 5, 2]</span> has 3 unique numbers</li>
+          <li><span class="code">[5, 2, 3]</span> has 3 unique numbers</li>
+          <li><span class="code">[2, 3, 2]</span> has 2 unique numbers</li>
+        </ul>
+
+        <h2>Solution</h2>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public static void main(String[] args) {
+                  Scanner in = new Scanner(System.in);
+                  int n = in.nextInt();
+                  int m = in.nextInt();
+                  Deque&lt;Integer&gt; deque = new ArrayDeque&lt;&gt;();
+                  Set&lt;Integer&gt; set = new HashSet&lt;&gt;();
+                  int max = Integer.MIN_VALUE;
+          
+                  for (int i = 0; i &lt; n; i++) {
+                      int num = in.nextInt();
+                      deque.add(num);
+                      set.add(num);
+                      if (deque.size() == m) {
+                          if (max < set.size()) max = set.size();
+                          int first = deque.remove();
+                          if (!deque.contains(first)) set.remove(first);
+                      }
+                  }
+                  System.out.println(max);
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.hackerrank.com/challenges/java-dequeue/problem"
+            label="Java Dequeue Hacker Rank Problem"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/java-challenges/src/main/java/io/github/ahenteti/java/hackerrank/JavaDequeSolution.java"
+            label="Article source code"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
