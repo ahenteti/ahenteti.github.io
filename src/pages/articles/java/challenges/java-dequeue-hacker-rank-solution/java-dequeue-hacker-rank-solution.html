@@ -18,9 +18,9 @@
         <multiline-code-webcomponent language="bash">
           <pre slot="code">
             <code>
-              Deque deque = new LinkedList<>();
+              Deque deque = new LinkedList&lt;&gt;();
               or
-              Deque deque = new ArrayDeque<>();
+              Deque deque = new ArrayDeque&lt;&gt;();
             </code>
           </pre>
         </multiline-code-webcomponent>
@@ -85,7 +85,7 @@
                       deque.add(num);
                       set.add(num);
                       if (deque.size() == m) {
-                          if (max < set.size()) max = set.size();
+                          if (max &lt; set.size()) max = set.size();
                           int first = deque.remove();
                           if (!deque.contains(first)) set.remove(first);
                       }

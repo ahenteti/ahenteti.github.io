@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Problem</h2>
+        <p>
+          Sometimes it's better to use dynamic size arrays. Java's Arraylist can provide you this feature. Try to solve
+          this problem using Arraylist.
+        </p>
+        <p>
+          You are given <span class="code">n</span> lines. In each line there are zero or more integers. You need to
+          answer a few queries where you need to tell the number located in <span class="code">yth</span> position of
+          <span class="code">xth</span> line.
+        </p>
+
+        <h2>Input Format</h2>
+        <p>
+          The first line has an integer <span class="code">n</span>. In each of the next
+          <span class="code">n</span> lines there will be an integer <span class="code">d</span> denoting number of
+          integers on that line and then there will be <span class="code">d</span> space-separated integers. In the next
+          line there will be an integer <span class="code">q</span> denoting number of queries. Each query will consist
+          of two integers <span class="code">x</span> and <span class="code">y</span>.
+        </p>
+
+        <h2>Output Format</h2>
+        <p>
+          In each line, output the number located in <span class="code">yth</span> position
+          <span class="code">xth</span> of line. If there is no such position, just print "ERROR!"
+        </p>
+
+        <h2>Sample Input</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              5
+              5 41 77 74 22 44
+              1 12
+              4 37 34 36 52
+              0
+              3 20 22 33
+              5
+              1 3
+              3 4
+              3 1
+              4 3
+              5 5
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Sample Output</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              74
+              52
+              37
+              ERROR!
+              ERROR!
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Explanation</h2>
+        <p>The diagram below explains the queries:</p>
+        <img src="./java-arraylist-chacker-rank-solution.svg" alt="" />
+
+        <h2>Solution</h2>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public static void main(String[] args) {
+                  Scanner in = new Scanner(System.in);
+                  int n = in.nextInt();
+                  ArrayList&lt;ArrayList&lt;Integer&gt;&gt; array = new ArrayList&lt;&gt;();
+                  for (int i = 0; i &lt; n; i++) {
+                      int d = in.nextInt();
+                      ArrayList&lt;Integer&gt; a = new ArrayList&lt;&gt;();
+                      for (int j = 0; j &lt; d; j++) {
+                          a.add(in.nextInt());
+                      }
+                      array.add(a);
+                  }
+                  int q = in.nextInt();
+                  for (int i = 0; i &lt; q; i++) {
+                      int x = in.nextInt() - 1;
+                      int y = in.nextInt() - 1;
+                      try {
+                          System.out.println(array.get(x).get(y));
+                      } catch (IndexOutOfBoundsException e) {
+                          System.out.println(&quot;ERROR!&quot;);
+                      }
+                  }
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.hackerrank.com/challenges/java-arraylist/problem"
+            label="Java ArrayList CHacker Rank Problem"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/java-challenges/src/main/java/io/github/ahenteti/java/hackerrank/JavaArrayListSolution.java"
+            label="Article source code"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
