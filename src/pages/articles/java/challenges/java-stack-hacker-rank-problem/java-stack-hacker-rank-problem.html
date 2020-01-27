@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Problem</h2>
+        <p class="mb-s">A string containing only parentheses is balanced if the following is true</p>
+        <ul>
+          <li>if it is an empty string</li>
+          <li>if A and B are correct, AB is correct</li>
+          <li>if A is correct, (A) and {A} and [A] are also correct.</li>
+        </ul>
+        <p>Examples of some correctly balanced strings are: "{}()", "[{()}]", "({()})"</p>
+        <p>Examples of some unbalanced strings are: "{}(", "({)}", "[[", "}{" etc.</p>
+        <p>Given a string, determine if it is balanced or not.</p>
+
+        <h2>Input Format</h2>
+        <p>
+          There will be multiple lines in the input file, each having a single non-empty string. You should read input
+          till end-of-file.
+        </p>
+
+        <h2>Output Format</h2>
+        <p>For each case, print 'true' if the string is balanced, 'false' otherwise.</p>
+
+        <h2>Sample Input</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              {}()
+              ({()})
+              {}(
+              []
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Sample Output</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              true
+              true
+              false
+              true
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>Solution</h2>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public static void main(String[] args) {
+                  Scanner sc = new Scanner(System.in);
+                  while (sc.hasNext()) {
+                      if (isBalancedParentheses(sc.next())) {
+                          System.out.println("true");
+                      } else {
+                          System.out.println("false");
+                      }
+                  }
+          
+              }
+          
+              private static boolean isBalancedParentheses(String parentheses) {
+                  Stack&lt;Character&gt; stack = new Stack&lt;&gt;();
+                  for (int i = 0; i &lt; parentheses.length(); i++) {
+                      char c = parentheses.charAt(i);
+                      if (stack.isEmpty()) {
+                          stack.push(c);
+                      } else {
+                          String parenthesesCouple = "" + stack.peek() + c;
+                          switch (parenthesesCouple) {
+                              case "{}":
+                              case "()":
+                              case "[]":
+                                  stack.pop();
+                                  break;
+                              default:
+                                  stack.push(c);
+                          }
+                      }
+                  }
+                  return stack.isEmpty();
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.hackerrank.com/challenges/java-stack/problem"
+            label="Java Stack Hacker Rank Problem"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/java-challenges/src/main/java/io/github/ahenteti/java/hackerrank/JavaStackSolution.java"
+            label="Article source code"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
