@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Context</h2>
+        <p>
+          Read <span class="code">n</span>-node graph, where each node is numbered from <span class="code">1</span> to
+          <span class="code">n</span>. The graph is given as a list of node values
+          <span class="code">(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)</span>, a list of node node colors
+          <span class="code">(c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>n</sub>)</span> and a list of edges. Construct
+          this graph as an instance of the <span class="code">graph</span> class. The graph is always rooted at number
+          <span class="code">1</span>
+        </p>
+
+        <h2>Input Format</h2>
+        <p>
+          The first line contains a single integer, <span class="code">n</span>, denoting the number of nodes in the
+          graph. The second line contains <span class="code">n</span> space-separated integers describing the respective
+          values of <span class="code">(x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>n</sub>)</span>.
+        </p>
+        <p>
+          The third line contains <span class="code">n</span> space-separated binary integers describing the respective
+          values of <span class="code">(c<sub>1</sub>, c<sub>2</sub>, ..., c<sub>n</sub>)</span>. Each
+          <span class="code">c<sub>i</sub></span> denotes the color of the
+          <span class="code">i<sub>th</sub></span> node, where <span class="code">0</span> denotes transparent and
+          <span class="code">1</span> denotes blue.
+        </p>
+        <p>
+          Each of the <span class="code">n - 1</span> subsequent lines contains two space-separated integers,
+          <span class="code">u<sub>i</sub></span> and <span class="code">v<sub>i</sub></span
+          >, describing an edge between nodes <span class="code">u<sub>i</sub></span> and
+          <span class="code">v<sub>i</sub></span
+          >.
+        </p>
+
+        <h2>Sample Input</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              5
+              4 7 2 5 12
+              0 1 0 0 1
+              1 2
+              1 3
+              3 4
+              3 5
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h2>graph Visualization</h2>
+        <img src="./how-to-build-graph-structure-in-java.svg" alt="" />
+
+        <h2>Implementation</h2>
+
+        <code-tabs-webcomponent>
+            <code-tab-webcomponent slot="code-tab">Vertex.java</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+                <multiline-code-webcomponent language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import lombok.AllArgsConstructor;
+                            import lombok.Data;
+                            
+                            import java.util.Objects;
+                            
+                            @Data
+                            @AllArgsConstructor
+                            public class Vertex {
+                                private int id;
+                                private int value;
+                                private Color color;
+                            
+                                public Vertex(int id) {
+                                    this.id = id;
+                                }
+                            
+                                @Override
+                                public boolean equals(Object o) {
+                                    if (this == o) return true;
+                                    if (!(o instanceof Vertex)) return false;
+                                    Vertex vertex = (Vertex) o;
+                                    return id == vertex.id;
+                                }
+                            
+                                @Override
+                                public int hashCode() {
+                                    return Objects.hash(id);
+                                }
+                            }
+                        </code>
+                    </pre>
+                </multiline-code-webcomponent>
+            </code-panel-webcomponent>
+            <code-tab-webcomponent slot="code-tab">Graph.java</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+                <multiline-code-webcomponent language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import lombok.Data;
+                            import lombok.NoArgsConstructor;
+                            
+                            import java.util.HashMap;
+                            import java.util.HashSet;
+                            import java.util.Map;
+                            import java.util.Set;
+                            import java.util.function.Supplier;
+                            
+                            @Data
+                            @NoArgsConstructor
+                            public class Graph {
+                            
+                                private Map&lt;Vertex, Set&lt;Vertex&gt;&gt; adjVertices = new HashMap&lt;&gt;();
+                            
+                                void addVertex(int id, int value, Color color) {
+                                    adjVertices.putIfAbsent(new Vertex(id, value, color), new HashSet&lt;&gt;());
+                                }
+                            
+                                void addEdge(int vertexId1, int vertexId2) {
+                                    Vertex v1 = adjVertices.keySet().stream().filter(v -&gt; v.getId() == vertexId1).findFirst()
+                                            .orElseThrow(getNotFoundVertexException(vertexId1));
+                                    Vertex v2 = adjVertices.keySet().stream().filter(v -&gt; v.getId() == vertexId2).findFirst()
+                                            .orElseThrow(getNotFoundVertexException(vertexId2));
+                                    adjVertices.computeIfAbsent(v1, x -&gt; new HashSet&lt;&gt;()).add(v2);
+                                    adjVertices.computeIfAbsent(v2, x -&gt; new HashSet&lt;&gt;()).add(v1);
+                                }
+                            
+                                public void print() {
+                                    boolean[] isVisited = new boolean[adjVertices.size()];
+                                    System.out.println("graph vertexes: ");
+                                    print(adjVertices.keySet().iterator().next(), 0, isVisited);
+                                }
+                            
+                                private void print(Vertex currentVertex, int depth, boolean[] isVisited) {
+                                    isVisited[currentVertex.getId() - 1] = true;
+                                    System.out.println(calcGraphPrintPrefix(depth) + currentVertex.getValue());
+                                    for (Vertex vertex : adjVertices.get(currentVertex)) {
+                                        if (!isVisited[vertex.getId() - 1]) {
+                                            print(vertex, depth + 1, isVisited);
+                                        }
+                                    }
+                                }
+                            
+                                private String calcGraphPrintPrefix(int depth) {
+                                    if (depth == 0) {
+                                        return "";
+                                    }
+                                    String padding = new String(new char[depth * 4]).replace(' ', ' ');
+                                    padding = padding.substring(0, padding.length() - 4) + "└── ";
+                                    return padding;
+                                }
+                            
+                                private Supplier&lt;RuntimeException&gt; getNotFoundVertexException(int vertexId) {
+                                    return () -&gt; new RuntimeException(String.format("Vertex with id %s not found", vertexId));
+                                }
+                            }
+                        </code>
+                    </pre>
+                </multiline-code-webcomponent>
+            </code-panel-webcomponent>
+            <code-tab-webcomponent slot="code-tab">Main.java</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+                <multiline-code-webcomponent language="java">
+                    <pre slot="code">
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import java.util.Scanner;
+                            
+                            public class Main {
+                                public static void main(String[] args) {
+                                    Scanner in = new Scanner(System.in);
+                                    int n = in.nextInt();
+                                    int[] vertexValues = new int[n];
+                                    Color[] vertexColors = new Color[n];
+                                    for (int i = 0; i &lt; n; i++) {
+                                        vertexValues[i] = in.nextInt();
+                                    }
+                                    for (int i = 0; i &lt; n; i++) {
+                                        vertexColors[i] = in.nextInt() == 0 ? Color.TRANSPARENT : Color.BLUE;
+                                    }
+                                    Graph graph = new Graph();
+                                    for (int i = 0; i &lt; n; i++) {
+                                        graph.addVertex(i + 1, vertexValues[i], vertexColors[i]);
+                                    }
+                                    for (int i = 0; i &lt; n - 1; i++) {
+                                        int u = in.nextInt();
+                                        int v = in.nextInt();
+                                        graph.addEdge(u, v);
+                                    }
+                                    graph.print();
+                                }
+                            }
+                        </code>
+                    </pre>
+                </multiline-code-webcomponent>
+            </code-panel-webcomponent>
+            <code-tab-webcomponent slot="code-tab">Output</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+                <multiline-code-webcomponent language="xml">
+                    <pre slot="code">
+                        <code>
+                          4
+                          └── 7
+                          └── 2
+                              └── 5
+                              └── 12
+                        </code>
+                    </pre>
+                </multiline-code-webcomponent>
+            </code-panel-webcomponent>
+        </code-tabs-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/how-to-build-graph-structure-in-java"
+            label="Article code source"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
