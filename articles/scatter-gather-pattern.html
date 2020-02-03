@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,110 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/scatter-gather-pattern.7deeaf6a415d575f988e.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Overview</h2> <p> Suppose that you have to implement a function that returns the price of a product from different e-commerce websites. Such problem could be solved by making successive http requests like this : </p> <img src=/assets/fonts/get-prices-workflow-solution0.svg alt=""/> <p> But we quickly discover that we have performance issue here: in fact, for each request, the thread blocks until he gets the response back, after that he send another request. So what we really need is to make from the beginning, N http requests and collect the responses at the end </p> <img src=/assets/fonts/get-prices-workflow-solution1.svg alt=""/> <p>So we can start with this implementation, where we have</p> <ul> <li> implemented a <span class=code>Runnable</span> which is responsible for getting the product price from one e-commerce website </li> <li> shared a <span class=code>SynchronousList</span> among these <span class=code>Runnable</span>, so they can add the price that obtained from the remote website, to this synchronized list </li> </ul> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              private ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+
+              public List&lt;Double&gt; getProductPrices(String productId) {
+                  List&lt;Double&gt; prices = Collections.synchronizedList(new ArrayList&lt;&gt;());
+                  threadPool.submit(new GetProductPrice(productId, website1, prices));
+                  threadPool.submit(new GetProductPrice(productId, website2, prices));
+                  threadPool.submit(new GetProductPrice(productId, website3, prices));
+                  return prices;
+              }
+          
+              public static class GetProductPrice implements Runnable {
+                  private String website;
+                  private String productId;
+                  private List&lt;Double&gt; prices;
+          
+                  public GetProductPrice(String website, String productId, List&lt;Double&gt; prices) {
+                      this.website = website;
+                      this.productId = productId;
+                      this.prices = prices;
+                  }
+          
+                  @Override
+                  public void run() {
+                      prices.add(Math.random()); // simulate http request
+                  }
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <p> But when we call the <span class=code>getProductPrices</span> method, we obtain an empty list. In fact, when we reread our code, we will notice that the main thread that calls this method, has submitted three <span class=code>Runnable</span> in the <span class=code>threadPool</span> but doesn't wait for them to finish. </p> <p> To fix that, we are going to add a <span class=code>CountDownLatch</span> to our implementation. We will initialize it with the number of <span class=code>Runnable</span>s that we have submitted to the <span class=code>threadPool</span> and at the end of the <span class=code>run</span> method of each <span class=code>Runnable</span>, we make a count down of this latch. Before exiting the main method, we will wait for the completion of its <span class=code>Runnable</span> using the <span class=code>latch.await()</span> method </p> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              private ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
+
+              public List&lt;Double&gt; getProductPrices(String productId) throws InterruptedException {
+                  List&lt;Double&gt; prices = Collections.synchronizedList(new ArrayList&lt;&gt;());
+          
+                  <span class=highlight>CountDownLatch latch = new CountDownLatch(3);</span>
+                  threadPool.submit(new GetProductPrice(productId, website1, prices, latch));
+                  threadPool.submit(new GetProductPrice(productId, website2, prices, latch));
+                  threadPool.submit(new GetProductPrice(productId, website3, prices, latch));
+                  <span class=highlight>latch.await();</span>
+          
+                  return prices;
+              }
+          
+              public class GetProductPrice implements Runnable {
+                  private String website;
+                  private String productId;
+                  private List&lt;Double&gt; prices;
+                  private CountDownLatch latch;
+          
+                  public GetProductPrice(String website, String productId, List&lt;Double&gt; prices, CountDownLatch latch) {
+                      this.website = website;
+                      this.productId = productId;
+                      this.prices = prices;
+                      this.latch = latch;
+                  }
+          
+                  @Override
+                  public void run() {
+                      prices.add(Math.random());
+                      <span class=highlight>latch.countDown();</span>
+                  }
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <p>Supposing now that we want to introduce timeout to our method</p> <img src=/assets/fonts/get-prices-workflow-solution2.svg alt=""/> <p> Such feature is very easy to implement with what we have implemented so far. In fact, we will use the following method of <span class=code>CountDownLatch</span> class </p> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              public boolean await(long timeout, TimeUnit unit)</code>
+          </pre> </multiline-code-webcomponent> <h2>Can we do better ?</h2> <p> With Java 9, we can use <span class=code>CompletableFuture</span> and make rid of the <span class=code>CountDownLatch</span> code. Here is the final code how it looks like : </p> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+            public List&lt;Double&gt; getProductPrices(String productId) throws Exception {
+                List&lt;Double&gt; prices = Collections.synchronizedList(new ArrayList&lt;&gt;());
+        
+                CompletableFuture&lt;Void&gt; task1 = CompletableFuture.runAsync(new GetProductPrice(productId, website1, prices, 1000));
+                CompletableFuture&lt;Void&gt; task2 = CompletableFuture.runAsync(new GetProductPrice(productId, website2, prices, 1800));
+                CompletableFuture&lt;Void&gt; task3 = CompletableFuture.runAsync(new GetProductPrice(productId, website3, prices, 2400));
+                CompletableFuture&lt;Void&gt; allTasks = CompletableFuture.allOf(task1, task2, task3);
+                allTasks.completeOnTimeout(null, 2, TimeUnit.SECONDS).get();
+        
+                return prices;
+            }
+        
+            public class GetProductPrice implements Runnable {
+                private String website;
+                private String productId;
+                private List&lt;Double&gt; prices;
+                private long timeout;
+        
+                public GetProductPrice(String website, String productId, List&lt;Double&gt; prices, long timeout) {
+                    this.website = website;
+                    this.productId = productId;
+                    this.prices = prices;
+                    this.timeout = timeout;
+                }
+        
+                @Override
+                public void run() {
+                    try {
+                        Thread.sleep(timeout);
+                        prices.add(Math.random());
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+            </code>
+          </pre> </multiline-code-webcomponent> <more-info-webcomponent> <link-webcomponent href="https://www.youtube.com/watch?v=nDE1bsy10Yo&t=399s" label="Defog Tech Implement Scatter Gather pattern Youtube video"></link-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/scatter-gather-pattern label="Article source code"></link-webcomponent> </more-info-webcomponent> <conclusion-webcomponent></conclusion-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/scatter-gather-pattern.7deeaf6a415d575f988e.js"></script></body> </html> 

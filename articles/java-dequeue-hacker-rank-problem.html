@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,38 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/java-dequeue-hacker-rank-problem.7477af3153f37f91c1f0.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Solution</h2> <p> In computer science, a double-ended queue (dequeue, often abbreviated to deque, pronounced deck) is an abstract data type that generalizes a queue, for which elements can be added to or removed from either the front (head) or back (tail). Deque interfaces can be implemented using various types of collections such as <span class=code>LinkedList</span> or <span class=code>ArrayDeque</span> classes. For example, deque can be declared as: </p> <multiline-code-webcomponent language=bash> <pre slot=code>
+            <code>
+              Deque deque = new LinkedList&lt;&gt;();
+              or
+              Deque deque = new ArrayDeque&lt;&gt;();
+            </code>
+          </pre> </multiline-code-webcomponent> <p> You can find more details about Deque <a href=https://docs.oracle.com/javase/7/docs/api/java/util/Deque.html>here</a>. </p> <p> In this problem, you are given <span class=code>N</span> integers. You need to find the maximum number of unique integers among all the possible contiguous subarrays of size <span class=code>M</span>. </p> <h2>Input Format</h2> <p> The first line of input contains two integers <span class=code>N</span> and <span class=code>M</span> : representing the total number of integers and the size of the subarray, respectively. The next line contains <span class=code>N</span> space separated integers. </p> <h2>Output Format</h2> <p> Print the maximum number of unique integers among all possible contiguous subarrays of size <span class=code>M</span>. </p> <h2>Sample Input</h2> <multiline-code-webcomponent language=bash> <pre slot=code>
+            <code>
+              6 3
+              5 3 5 2 3 2
+            </code>
+          </pre> </multiline-code-webcomponent> <h2>Sample Output</h2> <oneline-code-webcomponent code=3 language=bash></oneline-code-webcomponent> <h2>Explanation</h2> <p class=mb-s>In the sample testcase, there are 4 subarrays of contiguous numbers</p> <ul> <li><span class=code>[5, 3, 5]</span> has 2 unique numbers</li> <li><span class=code>[3, 5, 2]</span> has 3 unique numbers</li> <li><span class=code>[5, 2, 3]</span> has 3 unique numbers</li> <li><span class=code>[2, 3, 2]</span> has 2 unique numbers</li> </ul> <h2>Solution</h2> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              public static void main(String[] args) {
+                  Scanner in = new Scanner(System.in);
+                  int n = in.nextInt();
+                  int m = in.nextInt();
+                  Deque&lt;Integer&gt; deque = new ArrayDeque&lt;&gt;();
+                  Set&lt;Integer&gt; set = new HashSet&lt;&gt;();
+                  int max = Integer.MIN_VALUE;
+          
+                  for (int i = 0; i &lt; n; i++) {
+                      int num = in.nextInt();
+                      deque.add(num);
+                      set.add(num);
+                      if (deque.size() == m) {
+                          if (max &lt; set.size()) max = set.size();
+                          int first = deque.remove();
+                          if (!deque.contains(first)) set.remove(first);
+                      }
+                  }
+                  System.out.println(max);
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <conclusion-webcomponent></conclusion-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://www.hackerrank.com/challenges/java-dequeue/problem label="Java Dequeue Hacker Rank Problem"></link-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/java-challenges/src/main/java/io/github/ahenteti/java/hackerrank/JavaDequeSolution.java label="Article source code"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/java-dequeue-hacker-rank-problem.7477af3153f37f91c1f0.js"></script></body> </html> 

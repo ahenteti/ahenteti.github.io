@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,97 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/jackson-custom-deserialization-overview.3c580a6614e00bf240e3.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Overview</h2> <p> As a Developer, exposing and consuming REST API are becoming the task number one in our job and I personally, believe that the <span class=code>Jackson</span> library has helped us a lot to complete these tasks with a clean and easy API ready for us </p> <p> Recently, I wanted to play around with the <a href=https://jsonplaceholder.typicode.com>JsonPlaceholder</a> APIs which for instance returns a response like this when calling its <span class=code>/user/1</span> API </p> <multiline-code-webcomponent language=json> <pre slot=code>
+                <code>
+                  {
+                    "id": 1,
+                    "name": "Leanne Graham",
+                    "username": "Bret",
+                    "email": "Sincere@april.biz",
+                    "address": {
+                      "street": "Kulas Light",
+                      "suite": "Apt. 556",
+                      "city": "Gwenborough",
+                      "zipcode": "92998-3874",
+                      "geo": {
+                        "lat": "-37.3159",
+                        "lng": "81.1496"
+                      }
+                    },
+                    "phone": "1-770-736-8031 x56442",
+                    "website": "hildegard.org",
+                    "company": {
+                      "name": "Romaguera-Crona",
+                      "catchPhrase": "Multi-layered client-server neural-net",
+                      "bs": "harness real-time e-markets"
+                    }
+                  }
+                </code>
+            </pre> </multiline-code-webcomponent> <p> But wait, what I really need, is only some attributes, why should I implement such huge model with its nested attributes ? In fact, what I really want is to define my model like this </p> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              @Data
+              public class User {
+                  private String username;
+                  private String email;
+                  private String website;
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <p>To do this, we just need to add the following jackson annotation to our model</p> <oneline-code-webcomponent code="@JsonIgnoreProperties(ignoreUnknown = true)" language=java></oneline-code-webcomponent> <p> And Jackson will do the unmarshalling properly using its <span class=code>ObjectMapper.readValue</span> method </p> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              public class Main {
+                  public static final String JSONPLACEHOLDER_USER_API = "https://jsonplaceholder.typicode.com/users/1";
+
+                  public static void main(String[] args) throws IOException {
+                      HttpClient httpClient = HttpClientBuilder.create().build();
+                      InputStream httpResponse = httpClient
+                              .execute(new HttpGet(JSONPLACEHOLDER_USER_API))
+                              .getEntity().getContent();
+                      ObjectMapper mapper = new ObjectMapper();
+                      User user = mapper.readValue(httpResponse, User.class);
+                  }
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <p>After that, I wanted to add the company name to my model</p> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              @Data
+              @JsonIgnoreProperties(ignoreUnknown = true)
+              public class User {
+                  private String username;
+                  private String email;
+                  private String website;
+                  private String company;
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <p> But the company name exists in a nested object in the response of the API and the unmarchelling will not work with what we have done so far. To implement what I need, I found out in this <a href=https://www.baeldung.com/jackson-deserialization>bealdung tutorial</a>, that Jackson has already handled this use cas with a clean approach: in fact, what we really need is to </p> <div class=steps> <h3 class=step> Implement a new class that extends the <span class=code>StdDeserializer</span> abstract class </h3> <multiline-code-webcomponent language=java> <pre slot=code>
+              <code>
+                public class UserDeserializer extends StdDeserializer&lt;User&gt; {
+                
+                    public UserDeserializer() {
+                        this(null);
+                    }
+                    
+                    public UserDeserializer(Class&lt;?&gt; vc) {
+                        super(vc);
+                    }
+                
+                    @Override
+                    public User deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+                        JsonNode userNode = jsonParser.getCodec().readTree(jsonParser);
+                        String username = userNode.get("username").asText();
+                        String email = userNode.get("email").asText();
+                        String website = userNode.get("website").asText();
+                        JsonNode companyNode = userNode.get("company");
+                        String company = companyNode.get("name").asText();
+                        return new User(username, email, website, company);
+                    }
+                }
+              </code>
+            </pre> </multiline-code-webcomponent> <h3 class=step>Register this deserializer on the Jackson <span class=code>ObjectMapper</span> class</h3> <multiline-code-webcomponent language=java> <pre slot=code>
+              <code>
+                ObjectMapper mapper = new ObjectMapper();
+                SimpleModule module = new SimpleModule();
+                module.addDeserializer(User.class, new UserDeserializer());
+                mapper.registerModule(module);
+                User user = mapper.readValue(httpResponse, User.class);
+              </code>
+            </pre> </multiline-code-webcomponent> </div> <conclusion-webcomponent></conclusion-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/jackson-jsondeserialize-demo label="Article source code"></link-webcomponent> <link-webcomponent href=https://www.baeldung.com/jackson-deserialization label="bealdung jackson-deserialization article"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/jackson-custom-deserialization-overview.3c580a6614e00bf240e3.js"></script></body> </html> 

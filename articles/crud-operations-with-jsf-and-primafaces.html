@@ -1,0 +1,585 @@
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
+  "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
+  "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
+  "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
+  "what-i-have-done-to-add-react-to-my-website.css": "/css/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.css",
+  "slide-in-as-you-scroll-down-cards.js": "/js/slide-in-as-you-scroll-down-cards.cc25268193e043adcd6f.js",
+  "slide-in-as-you-scroll-down-cards.css": "/css/slide-in-as-you-scroll-down-cards.cc25268193e043adcd6f.css",
+  "javascript-closure.js": "/js/javascript-closure.86d6cecad4f0c5d9baba.js",
+  "javascript-closure.css": "/css/javascript-closure.86d6cecad4f0c5d9baba.css",
+  "convert-pdf-to-png-using-mozilla-pdfjs-library.js": "/js/convert-pdf-to-png-using-mozilla-pdfjs-library.a4efcce526356e7a1984.js",
+  "convert-pdf-to-png-using-mozilla-pdfjs-library.css": "/css/convert-pdf-to-png-using-mozilla-pdfjs-library.a4efcce526356e7a1984.css",
+  "how-to-create-tooltips-with-css.js": "/js/how-to-create-tooltips-with-css.34386b6cabbe3718b55e.js",
+  "how-to-create-tooltips-with-css.css": "/css/how-to-create-tooltips-with-css.34386b6cabbe3718b55e.css",
+  "about.js": "/js/about.820c4239fe9108149b45.js",
+  "about.css": "/css/about.820c4239fe9108149b45.css",
+  "how-to-stop-a-process-listening-on-a-certain-port-in-windows.js": "/js/how-to-stop-a-process-listening-on-a-certain-port-in-windows.2c4a927cd35a611fae15.js",
+  "how-to-stop-a-process-listening-on-a-certain-port-in-windows.css": "/css/how-to-stop-a-process-listening-on-a-certain-port-in-windows.2c4a927cd35a611fae15.css",
+  "how-to-show-line-numbers-in-vim.js": "/js/how-to-show-line-numbers-in-vim.472e1cb6090cb3f7a2e3.js",
+  "how-to-show-line-numbers-in-vim.css": "/css/how-to-show-line-numbers-in-vim.472e1cb6090cb3f7a2e3.css",
+  "springboot-with-react-demo.js": "/js/springboot-with-react-demo.7d10e06a2e660fa4d511.js",
+  "springboot-with-react-demo.css": "/css/springboot-with-react-demo.7d10e06a2e660fa4d511.css",
+  "old-versus-new-jsf-scope-annotations.js": "/js/old-versus-new-jsf-scope-annotations.945f60a682213c3215e8.js",
+  "old-versus-new-jsf-scope-annotations.css": "/css/old-versus-new-jsf-scope-annotations.945f60a682213c3215e8.css",
+  "jsf-websocket-demo.js": "/js/jsf-websocket-demo.c5593744daeba27d3c9f.js",
+  "jsf-websocket-demo.css": "/css/jsf-websocket-demo.c5593744daeba27d3c9f.css",
+  "jsf-primefaces-demo.js": "/js/jsf-primefaces-demo.7fe866dfe45933509c2e.js",
+  "jsf-primefaces-demo.css": "/css/jsf-primefaces-demo.7fe866dfe45933509c2e.css",
+  "jsf-helloworld-demo.js": "/js/jsf-helloworld-demo.e53c1d81f126c628ffad.js",
+  "jsf-helloworld-demo.css": "/css/jsf-helloworld-demo.e53c1d81f126c628ffad.css",
+  "jsf-download-file-demo.js": "/js/jsf-download-file-demo.b4cc86d18d12ea66f462.js",
+  "jsf-download-file-demo.css": "/css/jsf-download-file-demo.b4cc86d18d12ea66f462.css",
+  "facelet-templating-system.js": "/js/facelet-templating-system.1cf2a45d1d08deda066d.js",
+  "facelet-templating-system.css": "/css/facelet-templating-system.1cf2a45d1d08deda066d.css",
+  "facelet-composite-components-demo.js": "/js/facelet-composite-components-demo.19bd6fe3b6b7cb91c894.js",
+  "facelet-composite-components-demo.css": "/css/facelet-composite-components-demo.19bd6fe3b6b7cb91c894.css",
+  "crud-operations-with-jsf-and-primafaces.js": "/js/crud-operations-with-jsf-and-primafaces.945bf7859699f9f5ed6c.js",
+  "crud-operations-with-jsf-and-primafaces.css": "/css/crud-operations-with-jsf-and-primafaces.945bf7859699f9f5ed6c.css",
+  "validate-ip-addresses-with-java.js": "/js/validate-ip-addresses-with-java.37f9e9aa16d180663cfa.js",
+  "validate-ip-addresses-with-java.css": "/css/validate-ip-addresses-with-java.37f9e9aa16d180663cfa.css",
+  "simpledateformat-thread-safety-issues.js": "/js/simpledateformat-thread-safety-issues.4a0f328889a14770bce9.js",
+  "simpledateformat-thread-safety-issues.css": "/css/simpledateformat-thread-safety-issues.4a0f328889a14770bce9.css",
+  "scatter-gather-pattern.js": "/js/scatter-gather-pattern.7deeaf6a415d575f988e.js",
+  "scatter-gather-pattern.css": "/css/scatter-gather-pattern.7deeaf6a415d575f988e.css",
+  "producer-consumer-demo.js": "/js/producer-consumer-demo.0330cbd62d8f147bb0c0.js",
+  "producer-consumer-demo.css": "/css/producer-consumer-demo.0330cbd62d8f147bb0c0.css",
+  "how-to-create-your-first-maven-plugin.js": "/js/how-to-create-your-first-maven-plugin.fa69c356573139e01d3f.js",
+  "how-to-create-your-first-maven-plugin.css": "/css/how-to-create-your-first-maven-plugin.fa69c356573139e01d3f.css",
+  "jdbc-with-and-without-jpa.js": "/js/jdbc-with-and-without-jpa.876f9eab326ddf643f46.js",
+  "jdbc-with-and-without-jpa.css": "/css/jdbc-with-and-without-jpa.876f9eab326ddf643f46.css",
+  "jackson-custom-deserialization-overview.js": "/js/jackson-custom-deserialization-overview.3c580a6614e00bf240e3.js",
+  "jackson-custom-deserialization-overview.css": "/css/jackson-custom-deserialization-overview.3c580a6614e00bf240e3.css",
+  "how-to-run-a-jar-file-from-command-line.js": "/js/how-to-run-a-jar-file-from-command-line.b695d7cf753cda19832f.js",
+  "how-to-run-a-jar-file-from-command-line.css": "/css/how-to-run-a-jar-file-from-command-line.b695d7cf753cda19832f.css",
+  "how-to-reverse-a-string-in-java.js": "/js/how-to-reverse-a-string-in-java.d03814765e454c0722a9.js",
+  "how-to-reverse-a-string-in-java.css": "/css/how-to-reverse-a-string-in-java.d03814765e454c0722a9.css",
+  "how-to-find-local-non-loopback-address-in-java.js": "/js/how-to-find-local-non-loopback-address-in-java.dd92026687aa208f8925.js",
+  "how-to-find-local-non-loopback-address-in-java.css": "/css/how-to-find-local-non-loopback-address-in-java.dd92026687aa208f8925.css",
+  "how-to-create-executable-jar-file-using-maven.js": "/js/how-to-create-executable-jar-file-using-maven.a9f2b7c64c094fb47454.js",
+  "how-to-create-executable-jar-file-using-maven.css": "/css/how-to-create-executable-jar-file-using-maven.a9f2b7c64c094fb47454.css",
+  "how-to-create-a-postgres-jdbc-connection-in-java-se.js": "/js/how-to-create-a-postgres-jdbc-connection-in-java-se.81bd42eaff2c32ab329c.js",
+  "how-to-create-a-postgres-jdbc-connection-in-java-se.css": "/css/how-to-create-a-postgres-jdbc-connection-in-java-se.81bd42eaff2c32ab329c.css",
+  "how-to-build-graph-structure-in-java.js": "/js/how-to-build-graph-structure-in-java.9dd0698895a5cbca1fe5.js",
+  "how-to-build-graph-structure-in-java.css": "/css/how-to-build-graph-structure-in-java.9dd0698895a5cbca1fe5.css",
+  "strong-password-hacker-rank-problem.js": "/js/strong-password-hacker-rank-problem.08113c6412c498036978.js",
+  "strong-password-hacker-rank-problem.css": "/css/strong-password-hacker-rank-problem.08113c6412c498036978.css",
+  "new-year-chaos-hacker-rank-problem.js": "/js/new-year-chaos-hacker-rank-problem.96b82f5cc8e3102e57f3.js",
+  "new-year-chaos-hacker-rank-problem.css": "/css/new-year-chaos-hacker-rank-problem.96b82f5cc8e3102e57f3.css",
+  "java-stack-hacker-rank-problem.js": "/js/java-stack-hacker-rank-problem.34c069a21466265b054a.js",
+  "java-stack-hacker-rank-problem.css": "/css/java-stack-hacker-rank-problem.34c069a21466265b054a.css",
+  "java-sha-256-hacker-rank-problem.js": "/js/java-sha-256-hacker-rank-problem.19f430bd19d762b68416.js",
+  "java-sha-256-hacker-rank-problem.css": "/css/java-sha-256-hacker-rank-problem.19f430bd19d762b68416.css",
+  "java-dequeue-hacker-rank-problem.js": "/js/java-dequeue-hacker-rank-problem.7477af3153f37f91c1f0.js",
+  "java-dequeue-hacker-rank-problem.css": "/css/java-dequeue-hacker-rank-problem.7477af3153f37f91c1f0.css",
+  "java-1d-array-part-2-hacker-rank-problem.js": "/js/java-1d-array-part-2-hacker-rank-problem.9eabb1475eddc8e6f645.js",
+  "java-1d-array-part-2-hacker-rank-problem.css": "/css/java-1d-array-part-2-hacker-rank-problem.9eabb1475eddc8e6f645.css",
+  "duplicate-words-hacker-rank-problem.js": "/js/duplicate-words-hacker-rank-problem.8281fba1a576df645dc8.js",
+  "duplicate-words-hacker-rank-problem.css": "/css/duplicate-words-hacker-rank-problem.8281fba1a576df645dc8.css",
+  "array-manipulation-hacker-rank-problem.js": "/js/array-manipulation-hacker-rank-problem.b9f08372308614951bec.js",
+  "array-manipulation-hacker-rank-problem.css": "/css/array-manipulation-hacker-rank-problem.b9f08372308614951bec.css",
+  "secure-connnections-with-ssl.js": "/js/secure-connnections-with-ssl.c49c6450df86547eb0e2.js",
+  "secure-connnections-with-ssl.css": "/css/secure-connnections-with-ssl.c49c6450df86547eb0e2.css",
+  "openssl-quick-tips.js": "/js/openssl-quick-tips.bba163527c89bc1ae50a.js",
+  "openssl-quick-tips.css": "/css/openssl-quick-tips.bba163527c89bc1ae50a.css",
+  "git-quick-tips.js": "/js/git-quick-tips.b22e3ecdd77a1fe88332.js",
+  "git-quick-tips.css": "/css/git-quick-tips.b22e3ecdd77a1fe88332.css",
+  "tabs-widget-demo.js": "/js/tabs-widget-demo.bb973e3fe3aa6ee82b89.js",
+  "tabs-widget-demo.css": "/css/tabs-widget-demo.bb973e3fe3aa6ee82b89.css",
+  "javascript-classes.js": "/js/javascript-classes.b4c38dc04490788cfb3d.js",
+  "javascript-classes.css": "/css/javascript-classes.b4c38dc04490788cfb3d.css",
+  "html2canvas-script-demo.js": "/js/html2canvas-script-demo.c391b7f669c1ddca2ba7.js",
+  "html2canvas-script-demo.css": "/css/html2canvas-script-demo.c391b7f669c1ddca2ba7.css",
+  "how-to-draw-a-triangle-with-css.js": "/js/how-to-draw-a-triangle-with-css.6aa9fe993a84907e670b.js",
+  "how-to-draw-a-triangle-with-css.css": "/css/how-to-draw-a-triangle-with-css.6aa9fe993a84907e670b.css",
+  "how-to-center-horizontally-an-anchor-element.js": "/js/how-to-center-horizontally-an-anchor-element.9968ced939824858d93f.js",
+  "how-to-center-horizontally-an-anchor-element.css": "/css/how-to-center-horizontally-an-anchor-element.9968ced939824858d93f.css",
+  "how-to-add-ellipsis-to-text-when-overflow-in-css.js": "/js/how-to-add-ellipsis-to-text-when-overflow-in-css.2e09fa848b35bae7a9ad.js",
+  "how-to-add-ellipsis-to-text-when-overflow-in-css.css": "/css/how-to-add-ellipsis-to-text-when-overflow-in-css.2e09fa848b35bae7a9ad.css",
+  "bash-quick-tips.js": "/js/bash-quick-tips.41661674d8e5e226d65e.js",
+  "bash-quick-tips.css": "/css/bash-quick-tips.41661674d8e5e226d65e.css",
+  "common.js": "/js/common.92c065e908d6a82c89cf.js",
+  "common.css": "/css/common.92c065e908d6a82c89cf.css",
+  "webcomponents.js": "/js/webcomponents.6a3558a0b59c3de7ad21.js",
+  "highlightStyle.js": "/js/highlightStyle.869aebaad965b5d3647d.js",
+  "highlightStyle.css": "/css/highlightStyle.869aebaad965b5d3647d.css",
+  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg",
+  "assets/img/imt-atlantique-logo-transparent.png": "/assets/img/imt-atlantique-logo-transparent.png",
+  "assets/img/supcom-logo-transparent.png": "/assets/img/supcom-logo-transparent.png",
+  "assets/fonts/get-prices-workflow-solution0.svg": "/assets/fonts/get-prices-workflow-solution0.svg",
+  "assets/fonts/get-prices-workflow-solution1.svg": "/assets/fonts/get-prices-workflow-solution1.svg",
+  "assets/fonts/get-prices-workflow-solution2.svg": "/assets/fonts/get-prices-workflow-solution2.svg",
+  "assets/fonts/java-arraylist-chacker-rank-problem.svg": "/assets/fonts/java-arraylist-chacker-rank-problem.svg",
+  "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
+  "assets/fonts/encryption_decryption_overview.svg": "/assets/fonts/encryption_decryption_overview.svg",
+  "assets/fonts/digital-signature.svg": "/assets/fonts/digital-signature.svg",
+  "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
+  "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
+  "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/crud-operations-with-jsf-and-primafaces.945bf7859699f9f5ed6c.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>project structure</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    ├── java
+                                    │   └── io
+                                    │       └── github
+                                    │           └── ahenteti
+                                    │               └── java
+                                    │                   ├── config
+                                    │                   │   └── ConfigurationBean.java
+                                    │                   ├── controller
+                                    │                   │   └── CustomerController.java
+                                    │                   ├── model
+                                    │                   │   └── Customer.java
+                                    │                   └── service
+                                    │                       └── CustomerService.java
+                                    ├── resources
+                                    │   └── META-INF
+                                    │       └── persistence.xml
+                                    └── webapp
+                                        ├── WEB-INF
+                                        │   ├── beans.xml
+                                        │   ├── faces-config.xml
+                                        │   └── web.xml
+                                        ├── index.xhtml
+                                        └── resources
+                                            └── css
+                                                └── default.css
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>pom.xml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;jsf-crud-app-demo&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                                &lt;packaging&gt;war&lt;/packaging&gt;
+                            
+                                &lt;name&gt;${project.artifactId}&lt;/name&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;project.reporting.outputEncoding&gt;UTF-8&lt;/project.reporting.outputEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                    &lt;failOnMissingWebXml&gt;false&lt;/failOnMissingWebXml&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;repositories&gt;
+                                    &lt;repository&gt;
+                                        &lt;id&gt;prime-repo&lt;/id&gt;
+                                        &lt;name&gt;Prime Repo&lt;/name&gt;
+                                        &lt;url&gt;http://repository.primefaces.org&lt;/url&gt;
+                                    &lt;/repository&gt;
+                                &lt;/repositories&gt;
+                            
+                                &lt;dependencies&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;javax&lt;/groupId&gt;
+                                        &lt;artifactId&gt;javaee-api&lt;/artifactId&gt;
+                                        &lt;version&gt;8.0&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.primefaces&lt;/groupId&gt;
+                                        &lt;artifactId&gt;primefaces&lt;/artifactId&gt;
+                                        &lt;version&gt;6.2&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.primefaces.themes&lt;/groupId&gt;
+                                        &lt;artifactId&gt;all-themes&lt;/artifactId&gt;
+                                        &lt;version&gt;1.0.10&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+                                        &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+                                        &lt;version&gt;1.18.8&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;org.codehaus.cargo&lt;/groupId&gt;
+                                            &lt;artifactId&gt;cargo-maven2-plugin&lt;/artifactId&gt;
+                                            &lt;version&gt;1.7.7&lt;/version&gt;
+                                            &lt;inherited&gt;true&lt;/inherited&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;id&gt;deploy&lt;/id&gt;
+                                                    &lt;phase&gt;integration-test&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;redeploy&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                            &lt;configuration&gt;
+                                                &lt;container&gt;
+                                                    &lt;containerId&gt;glassfish5x&lt;/containerId&gt;
+                                                    &lt;type&gt;installed&lt;/type&gt;
+                                                    &lt;home&gt;${env.PAYARA_HOME}&lt;/home&gt;
+                                                &lt;/container&gt;
+                                                &lt;configuration&gt;
+                                                    &lt;type&gt;existing&lt;/type&gt;
+                                                    &lt;home&gt;${env.PAYARA_HOME}/glassfish/domains&lt;/home&gt;
+                                                    &lt;properties&gt;
+                                                        &lt;cargo.glassfish.domain.name&gt;domain1&lt;/cargo.glassfish.domain.name&gt;
+                                                        &lt;cargo.remote.password /&gt;
+                                                    &lt;/properties&gt;
+                                                &lt;/configuration&gt;
+                                            &lt;/configuration&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>web.xml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"&gt;
+                            
+                                &lt;context-param&gt;
+                                    &lt;param-name&gt;primefaces.THEME&lt;/param-name&gt;
+                                    &lt;param-value&gt;bootstrap&lt;/param-value&gt;
+                                &lt;/context-param&gt;
+                            
+                                &lt;servlet&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;servlet-class&gt;javax.faces.webapp.FacesServlet&lt;/servlet-class&gt;
+                                    &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+                                &lt;/servlet&gt;
+                            
+                                &lt;servlet-mapping&gt;
+                                    &lt;servlet-name&gt;Faces Servlet&lt;/servlet-name&gt;
+                                    &lt;url-pattern&gt;*.xhtml&lt;/url-pattern&gt;
+                                &lt;/servlet-mapping&gt;
+                            
+                                &lt;welcome-file-list&gt;
+                                    &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
+                                &lt;/welcome-file-list&gt;
+                            
+                            &lt;/web-app&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>faces-config.xml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8'?&gt;
+                            &lt;!--
+                            
+                                Licensed to the Apache Software Foundation (ASF) under one
+                                or more contributor license agreements.  See the NOTICE file
+                                distributed with this work for additional information
+                                regarding copyright ownership.  The ASF licenses this file
+                                to you under the Apache License, Version 2.0 (the
+                                "License"); you may not use this file except in compliance
+                                with the License.  You may obtain a copy of the License at
+                            
+                                  http://www.apache.org/licenses/LICENSE-2.0
+                            
+                                Unless required by applicable law or agreed to in writing,
+                                software distributed under the License is distributed on an
+                                "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+                                KIND, either express or implied.  See the License for the
+                                specific language governing permissions and limitations
+                                under the License.
+                            
+                            --&gt;
+                            &lt;faces-config version="2.3"
+                                          xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd"&gt;
+                            
+                            &lt;/faces-config&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>beans.xml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;beans xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+                                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                   xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/beans_2_0.xsd"
+                                   bean-discovery-mode="all" version="2.0"&gt;
+                            &lt;/beans&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>persistence.xml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            &lt;persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+                                         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"&gt;
+                                &lt;persistence-unit name="customers" transaction-type="JTA"&gt;
+                                    &lt;jta-data-source&gt;jdbc/customers&lt;/jta-data-source&gt;
+                                    &lt;properties&gt;
+                                        &lt;property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/&gt;
+                                    &lt;/properties&gt;
+                                &lt;/persistence-unit&gt;
+                            &lt;/persistence&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>index.xhtml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xhtml> <pre slot=code>
+                        <code>
+                            &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
+                            &lt;!DOCTYPE html
+                                PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+                            &lt;html 
+                                lang="en" 
+                                xmlns="http://www.w3.org/1999/xhtml" 
+                                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                                xmlns:p="http://primefaces.org/ui"
+                                &gt;
+                                &lt;h:head&gt;
+                                    &lt;meta charset="UTF-8" /&gt;
+                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+                                    &lt;h:outputStylesheet library="css" name="default.css" /&gt; 
+                                    &lt;title&gt;demo&lt;/title&gt;
+                                &lt;/h:head&gt;
+                                &lt;h:body&gt;
+                                    &lt;div class="header"&gt;
+                                        &lt;h2&gt;Customers&lt;/h2&gt;
+                                        &lt;p:commandButton value="New" 
+                                                         onclick="PF('newCustomerDialog').show();"
+                                                         styleClass="ui-priority-primary"/&gt;
+                                    &lt;/div&gt;
+                                    &lt;h:form id="customers" styleClass="clearfix"&gt;
+                                        &lt;p:growl id="growl" /&gt;
+                                        &lt;p:dataTable id="customerList" var="customer" value="#{customerController.customers}"&gt;
+                                            &lt;p:column headerText="Id"&gt;
+                                                &lt;h:outputText value="#{customer.id}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="First name"&gt;
+                                                &lt;h:outputText id="firstNameInput" value="#{customer.firstName}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="Last name"&gt;
+                                                &lt;h:outputText id="lastNameInput" value="#{customer.lastName}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="Email"&gt;
+                                                &lt;h:outputText id="emailInput" value="#{customer.email}"/&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column headerText="Day of birth"&gt;
+                                                &lt;h:outputText value="#{customer.birthday}"&gt;
+                                                    &lt;f:convertDateTime type="localDate" pattern="dd/MM/yyyy"/&gt;
+                                                &lt;/h:outputText&gt;
+                                            &lt;/p:column&gt;
+                            
+                                            &lt;p:column&gt;
+                                                &lt;p:commandButton update="customerList" value="Delete" icon="ui-icon-closethick"
+                                                                 action="#{customerController.delete(customer)}"
+                                                                 styleClass="ui-priority-primary"&gt;
+                                                &lt;/p:commandButton&gt;
+                                            &lt;/p:column&gt;
+                                        &lt;/p:dataTable&gt;
+                                    &lt;/h:form&gt;
+                            
+                                    &lt;p:dialog header="New Customer" modal="true" widgetVar="newCustomerDialog"&gt;
+                                        &lt;h:form id="add"&gt;
+                                            &lt;h:panelGrid columns="3" cellpadding="15" style="margin: 0 auto;"&gt;
+                                                &lt;p:outputLabel for="firstName" value="First name" /&gt;
+                                                &lt;p:inputText id="firstName" value="#{customerController.newCustomer.firstName}" /&gt;
+                                                &lt;p:message for="firstName" /&gt;
+                            
+                                                &lt;p:outputLabel for="lastName" value="Last name" /&gt;
+                                                &lt;p:inputText id="lastName" value="#{customerController.newCustomer.lastName}"&gt;
+                                                &lt;/p:inputText&gt;
+                                                &lt;p:message for="lastName" /&gt;
+                            
+                                                &lt;p:outputLabel for="email" value="E-Mail" /&gt;
+                                                &lt;p:inputText id="email" value="#{customerController.newCustomer.email}"&gt;
+                                                &lt;/p:inputText&gt;
+                                                &lt;p:message for="email" /&gt;
+                            
+                                                &lt;p:outputLabel for="birthday" value="Day of birth" /&gt;
+                                                &lt;p:calendar id="birthday" value="#{customerController.newCustomer.birthday}" pattern="dd/MM/yyyy" mask="true"&gt;
+                                                    &lt;f:convertDateTime type="localDate" pattern="dd/MM/yyyy" /&gt;
+                                                &lt;/p:calendar&gt;
+                                                &lt;p:message for="birthday" /&gt;
+                            
+                                                &lt;p:commandButton update="@form :customers" value="Add" oncomplete="if (args &amp;&amp; !args.validationFailed) PF('newCustomerDialog').hide();" 
+                                                                 action="#{customerController.create}"
+                                                                 styleClass="ui-priority-primary"&gt;
+                                                &lt;/p:commandButton&gt;
+                                            &lt;/h:panelGrid&gt;
+                                        &lt;/h:form&gt;
+                                    &lt;/p:dialog&gt;
+                            
+                                &lt;/h:body&gt;
+                            &lt;/html&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>CustomerService.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
+                        <code>
+                            package io.github.ahenteti.java.service;
+                            
+                            import java.util.Collection;
+                            import javax.annotation.PostConstruct;
+                            import javax.ejb.Stateless;
+                            import javax.persistence.EntityManager;
+                            import javax.persistence.EntityManagerFactory;
+                            import javax.persistence.PersistenceContext;
+                            import javax.persistence.PersistenceUnit;
+                            import io.github.ahenteti.java.model.Customer;
+                            
+                            @Stateless
+                            public class CustomerService {
+                            
+                                @PersistenceContext(unitName = "customers") private EntityManager entityManager;
+                            
+                                public void create(Customer customer) {
+                                    Customer newCustomer = new Customer();
+                                    newCustomer.setFirstName(customer.getFirstName());
+                                    newCustomer.setLastName(customer.getLastName());
+                                    newCustomer.setEmail(customer.getEmail());
+                                    newCustomer.setBirthday(customer.getBirthday());
+                                    this.entityManager.persist(newCustomer);
+                                }
+                            
+                                public Collection&lt;Customer&gt; read() {
+                                    return this.entityManager.createNamedQuery(Customer.FIND_ALL, Customer.class).getResultList();
+                                }
+                            
+                                public void update(Collection&lt;Customer&gt; customers) {
+                                    customers.forEach(entityManager::merge);
+                                }
+                            
+                                public void delete(Customer customer) {
+                                    if (entityManager.contains(customer)) {
+                                        entityManager.remove(customer);
+                                    } else {
+                                        Customer managedCustomer = entityManager.find(Customer.class, customer.getId());
+                                        if (managedCustomer != null) {
+                                            entityManager.remove(managedCustomer);
+                                        }
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>Customer.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
+                        <code>
+                            package io.github.ahenteti.java.model;
+                            
+                            import java.io.Serializable;
+                            import java.time.LocalDate;
+                            import javax.persistence.Column;
+                            import javax.persistence.Entity;
+                            import javax.persistence.GeneratedValue;
+                            import javax.persistence.GenerationType;
+                            import javax.persistence.Id;
+                            import javax.persistence.NamedQueries;
+                            import javax.persistence.NamedQuery;
+                            import javax.validation.constraints.Email;
+                            import javax.validation.constraints.NotEmpty;
+                            import javax.validation.constraints.Past;
+                            import lombok.Data;
+                            
+                            @Data
+                            @Entity
+                            @NamedQueries({
+                                    // @formatter:off
+                                    @NamedQuery(name = Customer.FIND_ALL, query = "select c from Customer c"),
+                                    @NamedQuery(name= Customer.FIND_BY_EMAIL, query="select c from Customer c where c.email = :email")
+                                    // @formatter:on
+                            })
+                            public class Customer implements Serializable {
+                            
+                                public static final String FIND_ALL = "Customer.findAll";
+                                public static final String FIND_BY_EMAIL = "Employee.findByEmail";
+                                private static final long serialVersionUID = -8220762341837326032L;
+                            
+                                @Id
+                                @GeneratedValue(strategy = GenerationType.IDENTITY)
+                                private Long id;
+                            
+                                @Column(nullable = false)
+                                @NotEmpty
+                                private String firstName;
+                            
+                                @NotEmpty
+                                @Column(nullable = false)
+                                private String lastName;
+                            
+                                @Email
+                                @Column(nullable = false)
+                                private String email;
+                            
+                                @Past
+                                private LocalDate birthday;
+                            
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>CustomerController.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
+                        <code>
+                            package io.github.ahenteti.java.controller;
+                            
+                            import java.io.Serializable;
+                            import java.util.Collection;
+                            import javax.annotation.PostConstruct;
+                            import javax.faces.application.FacesMessage;
+                            import javax.faces.context.FacesContext;
+                            import javax.faces.view.ViewScoped;
+                            import javax.inject.Inject;
+                            import javax.inject.Named;
+                            import io.github.ahenteti.java.model.Customer;
+                            import io.github.ahenteti.java.service.CustomerService;
+                            import lombok.Data;
+                            
+                            @Data
+                            @Named
+                            @ViewScoped
+                            public class CustomerController implements Serializable {
+                            
+                                private static final long serialVersionUID = 6866663669266518821L;
+                                
+                                ////////////////////////
+                                //        state       //
+                                ////////////////////////
+                                private Collection&lt;Customer&gt; customers;
+                                private Customer newCustomer;
+                            
+                                ////////////////////////
+                                //    dependencies    //
+                                ////////////////////////
+                                @Inject private CustomerService customerService;
+                                @Inject private FacesContext facesContext;
+                            
+                                @PostConstruct
+                                public void init() {
+                                    this.customers = customerService.read();
+                                    this.newCustomer = new Customer();
+                                }
+                            
+                                public void create() {
+                                    customerService.create(newCustomer);
+                                    this.customers = customerService.read();
+                                    this.newCustomer = new Customer();
+                                }
+                            
+                                public void update() {
+                                    customerService.update(customers);
+                                    facesContext.addMessage(null, new FacesMessage("Update successful"));
+                                }
+                            
+                                public void delete(Customer customer) {
+                                    customerService.delete(customer);
+                                    customers.remove(customer);
+                                }
+                            
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>ConfigurationBean.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
+                        <code>
+                            package io.github.ahenteti.java.config;
+                            
+                            import javax.faces.annotation.FacesConfig;
+                            
+                            /**
+                             * The presence of the @FacesConfig annotation on a managed bean deployed within an application enables version specific
+                             * features. In this case, it enables JSF CDI injection and EL resolution using CDI.
+                             */
+                            @FacesConfig(version = FacesConfig.Version.JSF_2_3)
+                            public class ConfigurationBean {
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/jsf-crud-app-demo label="Article source code"></link-webcomponent> <link-webcomponent href=https://rieckpil.de/howto-simple-crud-table-with-jsf-2-3-and-primefaces/ label="Simple crud table with JSF 2.3 and primefaces"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/crud-operations-with-jsf-and-primafaces.945bf7859699f9f5ed6c.js"></script></body> </html> 

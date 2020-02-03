@@ -1,0 +1,382 @@
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.worker.js></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
+  "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
+  "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
+  "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
+  "what-i-have-done-to-add-react-to-my-website.css": "/css/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.css",
+  "slide-in-as-you-scroll-down-cards.js": "/js/slide-in-as-you-scroll-down-cards.cc25268193e043adcd6f.js",
+  "slide-in-as-you-scroll-down-cards.css": "/css/slide-in-as-you-scroll-down-cards.cc25268193e043adcd6f.css",
+  "javascript-closure.js": "/js/javascript-closure.86d6cecad4f0c5d9baba.js",
+  "javascript-closure.css": "/css/javascript-closure.86d6cecad4f0c5d9baba.css",
+  "convert-pdf-to-png-using-mozilla-pdfjs-library.js": "/js/convert-pdf-to-png-using-mozilla-pdfjs-library.a4efcce526356e7a1984.js",
+  "convert-pdf-to-png-using-mozilla-pdfjs-library.css": "/css/convert-pdf-to-png-using-mozilla-pdfjs-library.a4efcce526356e7a1984.css",
+  "how-to-create-tooltips-with-css.js": "/js/how-to-create-tooltips-with-css.34386b6cabbe3718b55e.js",
+  "how-to-create-tooltips-with-css.css": "/css/how-to-create-tooltips-with-css.34386b6cabbe3718b55e.css",
+  "about.js": "/js/about.820c4239fe9108149b45.js",
+  "about.css": "/css/about.820c4239fe9108149b45.css",
+  "how-to-stop-a-process-listening-on-a-certain-port-in-windows.js": "/js/how-to-stop-a-process-listening-on-a-certain-port-in-windows.2c4a927cd35a611fae15.js",
+  "how-to-stop-a-process-listening-on-a-certain-port-in-windows.css": "/css/how-to-stop-a-process-listening-on-a-certain-port-in-windows.2c4a927cd35a611fae15.css",
+  "how-to-show-line-numbers-in-vim.js": "/js/how-to-show-line-numbers-in-vim.472e1cb6090cb3f7a2e3.js",
+  "how-to-show-line-numbers-in-vim.css": "/css/how-to-show-line-numbers-in-vim.472e1cb6090cb3f7a2e3.css",
+  "springboot-with-react-demo.js": "/js/springboot-with-react-demo.7d10e06a2e660fa4d511.js",
+  "springboot-with-react-demo.css": "/css/springboot-with-react-demo.7d10e06a2e660fa4d511.css",
+  "old-versus-new-jsf-scope-annotations.js": "/js/old-versus-new-jsf-scope-annotations.945f60a682213c3215e8.js",
+  "old-versus-new-jsf-scope-annotations.css": "/css/old-versus-new-jsf-scope-annotations.945f60a682213c3215e8.css",
+  "jsf-websocket-demo.js": "/js/jsf-websocket-demo.c5593744daeba27d3c9f.js",
+  "jsf-websocket-demo.css": "/css/jsf-websocket-demo.c5593744daeba27d3c9f.css",
+  "jsf-primefaces-demo.js": "/js/jsf-primefaces-demo.7fe866dfe45933509c2e.js",
+  "jsf-primefaces-demo.css": "/css/jsf-primefaces-demo.7fe866dfe45933509c2e.css",
+  "jsf-helloworld-demo.js": "/js/jsf-helloworld-demo.e53c1d81f126c628ffad.js",
+  "jsf-helloworld-demo.css": "/css/jsf-helloworld-demo.e53c1d81f126c628ffad.css",
+  "jsf-download-file-demo.js": "/js/jsf-download-file-demo.b4cc86d18d12ea66f462.js",
+  "jsf-download-file-demo.css": "/css/jsf-download-file-demo.b4cc86d18d12ea66f462.css",
+  "facelet-templating-system.js": "/js/facelet-templating-system.1cf2a45d1d08deda066d.js",
+  "facelet-templating-system.css": "/css/facelet-templating-system.1cf2a45d1d08deda066d.css",
+  "facelet-composite-components-demo.js": "/js/facelet-composite-components-demo.19bd6fe3b6b7cb91c894.js",
+  "facelet-composite-components-demo.css": "/css/facelet-composite-components-demo.19bd6fe3b6b7cb91c894.css",
+  "crud-operations-with-jsf-and-primafaces.js": "/js/crud-operations-with-jsf-and-primafaces.945bf7859699f9f5ed6c.js",
+  "crud-operations-with-jsf-and-primafaces.css": "/css/crud-operations-with-jsf-and-primafaces.945bf7859699f9f5ed6c.css",
+  "validate-ip-addresses-with-java.js": "/js/validate-ip-addresses-with-java.37f9e9aa16d180663cfa.js",
+  "validate-ip-addresses-with-java.css": "/css/validate-ip-addresses-with-java.37f9e9aa16d180663cfa.css",
+  "simpledateformat-thread-safety-issues.js": "/js/simpledateformat-thread-safety-issues.4a0f328889a14770bce9.js",
+  "simpledateformat-thread-safety-issues.css": "/css/simpledateformat-thread-safety-issues.4a0f328889a14770bce9.css",
+  "scatter-gather-pattern.js": "/js/scatter-gather-pattern.7deeaf6a415d575f988e.js",
+  "scatter-gather-pattern.css": "/css/scatter-gather-pattern.7deeaf6a415d575f988e.css",
+  "producer-consumer-demo.js": "/js/producer-consumer-demo.0330cbd62d8f147bb0c0.js",
+  "producer-consumer-demo.css": "/css/producer-consumer-demo.0330cbd62d8f147bb0c0.css",
+  "how-to-create-your-first-maven-plugin.js": "/js/how-to-create-your-first-maven-plugin.fa69c356573139e01d3f.js",
+  "how-to-create-your-first-maven-plugin.css": "/css/how-to-create-your-first-maven-plugin.fa69c356573139e01d3f.css",
+  "jdbc-with-and-without-jpa.js": "/js/jdbc-with-and-without-jpa.876f9eab326ddf643f46.js",
+  "jdbc-with-and-without-jpa.css": "/css/jdbc-with-and-without-jpa.876f9eab326ddf643f46.css",
+  "jackson-custom-deserialization-overview.js": "/js/jackson-custom-deserialization-overview.3c580a6614e00bf240e3.js",
+  "jackson-custom-deserialization-overview.css": "/css/jackson-custom-deserialization-overview.3c580a6614e00bf240e3.css",
+  "how-to-run-a-jar-file-from-command-line.js": "/js/how-to-run-a-jar-file-from-command-line.b695d7cf753cda19832f.js",
+  "how-to-run-a-jar-file-from-command-line.css": "/css/how-to-run-a-jar-file-from-command-line.b695d7cf753cda19832f.css",
+  "how-to-reverse-a-string-in-java.js": "/js/how-to-reverse-a-string-in-java.d03814765e454c0722a9.js",
+  "how-to-reverse-a-string-in-java.css": "/css/how-to-reverse-a-string-in-java.d03814765e454c0722a9.css",
+  "how-to-find-local-non-loopback-address-in-java.js": "/js/how-to-find-local-non-loopback-address-in-java.dd92026687aa208f8925.js",
+  "how-to-find-local-non-loopback-address-in-java.css": "/css/how-to-find-local-non-loopback-address-in-java.dd92026687aa208f8925.css",
+  "how-to-create-executable-jar-file-using-maven.js": "/js/how-to-create-executable-jar-file-using-maven.a9f2b7c64c094fb47454.js",
+  "how-to-create-executable-jar-file-using-maven.css": "/css/how-to-create-executable-jar-file-using-maven.a9f2b7c64c094fb47454.css",
+  "how-to-create-a-postgres-jdbc-connection-in-java-se.js": "/js/how-to-create-a-postgres-jdbc-connection-in-java-se.81bd42eaff2c32ab329c.js",
+  "how-to-create-a-postgres-jdbc-connection-in-java-se.css": "/css/how-to-create-a-postgres-jdbc-connection-in-java-se.81bd42eaff2c32ab329c.css",
+  "how-to-build-graph-structure-in-java.js": "/js/how-to-build-graph-structure-in-java.9dd0698895a5cbca1fe5.js",
+  "how-to-build-graph-structure-in-java.css": "/css/how-to-build-graph-structure-in-java.9dd0698895a5cbca1fe5.css",
+  "strong-password-hacker-rank-problem.js": "/js/strong-password-hacker-rank-problem.08113c6412c498036978.js",
+  "strong-password-hacker-rank-problem.css": "/css/strong-password-hacker-rank-problem.08113c6412c498036978.css",
+  "new-year-chaos-hacker-rank-problem.js": "/js/new-year-chaos-hacker-rank-problem.96b82f5cc8e3102e57f3.js",
+  "new-year-chaos-hacker-rank-problem.css": "/css/new-year-chaos-hacker-rank-problem.96b82f5cc8e3102e57f3.css",
+  "java-stack-hacker-rank-problem.js": "/js/java-stack-hacker-rank-problem.34c069a21466265b054a.js",
+  "java-stack-hacker-rank-problem.css": "/css/java-stack-hacker-rank-problem.34c069a21466265b054a.css",
+  "java-sha-256-hacker-rank-problem.js": "/js/java-sha-256-hacker-rank-problem.19f430bd19d762b68416.js",
+  "java-sha-256-hacker-rank-problem.css": "/css/java-sha-256-hacker-rank-problem.19f430bd19d762b68416.css",
+  "java-dequeue-hacker-rank-problem.js": "/js/java-dequeue-hacker-rank-problem.7477af3153f37f91c1f0.js",
+  "java-dequeue-hacker-rank-problem.css": "/css/java-dequeue-hacker-rank-problem.7477af3153f37f91c1f0.css",
+  "java-1d-array-part-2-hacker-rank-problem.js": "/js/java-1d-array-part-2-hacker-rank-problem.9eabb1475eddc8e6f645.js",
+  "java-1d-array-part-2-hacker-rank-problem.css": "/css/java-1d-array-part-2-hacker-rank-problem.9eabb1475eddc8e6f645.css",
+  "duplicate-words-hacker-rank-problem.js": "/js/duplicate-words-hacker-rank-problem.8281fba1a576df645dc8.js",
+  "duplicate-words-hacker-rank-problem.css": "/css/duplicate-words-hacker-rank-problem.8281fba1a576df645dc8.css",
+  "array-manipulation-hacker-rank-problem.js": "/js/array-manipulation-hacker-rank-problem.b9f08372308614951bec.js",
+  "array-manipulation-hacker-rank-problem.css": "/css/array-manipulation-hacker-rank-problem.b9f08372308614951bec.css",
+  "secure-connnections-with-ssl.js": "/js/secure-connnections-with-ssl.c49c6450df86547eb0e2.js",
+  "secure-connnections-with-ssl.css": "/css/secure-connnections-with-ssl.c49c6450df86547eb0e2.css",
+  "openssl-quick-tips.js": "/js/openssl-quick-tips.bba163527c89bc1ae50a.js",
+  "openssl-quick-tips.css": "/css/openssl-quick-tips.bba163527c89bc1ae50a.css",
+  "git-quick-tips.js": "/js/git-quick-tips.b22e3ecdd77a1fe88332.js",
+  "git-quick-tips.css": "/css/git-quick-tips.b22e3ecdd77a1fe88332.css",
+  "tabs-widget-demo.js": "/js/tabs-widget-demo.bb973e3fe3aa6ee82b89.js",
+  "tabs-widget-demo.css": "/css/tabs-widget-demo.bb973e3fe3aa6ee82b89.css",
+  "javascript-classes.js": "/js/javascript-classes.b4c38dc04490788cfb3d.js",
+  "javascript-classes.css": "/css/javascript-classes.b4c38dc04490788cfb3d.css",
+  "html2canvas-script-demo.js": "/js/html2canvas-script-demo.c391b7f669c1ddca2ba7.js",
+  "html2canvas-script-demo.css": "/css/html2canvas-script-demo.c391b7f669c1ddca2ba7.css",
+  "how-to-draw-a-triangle-with-css.js": "/js/how-to-draw-a-triangle-with-css.6aa9fe993a84907e670b.js",
+  "how-to-draw-a-triangle-with-css.css": "/css/how-to-draw-a-triangle-with-css.6aa9fe993a84907e670b.css",
+  "how-to-center-horizontally-an-anchor-element.js": "/js/how-to-center-horizontally-an-anchor-element.9968ced939824858d93f.js",
+  "how-to-center-horizontally-an-anchor-element.css": "/css/how-to-center-horizontally-an-anchor-element.9968ced939824858d93f.css",
+  "how-to-add-ellipsis-to-text-when-overflow-in-css.js": "/js/how-to-add-ellipsis-to-text-when-overflow-in-css.2e09fa848b35bae7a9ad.js",
+  "how-to-add-ellipsis-to-text-when-overflow-in-css.css": "/css/how-to-add-ellipsis-to-text-when-overflow-in-css.2e09fa848b35bae7a9ad.css",
+  "bash-quick-tips.js": "/js/bash-quick-tips.41661674d8e5e226d65e.js",
+  "bash-quick-tips.css": "/css/bash-quick-tips.41661674d8e5e226d65e.css",
+  "common.js": "/js/common.92c065e908d6a82c89cf.js",
+  "common.css": "/css/common.92c065e908d6a82c89cf.css",
+  "webcomponents.js": "/js/webcomponents.6a3558a0b59c3de7ad21.js",
+  "highlightStyle.js": "/js/highlightStyle.869aebaad965b5d3647d.js",
+  "highlightStyle.css": "/css/highlightStyle.869aebaad965b5d3647d.css",
+  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg",
+  "assets/img/imt-atlantique-logo-transparent.png": "/assets/img/imt-atlantique-logo-transparent.png",
+  "assets/img/supcom-logo-transparent.png": "/assets/img/supcom-logo-transparent.png",
+  "assets/fonts/get-prices-workflow-solution0.svg": "/assets/fonts/get-prices-workflow-solution0.svg",
+  "assets/fonts/get-prices-workflow-solution1.svg": "/assets/fonts/get-prices-workflow-solution1.svg",
+  "assets/fonts/get-prices-workflow-solution2.svg": "/assets/fonts/get-prices-workflow-solution2.svg",
+  "assets/fonts/java-arraylist-chacker-rank-problem.svg": "/assets/fonts/java-arraylist-chacker-rank-problem.svg",
+  "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
+  "assets/fonts/encryption_decryption_overview.svg": "/assets/fonts/encryption_decryption_overview.svg",
+  "assets/fonts/digital-signature.svg": "/assets/fonts/digital-signature.svg",
+  "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
+  "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
+  "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/convert-pdf-to-png-using-mozilla-pdfjs-library.a4efcce526356e7a1984.css" rel="stylesheet"></head> <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>Result</code-tab-webcomponent> <code-panel-webcomponent class=result slot=code-panel> <div class=demo> <button class=upload-button>Select Your PDF</button> <input class=upload-input type=file /> <div class=loader-demo></div> <div class=pdf-container> <div class=pdf-metadata> <div class=pdf-navigation-buttons> <ion-icon class="pdf-navigation-button pdf-prev" name=ios-arrow-dropleft-circle></ion-icon> <ion-icon class="pdf-navigation-button pdf-next" name=ios-arrow-dropright-circle></ion-icon> </div> <a class=download-link href=#>Download PNG</a> <div class=pdf-current-page-container> Page <span class=pdf-current-page></span> of <span class=pdf-total-pages></span> </div> </div> <canvas class=pdf-canvas></canvas> </div> </div> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>index.html</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=html> <pre slot=code>
+                        <code>
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+                                &lt;head&gt;
+                                    &lt;meta charset="UTF-8" /&gt;
+                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+                                    &lt;script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"&gt;&lt;/script&gt;
+                                    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.js"&gt;&lt;/script&gt;
+                                    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.worker.js"&gt;&lt;/script&gt;
+                                    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"&gt;&lt;/script&gt;
+                                    &lt;title&gt;pdf to png&lt;/title&gt;
+                                    &lt;link rel="stylesheet" href="./main.css" /&gt;
+                                &lt;/head&gt;
+                            
+                                &lt;body&gt;
+                                    &lt;main&gt;
+                                        &lt;button class="upload-button"&gt;Select Your PDF&lt;/button&gt;
+                                        &lt;input class="upload-input" type="file" /&gt;
+                                        &lt;div class="loader"&gt;&lt;/div&gt;
+                            
+                                        &lt;div class="pdf-container"&gt;
+                                            &lt;div class="pdf-metadata"&gt;
+                                                &lt;div class="pdf-navigation-buttons"&gt;
+                                                    &lt;ion-icon class="pdf-navigation-button pdf-prev" name="ios-arrow-dropleft-circle"&gt;&lt;/ion-icon&gt;
+                                                    &lt;ion-icon class="pdf-navigation-button pdf-next" name="ios-arrow-dropright-circle"&gt;&lt;/ion-icon&gt;
+                                                &lt;/div&gt;
+                                                &lt;a class="download-link" href="#"&gt;Download PNG&lt;/a&gt;
+                                                &lt;div class="pdf-current-page-container"&gt;
+                                                    Page &lt;span class="pdf-current-page"&gt;&lt;/span&gt; of &lt;span class="pdf-total-pages"&gt;&lt;/span&gt;
+                                                &lt;/div&gt;
+                                            &lt;/div&gt;
+                                            &lt;canvas class="pdf-canvas"&gt;&lt;/canvas&gt;
+                                        &lt;/div&gt;
+                                    &lt;/main&gt;
+                                    &lt;script src="./main.js"&gt;&lt;/script&gt;
+                                &lt;/body&gt;
+                            &lt;/html&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>main.css</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=css> <pre slot=code>
+                        <code>
+                            :root {
+                                --primary-color: #078eed;
+                                --color-gray: #eee;
+                            }
+                            
+                            *,
+                            *::before,
+                            *::after {
+                                padding: 0;
+                                margin: 0;
+                                box-sizing: border-box;
+                            }
+                            
+                            html {
+                                font-size: 62.5%;
+                            }
+                            
+                            body {
+                                background: #f1f1f1;
+                                font-family: 'Roboto', sans-serif;
+                            }
+                            
+                            main {
+                                background: white;
+                                width: 70%;
+                                margin: 8rem auto 8rem auto;
+                                padding: 4rem 8rem;
+                            }
+                            
+                            a {
+                                text-decoration: none;
+                            }
+                            
+                            button,
+                            a {
+                                font-size: 1.6rem;
+                            }
+                            
+                            .upload-input {
+                                display: none;
+                            }
+                            
+                            .upload-button,
+                            .download-link {
+                                padding: 8px 18px;
+                                border-radius: 2px;
+                                border: 2px solid var(--primary-color);
+                                background-color: white;
+                                color: var(--primary-color);
+                                transition: all 0.2s;
+                            }
+                            
+                            .upload-button {
+                                display: block;
+                                margin: 0 auto;
+                            }
+                            
+                            .download-link-container {
+                                text-align: center;
+                            }
+                            
+                            .upload-button:hover,
+                            .download-link:hover {
+                                background-color: var(--primary-color);
+                                color: white;
+                            }
+                            
+                            .pdf-metadata {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                font-size: 1.3rem;
+                            }
+                            
+                            .pdf-navigation-buttons {
+                                font-size: 3rem;
+                            }
+                            
+                            .pdf-navigation-button:hover {
+                                color: var(--primary-color);
+                            }
+                            
+                            .loader {
+                                position: absolute;
+                                top: calc(50% - 2.5rem);
+                                left: calc(50% - 2.5rem);
+                                border: 1rem solid var(--color-gray);
+                                border-top: 1rem solid var(--primary-color);
+                                border-radius: 50%;
+                                width: 5rem;
+                                height: 5rem;
+                                animation: spin 2s linear infinite;
+                            }
+                            
+                            @keyframes spin {
+                                0% {
+                                    transform: rotate(0deg);
+                                }
+                                100% {
+                                    transform: rotate(360deg);
+                                }
+                            }
+                            
+                            .pdf-canvas {
+                                margin-top: 2rem;
+                                outline: 2px solid #eee;
+                            }
+                            
+                            .loader,
+                            .pdf-metadata,
+                            .pdf-canvas {
+                                display: none;
+                            }
+                            
+                            .pdf-metadata.display {
+                                display: flex;
+                            }
+                            
+                            .loader.display,
+                            .pdf-canvas.display,
+                            .download-link-container.display {
+                                display: block;
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>main.js</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=js> <pre slot=code>
+                        <code>
+                            const uploadButtonDOMElement = document.querySelector('.upload-button');
+                            const uploadInputDOMElement = document.querySelector('.upload-input');
+                            const loaderDOMElement = document.querySelector('.loader');
+                            const pdfMetadataDOMElement = document.querySelector('.pdf-metadata');
+                            const totalPagesDOMElement = document.querySelector('.pdf-total-pages');
+                            const currentPageDOMElement = document.querySelector('.pdf-current-page');
+                            const canvasDOMElement = document.querySelector('.pdf-canvas');
+                            const downloadLinkDOMElement = document.querySelector('.download-link');
+                            const previousPageDOMElement = document.querySelector('.pdf-prev');
+                            const nextPageDOMElement = document.querySelector('.pdf-next');
+                            
+                            // global variables
+                            let pdfDocument, pdfFileName, currentPage, totalPages;
+                            
+                            canvasDOMElement.width = Math.floor(window.parseInt(window.getComputedStyle(canvasDOMElement.parentElement).width));
+                            uploadButtonDOMElement.addEventListener('click', () =&gt; {
+                                uploadInputDOMElement.click();
+                            });
+                            
+                            uploadInputDOMElement.addEventListener('change', function() {
+                                const uploadedFile = this.files[0];
+                                if ('application/pdf' !== uploadedFile.type) {
+                                    alert('Error : Only PDF files are accepted');
+                                    return;
+                                }
+                                pdfFileName = calcPdfFileName(uploadedFile);
+                                hide(uploadButtonDOMElement);
+                                show(loaderDOMElement);
+                                showPdf(URL.createObjectURL(uploadedFile));
+                            });
+                            
+                            downloadLinkDOMElement.addEventListener('click', function() {
+                                this.setAttribute('href', canvasDOMElement.toDataURL());
+                                this.setAttribute('download', pdfFileName + '-' + currentPage + '.png');
+                            });
+                            
+                            previousPageDOMElement.addEventListener('click', function() {
+                                if (currentPage !== 1) {
+                                    showPage(--currentPage);
+                                }
+                            });
+                            
+                            nextPageDOMElement.addEventListener('click', function() {
+                                if (currentPage !== totalPages) {
+                                    showPage(++currentPage);
+                                }
+                            });
+                            
+                            function calcPdfFileName(uploadedFile) {
+                                return uploadedFile.name
+                                    .split('.')
+                                    .slice(0, -1)
+                                    .join('.');
+                            }
+                            
+                            function showPdf(url) {
+                                pdfjsLib.getDocument(url).promise.then(doc =&gt; {
+                                    pdfDocument = doc;
+                                    hide(loaderDOMElement);
+                                    show(pdfMetadataDOMElement);
+                                    totalPages = pdfDocument.numPages;
+                                    totalPagesDOMElement.innerHTML = totalPages;
+                                    showPage(1);
+                                });
+                            }
+                            
+                            function showPage(pageNumber) {
+                                currentPage = pageNumber;
+                                currentPageDOMElement.innerHTML = pageNumber;
+                                pdfDocument.getPage(pageNumber).then(page =&gt; {
+                                    // As the canvas is of a fixed width we need to set the scale of the viewport accordingly
+                                    const requiredScale = canvasDOMElement.width / page.getViewport(1).width;
+                            
+                                    // Get viewport of the page at required scale
+                                    const viewport = page.getViewport({ scale: requiredScale });
+                            
+                                    // Set canvas height
+                                    canvasDOMElement.height = viewport.height;
+                                    show(canvasDOMElement);
+                            
+                                    var renderContext = {
+                                        canvasContext: canvasDOMElement.getContext('2d'),
+                                        viewport: viewport
+                                    };
+                                    page.render(renderContext);
+                                });
+                            }
+                            
+                            function hide(element) {
+                                element.style.display = 'none';
+                            }
+                            
+                            function show(element) {
+                                element.classList.add('display');
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://github.com/mozilla/pdf.js/blob/master/examples/learning/helloworld.html label="Mozilla PDF.js github tutorial"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/convert-pdf-to-png-using-mozilla-pdfjs-library.a4efcce526356e7a1984.js"></script></body> </html> 

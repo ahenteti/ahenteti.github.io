@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,51 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/javascript-classes.b4c38dc04490788cfb3d.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Before ES6 specification</h2> <multiline-code-webcomponent language=javascript> <pre slot=code>
+          <code>
+            function Animal(name) {
+              this.name = name;
+            }
+            
+            Animal.prototype.getName = function() {
+              return this.name;
+            }
+            
+            const dog = new Animal('Dog');
+            dog.getName();
+          </code>
+        </pre> </multiline-code-webcomponent> <h2>After ES6 specification</h2> <multiline-code-webcomponent language=javascript> <pre slot=code>
+          <code>
+            class Animal {
+              constructor(name) {
+                this.name = name;
+              }
+              getName() {
+                return this.name;
+              }
+            }
+            
+            const dog = new Animal('Dog');
+            dog.getName(); 
+          </code>
+        </pre> </multiline-code-webcomponent> <h2>ES6 static methods</h2> <multiline-code-webcomponent language=javascript> <pre slot=code>
+          <code>
+            class Animal {
+              constructor(name) {
+                this.name = name;
+              }
+              getName() {
+                return this.name;
+              }
+              static getNames() {
+                for (const animal of arguments) {
+                  console.log(animal.getName());
+                }
+              }
+            }
+            
+            const dog = new Animal('Dog');
+            const cat = new Animal('Cat');
+            Animal.getNames(dog, cat);
+          </code>
+        </pre> </multiline-code-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://medium.com/beginners-guide-to-mobile-web-development/javascript-introduction-to-es6-classes-ecb2db9fe985 label="Medium javascript-introduction-to-es6-classes article"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/javascript-classes.b4c38dc04490788cfb3d.js"></script></body> </html> 

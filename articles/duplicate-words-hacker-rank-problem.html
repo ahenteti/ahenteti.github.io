@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,41 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/duplicate-words-hacker-rank-problem.8281fba1a576df645dc8.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Problem</h2> <p> In this challenge, we use regular expressions (RegEx) to remove instances of words that are repeated more than once, but retain the first occurrence of any case-insensitive repeated word. For example, the words love and to are repeated in the sentence I love Love to To tO code. Can you complete the code in the editor so it will turn I love Love to To tO code into I love to code? </p> <p class=mb-s> To solve this challenge, complete the following three lines: </p> <ul> <li>Write a RegEx that will match any repeated word.</li> <li>Complete the second compile argument so that the compiled RegEx is case-insensitive.</li> <li> Write the two necessary arguments for replaceAll such that each repeated word is replaced with the very first instance the word found in the sentence. It must be the exact first occurrence of the word, as the expected output is case-sensitive. </li> </ul> <h2>Input Format</h2> <p>The following input is handled for you the given stub code:</p> <p>The first line contains an integer, <span class=code>n</span>, denoting the number of sentences.</p> <p> Each of the <span class=code>n</span> subsequent lines contains a single sentence consisting of English alphabetic letters and whitespace characters. </p> <h2>Output Format</h2> <p> Stub code in the editor prints the sentence modified by the replaceAll line to stdout. The modified string must be a modified version of the initial sentence where all repeat occurrences of each word are removed. </p> <h2>Sample Input</h2> <multiline-code-webcomponent language=bash> <pre slot=code>
+            <code>
+              5
+              Goodbye bye bye world world world
+              Sam went went to to to his business
+              Reya is is the the best player in eye eye game
+              in inthe
+              Hello hello Ab aB
+            </code>
+          </pre> </multiline-code-webcomponent> <h2>Sample Output</h2> <multiline-code-webcomponent language=bash> <pre slot=code>
+            <code>
+              Goodbye bye world
+              Sam went to his business
+              Reya is the best player in eye game
+              in inthe
+              Hello Ab
+            </code>
+          </pre> </multiline-code-webcomponent> <h2>Solution</h2> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+                public static void main(String[] args) {
+                    String regex = "\\b(\\w+)(:?\\W+\\1\\b)+";
+                    Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+            
+                    Scanner in = new Scanner(System.in);
+                    int numSentences = Integer.parseInt(in.nextLine());
+                    
+                    while (numSentences-- &gt; 0) {
+                        String input = in.nextLine();
+                        Matcher m = p.matcher(input);
+                        while (m.find()) {
+                            input = input.replaceAll(m.group(), m.group(1));
+                        }
+                        System.out.println(input);
+                    }
+                    in.close();
+                }
+            </code>
+          </pre> </multiline-code-webcomponent> <conclusion-webcomponent></conclusion-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://www.hackerrank.com/challenges/duplicate-word/problem label="Duplicate Words Hacker Rank Problem"></link-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/java-challenges/src/main/java/io/github/ahenteti/java/hackerrank/DuplicateWordsSolution.java label="Article source code"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/duplicate-words-hacker-rank-problem.8281fba1a576df645dc8.js"></script></body> </html> 

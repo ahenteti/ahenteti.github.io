@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,23 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/validate-ip-addresses-with-java.37f9e9aa16d180663cfa.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Using java Regex</h2> <h3>Code</h3> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              public boolean isValidIpv4Address(String ipAddress) {
+                  String zeroTo255Pattern = "(\d{1,2}|[0-1]\d{2}|2[0-4]\d|25[0-5])";
+                  String ipv4AddressPattern = zeroTo255Pattern + "\." + zeroTo255Pattern + "\." + zeroTo255Pattern + "\." + zeroTo255Pattern;
+                  return ipAddress.matches(ipv4AddressPattern);
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <h3>Explanation</h3> <ul> <li><span class=code>\d{1,2}</span> matches one or two digits</li> <li><span class=code>[0-1]\d{2}</span> matches three digits starting with 0 or 1</li> <li><span class=code>2[0-4]\d</span> matches numbers between 200 and 249</li> <li><span class=code>25[0-5]</span> matches numbers between 250 and 255</li> </ul> <h2>Using InetAddress.getByName method</h2> <p> The <span class=code>InetAddress.getByName</span> method treats also IPv6 addresses. For me, we should use this solution for production code </p> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              public boolean isValidIpAddress(String ipAddress) {
+                  try {
+                      InetAddress.getByName(ipAddress);
+                      return true;
+                  } catch (UnknownHostException e) {
+                      return false;
+                  }
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://www.hackerrank.com/challenges/java-regex/forum label="Hackerrank java-regex challenge"></link-webcomponent> <link-webcomponent href=https://www.hackerrank.com/challenges/java-regex/forum label="@dorku solution"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/validate-ip-addresses-with-java.37f9e9aa16d180663cfa.js"></script></body> </html> 

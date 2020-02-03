@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,45 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/how-to-reverse-a-string-in-java.d03814765e454c0722a9.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Using string concatenation</h2> <multiline-code-webcomponent language=java> <pre slot=code>
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            String reversedStr = "";
+                            for (int i = str.length() - 1; i &gt;= 0; i--) {
+                                reversedStr += str.charAt(i);
+                            }
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre> </multiline-code-webcomponent> <warn-webcomponent> <p> As Strings in java immutables. the concatenation of two strings result of the creation of a third String object. So we don't encourage the use of this solution as it shows bad performance and bad memory management </p> </warn-webcomponent> <h2>Using StringBuilder reverse method</h2> <multiline-code-webcomponent language=java> <pre slot=code>
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            StringBuilder reversedStrBuilder = new StringBuilder(str);
+                            String reversedStr = reversedStrBuilder.reverse().toString();
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre> </multiline-code-webcomponent> <h2>Using StringBuilder append method</h2> <multiline-code-webcomponent language=java> <pre slot=code>
+                <code>
+                    public class ReverseStringDemo {
+                        public static void main(String[] args) {
+                            String str = "Hello World!";
+                    
+                            StringBuilder reversedStrBuilder = new StringBuilder();
+                            for (int i = str.length() - 1; i &gt;= 0; i--) {
+                                reversedStrBuilder.append(str.charAt(i));
+                            }
+                            String reversedStr = reversedStrBuilder.toString();
+                            System.out.println(reversedStr); 
+                        }
+                    }
+                </code>
+            </pre> </multiline-code-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/how-to-reverse-a-string-in-java.d03814765e454c0722a9.js"></script></body> </html> 

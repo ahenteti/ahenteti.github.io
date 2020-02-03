@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,47 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/array-manipulation-hacker-rank-problem.b9f08372308614951bec.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Problem</h2> <p> Starting with a 1-indexed array of zeros and a list of operations, for each operation add a value to each of the array element between two given indices, inclusive. Once all operations have been performed, return the maximum value in your array. For example, the length of your array of zeros <span class=code>n = 10</span>. Your list of queries is as follows: </p> <multiline-code-webcomponent language=bash> <pre slot=code>
+          <code>
+            a b k
+            1 5 3
+            4 8 7
+            6 9 1
+          </code>
+        </pre> </multiline-code-webcomponent> <p> Add the values of <span class=code>k</span> between the indices <span class=code>a</span> and <span class=code>b</span> inclusive: </p> <multiline-code-webcomponent language=bash> <pre slot=code>
+          <code>
+            index->	 1  2  3   4   5  6  7  8  9  10
+                    [0, 0, 0,  0,  0, 0, 0, 0, 0,  0]
+                    [3, 3, 3,  3,  3, 0, 0, 0, 0,  0]
+                    [3, 3, 3, 10, 10, 7, 7, 7, 0,  0]
+                    [3, 3, 3, 10, 10, 8, 8, 8, 1,  0]
+          </code>
+        </pre> </multiline-code-webcomponent> <p>The largest value is <span class=code>10</span> after all operations are performed.</p> <h2>Function Description</h2> <p> Complete the function arrayManipulation in the editor below. It must return an integer, the maximum value in the resulting array. arrayManipulation has the following parameters: </p> <ul> <li>n - the number of elements in your array</li> <li> queries - a two dimensional array of queries where each queries[i] contains three integers, a, b, and k. </li> </ul> <h2>Input Format</h2> <p> The first line contains two space-separated integers <span class=code>n</span> and <span class=code>m</span> , the size of the array and the number of operations. Each of the next <span class=code>m</span> lines contains three space-separated integers <span class=code>a</span>, <span class=code>b</span> and <span class=code>k</span> , the left index, right index and summand. </p> <h2>Output Format</h2> <p>Return the integer maximum value in the finished array.</p> <h2>Sample Input</h2> <multiline-code-webcomponent language=bash> <pre slot=code>
+            <code>
+              5 3
+              1 2 10
+              2 5 10
+              3 4 10
+            </code>
+          </pre> </multiline-code-webcomponent> <h2>Sample Output</h2> <oneline-code-webcomponent code=20 language=bash></oneline-code-webcomponent> <h2>Explanation</h2> <img src=/assets/fonts/array-manipulation-hacker-rank-problem.svg alt=""/> <h2>Implementation</h2> <multiline-code-webcomponent language=java> <pre slot=code>
+            <code>
+              static long arrayManipulation(int n, int[][] queries) {
+                  int[] arr = new int[n];
+                  for (int i = 0; i &lt; queries.length; i++) {
+                      int a = queries[i][0];
+                      int b = queries[i][1];
+                      int k = queries[i][2];
+                      arr[a - 1] += k;
+                      if (b &lt; n) arr[b] -= k;
+          
+                  }
+                  long sum = 0;
+                  long max = 0;
+                  for (int i = 0; i &lt; n; i++) {
+                      sum += arr[i];
+                      if (max &lt; sum) max = sum;
+                  }
+                  return max;
+              }
+            </code>
+          </pre> </multiline-code-webcomponent> <conclusion-webcomponent></conclusion-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://www.hackerrank.com/challenges/crush/problem label="Array Manipulation Hacker Rank Problem"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/array-manipulation-hacker-rank-problem.b9f08372308614951bec.js"></script></body> </html> 

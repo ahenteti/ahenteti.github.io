@@ -1,4 +1,4 @@
-{
+<!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti notes</title> <script type="text/javascript">window.webpackManifest={
   "index.js": "/js/index.d9528c4df0e3a88f49b6.js",
   "index.css": "/css/index.d9528c4df0e3a88f49b6.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.7c494fee2df8186a34b3.js",
@@ -115,4 +115,137 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/tabs-widget-demo.bb973e3fe3aa6ee82b89.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>Result</code-tab-webcomponent> <code-panel-webcomponent class=result slot=code-panel> <style>.result .tablist{padding:3rem}.result .tabs{display:flex;flex-wrap:wrap}.result .panels{height:5em;background:#fafafa}.result [role=tab]{position:relative;margin:0;padding:1em;border:none;outline:0;background:#eee;transition:all .2s ease-in}.result [role=tab]:hover,.result [role=tab][aria-selected=true]{background:#fafafa}.result [role=tabpanel]{padding:1rem;font-size:1.5rem}</style> <div class=tablist role=tablist> <div class=tabs> <button role=tab aria-selected=true aria-controls=tab1-tab id=tab1> tab1 </button> <button role=tab aria-selected=false aria-controls=tab2-tab id=tab2> tab2 </button> <button role=tab aria-selected=false aria-controls=tab3-tab id=tab3> tab3 </button> </div> <div class=panels> <div role=tabpanel id=tab1-tab aria-labelledby=tab1> tab1 content </div> <div role=tabpanel id=tab2-tab aria-labelledby=tab2 hidden=true> tab2 content </div> <div role=tabpanel id=tab3-tab aria-labelledby=tab3 hidden=true> tab3 content </div> </div> </div> <script> (function() {
+              var tabs = Array.from(document.querySelectorAll('.result [role="tab"]'));
+              var panels = Array.from(document.querySelectorAll('.result [role="tabpanel"]'));
+
+              for (i = 0; i < tabs.length; i++) {
+                tabs[i].addEventListener('click', event => activateTab(event));
+              }
+
+              function activateTab(event) {
+                event.stopPropagation();
+                var tab = event.target;
+                deactivateTabs();
+                tab.setAttribute('aria-selected', 'true');
+                var controls = tab.getAttribute('aria-controls');
+                document.getElementById(controls).removeAttribute('hidden');
+              }
+
+              function deactivateTabs() {
+                for (i = 0; i < tabs.length; i++) {
+                  tabs[i].setAttribute('aria-selected', 'false');
+                  panels[i].setAttribute('hidden', 'true');
+                }
+              }
+            })(); </script> </code-panel-webcomponent> <code-tab-webcomponent selected=true slot=code-tab>index.html</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=html> <pre slot=code>
+                        <code>
+                            &lt;!DOCTYPE html&gt;
+                            &lt;html lang="en"&gt;
+                            
+                            &lt;head&gt;
+                                &lt;meta charset="UTF-8"&gt;
+                                &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+                                &lt;meta http-equiv="X-UA-Compatible" content="ie=edge"&gt;
+                                &lt;title&gt;tabs widget demo&lt;/title&gt;
+                                &lt;link rel="stylesheet" href="./main.css"&gt;
+                            &lt;/head&gt;
+                            
+                            &lt;body&gt;
+                            
+                                &lt;div role="tablist"&gt;
+                                    &lt;div class="tabs"&gt;
+                                        &lt;button role="tab" aria-selected="true" aria-controls="tab1-tab" id="tab1"&gt;
+                                            tab1
+                                        &lt;/button&gt;
+                                        &lt;button role="tab" aria-selected="false" aria-controls="tab2-tab" id="tab2"&gt;
+                                            tab2
+                                        &lt;/button&gt;
+                                        &lt;button role="tab" aria-selected="false" aria-controls="tab2-tab" id="tab3"&gt;
+                                            tab3
+                                        &lt;/button&gt;
+                                    &lt;/div&gt;
+                                    &lt;div class="panels"&gt;
+                                        &lt;div role="tabpanel" id="tab1-tab" aria-labelledby="tab1"&gt;
+                                            tab1 content
+                                        &lt;/div&gt;
+                                        &lt;div role="tabpanel" id="tab2-tab" aria-labelledby="tab2" hidden=""&gt;
+                                            tab2 content
+                                        &lt;/div&gt;
+                                        &lt;div role="tabpanel" id="tab3-tab" aria-labelledby="tab3" hidden=""&gt;
+                                            tab3 content
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            
+                                &lt;script src="./main.js"&gt;&lt;/script&gt;
+                            
+                            &lt;/body&gt;
+                            
+                            &lt;/html&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>main.css</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=css> <pre slot=code>
+                        <code>
+                            *, *::before, *::after {
+                                padding: 0;
+                                margin: 0;
+                                box-sizing: border-box;
+                            }
+                                
+                            body {
+                                font-family: sans-serif;
+                                color: #333;
+                            }
+                            
+                            .tabs {
+                                display: flex;
+                                flex-wrap: wrap;
+                            }
+                            
+                            .panels {
+                                height: 5em;
+                                background: #FAFAFA;
+                            }
+                            
+                            [role="tab"] {
+                                position: relative;
+                                margin: 0;
+                                padding: 1em;
+                                border: none;
+                                outline: none;
+                                background: #EEEEEE;
+                                transition: all .2s ease-in;
+                            }
+                            
+                            [role="tab"]:hover, 
+                            [role="tab"][aria-selected="true"] {
+                                background: #FAFAFA;
+                            }
+                                
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>main.js</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=javascript> <pre slot=code>
+                        <code>
+                            (function () {
+                                var tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+                                var panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
+                                
+                                for (i = 0; i &lt; tabs.length; i++) {
+                                    tabs[i].addEventListener('click', event =&gl; activateTab(event.target));
+                                }
+                                
+                                function activateTab (tab) {
+                                    deactivateTabs();
+                                    tab.setAttribute('aria-selected', 'true');
+                                    var controls = tab.getAttribute('aria-controls');
+                                    document.getElementById(controls).removeAttribute('hidden');
+                                }
+                                
+                                function deactivateTabs () {
+                                    for (i = 0; i &lt; tabs.length; i++) {
+                                        tabs[i].setAttribute('aria-selected', 'false');
+                                        panels[i].setAttribute('hidden', 'true');
+                                    }
+                                }
+                            })();
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/tabs-widget-demo label="Article source code"></link-webcomponent> <link-webcomponent href=https://www.w3.org/TR/wai-aria-practices/examples/tabs/tabs-1/tabs.html label="Example of Tabs with Automatic Activation from W3C"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/tabs-widget-demo.bb973e3fe3aa6ee82b89.js"></script></body> </html> 

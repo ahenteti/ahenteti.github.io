@@ -115,4 +115,163 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg"
-}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/index.d9528c4df0e3a88f49b6.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <main> <section class=intro> <h1 class="name one-line">Welcome to ahenteti notes</h1> <p class=description> In this website, I'm going to centralize what I have learned from the Internet. <b>Big thanks</b> to you guys that helped me improve my skills </p> </section> <section class=search></section> <section class=articles></section> <section class=no-result></section> </main> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/index.d9528c4df0e3a88f49b6.js"></script></body> </html> 
+}</script><link href="/css/highlightStyle.869aebaad965b5d3647d.css" rel="stylesheet"><link href="/css/how-to-create-your-first-maven-plugin.fa69c356573139e01d3f.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Your First Plugin</h2> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>HelloWorldMojo.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            import org.apache.maven.plugin.AbstractMojo;
+                            import org.apache.maven.plugin.MojoExecutionException;
+                            import org.apache.maven.plugins.annotations.LifecyclePhase;
+                            import org.apache.maven.plugins.annotations.Mojo;
+                            import org.apache.maven.plugins.annotations.Parameter;
+                            
+                            import java.io.File;
+                            import java.io.FileWriter;
+                            import java.io.IOException;
+                            
+                            @Mojo(name = "sayhi", defaultPhase = LifecyclePhase.PROCESS_RESOURCES)
+                            public class HelloWorldMojo extends AbstractMojo {
+                            
+                                @Parameter(property = "sayhi.greeting", defaultValue = "Hello World!")
+                                private String greeting;
+                            
+                                public void execute() throws MojoExecutionException {
+                                    getLog().info(greeting);
+                                }
+                            
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>project structure</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    └── java
+                                        └── io
+                                            └── github
+                                                └── ahenteti
+                                                    └── java
+                                                        └── HelloWorldMojo.java
+                            
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>pom.xml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                                
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;helloworld-maven-plugin&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                                &lt;packaging&gt;maven-plugin&lt;/packaging&gt;
+                                
+                                &lt;dependencies&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.apache.maven&lt;/groupId&gt;
+                                        &lt;artifactId&gt;maven-plugin-api&lt;/artifactId&gt;
+                                        &lt;version&gt;2.0&lt;/version&gt;
+                                    &lt;/dependency&gt;
+                                    &lt;dependency&gt;
+                                        &lt;groupId&gt;org.apache.maven.plugin-tools&lt;/groupId&gt;
+                                        &lt;artifactId&gt;maven-plugin-annotations&lt;/artifactId&gt;
+                                        &lt;version&gt;3.4&lt;/version&gt;
+                                        &lt;scope&gt;provided&lt;/scope&gt;
+                                    &lt;/dependency&gt;
+                                &lt;/dependencies&gt;
+                                
+                            &lt;/project&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <h2>Execute Your First Plugin</h2> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>pom.xml</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+                            
+                            &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                                     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
+                                &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
+                            
+                                &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                &lt;artifactId&gt;helloworld-maven-plugin-executor&lt;/artifactId&gt;
+                                &lt;version&gt;1.0&lt;/version&gt;
+                            
+                                &lt;properties&gt;
+                                    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;
+                                    &lt;maven.compiler.source&gt;1.8&lt;/maven.compiler.source&gt;
+                                    &lt;maven.compiler.target&gt;1.8&lt;/maven.compiler.target&gt;
+                                &lt;/properties&gt;
+                            
+                                &lt;build&gt;
+                                    &lt;plugins&gt;
+                                        &lt;plugin&gt;
+                                            &lt;groupId&gt;io.github.ahenteti.java&lt;/groupId&gt;
+                                            &lt;artifactId&gt;helloworld-maven-plugin&lt;/artifactId&gt;
+                                            &lt;version&gt;1.0&lt;/version&gt;
+                                            &lt;configuration&gt;
+                                                &lt;greeting&gt;Welcome&lt;/greeting&gt;
+                                            &lt;/configuration&gt;
+                                            &lt;executions&gt;
+                                                &lt;execution&gt;
+                                                    &lt;phase&gt;process-resources&lt;/phase&gt;
+                                                    &lt;goals&gt;
+                                                        &lt;goal&gt;sayhi&lt;/goal&gt;
+                                                    &lt;/goals&gt;
+                                                &lt;/execution&gt;
+                                            &lt;/executions&gt;
+                                        &lt;/plugin&gt;
+                                    &lt;/plugins&gt;
+                                &lt;/build&gt;
+                            &lt;/project&gt;
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>App.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
+                        <code>
+                            package io.github.ahenteti.java;
+                            
+                            /**
+                             * Hello world!
+                             *
+                             */
+                            public class App 
+                            {
+                                public static void main( String[] args )
+                                {
+                                    System.out.println( "Hello World!" );
+                                }
+                            }
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>project structure</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            .
+                            ├── pom.xml
+                            └── src
+                                └── main
+                                    └── java
+                                        └── io
+                                            └── github
+                                                └── ahenteti
+                                                    └── java
+                                                        └── App.java
+                            
+                        </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>maven-webcomponent output</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=xml> <pre slot=code>
+                        <code>
+                            $ mvn process-resources
+                            [INFO] Scanning for projects...
+                            [INFO]
+                            [INFO] ------&lt; io.github.ahenteti.java:helloworld-maven-plugin-executor &gt;------
+                            [INFO] Building helloworld-maven-plugin-executor 1.0
+                            [INFO] --------------------------------[ jar ]---------------------------------
+                            [INFO]
+                            [INFO] --- maven-resources-plugin:2.6:resources (default-resources) @ helloworld-maven-plugin-executor ---
+                            [INFO] Using 'UTF-8' encoding to copy filtered resources.
+                            [INFO] skip non existing resourceDirectory C:\dev\projects\ahenteti.github.io.demo\maven\helloworld-maven-plugin-executor\src\main\resources
+                            [INFO]
+                            <span class=highlight>[INFO] --- helloworld-maven-plugin:1.0:sayhi (default) @ helloworld-maven-plugin-executor ---</span>
+                            [INFO] Welcome
+                            [INFO] ------------------------------------------------------------------------
+                            [INFO] BUILD SUCCESS
+                            [INFO] ------------------------------------------------------------------------
+                            [INFO] Total time:  1.336 s
+                            [INFO] Finished at: 2019-12-24
+                            [INFO] ------------------------------------------------------------------------
+                          </code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://maven.apache.org/guides/plugin/guide-java-plugin-development.html label="Apache guide-java-plugin-development article"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.869aebaad965b5d3647d.js"></script><script type="text/javascript" src="/js/how-to-create-your-first-maven-plugin.fa69c356573139e01d3f.js"></script></body> </html> 
