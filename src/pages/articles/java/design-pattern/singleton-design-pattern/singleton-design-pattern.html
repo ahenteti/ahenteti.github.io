@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Definition</h2>
+        <quote-webcomponent author="wikipedia">
+          <p class="mb-0">
+            The singleton pattern is a software design pattern that restricts the instantiation of a class to one
+            <b>single</b> instance
+          </p>
+        </quote-webcomponent>
+        <h2>Problem trying to solve</h2>
+        <ul>
+          <li>How can it be ensured that a class has only one instance ?</li>
+          <li>How can the sole instance of a class be accessed easily ?</li>
+          <li>How can a class control its instantiation ?</li>
+          <li>How can the number of instances of a class be restricted ?</li>
+        </ul>
+
+        <h2>UML Diagram</h2>
+        <img src="./singleton-design-pattern.svg" alt="" />
+
+        <h2>Implementation</h2>
+        <div class="steps">
+          <h3 class="step">Simple Implementation</h3>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                public class Singleton {
+                    private static final Singleton INSTANCE = new Singleton();
+                
+                    private Singleton() {
+                    }
+                
+                    public static Singleton getInstance() {
+                        return INSTANCE;
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+          <h3 class="step">Lazy-initialization Implementation</h3>
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                public class LazyInitializationSingleton {
+    
+                    private static LazyInitializationSingleton instance = null;
+                
+                    private LazyInitializationSingleton() {
+                    }
+                
+                    public static LazyInitializationSingleton getInstance() {
+                        if (instance == null) {
+                            instance = new LazyInitializationSingleton();
+                        }
+                        return instance;
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+
+          <p>
+            Lazy-initialization could bring big improvement in the application performance, but the previous
+            implementation is not thread-safe.
+          </p>
+          <p>
+            To demonstrate that, we are going to add some delay in the
+            <span class="code">Singleton</span> constructor and we are going to use <span class="code">10</span> threads
+            which are going to print the result of the <span class="code">Singleton.getInstance()</span> method. From
+            the definition of <span class="code">Singletons</span>, the output of these threads must be the same
+          </p>
+
+          <code-tabs-webcomponent>
+            <code-tab-webcomponent slot="code-tab">LazyInitializationSingleton.java</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+              <multiline-code-webcomponent language="java">
+                <pre slot="code">
+                  <code>
+                    public class LazyInitializationSingleton {
+      
+                        private static LazyInitializationSingleton instance = null;
+                    
+                        private LazyInitializationSingleton() {
+                            try {
+                                <span class="highlight">Thread.sleep(50); // simulate creation delay</span>
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    
+                        public static LazyInitializationSingleton getInstance() {
+                            if (instance == null) {
+                                instance = new LazyInitializationSingleton();
+                            }
+                            return instance;
+                        }
+                    }
+                  </code>
+                </pre>
+              </multiline-code-webcomponent>
+            </code-panel-webcomponent>
+            <code-tab-webcomponent slot="code-tab">SingletonDemo.java</code-tab-webcomponent>
+            <code-panel-webcomponent slot="code-panel">
+              <multiline-code-webcomponent language="java">
+                <pre slot="code">
+                  <code>
+                    public class SingletonDemo {
+  
+                        public static void main(String[] args) {
+                            ExecutorService executor = Executors.newFixedThreadPool(2);
+                            IntStream.range(0, 10).forEach(i -> executor.execute(SingletonDemo::createAndPrintSingleton));
+                            executor.shutdown();
+                        }
+                        
+                        private static void createAndPrintSingleton() {
+                            LazyInitializationSingleton singleton = LazyInitializationSingleton.getInstance();
+                            System.out.println(singleton);
+                        }
+                    }
+                  </code>
+                </pre>
+              </multiline-code-webcomponent>
+            </code-panel-webcomponent>
+          </code-tabs-webcomponent>
+          <br />
+          <br />
+          <p>
+            Now when we run the <span class="code">main</span> method, we can notice that we have broken the
+            <span class="code">Singleton</span> principal. In fact we have instantiated more than once the
+            <span class="code">LazyInitializationSingleton</span> class
+          </p>
+
+          <multiline-code-webcomponent language="bash">
+            <pre slot="code">
+              <code>
+                LazyInitializationSingleton@<span class="highlight">3c72420e</span>
+                LazyInitializationSingleton@<span class="highlight">24f02989</span>
+                LazyInitializationSingleton@24f02989
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+
+          <h3 class="step">Thread-safe Lazy-initialization Implementation</h3>
+
+          <multiline-code-webcomponent language="java">
+            <pre slot="code">
+              <code>
+                public class ThreadSafeLazyInitializationSingleton {
+      
+                    private static ThreadSafeLazyInitializationSingleton instance = null;
+                
+                    private ThreadSafeLazyInitializationSingleton() {
+                    }
+                
+                    public static ThreadSafeLazyInitializationSingleton getInstance() {
+                        if (instance == null) {
+                            synchronized (ThreadSafeLazyInitializationSingleton.class) {
+                                if (instance == null) {
+                                    instance = new ThreadSafeLazyInitializationSingleton();
+                                }
+                            }
+                        }
+                        return instance;
+                    }
+                }
+              </code>
+            </pre>
+          </multiline-code-webcomponent>
+        </div>
+        <conclusion-webcomponent></conclusion-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/java/design-patterns"
+            label="Article source code"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://en.wikipedia.org/wiki/Singleton_pattern"
+            label="Wikipedia Singleton Pattern"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
