@@ -148,7 +148,7 @@
                     }
                 }
               </code>
-            </pre> </multiline-code-webcomponent> <p> Lazy-initialization could bring big improvement in the application performance, but the previous implementation is not thread-safe. </p> <p> To demonstrate that, we are going to add some delay in the creation of our <span class=code>Singleton</span> class and we going to create <span class=code>10</span> thread which are going to instantiate and print the memory address of the <span class=code>Singleton</span> instance </p> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>LazyInitializationSingleton.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
+            </pre> </multiline-code-webcomponent> <p> Lazy-initialization could bring big improvement in the application performance, but the previous implementation is not thread-safe. </p> <p> To demonstrate that, we are going to add some delay in the <span class=code>Singleton</span> constructor and we are going to use <span class=code>10</span> threads which are going to print the result of the <span class=code>Singleton.getInstance()</span> method. From the definition of <span class=code>Singletons</span>, the output of these threads must be the same </p> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>LazyInitializationSingleton.java</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=java> <pre slot=code>
                   <code>
                     public class LazyInitializationSingleton {
       
@@ -186,7 +186,7 @@
                         }
                     }
                   </code>
-                </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <br/> <br/> <p> Now when we run the <span class=code>SingletonDemo.main</span> method, we can notice that we have broken the <span class=code>Singleton</span> principal. In fact we have instantiated more than once the <span class=code>LazyInitializationSingleton</span> class </p> <multiline-code-webcomponent language=bash> <pre slot=code>
+                </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <br/> <br/> <p> Now when we run the <span class=code>main</span> method, we can notice that we have broken the <span class=code>Singleton</span> principal. In fact we have instantiated more than once the <span class=code>LazyInitializationSingleton</span> class </p> <multiline-code-webcomponent language=bash> <pre slot=code>
               <code>
                 LazyInitializationSingleton@<span class=highlight>3c72420e</span>
                 LazyInitializationSingleton@<span class=highlight>24f02989</span>
