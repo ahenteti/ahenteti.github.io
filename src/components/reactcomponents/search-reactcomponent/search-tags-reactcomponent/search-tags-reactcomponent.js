@@ -66,7 +66,7 @@ class SearchTagsReactComponent extends React.Component {
   }
 
   updateContainerClass() {
-    if (commonConstants.ALL_TAGS === this.props.selectedTag) {
+    if (commonConstants.ALL_ARTICLES === this.props.selectedTag) {
       this.container.classList.remove('background-primary-color');
     } else {
       this.container.classList.add('background-primary-color');

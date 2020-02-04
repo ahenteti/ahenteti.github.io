@@ -1,14 +1,16 @@
 /* eslint-disable no-undef */
 import * as commonConstants from 'common/constants';
 
-export function findArticles(selectedTag = commonConstants.ALL_TAGS, articlesFilter = '') {
+export function findArticles(selectedTag = commonConstants.ALL_ARTICLES, articlesFilter = '') {
   const searchKeys = articlesFilter.toLowerCase().split(' ');
   const articles = Array.from(ALL_ARTICLES).filter(article => {
     var keep = false;
     searchKeys.forEach(key => {
       if (articlesFilter != null && articlesFilter !== '') {
-        if (selectedTag === 'all') {
+        if (selectedTag === commonConstants.ALL_ARTICLES) {
           keep = article.searchKey.indexOf(key) > -1;
+        } else if (selectedTag === commonConstants.NEW_ARTICLES) {
+          keep = article.recent;
         } else {
           let keepBasedOnTagValue = false;
           article.tags
@@ -22,8 +24,10 @@ export function findArticles(selectedTag = commonConstants.ALL_TAGS, articlesFil
           keep = article.searchKey.indexOf(key) > -1 && keepBasedOnTagValue;
         }
       } else {
-        if (selectedTag === 'all') {
+        if (selectedTag === commonConstants.ALL_ARTICLES) {
           keep = true;
+        } else if (selectedTag === commonConstants.NEW_ARTICLES) {
+          keep = article.recent;
         } else {
           article.tags
             .toLowerCase()

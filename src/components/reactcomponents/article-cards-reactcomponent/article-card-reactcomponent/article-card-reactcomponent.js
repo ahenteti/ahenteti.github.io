@@ -8,11 +8,13 @@ import {
   addNotYetVisibleClass
 } from '../../fancy-title-reactcomponent/slidein-utlis';
 import './article-card-reactcomponent.scss';
+import * as commonConstants from 'common/constants';
 
 class ArticleCardReactComponent extends React.Component {
   constructor(props) {
     super(props);
     this.scrollHandler = this.scrollHandler.bind(this);
+    this.selectTag = this.selectTag.bind(this);
   }
 
   render() {
@@ -33,7 +35,7 @@ class ArticleCardReactComponent extends React.Component {
               <ion-icon name='calendar'></ion-icon>
               <p>{this.props.article.publicationDate}</p>
             </div>
-            <div ref={el => (this.newArticleWrapper = el)} className='new-article-wrapper'>
+            <div ref={el => (this.newArticleWrapper = el)} onClick={this.selectTag} className='new-article-wrapper'>
               <div className='new-article'>New</div>
             </div>
           </div>
@@ -58,6 +60,11 @@ class ArticleCardReactComponent extends React.Component {
     if (this.props.article.recent) {
       this.newArticleWrapper.style.display = 'block';
     }
+  }
+
+  selectTag(event) {
+    event.preventDefault();
+    this.props.selectTag(commonConstants.NEW_ARTICLES);
   }
 
   componentWillUnmount() {

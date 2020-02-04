@@ -11,12 +11,16 @@ const initialState = {
   theme: initTheme(),
   unknownChangeThemeColorFeature: initUnknownChangeThemeColorFeature(),
   articles: initArticles(selectedTag),
-  tags: ALL_TAGS,
+  tags: initTags(),
   selectedTag: selectedTag,
   articlesFilter: ''
 };
 
 export default createStore(reducer, initialState);
+
+function initTags() {
+  return [commonConstants.ALL_ARTICLES, commonConstants.NEW_ARTICLES, ...ARTICLES_TAGS];
+}
 
 function initTheme() {
   const searchParam = new URLSearchParams(window.location.search);
@@ -42,11 +46,11 @@ function initUnknownChangeThemeColorFeature() {
 function initSelectedTag() {
   const tagFromUrl = new URLSearchParams(window.location.search).get(commonConstants.TAG_QUERY_PARAM);
   if (tagFromUrl !== null) return tagFromUrl;
-  return commonConstants.ALL_TAGS;
+  return commonConstants.ALL_ARTICLES;
 }
 
 function initArticles(tag) {
-  if (commonConstants.ALL_TAGS !== tag) {
+  if (commonConstants.ALL_ARTICLES !== tag) {
     return findArticles(tag);
   } else {
     return ALL_ARTICLES_BY_CATEGORY;

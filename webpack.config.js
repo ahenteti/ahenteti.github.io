@@ -55,7 +55,7 @@ module.exports = {
     new webpack.DefinePlugin({
       ALL_ARTICLES: JSON.stringify(getArticlesMetadata()),
       ALL_ARTICLES_BY_CATEGORY: JSON.stringify(toArticlesByCategory(getArticlesMetadata())),
-      ALL_TAGS: JSON.stringify(getArticlesTags())
+      ARTICLES_TAGS: JSON.stringify(getArticlesTags())
     }),
     new CopyWebpackPlugin([{ from: 'src/assets/', to: 'assets/' }])
   ],
@@ -210,7 +210,7 @@ function getArticlesTags() {
   }, new Set());
   const tagsArray = Array.from(tags);
   tagsArray.sort();
-  return ['all', ...tagsArray];
+  return tagsArray;
 }
 
 function calcHtmlWebpackPluginFilename(filePath) {
