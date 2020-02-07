@@ -220,6 +220,14 @@ class MultilineCodeWebComponent extends ElementWebComponent {
           background-color: var(--code-highlight-color);
         }
 
+        .oneline-highlight::after {
+          content: ' ';
+          width: 100%;
+          position: absolute;
+          left: 0;
+          background: rgba(20, 20, 20, .1);
+        }
+
         .container {
           font-size: 1.6rem;
           position: relative;

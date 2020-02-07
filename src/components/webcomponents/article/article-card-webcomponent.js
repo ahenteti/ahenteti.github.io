@@ -20,7 +20,11 @@ class ArticleCardWebComponent extends ElementWebComponent {
           position: relative;
           transition: box-shadow .2s;
           transition: all .2s ease-in;
-          border-bottom: 3px solid var(--border-color);
+          border-top: var(--article-card-border-top-height) solid var(--article-card-border-color);
+          border-right: var(--article-card-border-right-height) solid var(--article-card-border-color);
+          border-bottom: var(--article-card-border-bottom-height) solid var(--article-card-border-color);
+          border-left: var(--article-card-border-left-height) solid var(--article-card-border-color);
+          border-radius: var(--article-card-border-radius);
         }
 
         a {
@@ -29,7 +33,7 @@ class ArticleCardWebComponent extends ElementWebComponent {
         }
 
         .container:hover {
-          border-bottom: 3px solid var(--primary-color-light) !important;
+          border-color: var(--primary-color);
         }
 
         .container:hover .name {

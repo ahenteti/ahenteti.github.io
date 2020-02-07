@@ -4,9 +4,9 @@ class HighlightFeatureWebComponent extends ElementWebComponent {
   connectedCallback() {
     super.connectedCallback();
     this._value = this.getAttribute('value');
-    this._width = this.getAttribute('width') || '40rem';
+    this._width = this.getAttribute('width') || '30rem';
     this._height = this.getAttribute('height') || '10rem';
-    this._trianglePosition = this.getAttribute('triangle-position') || '30rem';
+    this._trianglePosition = this.getAttribute('triangle-position') || '20rem';
     this._root.innerHTML += /* html */ `
       <style>
         .container {
@@ -18,7 +18,6 @@ class HighlightFeatureWebComponent extends ElementWebComponent {
           box-shadow: var(--box-shadow);
           width: ${this._width};
           height: ${this._height};
-          animation: bounce .8s infinite alternate;
         }
 
         .container::after {
@@ -51,7 +50,7 @@ class HighlightFeatureWebComponent extends ElementWebComponent {
       </style>
       <div class="container">
         <h2>See what's new</h2>
-        <p>Click to explore the newest feature we've added</p>
+        <p>Click above to see our new feature</p>
       </div>
   `;
   }

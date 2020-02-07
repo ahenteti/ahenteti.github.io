@@ -11,8 +11,12 @@ class RelatedArticleCardWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
       <style>
         :host {
+          --article-card-border-top-height: 1px;
+          --article-card-border-right-height: 1px;
+          --article-card-border-bottom-height: 1px;
+          --article-card-border-left-height: 1px;
           --article-card-background-color: var(--related-article-card-background-color);
-          --border-color: var(--related-article-border-color);
+          --article-card-border-color: var(--related-article-border-color);
           --tag-background-color: var(--related-article-tag-background-color);
           --article-card-padding: 2rem;
         }
