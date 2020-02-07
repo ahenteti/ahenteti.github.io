@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Definition</h2>
+        <quote-webcomponent author="Jakob Jenkov">
+          <p class="mb-0">
+            The Java volatile keyword is used to mark a Java variable as <b>being stored in main memory</b> More
+            precisely that means, that every read of a volatile variable will be read from the computer's main memory,
+            and not from the CPU cache, and that every write to a volatile variable will be written to main memory, and
+            not just to the CPU cache.
+          </p>
+        </quote-webcomponent>
+
+        <h2>Main memory and CPU caches</h2>
+        <img src="./volatile-keyword-in-java.svg" alt="" />
+
+        <h2>Basic Example</h2>
+        <p>
+          Many thanks to
+          <a target="_blank" href="https://dzone.com/articles/java-volatile-keyword-0"> Thibault Delor</a> for sharing a
+          simple example where this keyword is required
+        </p>
+        <multiline-code-webcomponent language="java">
+          <pre slot="code">
+            <code>
+              public class Main {
+
+                  private static <span class="highlight">volatile</span> int sharedCounter = 0;
+              
+                  public static void main(String[] args) {
+                      new SharedCounterWriter().start();
+                      new SharedCounterReader().start();
+                  }
+              
+                  static class SharedCounterReader extends Thread {
+                      @Override
+                      public void run() {
+                          int counter = sharedCounter;
+                          while (counter &lt; 5) {
+                              if (counter != sharedCounter) {
+                                  System.out.printf("sharedCounter new value : %d\\n", sharedCounter);
+                                  counter = sharedCounter;
+                              }
+                          }
+                      }
+                  }
+              
+                  static class SharedCounterWriter extends Thread {
+                      @Override
+                      public void run() {
+                          while (sharedCounter &lt; 5) {
+                              System.out.printf("incrementing sharedCounter: %d\\n", sharedCounter + 1);
+                              sharedCounter++;
+                              sleepQuietly(500);
+                          }
+                      }
+                  }
+              }
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h3 class="mb-0">Output <b>with</b> the <span class="code">volatile</span> keyword</h3>
+        <multiline-code-webcomponent class="mt-s" language="bash">
+          <pre slot="code">
+            <code>
+              incrementing sharedCounter: 1
+              sharedCounter new value : 1
+              incrementing sharedCounter: 2
+              sharedCounter new value : 2
+              incrementing sharedCounter: 3
+              sharedCounter new value : 3
+              incrementing sharedCounter: 4
+              sharedCounter new value : 4
+              incrementing sharedCounter: 5
+              sharedCounter new value : 5
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+
+        <h3 class="mb-0">Output <b>without</b> the <span class="code">volatile</span> keyword</h3>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
+            <code>
+              incrementing sharedCounter: 1
+              incrementing sharedCounter: 2
+              incrementing sharedCounter: 3
+              incrementing sharedCounter: 4
+              incrementing sharedCounter: 5
+            </code>
+          </pre>
+        </multiline-code-webcomponent>
+        <p>And the <span class="code">SharedCounterReader</span> thread loops infinitely...</p>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/volatile-keyword-in-java/src/main/java/io/github/ahenteti/java/Main.java"
+            label="Article source code"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://dzone.com/articles/java-volatile-keyword-0"
+            label="DZone java-volatile-keyword article"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="http://tutorials.jenkov.com/java-concurrency/volatile.html"
+            label="Jenkov Java Volatile Keyword article"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
