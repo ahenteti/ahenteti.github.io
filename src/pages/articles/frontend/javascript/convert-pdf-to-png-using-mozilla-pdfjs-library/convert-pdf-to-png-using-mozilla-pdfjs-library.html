@@ -10,43 +10,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.2.228/pdf.worker.js"></script>
-    <title>ahenteti notes</title>
+    <title>ahenteti zone</title>
   </head>
 
   <body>
     ${require('templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <code-tabs-webcomponent>
-        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
-        <code-panel-webcomponent class="result" slot="code-panel">
-          <div class="demo">
-            <button class="upload-button">Select Your PDF</button>
-            <input class="upload-input" type="file" />
-            <div class="loader-demo"></div>
+      <article-webcomponent>
+        <code-tabs-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
+          <code-panel-webcomponent class="result" slot="code-panel">
+            <div class="demo">
+              <button class="upload-button">Select Your PDF</button>
+              <input class="upload-input" type="file" />
+              <div class="loader-demo"></div>
 
-            <div class="pdf-container">
-              <div class="pdf-metadata">
-                <div class="pdf-navigation-buttons">
-                  <ion-icon class="pdf-navigation-button pdf-prev" name="ios-arrow-dropleft-circle"></ion-icon>
-                  <ion-icon class="pdf-navigation-button pdf-next" name="ios-arrow-dropright-circle"></ion-icon>
+              <div class="pdf-container">
+                <div class="pdf-metadata">
+                  <div class="pdf-navigation-buttons">
+                    <ion-icon class="pdf-navigation-button pdf-prev" name="ios-arrow-dropleft-circle"></ion-icon>
+                    <ion-icon class="pdf-navigation-button pdf-next" name="ios-arrow-dropright-circle"></ion-icon>
+                  </div>
+                  <a class="download-link" href="#">Download PNG</a>
+                  <div class="pdf-current-page-container">
+                    Page <span class="pdf-current-page"></span> of <span class="pdf-total-pages"></span>
+                  </div>
                 </div>
-                <a class="download-link" href="#">Download PNG</a>
-                <div class="pdf-current-page-container">
-                  Page <span class="pdf-current-page"></span> of <span class="pdf-total-pages"></span>
-                </div>
+                <canvas class="pdf-canvas"></canvas>
               </div>
-              <canvas class="pdf-canvas"></canvas>
             </div>
-          </div>
-        </code-panel-webcomponent>
+          </code-panel-webcomponent>
 
-        <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="html">
-            <pre slot="code">
+          <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="html">
+              <pre slot="code">
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -87,12 +87,12 @@
                             &lt;/html&gt;
                         </code>
                     </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">main.css</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="css">
-            <pre slot="code">
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">main.css</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="css">
+              <pre slot="code">
                         <code>
                             :root {
                                 --primary-color: #078eed;
@@ -219,12 +219,12 @@
                             }
                         </code>
                     </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">main.js</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="js">
-            <pre slot="code">
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">main.js</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="js">
+              <pre slot="code">
                         <code>
                             const uploadButtonDOMElement = document.querySelector('.upload-button');
                             const uploadInputDOMElement = document.querySelector('.upload-input');
@@ -323,17 +323,17 @@
                             }
                         </code>
                     </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-      </code-tabs-webcomponent>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+        </code-tabs-webcomponent>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="https://github.com/mozilla/pdf.js/blob/master/examples/learning/helloworld.html"
-          label="Mozilla PDF.js github tutorial"
-        ></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://github.com/mozilla/pdf.js/blob/master/examples/learning/helloworld.html"
+            label="Mozilla PDF.js github tutorial"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

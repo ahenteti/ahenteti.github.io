@@ -24,7 +24,7 @@ class HeaderReactComponent extends React.Component {
         <nav>
           <a className='logo' href='/'>
             <logo-webcomponent></logo-webcomponent>
-            <span>ahenteti notes</span>
+            <span>ahenteti zone</span>
           </a>
           <input type='checkbox' id='check' />
           <label htmlFor='check' className='checkbtn'>
