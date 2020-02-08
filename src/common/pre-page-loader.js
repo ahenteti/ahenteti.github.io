@@ -2,6 +2,8 @@
 import './pre-page-loader.scss';
 
 $(window).load(function() {
-  $('.pre-page-loader').fadeOut('slow');
-  $('.page-content').fadeIn('slow');
+  setTimeout(() => {
+    $('.pre-page-loader').fadeOut('slow');
+    $('.page-content').fadeIn('slow');
+  }, 1000);
 });

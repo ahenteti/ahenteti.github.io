@@ -37,7 +37,9 @@ $(window).load(function() {
 
   const displayedCertificate = document.querySelector('.displayed-certificate');
   displayedCertificate.onload = () => {
-    certificateContainer.style.height = window.getComputedStyle(displayedCertificate).height;
+    setTimeout(() => {
+      certificateContainer.style.height = window.getComputedStyle(displayedCertificate).height;
+    }, 1000);
   };
   displayedCertificate.src = CERTIFICATES_OF_COMPLETION[0];
   displayedCertificate.dataset.index = 0;
