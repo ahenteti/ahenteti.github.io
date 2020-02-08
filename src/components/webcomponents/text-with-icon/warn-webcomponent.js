@@ -6,13 +6,11 @@ class WarnWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
       <style>
         :host {
-          --icon-background-color: var(--warn-component-icon-background-color);
-          --icon-color: var(--warn-component-icon-color);
-          --text-background-color: var(--warn-component-text-background-color);
+          --background-color: var(--warn-component-background-color);
           --text-color: var(--warn-component-text-color);
         }
       </style>
-      <text-with-icon-webcomponent icon="alert">
+      <text-with-icon-webcomponent icon="warning">
         <slot></slot>
       </text-with-icon-webcomponent>
       

@@ -56,6 +56,7 @@
     "redux": "^4.0.1"
   },
   "dependencies": {
+    "@material-ui/core": "^4.9.1",
     "@webcomponents/webcomponentsjs": "^2.2.4"
   }
 }

@@ -10,41 +10,31 @@ class TextWithIconWebComponent extends ElementWebComponent {
           margin: 1rem 0 0;
           display: flex;
           flex-wrap: wrap;
+          background: var(--background-color);
+          border-radius: .3rem;
+          padding: 2rem;
+          align-items: flex-start;
         }
 
         .icon {
-          background: var(--icon-background-color);
           flex: 0 0 var(--container-prefix-width);
-          position: relative;
-          border-radius: var(--left-border-radius);
-        }
-
-        ion-icon {
-          color: var(--icon-color);
-          font-size: 3rem;
-          display: block;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          font-weight: 700;
+          padding-right: 2rem;
         }
 
         .text {
           flex: 1;
-          background: var(--text-background-color);
           font-style: var(--text-font-style, normal);
           color: var(--text-color);
-          padding: 2rem;
           font-family: Roboto, serif;
-          border-radius: var(--right-border-radius);
+        }
+        
+        ::slotted(p) {
+          margin-bottom: 0 !important;
         }
         
       </style>
       <div class="container">
-        <div class="icon">
-          <ion-icon name="${this._icon}"></ion-icon>
-        </div>
+        <img class="icon" src="/assets/icon/${this._icon}.svg"/>
         <div class="text">
           <slot></slot>
         </div>

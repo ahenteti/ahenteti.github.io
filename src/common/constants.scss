@@ -48,17 +48,12 @@ body.dark {
   --tooltip-color: var(--white-color);
   --background-select-option-on-hover-state-color: #32373b;
   --demo-background-color: #262a2d;
-  --info-component-icon-background-color: #3282c9;
-  --info-component-icon-color: #cce5ff;
-  --info-component-text-background-color: #cce5ff;
-  --info-component-text-color: #004085;
-  --warn-component-icon-background-color: #ffcf50;
-  --warn-component-icon-color: var(--white-color);
-  --warn-component-text-background-color: #fff6e0;
-  --warn-component-text-color: #856404;
-  --quote-component-icon-background-color: #394048;
-  --quote-component-icon-color: #959595;
-  --quote-component-text-background-color: #32373b;
+  /* colors inspiration: https://material-ui.com/fr/components/alert/ */
+  --info-component-background-color: rgb(3, 14, 24);
+  --info-component-text-color: rgb(166, 213, 250);
+  --warn-component-background-color: rgb(25, 15, 0);
+  --warn-component-text-color: rgb(255, 213, 153);
+  --quote-component-background-color: #32373b;
   --quote-component-text-color: #999;
   --quote-component-text-font-style: italic;
   --search-background-color: #262a2d;
@@ -119,17 +114,12 @@ body.light {
   --tooltip-color: var(--white-color);
   --background-select-option-on-hover-state-color: #eee;
   --demo-background-color: #eee;
-  --info-component-icon-background-color: #3282c9;
-  --info-component-icon-color: var(--white-color);
-  --info-component-text-background-color: #f3f8fd;
-  --info-component-text-color: #004085;
-  --warn-component-icon-background-color: #ffe399;
-  --warn-component-icon-color: var(--white-color);
-  --warn-component-text-background-color: #fff6e0;
-  --warn-component-text-color: #856404;
-  --quote-component-icon-background-color: #eee;
-  --quote-component-icon-color: #959595;
-  --quote-component-text-background-color: #fafafa;
+  /* colors inspiration: https://material-ui.com/fr/components/alert/ */
+  --info-component-background-color: rgb(232, 244, 253);
+  --info-component-text-color: rgb(13, 60, 97);
+  --warn-component-background-color: rgb(255, 244, 229);
+  --warn-component-text-color: rgb(102, 60, 0);
+  --quote-component-background-color: #fafafa;
   --quote-component-text-color: #888;
   --quote-component-text-font-style: italic;
   --search-background-color: var(--white-color);

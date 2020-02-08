@@ -6,13 +6,11 @@ class InfoWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
       <style>
         :host {
-          --icon-background-color: var(--info-component-icon-background-color);
-          --icon-color: var(--info-component-icon-color);
-          --text-background-color: var(--info-component-text-background-color);
+          --background-color: var(--info-component-background-color);
           --text-color: var(--info-component-text-color);
         }
       </style>
-      <text-with-icon-webcomponent icon="information-circle">
+      <text-with-icon-webcomponent icon="info">
         <slot></slot>
       </text-with-icon-webcomponent>
       

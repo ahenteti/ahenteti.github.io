@@ -7,9 +7,7 @@ class QuoteWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
       <style>
         :host {
-          --icon-background-color: var(--quote-component-icon-background-color);
-          --icon-color: var(--quote-component-icon-color);
-          --text-background-color: var(--quote-component-text-background-color);
+          --background-color: var(--quote-component-background-color);
           --text-color: var(--quote-component-text-color);
           --text-font-style: var(--quote-component-text-font-style);
         }

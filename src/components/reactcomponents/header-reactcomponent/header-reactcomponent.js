@@ -4,14 +4,16 @@ import * as commonConstants from '../../../common/constants';
 
 class HeaderReactComponent extends React.Component {
   componentDidMount() {
-    window.addEventListener('scroll', () => {
-      const scroll = window.scrollY;
-      if (scroll > 0) {
-        this.header.classList.add('shadow');
-      } else {
-        this.header.classList.remove('shadow');
-      }
-    });
+    window.addEventListener('scroll', () => this.manageHeaderShadow());
+  }
+
+  manageHeaderShadow() {
+    const scroll = window.scrollY;
+    if (scroll > 0) {
+      this.header.classList.add('shadow');
+    } else {
+      this.header.classList.remove('shadow');
+    }
   }
 
   componentDidUpdate() {
