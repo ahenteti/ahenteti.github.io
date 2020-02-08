@@ -28,12 +28,12 @@ class HeaderReactComponent extends React.Component {
           </a>
           <input type='checkbox' id='check' />
           <label htmlFor='check' className='checkbtn'>
-            <ion-icon name='menu'></ion-icon>
+            <img src='/assets/icon/menu.svg' alt='' />
           </label>
           <ul>
             <li>
               <a className='about tooltip-bottom' href='/about.html' data-tooltip='about'>
-                <ion-icon name='contact'></ion-icon>
+                <ion-icon name='person'></ion-icon>
                 <span>About</span>
               </a>
             </li>
@@ -55,7 +55,7 @@ class HeaderReactComponent extends React.Component {
                 target='_blank'
                 data-tooltip='stackoverflow'
               >
-                <ion-icon name='logo-buffer'></ion-icon>
+                <ion-icon name='logo-stackoverflow'></ion-icon>
                 <span>StackOverflow</span>
               </a>
             </li>

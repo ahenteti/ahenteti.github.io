@@ -31,6 +31,7 @@ body.dark {
   --input-placeholder-color: #888;
   --title-color: #dedede;
   --header-background: #1c1f23;
+  --header-background-with-shadow: var(--header-background);
   --header-link-color: #fff;
   --tooltip-background-color: #333;
   --code-background-color: #32373b;
@@ -101,6 +102,7 @@ body.light {
   --input-placeholder-color: #888;
   --title-color: #555;
   --header-background: var(--body-background-color);
+  --header-background-with-shadow: var(--white-color);
   --header-link-color: #333;
   --tooltip-background-color: #333;
   --code-background-color: #fafafa;

@@ -12,7 +12,7 @@ class WarnWebComponent extends ElementWebComponent {
           --text-color: var(--warn-component-text-color);
         }
       </style>
-      <text-with-icon-webcomponent icon="ios-alert">
+      <text-with-icon-webcomponent icon="alert">
         <slot></slot>
       </text-with-icon-webcomponent>
       

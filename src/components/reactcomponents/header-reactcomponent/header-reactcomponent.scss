@@ -4,10 +4,11 @@
   position: fixed;
   top: 0;
   z-index: 100;
-  transition: box-shadow 0.2s ease-in;
+  transition: all 0.2s ease-in;
 
   &.shadow {
     box-shadow: var(--box-shadow);
+    background-color: var(--header-background-with-shadow);
   }
 
   & nav {
@@ -49,6 +50,16 @@
     margin: 0 0.7rem;
     &:hover {
       color: var(--primary-color);
+    }
+  }
+
+  & img {
+    all: unset;
+    height: 2.5rem;
+    width: 2.5rem;
+
+    &:hover svg {
+      stroke: var(--primary-color);
     }
   }
 

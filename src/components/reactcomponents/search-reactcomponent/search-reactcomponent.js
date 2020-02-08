@@ -24,7 +24,7 @@ class SearchReactComponent extends React.Component {
           onFocus={this.onFocus}
           onArticlesFilterChange={this.props.onArticlesFilterChange}
         />
-        <ion-icon name='search'></ion-icon>
+        <ion-icon name='search-sharp'></ion-icon>
       </div>
     );
   }

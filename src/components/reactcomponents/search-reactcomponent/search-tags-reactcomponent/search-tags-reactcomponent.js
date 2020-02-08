@@ -28,11 +28,11 @@ class SearchTagsReactComponent extends React.Component {
           <span ref={el => (this.selectedTag = el)} className='selected-tag'>
             {this.props.selectedTag}
           </span>
-          <ion-icon ref={el => (this.dropdownArrow = el)} name='arrow-dropdown' aria-label='arrow dropdown'></ion-icon>
+          <ion-icon ref={el => (this.dropdownArrow = el)} name='caret-down' aria-label='arrow dropdown'></ion-icon>
           <ion-icon
             ref={el => (this.dropupArrow = el)}
             class='hidden'
-            name='arrow-dropup'
+            name='caret-up'
             aria-label='arrow dropup'
           ></ion-icon>
         </div>

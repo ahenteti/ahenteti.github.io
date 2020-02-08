@@ -24,7 +24,7 @@ class ArticleCardReactComponent extends React.Component {
           <div className='container'>
             <p className='name'>{this.props.article.name}</p>
             <div className='tags'>
-              <ion-icon name='ios-pricetags'></ion-icon>
+              <ion-icon name='pricetags'></ion-icon>
               <TagListReactComponent
                 selectedTag={this.props.selectedTag}
                 selectTag={this.props.selectTag}

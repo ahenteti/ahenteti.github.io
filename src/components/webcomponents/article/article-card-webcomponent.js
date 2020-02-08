@@ -110,7 +110,7 @@ class ArticleCardWebComponent extends ElementWebComponent {
         <div class="container">
           <p class="name">${this._name}</p>
           <div class="tags">
-            <ion-icon name="ios-pricetags"></ion-icon>
+            <ion-icon name="pricetags"></ion-icon>
             ${this._tags.map(tag => `<tag-webcomponent value="${tag}"></tag-webcomponent>`).join('')}
           </div>
           <div class="publication-date">

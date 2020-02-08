@@ -26,11 +26,11 @@ let displayedCertificateIndex;
 
 $(window).load(function() {
   const certificatesOfCompletionArrowBack = document.querySelector(
-    '.certificate-of-completion-image-container [name="ios-arrow-back"]'
+    '.certificate-of-completion-image-container [name="caret-back"]'
   );
 
   const certificatesOfCompletionArrowForward = document.querySelector(
-    '.certificate-of-completion-image-container [name=ios-arrow-forward]'
+    '.certificate-of-completion-image-container [name=caret-forward]'
   );
 
   const certificateContainer = document.querySelector('.certificate-container');

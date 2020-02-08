@@ -21,7 +21,7 @@ class QuoteWebComponent extends ElementWebComponent {
           color: var(--primary-color);
         }
       </style>
-      <text-with-icon-webcomponent icon="ios-quote">
+      <text-with-icon-webcomponent icon="quote">
         <slot></slot>
         <p class=author>— ${this._author}</p>
       </text-with-icon-webcomponent>

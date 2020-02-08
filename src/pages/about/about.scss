@@ -53,6 +53,13 @@ main {
       padding-right: 2rem;
       color: var(--primary-color);
     }
+
+    & img {
+      all: unset;
+      width: 2rem;
+      height: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   & .text-with-icon,
@@ -211,7 +218,7 @@ main {
     background: rgba(0, 0, 0, 0.8);
   }
 
-  & [name='ios-arrow-forward'] {
+  & [name='caret-forward'] {
     right: 0;
   }
 }

@@ -12,7 +12,7 @@ class InfoWebComponent extends ElementWebComponent {
           --text-color: var(--info-component-text-color);
         }
       </style>
-      <text-with-icon-webcomponent icon="ios-information-circle">
+      <text-with-icon-webcomponent icon="information-circle">
         <slot></slot>
       </text-with-icon-webcomponent>
       
