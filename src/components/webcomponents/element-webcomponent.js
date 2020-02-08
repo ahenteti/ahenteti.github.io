@@ -12,6 +12,8 @@ export default class ElementWebComponent extends HTMLElement {
           padding: 0;
           margin: 0;
           box-sizing: border-box;
+          transition: var(--transition);
+          transition-property: color, background-color;
         }
         .container {
           font-size: var(--font-size);

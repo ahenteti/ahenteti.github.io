@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.9.1",
+    "@material-ui/icons": "^4.9.1",
     "@webcomponents/webcomponentsjs": "^2.2.4"
   }
 }

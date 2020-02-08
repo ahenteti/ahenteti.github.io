@@ -88,7 +88,6 @@ class MultilineCodeWebComponent extends ElementWebComponent {
             z-index: 99;
             visibility: hidden;
             opacity: 0;
-            transition: visibility 0s, opacity 0.2s;
         }
 
         [data-tooltip]:hover::before,

@@ -5,6 +5,8 @@
   padding: 0 1rem 0 2rem;
   border-top-left-radius: 100rem;
   border-bottom-left-radius: 100rem;
+  transition: var(--transition);
+  transition-property: color, background-color;
 
   &.background-primary-color {
     background-color: var(--primary-color);
@@ -18,7 +20,6 @@
 
   & .selected-tag {
     white-space: nowrap;
-    transition: all 0.2s;
     padding-top: var(--search-top-bottom-padding);
     padding-bottom: var(--search-top-bottom-padding);
     padding-right: 0.8rem;

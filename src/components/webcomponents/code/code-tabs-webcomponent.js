@@ -105,7 +105,6 @@ class CodeTabWebComponent extends HTMLElement {
       <style>
         @import "${this._commonCss}";
         :host {
-          transition: all .2s;
           flex-shrink: 0;
         }
         :host([selected=true]), :host(:hover) {

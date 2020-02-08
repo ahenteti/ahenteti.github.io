@@ -62,7 +62,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       },
@@ -114,10 +114,11 @@ module.exports = {
     ignored: ['./src/components/components.js']
   },
   resolve: {
-    modules: [path.resolve('./src'), path.resolve('./node_modules')]
-  },
-  devtool: 'source-map'
+    modules: [path.resolve('./src'), path.resolve('./node_modules')],
+    extensions: ['.js', '.jsx']
+  }
 };
+// devtool: 'source-map'
 
 function getBasenameWithoutExtension(filePath, extension) {
   return path.basename(filePath, extension);

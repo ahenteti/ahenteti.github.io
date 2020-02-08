@@ -5,12 +5,13 @@
   justify-content: space-between;
   background-color: var(--article-card-background-color);
   position: relative;
-  transition: all 0.2s;
   border-top: var(--article-card-border-top-height) solid var(--article-card-border-color);
   border-right: var(--article-card-border-right-height) solid var(--article-card-border-color);
   border-bottom: var(--article-card-border-bottom-height) solid var(--article-card-border-color);
   border-left: var(--article-card-border-left-height) solid var(--article-card-border-color);
   border-radius: var(--article-card-border-radius);
+  transition: var(--transition);
+  transition-property: box-shadow, border-color, color, background-color;
   min-width: 0;
 
   &:hover {
@@ -34,7 +35,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    transition: color 0.2s ease-in;
+    transition: var(--transition);
+    transition-property: color;
   }
 
   & .publication-date,
@@ -57,7 +59,6 @@
   & ion-icon {
     font-size: 1.5rem;
     margin-right: 1rem;
-    transition: color 0.2s ease-in;
   }
 
   & .new-article-wrapper {

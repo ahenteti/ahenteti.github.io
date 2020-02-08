@@ -21,7 +21,6 @@ class LinkWebComponent extends ElementWebComponent {
           font-size: 1.6rem;
           color: var(--primary-color);
           text-decoration: none;
-          transition: color 0.2s ease-in;
           font-weight: bold;
         }
         a:hover {

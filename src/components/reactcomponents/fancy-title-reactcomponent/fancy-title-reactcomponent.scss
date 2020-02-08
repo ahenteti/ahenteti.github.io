@@ -30,5 +30,6 @@
     width: var(--fancy-title-underline-width, 75%);
     bottom: -1rem;
     background: linear-gradient(to right, var(--primary-color), var(--fancy-title-background-color));
+    transition-property: color, background-color, background, opacity;
   }
 }

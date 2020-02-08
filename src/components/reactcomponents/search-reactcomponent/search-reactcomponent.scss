@@ -5,7 +5,8 @@
   border-radius: 100rem;
   border: 1px solid var(--search-border-color);
   background-color: var(--search-background-color);
-  transition: border-color 0.2s;
+  transition: var(--transition);
+  transition-property: border-color, color, background-color;
 
   &.focus,
   &:hover {

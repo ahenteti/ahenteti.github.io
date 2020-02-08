@@ -12,6 +12,8 @@ class ArticleWebComponent extends ElementWebComponent {
 
         .container {
           color: var(--text-color);
+          transition: var(--transition);
+          transition-property: color, background-color;
         }
 
         h2 {

@@ -19,5 +19,7 @@
     outline: none;
     font-size: 1.6rem;
     background: var(--search-component-input-background-color);
+    transition: var(--transition);
+    transition-property: color, background-color;
   }
 }

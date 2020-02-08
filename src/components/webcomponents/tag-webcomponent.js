@@ -2,6 +2,7 @@ import ElementWebComponent from './element-webcomponent';
 
 class TagWebComponent extends ElementWebComponent {
   connectedCallback() {
+    super.connectedCallback();
     this._value = this.getAttribute('value');
     this._root.innerHTML += /* html */ `
       <style>
@@ -14,8 +15,9 @@ class TagWebComponent extends ElementWebComponent {
           font-size: var(--tag-font-size, 1.5rem);
           border-radius: .3rem;
           padding: .5rem 1rem;
-          transition: all .1s ease-in;
           display: block;
+          transition: var(--transition);
+          transition-property: color, background;
         }
       </style>
       <span class="tag">${this._value}</span>

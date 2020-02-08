@@ -18,8 +18,6 @@ class ArticleCardWebComponent extends ElementWebComponent {
           padding: var(--article-card-padding, 3rem);
           background-color: var(--article-card-background-color);
           position: relative;
-          transition: box-shadow .2s;
-          transition: all .2s ease-in;
           border-top: var(--article-card-border-top-height) solid var(--article-card-border-color);
           border-right: var(--article-card-border-right-height) solid var(--article-card-border-color);
           border-bottom: var(--article-card-border-bottom-height) solid var(--article-card-border-color);
@@ -29,7 +27,6 @@ class ArticleCardWebComponent extends ElementWebComponent {
 
         a {
           text-decoration: none;
-          transition: color 0.2s ease-in;
         }
 
         .container:hover {
@@ -49,7 +46,6 @@ class ArticleCardWebComponent extends ElementWebComponent {
           white-space: nowrap;
           overflow: hidden;
           text-overflow: ellipsis;
-          transition: color .2s ease-in;
         }
 
         .publication-date {
@@ -65,7 +61,6 @@ class ArticleCardWebComponent extends ElementWebComponent {
 
         ion-icon {
           margin-right: 1rem;
-          transition: color .2s ease-in;
         }
 
         .tags {

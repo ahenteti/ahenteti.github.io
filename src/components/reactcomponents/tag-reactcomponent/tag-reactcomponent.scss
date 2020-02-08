@@ -4,7 +4,8 @@
   font-size: var(--tag-font-size, 1.5rem);
   border-radius: 0.3rem;
   padding: 0.5rem 1rem;
-  transition: all 0.1s ease-in;
+  transition: var(--transition);
+  transition-property: color, background;
 
   &:hover,
   &.selected {
