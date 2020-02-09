@@ -10,7 +10,6 @@ import './article.js';
 import './comments.scss';
 import './common.scss';
 import * as commonConstants from 'common/constants.js';
-import * as themeConstants from 'components/reactcomponents/redux/constants/ThemeConstants';
 import './constants.scss';
 import './slide-in.scss';
 import './bounce.scss';
@@ -66,10 +65,10 @@ function findTheme() {
   const searchParam = new URLSearchParams(window.location.search);
   const themeInput = searchParam.get('theme') || localStorage.getItem(commonConstants.LOCAL_STORAGE_THEME_KEY);
   let theme;
-  if (themeConstants.DARK === themeInput) {
-    theme = themeConstants.DARK;
+  if (commonConstants.DARK_THEME === themeInput) {
+    theme = commonConstants.DARK_THEME;
   } else {
-    theme = themeConstants.LIGHT;
+    theme = commonConstants.LIGHT_THEME;
   }
   localStorage.setItem(commonConstants.LOCAL_STORAGE_THEME_KEY, theme);
   return theme;

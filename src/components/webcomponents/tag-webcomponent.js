@@ -18,6 +18,7 @@ class TagWebComponent extends ElementWebComponent {
           display: block;
           transition: var(--transition);
           transition-property: color, background;
+          cursor: pointer;
         }
       </style>
       <span class="tag">${this._value}</span>

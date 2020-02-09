@@ -1,7 +1,11 @@
 export const LOCAL_STORAGE_CHANGE_THEME_FEATURE = 'change-theme-feature';
 export const LOCAL_STORAGE_THEME_KEY = 'theme-key';
 export const LOCAL_STORAGE_THEME_LIGHT = 'light';
+export const DARK_THEME = 'dark';
+export const LIGHT_THEME = 'light';
 export const ALL_ARTICLES = 'all';
 export const NEW_ARTICLES = 'new';
 export const TAG_QUERY_PARAM = 'tag';
 export const THEME_QUERY_PARAM = 'theme';
+export const WEBSITE_DIVISIONS = ['articles', 'tools'];
+export const DEFAULT_WEBSITE_DIVISION = 'articles';

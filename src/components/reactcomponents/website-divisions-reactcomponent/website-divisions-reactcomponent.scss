@@ -1,0 +1,15 @@
+.website-divisions-reactcomponent {
+  --select-selected-option-padding: 0.8rem 1.6rem;
+  --select-selected-option-border-radius: 5px;
+  --select-selected-option-font-weight: 300;
+  --select-selected-option-font-size: 3.8rem;
+  --select-options-font-size: 2.5rem;
+  --select-option-padding: 1rem 1.6rem;
+  --select-options-padding: 1rem 0;
+  --select-options-top-position: calc(100% + 0.5rem);
+  --select-selected-option-border-top-left-radius: 3px;
+  --select-selected-option-border-top-right-radius: 3px;
+  --select-selected-option-border-bottom-left-radius: 3px;
+  --select-selected-option-border-bottom-right-radius: 3px;
+  display: inline-block;
+}

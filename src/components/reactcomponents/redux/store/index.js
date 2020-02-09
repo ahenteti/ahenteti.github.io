@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable indent */
-import * as actionTypes from 'components/reactcomponents/redux/constants/ActionTypes';
-import * as themeConstants from 'components/reactcomponents/redux/constants/ThemeConstants';
+import * as actionTypes from 'components/reactcomponents/redux/actions/ActionTypes';
 import * as commonConstants from 'common/constants';
 import { createStore } from 'redux';
 import { findArticles } from '../utils/articles-utils';
@@ -27,10 +26,10 @@ function initTheme() {
   const themeInput =
     searchParam.get(commonConstants.THEME_QUERY_PARAM) || localStorage.getItem(commonConstants.LOCAL_STORAGE_THEME_KEY);
   let theme;
-  if (themeConstants.LIGHT === themeInput) {
-    theme = themeConstants.LIGHT;
+  if (commonConstants.LIGHT_THEME === themeInput) {
+    theme = commonConstants.LIGHT_THEME;
   } else {
-    theme = themeConstants.DARK;
+    theme = commonConstants.DARK_THEME;
   }
   return theme;
 }
@@ -63,7 +62,8 @@ function reducer(state = initialState, action) {
   let articlesFilter;
   switch (action.type) {
     case actionTypes.CHANGE_THEME_COLOR:
-      const newTheme = themeConstants.DARK === action.currentTheme ? themeConstants.LIGHT : themeConstants.DARK;
+      const newTheme =
+        commonConstants.DARK_THEME === action.currentTheme ? commonConstants.LIGHT_THEME : commonConstants.DARK_THEME;
       return Object.assign({}, state, { theme: newTheme, unknownChangeThemeColorFeature: false });
     case actionTypes.SELECT_TAG:
       selectedTag = action.selectedTag;

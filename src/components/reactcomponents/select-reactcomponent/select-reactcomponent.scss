@@ -1,5 +1,67 @@
 .select-reactcomponent {
-  padding: 0.8rem 1.6rem;
-  color: var(--primary-color);
-  border: 1px solid var(--primary-color);
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  padding: var(--select-selected-option-padding, 0.5rem 1rem);
+  border-top-left-radius: var(--select-selected-option-border-top-left-radius, 2px);
+  border-top-right-radius: var(--select-selected-option-border-top-right-radius, 2px);
+  border-bottom-left-radius: var(--select-selected-option-border-bottom-left-radius, 2px);
+  border-bottom-right-radius: var(--select-selected-option-border-bottom-right-radius, 2px);
+  border: var(--select-selected-option-border-width, 1px) solid var(--select-selected-option-border-color);
+  color: var(--select-selected-option-color);
+  background-color: var(--select-selected-option-background-color);
+  transition: var(--transition);
+  transition-property: color, background-color, border-color;
+
+  &:hover {
+    color: var(--select-selected-option-color-on-hover);
+    border-color: var(--select-selected-option-border-color-on-hover);
+    background-color: var(--select-selected-option-background-color-on-hover);
+  }
+
+  & .selected-option-container {
+    display: flex;
+    align-items: center;
+  }
+
+  & .selected-option {
+    padding-right: var(--select-selected-option-header-padding-right, 1rem);
+    font-weight: var(--select-selected-option-font-weight, 400);
+    font-size: var(--select-selected-option-font-size, 1.6rem);
+  }
+
+  & .fa-angle-down,
+  & .fa-angle-up {
+    font-size: var(--select-selected-option-font-size, 1.6rem);
+  }
+
+  & .options {
+    position: absolute;
+    top: var(--select-options-top-position, calc(100% + 3px));
+    left: 0;
+    z-index: 99;
+    color: var(--select-options-color);
+    background: var(--select-options-background-color);
+    padding: var(--select-options-padding, 0);
+    border-radius: var(--select-options-border-radius, 2px);
+    border: var(--select-options-border-width, 1px) solid var(--select-options-border-color);
+    box-shadow: var(--select-options-box-shadow, var(--box-shadow));
+    min-width: 100%;
+    max-height: var(--select-options-max-height, 20rem);
+    overflow: auto;
+  }
+
+  & .option {
+    font-weight: var(--select-options-font-weight, 400);
+    font-size: var(--select-options-font-size, 1.3rem);
+    text-align: left;
+    padding: var(--select-option-padding, 1rem 1.8rem);
+    transition: var(--transition);
+    transition-property: color, background-color;
+    white-space: nowrap;
+    &:hover {
+      color: var(--select-options-color-on-hover);
+      background-color: var(--select-options-background-color-on-hover);
+    }
+  }
 }

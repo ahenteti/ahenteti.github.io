@@ -1,64 +1,37 @@
 .search-tags-reactcomponent {
-  background-color: var(--tag-background-color);
-  position: relative;
-  font-size: 1.2rem;
-  padding: 0 1rem 0 2rem;
-  border-top-left-radius: 100rem;
-  border-bottom-left-radius: 100rem;
-  transition: var(--transition);
-  transition-property: color, background-color;
+  --select-selected-option-border-top-left-radius: 100px;
+  --select-selected-option-border-top-right-radius: 0;
+  --select-selected-option-border-bottom-left-radius: 100px;
+  --select-selected-option-border-bottom-right-radius: 0;
+  --select-selected-option-padding: 1rem 1rem 1rem 2rem;
+}
 
-  &.background-primary-color {
-    background-color: var(--primary-color);
-    color: var(--selected-option-color);
+body.light .search-tags-reactcomponent {
+  --select-selected-option-color: var(--gray-3);
+  --select-selected-option-border-color: var(--gray-4);
+  --select-selected-option-background-color: var(--gray-4);
+  --select-options-color: var(--gray-3);
+  --select-options-border-color: var(--gray-6);
+  --select-options-background-color: var(--gray-6);
+  --select-selected-option-color-on-hover: var(--select-selected-option-color);
+  --select-selected-option-border-color-on-hover: var(--select-selected-option-border-color);
+  --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
+  --select-options-color-on-hover: var(--select-options-color);
+  --select-options-border-color-on-hover: var(--select-options-border-color);
+  --select-options-background-color-on-hover: var(--gray-4);
+}
 
-    & .selected-tag,
-    & ion-icon {
-      color: white;
-    }
-  }
-
-  & .selected-tag {
-    white-space: nowrap;
-    padding-top: var(--search-top-bottom-padding);
-    padding-bottom: var(--search-top-bottom-padding);
-    padding-right: 0.8rem;
-    color: var(--tag-color);
-  }
-
-  & ion-icon {
-    color: var(--tag-color);
-    font-size: 2rem;
-  }
-
-  & .selected-tag-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  & .tags {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 99;
-    box-shadow: var(--box-shadow);
-    max-height: 200px;
-    overflow: auto;
-    color: var(--tag-color);
-  }
-
-  & .tag {
-    white-space: nowrap;
-    padding: 1rem 3.5rem 1rem 2rem;
-    background-color: var(--select-background-color);
-  }
-
-  & .tag:hover {
-    background-color: var(--background-select-option-on-hover-state-color);
-  }
-
-  & .hidden {
-    display: none;
-  }
+body.dark .search-tags-reactcomponent {
+  --select-selected-option-color: var(--gray-6);
+  --select-selected-option-border-color: var(--gray-3);
+  --select-selected-option-background-color: var(--gray-3);
+  --select-options-color: var(--gray-6);
+  --select-options-border-color: var(--gray-2);
+  --select-options-background-color: var(--gray-2);
+  --select-selected-option-color-on-hover: var(--select-selected-option-color);
+  --select-selected-option-border-color-on-hover: var(--select-selected-option-border-color);
+  --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
+  --select-options-color-on-hover: var(--select-options-color);
+  --select-options-border-color-on-hover: var(--select-options-border-color);
+  --select-options-background-color-on-hover: var(--gray-3);
 }

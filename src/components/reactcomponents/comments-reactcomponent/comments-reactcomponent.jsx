@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import './comments-reactcomponent.scss';
-import * as themeConstants from 'components/reactcomponents/redux/constants/ThemeConstants';
+import * as commonConstants from 'common/constants.js';
 
 class CommentsReactComponent extends React.Component {
   componentDidMount() {
@@ -37,7 +37,7 @@ class CommentsReactComponent extends React.Component {
   }
 
   calcUtterancesTheme(projectTheme) {
-    if (projectTheme === themeConstants.DARK) {
+    if (projectTheme === commonConstants.DARK_THEME) {
       return 'dark-blue';
     }
     return 'github-light';

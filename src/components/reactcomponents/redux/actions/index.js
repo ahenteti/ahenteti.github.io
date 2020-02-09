@@ -1,4 +1,4 @@
-import * as actionTypes from '../constants/ActionTypes';
+import * as actionTypes from './ActionTypes';
 import * as commonConstants from 'common/constants';
 
 export const changeThemeColor = () => ({
