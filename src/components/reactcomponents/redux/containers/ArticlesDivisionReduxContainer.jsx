@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
-import SearchReactComponent from 'components/reactcomponents/search-reactcomponent/search-reactcomponent';
+import ArticlesDivisionReactComponent from 'components/reactcomponents/articles-division-reactcomponent/articles-division-reactcomponent';
 import { selectTag, onArticlesFilterChange } from '../actions/index';
 
 const mapStateToProps = state => ({
+  articles: state.articles,
   tags: state.tags,
   selectedTag: state.selectedTag
 });
@@ -14,4 +15,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchReactComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlesDivisionReactComponent);

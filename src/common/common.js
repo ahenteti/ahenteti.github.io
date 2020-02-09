@@ -21,9 +21,11 @@ import HeaderReduxContainer from 'components/reactcomponents/redux/containers/He
 // main actions
 $(window).load(() => {
   renderHeaderComponent();
-  resizeOneLineFontSize();
   updateBodyCssClass();
   store.subscribe(updateBodyCssClass);
+  setTimeout(() => {
+    resizeOneLineFontSize();
+  }, 1000);
 });
 
 // functions
@@ -53,6 +55,7 @@ function resizeTextFontSize(text) {
     if (isOverflown(text)) {
       fontSize--;
       text.style.fontSize = fontSize + 'px';
+      console.log(fontSize);
     }
   }
 }

@@ -9,3 +9,4 @@ export const TAG_QUERY_PARAM = 'tag';
 export const THEME_QUERY_PARAM = 'theme';
 export const WEBSITE_DIVISIONS = ['articles', 'tools'];
 export const DEFAULT_WEBSITE_DIVISION = 'articles';
+export const CURRENT_WEBSITE_DIVISION_LOCAL_STORAGE_KET = 'current-website-division';

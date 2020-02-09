@@ -3,7 +3,12 @@ import * as commonConstants from 'common/constants';
 
 export const changeThemeColor = () => ({
   type: actionTypes.CHANGE_THEME_COLOR,
-  currentTheme: window.localStorage.getItem(commonConstants.LOCAL_STORAGE_THEME_KEY)
+  newTheme: window.localStorage.getItem(commonConstants.LOCAL_STORAGE_THEME_KEY)
+});
+
+export const changeWebsiteDivision = selectedWebsiteDivision => ({
+  type: actionTypes.CHANGE_WEBSITE_DIVISION,
+  newWebsiteDivision: selectedWebsiteDivision
 });
 
 export const selectTag = selectedTag => ({

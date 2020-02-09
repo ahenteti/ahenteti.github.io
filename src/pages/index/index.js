@@ -9,34 +9,29 @@ import { Provider } from 'react-redux';
 import 'components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './index.scss';
-import ArticleCardsReduxContainer from 'components/reactcomponents/redux/containers/ArticleCardsReduxContainer';
-import SearchReduxContainer from 'components/reactcomponents/redux/containers/SearchReduxContainer';
-import WebsiteDivisionsReactComponent from 'components/reactcomponents/website-divisions-reactcomponent/website-divisions-reactcomponent';
+import WebsiteDivisionsReduxContainer from 'components/reactcomponents/redux/containers/WebsiteDivisionReduxContainer';
+import ArticlesDivisionReduxContainer from 'components/reactcomponents/redux/containers/ArticlesDivisionReduxContainer';
 
 // main actions
 renderWebsiteDivisionSelectComponent();
 renderArticlesComponent();
-renderSearchComponent();
+// renderSearchComponent();
 
 // helper functions
 function renderWebsiteDivisionSelectComponent() {
-  ReactDOM.render(<WebsiteDivisionsReactComponent />, document.querySelector('.website-division'));
+  ReactDOM.render(
+    <Provider store={store}>
+      <WebsiteDivisionsReduxContainer />
+    </Provider>,
+    document.querySelector('.website-division')
+  );
 }
 
 function renderArticlesComponent() {
   ReactDOM.render(
     <Provider store={store}>
-      <ArticleCardsReduxContainer firstVisit={store.getState().articles} />
+      <ArticlesDivisionReduxContainer />
     </Provider>,
     document.querySelector('.articles')
-  );
-}
-
-function renderSearchComponent() {
-  ReactDOM.render(
-    <Provider store={store}>
-      <SearchReduxContainer tags={store.getState().tags} selectedTag={store.getState().selectedTag} />
-    </Provider>,
-    document.querySelector('.search')
   );
 }

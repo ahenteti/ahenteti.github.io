@@ -12,4 +12,23 @@
   --select-selected-option-border-bottom-left-radius: 3px;
   --select-selected-option-border-bottom-right-radius: 3px;
   display: inline-block;
+
+  @media screen and (max-width: 500px) {
+    --select-selected-option-padding: 0.8rem 1.2rem;
+    --select-selected-option-font-weight: 400;
+    --select-selected-option-font-size: 2.5rem;
+    --select-options-font-size: 1.8rem;
+    --select-option-padding: 0.8rem 1.2rem;
+    --select-options-padding: 0.5rem 0;
+  }
+}
+
+body.dark .website-divisions-reactcomponent {
+  --select-selected-option-color: #dedede;
+  --select-selected-option-color-on-hover: var(--select-selected-option-color);
+}
+
+body.light .website-divisions-reactcomponent {
+  --select-selected-option-color: #555;
+  --select-selected-option-color-on-hover: var(--select-selected-option-color);
 }

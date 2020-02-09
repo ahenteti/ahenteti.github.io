@@ -5,19 +5,17 @@ class HighlightFeatureWebComponent extends ElementWebComponent {
     super.connectedCallback();
     this._value = this.getAttribute('value');
     this._width = this.getAttribute('width') || '30rem';
-    this._height = this.getAttribute('height') || '10rem';
     this._trianglePosition = this.getAttribute('triangle-position') || '20rem';
     this._root.innerHTML += /* html */ `
       <style>
         .container {
           position: relative;
           background: var(--primary-color);
-          padding: 2rem;
+          padding: 1.5rem;
           color: white;
-          border-radius: .3rem;
+          border-radius: .1rem;
           box-shadow: var(--box-shadow);
           width: ${this._width};
-          height: ${this._height};
         }
 
         .container::after {

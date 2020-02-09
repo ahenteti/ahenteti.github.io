@@ -1,0 +1,13 @@
+.articles-division-reactcomponent {
+  & .search-reactcomponent {
+    margin: 5rem auto 7rem;
+
+    @media screen and (max-width: 720px) {
+      width: 100%;
+    }
+
+    @media screen and (min-width: 720px) {
+      width: 65%;
+    }
+  }
+}
