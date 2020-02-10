@@ -10,22 +10,21 @@ class SelectReactComponent extends React.Component {
     super(props);
     this.selectOption = this.selectOption.bind(this);
     this.state = {
-      open: false,
-      selectedOption: this.props.selectedOption
+      open: false
     };
   }
 
   render() {
-    const { options } = this.props;
-    const { open, selectedOption } = this.state;
+    const { options, selectedOption } = this.props;
+    const { open } = this.state;
     return (
-      <div className='select-reactcomponent'>
+      <div className={open ? 'select-reactcomponent open' : 'select-reactcomponent'}>
         <div className='selected-option-container' onClick={() => this.toggleList()}>
           <div className='selected-option'>{selectedOption}</div>
           {open ? <FontAwesomeIcon icon={faAngleUp} /> : <FontAwesomeIcon icon={faAngleDown} />}
         </div>
         {open && (
-          <ul className='options'>
+          <ul className={open ? 'options open' : 'options'}>
             {options.map(option => (
               <li onClick={this.selectOption} className='option' key={option}>
                 {option}
@@ -55,13 +54,11 @@ class SelectReactComponent extends React.Component {
 
   selectOption(event) {
     event.preventDefault();
-    const selectedOption = event.target.innerText;
     this.setState({
-      open: false,
-      selectedOption: selectedOption
+      open: false
     });
     if (this.props.selectOption) {
-      this.props.selectOption(selectedOption);
+      this.props.selectOption(event.target.innerText);
     }
   }
 }

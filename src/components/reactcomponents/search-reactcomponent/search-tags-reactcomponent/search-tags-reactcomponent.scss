@@ -10,6 +10,7 @@ body.light .search-tags-reactcomponent {
   --select-selected-option-color: var(--gray-3);
   --select-selected-option-border-color: var(--gray-4);
   --select-selected-option-background-color: var(--gray-4);
+  --select-selected-option-border-color-on-open: var(--gray-4);
   --select-options-color: var(--gray-3);
   --select-options-border-color: var(--gray-6);
   --select-options-background-color: var(--gray-6);
@@ -17,7 +18,6 @@ body.light .search-tags-reactcomponent {
   --select-selected-option-border-color-on-hover: var(--select-selected-option-border-color);
   --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
   --select-options-color-on-hover: var(--select-options-color);
-  --select-options-border-color-on-hover: var(--select-options-border-color);
   --select-options-background-color-on-hover: var(--gray-4);
 }
 
@@ -25,6 +25,7 @@ body.dark .search-tags-reactcomponent {
   --select-selected-option-color: var(--gray-6);
   --select-selected-option-border-color: var(--gray-3);
   --select-selected-option-background-color: var(--gray-3);
+  --select-selected-option-border-color-on-open: var(--gray-3);
   --select-options-color: var(--gray-6);
   --select-options-border-color: var(--gray-2);
   --select-options-background-color: var(--gray-2);
@@ -32,6 +33,5 @@ body.dark .search-tags-reactcomponent {
   --select-selected-option-border-color-on-hover: var(--select-selected-option-border-color);
   --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
   --select-options-color-on-hover: var(--select-options-color);
-  --select-options-border-color-on-hover: var(--select-options-border-color);
   --select-options-background-color-on-hover: var(--gray-3);
 }
