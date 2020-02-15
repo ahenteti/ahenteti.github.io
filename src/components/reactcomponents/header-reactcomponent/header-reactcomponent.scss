@@ -68,6 +68,8 @@
 
   & ul {
     margin-right: -0.7rem;
+    will-change: left;
+    transition: left 0.4s;
   }
 
   & li span {
