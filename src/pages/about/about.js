@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import * as constants from 'common/constants.js';
 import 'components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './about.scss';
@@ -24,7 +25,7 @@ const CERTIFICATES_OF_COMPLETION = [
 let loader;
 let displayedCertificateIndex;
 
-$(window).load(function() {
+$(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
   const certificatesOfCompletionArrowBack = document.querySelector(
     '.certificate-of-completion-image-container [name="caret-back"]'
   );
@@ -37,9 +38,7 @@ $(window).load(function() {
 
   const displayedCertificate = document.querySelector('.displayed-certificate');
   displayedCertificate.onload = () => {
-    setTimeout(() => {
-      certificateContainer.style.height = window.getComputedStyle(displayedCertificate).height;
-    }, 1000);
+    certificateContainer.style.height = window.getComputedStyle(displayedCertificate).height;
   };
   displayedCertificate.src = CERTIFICATES_OF_COMPLETION[0];
   displayedCertificate.dataset.index = 0;
@@ -61,27 +60,28 @@ $(window).load(function() {
 function handleCertificatesOfCompletionNavigation(arrow) {
   const currentDisplayedCertificate = document.querySelector('.displayed-certificate');
   const currentHiddenCertificate = document.querySelector('.hidden-certificate');
-  currentDisplayedCertificate.classList.add('lightweight-transparent');
 
   loader.show();
   const nextIndex = calcCertificateNextIndex(arrow, currentDisplayedCertificate);
   const certificateToDisplay = CERTIFICATES_OF_COMPLETION[nextIndex];
   const certificate = new Image();
   certificate.onload = function() {
-    loader.hide();
-    displayedCertificateIndex.innerHTML = `${nextIndex + 1} / ${CERTIFICATES_OF_COMPLETION.length}`;
-    currentHiddenCertificate.src = certificateToDisplay;
-    currentHiddenCertificate.dataset.index = nextIndex;
+    setTimeout(() => {
+      console.log('debug');
+      displayedCertificateIndex.innerHTML = `${nextIndex + 1} / ${CERTIFICATES_OF_COMPLETION.length}`;
+      currentHiddenCertificate.src = certificateToDisplay;
+      currentHiddenCertificate.dataset.index = nextIndex;
 
-    currentHiddenCertificate.classList.remove('displayed-certificate', 'hidden-certificate');
-    currentDisplayedCertificate.classList.remove('displayed-certificate', 'hidden-certificate');
+      currentHiddenCertificate.classList.remove('displayed-certificate', 'hidden-certificate');
+      currentDisplayedCertificate.classList.remove('displayed-certificate', 'hidden-certificate');
 
-    currentHiddenCertificate.classList.add('displayed-certificate');
-    currentDisplayedCertificate.classList.add('hidden-certificate');
+      currentDisplayedCertificate.classList.add('hidden-certificate');
+      currentHiddenCertificate.classList.add('displayed-certificate');
 
-    currentHiddenCertificate.classList.remove('transparent');
-    currentDisplayedCertificate.classList.add('transparent');
-    currentDisplayedCertificate.classList.remove('lightweight-transparent');
+      currentDisplayedCertificate.classList.add('transparent');
+      currentHiddenCertificate.classList.remove('transparent');
+      loader.hide();
+    }, 1000);
   };
   certificate.src = certificateToDisplay;
 }

@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+import * as constants from 'common/constants.js';
 import './pre-page-loader.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -9,7 +10,6 @@ import './article.scss';
 import './article.js';
 import './comments.scss';
 import './common.scss';
-import * as commonConstants from 'common/constants.js';
 import './constants.scss';
 import './slide-in.scss';
 import './bounce.scss';
@@ -23,9 +23,10 @@ $(window).load(() => {
   renderHeaderComponent();
   updateBodyCssClass();
   store.subscribe(updateBodyCssClass);
-  setTimeout(() => {
-    resizeOneLineFontSize();
-  }, 1000);
+});
+
+$(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
+  resizeOneLineFontSize();
 });
 
 // functions
@@ -46,7 +47,7 @@ function renderHeaderComponent() {
 function updateBodyCssClass() {
   const theme = store.getState().theme;
   document.querySelector('body').className = theme;
-  localStorage.setItem(commonConstants.LOCAL_STORAGE_THEME_KEY, theme);
+  localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, theme);
 }
 
 function resizeTextFontSize(text) {
@@ -66,13 +67,13 @@ function isOverflown(element) {
 
 function findTheme() {
   const searchParam = new URLSearchParams(window.location.search);
-  const themeInput = searchParam.get('theme') || localStorage.getItem(commonConstants.LOCAL_STORAGE_THEME_KEY);
+  const themeInput = searchParam.get('theme') || localStorage.getItem(constants.LOCAL_STORAGE_THEME_KEY);
   let theme;
-  if (commonConstants.DARK_THEME === themeInput) {
-    theme = commonConstants.DARK_THEME;
+  if (constants.DARK_THEME === themeInput) {
+    theme = constants.DARK_THEME;
   } else {
-    theme = commonConstants.LIGHT_THEME;
+    theme = constants.LIGHT_THEME;
   }
-  localStorage.setItem(commonConstants.LOCAL_STORAGE_THEME_KEY, theme);
+  localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, theme);
   return theme;
 }

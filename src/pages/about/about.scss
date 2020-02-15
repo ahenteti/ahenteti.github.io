@@ -186,10 +186,8 @@ main {
   & img {
     border: 2px solid var(--border-color);
     position: absolute;
-  }
-
-  & img.lightweight-transparent {
-    opacity: 0.75;
+    transition: var(--transition);
+    transition-property: opacity;
   }
 
   & img.transparent {
