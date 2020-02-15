@@ -76,7 +76,7 @@ function reducer(state = initialState, action) {
     case actionTypes.CHANGE_WEBSITE_DIVISION:
       const newWebsiteDivision = action.newWebsiteDivision;
       localStorage.setItem(constants.CURRENT_WEBSITE_DIVISION_LOCAL_STORAGE_KET, newWebsiteDivision);
-      return Object.assign({}, state, { websiteDivision: newWebsiteDivision });
+      return Object.assign({}, state, { currentWebsiteDivision: newWebsiteDivision });
     case actionTypes.SELECT_TAG:
       selectedTag = action.selectedTag;
       articlesFilter = state.articlesFilter;

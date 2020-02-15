@@ -67,7 +67,6 @@ function handleCertificatesOfCompletionNavigation(arrow) {
   const certificate = new Image();
   certificate.onload = function() {
     setTimeout(() => {
-      console.log('debug');
       displayedCertificateIndex.innerHTML = `${nextIndex + 1} / ${CERTIFICATES_OF_COMPLETION.length}`;
       currentHiddenCertificate.src = certificateToDisplay;
       currentHiddenCertificate.dataset.index = nextIndex;

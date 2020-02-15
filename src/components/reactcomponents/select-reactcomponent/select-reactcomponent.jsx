@@ -53,12 +53,13 @@ class SelectReactComponent extends React.Component {
   }
 
   selectOption(event) {
+    const selectedOption = event.target.innerText;
     event.preventDefault();
     this.setState({
       open: false
     });
     if (this.props.selectOption) {
-      this.props.selectOption(event.target.innerText);
+      this.props.selectOption(selectedOption);
     }
   }
 }
