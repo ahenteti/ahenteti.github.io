@@ -97,8 +97,8 @@
   "how-to-draw-a-triangle-with-css.css": "/css/how-to-draw-a-triangle-with-css.1e055b79a2a02c3ffca1.css",
   "how-to-center-horizontally-an-anchor-element.js": "/js/how-to-center-horizontally-an-anchor-element.944d295ffc8b8f3c6356.js",
   "how-to-center-horizontally-an-anchor-element.css": "/css/how-to-center-horizontally-an-anchor-element.944d295ffc8b8f3c6356.css",
-  "how-to-add-ellipsis-to-text-when-overflow-in-css.js": "/js/how-to-add-ellipsis-to-text-when-overflow-in-css.8620604067098aa04aa4.js",
-  "how-to-add-ellipsis-to-text-when-overflow-in-css.css": "/css/how-to-add-ellipsis-to-text-when-overflow-in-css.8620604067098aa04aa4.css",
+  "how-to-add-ellipsis-to-text-when-overflow-in-css.js": "/js/how-to-add-ellipsis-to-text-when-overflow-in-css.0929ccec7ead8096de5b.js",
+  "how-to-add-ellipsis-to-text-when-overflow-in-css.css": "/css/how-to-add-ellipsis-to-text-when-overflow-in-css.0929ccec7ead8096de5b.css",
   "bash-quick-tips.js": "/js/bash-quick-tips.204a3505aeb03dc283ea.js",
   "bash-quick-tips.css": "/css/bash-quick-tips.204a3505aeb03dc283ea.css",
   "common.js": "/js/common.a21bc33bddab6ecd0c7e.js",
@@ -121,7 +121,7 @@
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
   "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg"
-}</script><link href="/css/highlightStyle.636598e337f63839c183.css" rel="stylesheet"><link href="/css/how-to-add-ellipsis-to-text-when-overflow-in-css.8620604067098aa04aa4.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Ellipsis for Single Line Text</h2> <p>The current solution is based on <span class=code>text-overflow</span> CSS property</p> <br/> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>Result</code-tab-webcomponent> <code-panel-webcomponent class=result slot=code-panel> <style>.demo{padding:4rem 0}.single-line{width:50%;margin:0 auto;padding:3rem;background-color:var(--demo-card-background-color)}p.overflow-single-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}</style> <div class=demo> <div class=single-line> <p class=overflow-single-line> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis ad accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem explicabo eligendi quaerat! </p> </div> </div> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>index.html</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=html> <pre slot=code>
+}</script><link href="/css/highlightStyle.636598e337f63839c183.css" rel="stylesheet"><link href="/css/how-to-add-ellipsis-to-text-when-overflow-in-css.0929ccec7ead8096de5b.css" rel="stylesheet"></head>  <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Ellipsis for Single Line Text</h2> <p>The current solution is based on <span class=code>text-overflow</span> CSS property</p> <br/> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>Result</code-tab-webcomponent> <code-panel-webcomponent class=result slot=code-panel> <style>.demo{padding:4rem 0}.single-line{width:50%;margin:0 auto;padding:3rem;background-color:var(--demo-card-background-color)}p.overflow-single-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:0}</style> <div class=demo> <div class=single-line> <p class=overflow-single-line> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis ad accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem explicabo eligendi quaerat! </p> </div> </div> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>index.html</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=html> <pre slot=code>
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -195,38 +195,7 @@
                                 text-overflow: ellipsis;
                             }
                         </code>
-                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <h2>Ellipsis for Multi Line Text</h2> <p>The current solution is based on <span class=code>javascript</span> to truncate long texts</p> <br/> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>project structure</code-tab-webcomponent> <code-panel-webcomponent class=result slot=code-panel> <style>.demo{line-height:1.4;padding:4rem 0}.multi-line{width:50%;margin:0 auto;padding:3rem;background-color:var(--demo-card-background-color)}p.overflow-single-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}</style> <div class=demo> <div class=multi-line> <p class=overflow-multi-line data-max-lines=3> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis asdfdsfd accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem explicabo eligendi quaerat! </p> </div> </div> <script> $(window).load(function() {
-                const $overflowMultiLineTexts = document.querySelectorAll('.overflow-multi-line');
-                setTimeout(() => $overflowMultiLineTexts.forEach(ellipsizeTextBox), 0);
-              });
-
-              function ellipsizeTextBox(element) {
-                const maxLines = parseInt(element.dataset.maxLines) || 3;
-                const elementLineHeight = calcElementLineHeight(element);
-                let currentElementLines = calcCurrentElementLines(element, elementLineHeight);
-                const wordArray = element.innerHTML.split(' ');
-                element.style.textAlign = 'justify';
-                while (currentElementLines > maxLines) {
-                  wordArray.pop();
-                  element.innerHTML = wordArray.join(' ') + ' ...';
-                  currentElementLines = calcCurrentElementLines(element, elementLineHeight);
-                }
-              }
-
-              function calcCurrentElementLines(element, elementLineHeight) {
-                return Math.floor(element.offsetHeight / elementLineHeight);
-              }
-
-              function calcElementLineHeight(element) {
-                let res = element.style.lineHeight;
-                if (isNaN(parseInt(res))) {
-                  res = document.defaultView.getComputedStyle(element).getPropertyValue('line-height');
-                }
-                if (isNaN(parseInt(res))) {
-                  res = 20;
-                }
-                return parseInt(res);
-              } </script> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>index.html</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=html> <pre slot=code>
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <h2>Ellipsis for Multi Line Text</h2> <p>The current solution is based on <span class=code>javascript</span> to truncate long texts</p> <br/> <code-tabs-webcomponent> <code-tab-webcomponent slot=code-tab>project structure</code-tab-webcomponent> <code-panel-webcomponent class=result slot=code-panel> <style>.demo{line-height:1.4;padding:4rem 0}.multi-line{width:50%;margin:0 auto;padding:3rem;background-color:var(--demo-card-background-color)}p.overflow-multi-line{margin-bottom:0}</style> <div class=demo> <div class=multi-line> <p class=overflow-multi-line data-max-lines=3> Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis asdfdsfd accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem explicabo eligendi quaerat! </p> </div> </div> </code-panel-webcomponent> <code-tab-webcomponent slot=code-tab>index.html</code-tab-webcomponent> <code-panel-webcomponent slot=code-panel> <multiline-code-webcomponent language=html> <pre slot=code>
                         <code>
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
@@ -328,4 +297,4 @@
                                 background-color: #f9f9f9;
                             }
                         </code>
-                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo label="Article source code"></link-webcomponent> <link-webcomponent href=http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/ label="Pure CSS for multiline truncation with ellipsis article by David Tintner & Sagi Shrieber"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.636598e337f63839c183.js"></script><script type="text/javascript" src="/js/how-to-add-ellipsis-to-text-when-overflow-in-css.8620604067098aa04aa4.js"></script></body> </html> 
+                    </pre> </multiline-code-webcomponent> </code-panel-webcomponent> </code-tabs-webcomponent> <more-info-webcomponent> <link-webcomponent href=https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/css/text-overflow-ellipsis-demo label="Article source code"></link-webcomponent> <link-webcomponent href=http://hackingui.com/front-end/a-pure-css-solution-for-multiline-text-truncation/ label="Pure CSS for multiline truncation with ellipsis article by David Tintner & Sagi Shrieber"></link-webcomponent> </more-info-webcomponent> </article-webcomponent> </div> <script type="text/javascript" src="/js/highlightStyle.636598e337f63839c183.js"></script><script type="text/javascript" src="/js/how-to-add-ellipsis-to-text-when-overflow-in-css.0929ccec7ead8096de5b.js"></script></body> </html> 
