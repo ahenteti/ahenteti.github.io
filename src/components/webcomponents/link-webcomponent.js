@@ -13,9 +13,9 @@ class LinkWebComponent extends ElementWebComponent {
           color: var(--primary-color);
         }
         ion-icon {
-          font-size: 2rem;
+          font-size: 1.5rem;
           margin-right: .8rem;
-          color: var(--header-link-color);
+          color: var(--primary-color);
         }
         a {
           font-size: 1.6rem;
@@ -28,7 +28,7 @@ class LinkWebComponent extends ElementWebComponent {
         }
       </style>
       <li>
-        <ion-icon name="arrow-round-forward"></ion-icon>
+        <ion-icon name="caret-forward"></ion-icon>
         <a href="${this._href}" target="_blank">${this._label}</a>
       </li>
     `;

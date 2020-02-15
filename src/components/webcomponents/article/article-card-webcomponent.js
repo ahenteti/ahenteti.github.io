@@ -23,6 +23,8 @@ class ArticleCardWebComponent extends ElementWebComponent {
           border-bottom: var(--article-card-border-bottom-height) solid var(--article-card-border-color);
           border-left: var(--article-card-border-left-height) solid var(--article-card-border-color);
           border-radius: var(--article-card-border-radius);
+          transition: var(--transition);
+          transition-property: border-color;
         }
 
         a {

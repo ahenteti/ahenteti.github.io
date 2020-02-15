@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Definition</h2>
+        <quote-webcomponent author="wikipedia">
+          <p class="mb-0">
+            The intent of the Builder design pattern is to separate the construction of a complex object from its
+            representation. By doing so the same construction process can create different representations
+          </p>
+        </quote-webcomponent>
+
+        <h2>Problem trying to solve</h2>
+        <ul>
+          <li>Encapsulate the creating of a complex object in a separate <span class="code">Builder</span> object</li>
+          <li>
+            A class delegates object creation to a <span class="code">Builder</span>
+            object instead of creating the objects directly
+          </li>
+        </ul>
+
+        <h2>UML Diagram</h2>
+        <img src="./builder-design-pattern.svg" alt="" />
+
+        <h2>Implementation</h2>
+        <code-tabs-webcomponent>
+          <code-tab-webcomponent slot="code-tab">ComplexObject</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                <code>
+                  public class ComplexObject {
+          
+                      private String prop1;
+                      private String prop2;
+                      private int prop3;
+                      private String prop4;
+                      private int prop5;
+                  
+                      private ComplexObject(Builder builder) {
+                          prop1 = builder.prop1;
+                          prop2 = builder.prop2;
+                          prop3 = builder.prop3;
+                          prop4 = builder.prop4;
+                          prop5 = builder.prop5;
+                      }
+                  
+                      public static final class Builder {
+                          private String prop1;
+                          private String prop2;
+                          private int prop3;
+                          private String prop4;
+                          private int prop5;
+                  
+                          public Builder() {
+                          }
+                  
+                          public Builder prop1(String prop1) {
+                              this.prop1 = prop1;
+                              return this;
+                          }
+                  
+                          public Builder prop2(String prop2) {
+                              this.prop2 = prop2;
+                              return this;
+                          }
+                  
+                          public Builder prop3(int prop3) {
+                              this.prop3 = prop3;
+                              return this;
+                          }
+                  
+                          public Builder prop4(String prop4) {
+                              this.prop4 = prop4;
+                              return this;
+                          }
+                  
+                          public Builder prop5(int prop5) {
+                              this.prop5 = prop5;
+                              return this;
+                          }
+                  
+                          public ComplexObject build() {
+                              return new ComplexObject(this);
+                          }
+                      }
+                  }
+                </code>
+              </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">BuilderDemo</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                <code>
+                  public class BuilderDemo {
+                      public static void main(String[] args) {
+                          ComplexObject ob = new ComplexObject.Builder()
+                                  .prop1("prop1") 
+                                  .prop2("prop2") 
+                                  .prop3(3) 
+                                  .prop4("prop4") 
+                                  .prop5(5)
+                                  .build();
+                      }
+                  }
+                </code>
+              </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+        </code-tabs-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/design-patterns/src/main/java/io/github/ahenteti/java/builder/ComplexObject.java"
+            label="Article source code"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://en.wikipedia.org/wiki/Builder_pattern"
+            label="Wikipedia Builder Pattern article"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>
