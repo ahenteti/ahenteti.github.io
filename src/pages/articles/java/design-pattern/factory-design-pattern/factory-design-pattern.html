@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  ${require('templates/head.html')}
+
+  <body>
+    ${require('templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <article-webcomponent>
+        <h2>Definition</h2>
+        <quote-webcomponent author="wikipedia">
+          <p class="mb-0">
+            the factory method pattern is a creational pattern that uses factory methods to deal with the problem of
+            creating objects without having to specify the exact class of the object that will be created
+          </p>
+        </quote-webcomponent>
+
+        <h2>Problem trying to solve</h2>
+        <ul>
+          <li>
+            Allows construction of classes with a component of a type that has not been predetermined, but only defined
+            in an "interface", or which is defined as a dynamic type
+          </li>
+          <li>
+            Allows construction of subclasses to a parent whose component type has not been predetermined, but only
+            defined in an interface, or which is defined as a dynamic type
+          </li>
+          <li>
+            Allows for more readable code in cases where multiple constructors exist, each for a different reason
+          </li>
+          <li>
+            Allows a class to defer instantiation to subclasses, and to prevent direct instantiation of an object of the
+            parent class type
+          </li>
+        </ul>
+
+        <h2>UML Diagram</h2>
+        <img src="./factory-design-pattern.svg" alt="" />
+
+        <h2>Implementation</h2>
+
+        <code-tabs-webcomponent>
+          <code-tab-webcomponent slot="code-tab">IDrawable.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            public interface IDrawable {
+                                void draw();
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Circle.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            public class Circle implements IDrawable {
+                                @Override
+                                public void draw() {
+                                    System.out.println("I'm a circle");
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Square.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            public class Square implements IDrawable {
+                                @Override
+                                public void draw() {
+                                    System.out.println("I'm a square");
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">Rectangle.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            public class Rectangle implements IDrawable {
+                                @Override
+                                public void draw() {
+                                    System.out.println("I'm a rectangle");
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">EDrawable.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            public enum EDrawable {
+                                CIRCLE,
+                                SQUARE,
+                                RECTANGLE
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">DrawableFactory.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            public class DrawableFactory {
+                                public IDrawable create(EDrawable type) {
+                                    switch (type) {
+                                        case CIRCLE:
+                                            return new Circle();
+                                        case SQUARE:
+                                            return new Square();
+                                        case RECTANGLE:
+                                            return new Rectangle();
+                                        default:
+                                            throw new RuntimeException("unknown drawable type: " + type);
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+          <code-tab-webcomponent slot="code-tab">FactoryDemo.java</code-tab-webcomponent>
+          <code-panel-webcomponent slot="code-panel">
+            <multiline-code-webcomponent language="java">
+              <pre slot="code">
+                        <code>
+                            public class FactoryDemo {
+                                public static void main(String[] args) {
+                                    DrawableFactory factory = new DrawableFactory();
+                                    IDrawable circle = factory.create(EDrawable.CIRCLE);
+                                    IDrawable square = factory.create(EDrawable.SQUARE);
+                                    IDrawable rectangle = factory.create(EDrawable.RECTANGLE);
+                                    circle.draw();    // I'm a circle
+                                    square.draw();    // I'm a square
+                                    rectangle.draw(); // I'm a rectangle
+                                }
+                            }
+                        </code>
+                    </pre>
+            </multiline-code-webcomponent>
+          </code-panel-webcomponent>
+        </code-tabs-webcomponent>
+
+        <conclusion-webcomponent></conclusion-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/blob/master/java/design-patterns/src/main/java/io/github/ahenteti/java/factory/FactoryDemo.java"
+            label="Article source code"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://en.wikipedia.org/wiki/Factory_method_pattern"
+            label="Wikipedia Factory Design Pattern article"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
+    </div>
+  </body>
+</html>

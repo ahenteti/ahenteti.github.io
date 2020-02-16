@@ -14,15 +14,17 @@ article-webcomponent h2::first-letter {
 }
 
 article-webcomponent ul li {
+  display: flex;
   line-height: 2.8rem;
   list-style-type: none;
   list-style-position: inside;
   padding-left: 1.5rem;
+  text-align: justify;
 }
 
 article-webcomponent ul li::before {
   content: '■';
-  padding-right: 1rem;
+  padding-right: 1.5rem;
 }
 
 article-webcomponent ul {
