@@ -7,6 +7,7 @@ import './about.scss';
 const BACK_ARROW = 'back';
 const FORWARD_ARROW = 'forward';
 const CERTIFICATES_OF_COMPLETION = [
+  'assets/img/certificate-design-patterns-java-creational.png',
   'assets/img/certificate-design-patterns-java-behavioral.jpg',
   'assets/img/certificate-apache-web-server-install-config.jpg',
   'assets/img/certificate-build-asynchronous-restful-services-jersey.jpg',
