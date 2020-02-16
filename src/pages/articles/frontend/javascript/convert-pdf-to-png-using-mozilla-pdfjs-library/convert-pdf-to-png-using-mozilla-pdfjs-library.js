@@ -1,53 +1,68 @@
 import 'components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './convert-pdf-to-png-using-mozilla-pdfjs-library.scss';
+import * as constants from 'common/constants.js';
 
-const uploadButtonDOMElement = document.querySelector('.upload-button');
-const uploadInputDOMElement = document.querySelector('.upload-input');
-const loaderDOMElement = document.querySelector('.loader-demo');
-const pdfMetadataDOMElement = document.querySelector('.pdf-metadata');
-const totalPagesDOMElement = document.querySelector('.pdf-total-pages');
-const currentPageDOMElement = document.querySelector('.pdf-current-page');
-const canvasDOMElement = document.querySelector('.pdf-canvas');
-const downloadLinkDOMElement = document.querySelector('.download-link');
-const previousPageDOMElement = document.querySelector('.pdf-prev');
-const nextPageDOMElement = document.querySelector('.pdf-next');
+let pdfDocument;
+let pdfFileName;
+let currentPage;
+let totalPages;
+let uploadButtonDOMElement;
+let uploadInputDOMElement;
+let loaderDOMElement;
+let pdfMetadataDOMElement;
+let totalPagesDOMElement;
+let currentPageDOMElement;
+let canvasDOMElement;
+let downloadLinkDOMElement;
+let previousPageDOMElement;
+let nextPageDOMElement;
 
-// global variables
-let pdfDocument, pdfFileName, currentPage, totalPages;
+$(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
+  uploadButtonDOMElement = document.querySelector('.upload-button');
+  uploadInputDOMElement = document.querySelector('.upload-input');
+  loaderDOMElement = document.querySelector('.loader-demo');
+  pdfMetadataDOMElement = document.querySelector('.pdf-metadata');
+  totalPagesDOMElement = document.querySelector('.pdf-total-pages');
+  currentPageDOMElement = document.querySelector('.pdf-current-page');
+  canvasDOMElement = document.querySelector('.pdf-canvas');
+  downloadLinkDOMElement = document.querySelector('.download-link');
+  previousPageDOMElement = document.querySelector('.pdf-prev');
+  nextPageDOMElement = document.querySelector('.pdf-next');
 
-canvasDOMElement.width = Math.floor(window.parseInt(window.getComputedStyle(canvasDOMElement.parentElement).width));
-uploadButtonDOMElement.addEventListener('click', () => {
-  uploadInputDOMElement.click();
-});
+  canvasDOMElement.width = Math.floor(window.parseInt(window.getComputedStyle(canvasDOMElement.parentElement).width));
+  uploadButtonDOMElement.addEventListener('click', () => {
+    uploadInputDOMElement.click();
+  });
 
-uploadInputDOMElement.addEventListener('change', function() {
-  const uploadedFile = this.files[0];
-  if ('application/pdf' !== uploadedFile.type) {
-    alert('Error : Only PDF files are accepted');
-    return;
-  }
-  pdfFileName = calcPdfFileName(uploadedFile);
-  hide(uploadButtonDOMElement);
-  show(loaderDOMElement);
-  showPdf(URL.createObjectURL(uploadedFile));
-});
+  uploadInputDOMElement.addEventListener('change', function() {
+    const uploadedFile = this.files[0];
+    if ('application/pdf' !== uploadedFile.type) {
+      alert('Error : Only PDF files are accepted');
+      return;
+    }
+    pdfFileName = calcPdfFileName(uploadedFile);
+    hide(uploadButtonDOMElement);
+    show(loaderDOMElement);
+    showPdf(URL.createObjectURL(uploadedFile));
+  });
 
-downloadLinkDOMElement.addEventListener('click', function() {
-  this.setAttribute('href', canvasDOMElement.toDataURL());
-  this.setAttribute('download', pdfFileName + '-' + currentPage + '.png');
-});
+  downloadLinkDOMElement.addEventListener('click', function() {
+    this.setAttribute('href', canvasDOMElement.toDataURL());
+    this.setAttribute('download', pdfFileName + '-' + currentPage + '.png');
+  });
 
-previousPageDOMElement.addEventListener('click', function() {
-  if (currentPage !== 1) {
-    showPage(--currentPage);
-  }
-});
+  previousPageDOMElement.addEventListener('click', function() {
+    if (currentPage !== 1) {
+      showPage(--currentPage);
+    }
+  });
 
-nextPageDOMElement.addEventListener('click', function() {
-  if (currentPage !== totalPages) {
-    showPage(++currentPage);
-  }
+  nextPageDOMElement.addEventListener('click', function() {
+    if (currentPage !== totalPages) {
+      showPage(++currentPage);
+    }
+  });
 });
 
 function calcPdfFileName(uploadedFile) {
