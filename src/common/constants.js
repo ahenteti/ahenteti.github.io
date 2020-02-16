@@ -9,5 +9,7 @@ export const TAG_QUERY_PARAM = 'tag';
 export const THEME_QUERY_PARAM = 'theme';
 export const WEBSITE_DIVISIONS = ['articles', 'tools'];
 export const DEFAULT_WEBSITE_DIVISION = 'articles';
+export const ARTICLES_WEBSITE_DIVISION = 'articles';
+export const TOOLS_WEBSITE_DIVISION = 'tools';
 export const CURRENT_WEBSITE_DIVISION_LOCAL_STORAGE_KET = 'current-website-division';
 export const PAGE_CONTENT_READY_EVENT = 'page-content-ready-event';

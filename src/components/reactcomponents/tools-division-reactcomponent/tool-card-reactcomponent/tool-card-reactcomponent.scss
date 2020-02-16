@@ -1,5 +1,4 @@
-.article-card-reactcomponent {
-  --new-article-elevation: 1rem;
+.tool-card-reactcomponent {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,7 +27,6 @@
 
   & .name {
     color: var(--title-color);
-    padding-bottom: 1.5rem;
     font-weight: bold;
     font-size: 2rem;
     flex-grow: 1;
@@ -39,55 +37,9 @@
     transition-property: color;
   }
 
-  & .publication-date,
-  & .tags {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    color: var(--text-color-light);
-  }
-
-  & .tags {
-    margin-bottom: 1.5rem;
-  }
-
-  & p {
-    font-size: 1.3rem;
+  & .description {
+    color: var(--primary-color);
+    font-size: 1.35rem;
     margin: 0;
-  }
-
-  & ion-icon {
-    font-size: 1.5rem;
-    margin-right: 1rem;
-  }
-
-  & .new-article-wrapper {
-    display: none;
-    position: absolute;
-    top: calc(var(--new-article-elevation) * -1);
-    right: 3rem;
-    filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 0.3));
-  }
-
-  & .new-article {
-    background-color: var(--primary-color);
-    padding-top: 1rem;
-    padding-right: 1rem;
-    padding-bottom: 2rem;
-    padding-left: 2rem;
-    color: white;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    box-shadow: var(--box-shadow);
-    clip-path: polygon(
-      var(--new-article-elevation) 0,
-      100% 0,
-      100% 60%,
-      60% 100%,
-      var(--new-article-elevation) 60%,
-      var(--new-article-elevation) var(--new-article-elevation),
-      0 var(--new-article-elevation)
-    );
   }
 }

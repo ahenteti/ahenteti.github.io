@@ -5,7 +5,7 @@ main {
 
 .intro {
   margin: calc(8rem + var(--header-height)) auto;
-  margin-bottom: 0;
+  margin-bottom: 5rem;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
@@ -36,7 +36,7 @@ main {
   }
 }
 
-.articles {
+.website-division {
   margin: 0 auto;
   margin-bottom: 0;
   width: 80%;

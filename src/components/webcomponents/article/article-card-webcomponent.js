@@ -16,13 +16,13 @@ class ArticleCardWebComponent extends ElementWebComponent {
           flex-direction: column;
           justify-content: space-between;
           padding: var(--article-card-padding, 3rem);
-          background-color: var(--article-card-background-color);
+          background-color: var(--card-background-color);
           position: relative;
-          border-top: var(--article-card-border-top-height) solid var(--article-card-border-color);
-          border-right: var(--article-card-border-right-height) solid var(--article-card-border-color);
-          border-bottom: var(--article-card-border-bottom-height) solid var(--article-card-border-color);
-          border-left: var(--article-card-border-left-height) solid var(--article-card-border-color);
-          border-radius: var(--article-card-border-radius);
+          border-top: var(--card-border-top-height) solid var(--card-border-color);
+          border-right: var(--card-border-right-height) solid var(--card-border-color);
+          border-bottom: var(--card-border-bottom-height) solid var(--card-border-color);
+          border-left: var(--card-border-left-height) solid var(--card-border-color);
+          border-radius: var(--card-border-radius);
           transition: var(--transition);
           transition-property: border-color;
         }

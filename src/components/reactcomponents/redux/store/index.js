@@ -14,7 +14,8 @@ const initialState = {
   selectedTag: selectedTag,
   articlesFilter: '',
   currentWebsiteDivision: initCurrentWebsiteDivision(),
-  websiteDivisions: constants.WEBSITE_DIVISIONS
+  websiteDivisions: constants.WEBSITE_DIVISIONS,
+  tools: ALL_TOOLS
 };
 
 export default createStore(reducer, initialState);

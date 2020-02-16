@@ -40,6 +40,7 @@ END_APP_CODE_TAB_TAG='                        </code>
             </code-panel-webcomponent>'
 
 name=
+description=
 tags=
 containerFolder=
 sourceFile=
@@ -69,22 +70,30 @@ COMMAND: the command that you want to execute. the supported commands are:
         article name
         the article name must be unique 
         An internal verification will be done using the folling command: 
-        find src/articles -name <article-name-after-transformation> | wc -l
+        find src/pages/articles -name <article-name-after-transformation> | wc -l
 
       --tags, -t
         article tags (separated by a space if there are many) 
 
+      --category, -c
+        article category
+
       --container-folder, -f
         the folder containing this new article
-        /src/artciles/<container-folder>/<article-name-after-transformation>
+        /src/pages/artciles/<container-folder>/<article-name-after-transformation>
 
-      --readtime, -r
-        article read time
-        default value: 5 min
+  - new-tool, nt
+    create a new tool with its base html, css, js and metadata files
+    
+    options: 
+      --name, -n
+        tool name
+        the article name must be unique 
+        An internal verification will be done using the folling command: 
+        find src/pages/tools -name <tool-name-after-transformation> | wc -l
 
-      --author, -a
-        article author
-        default value: Ahmed HENTETI
+      --description, -d
+        article description
 
   - copy-project-file, cpf
     copy the content of a source file to an article
@@ -231,7 +240,53 @@ newArticle() {
          > $metadata
   sed -i 's%articles/%/articles/%' $metadata
   echo -e "${GREEN}\nDone${NORMAL}"
-} 
+}
+
+newTool() {
+  if [ -z $name ]; then
+    printf "\n${GREEN}your tool name: ${NORMAL}"
+    read name
+  fi
+  transformed_name=$(getTransformedName "$name")
+  exist=$(find src/pages/tools -name $transformed_name | wc -l)
+  while [ $exist -ne 0 ]; do
+    printf "${RED}tool name already exists, please choose another name!${NORMAL}\n"
+    printf "${GREEN}your tool name: ${NORMAL}"
+    read name
+    transformed_name=$(getTransformedName "$name")
+    exist=$(find src/pages/tools -name $transformed_name | wc -l)
+  done
+
+  if [ -z $description ]; then
+    printf "\n${GREEN}your tool description: ${NORMAL}"
+    read description
+  fi
+
+  parentFolder="src/pages/tools/$transformed_name"
+
+  mkdir -p $parentFolder
+  toolFile=$parentFolder/$transformed_name.html
+  cp src/templates/tool-template.html $toolFile
+
+  touch $parentFolder/$transformed_name.scss
+  touch $parentFolder/$transformed_name.js
+  echo "import 'components/webcomponents/webcomponents.js';" > $parentFolder/$transformed_name.js
+  echo "import 'common/common.js';" >> $parentFolder/$transformed_name.js
+
+  metadata=$parentFolder/metadata.json
+  touch $metadata
+
+  publicationDate=$(date '+%b %d, %Y')
+  file_name="$transformed_name.html"
+  slug="tools/$file_name"
+  tools/jq -n --arg name "$name" \
+         --arg description "$description" \
+         --arg slug "$slug" \
+         '{ name: $name, description: $description, slug: $slug }' \
+         > $metadata
+  sed -i 's%tools/%/tools/%' $metadata
+  echo -e "${GREEN}\nDone${NORMAL}"
+}
 
 newWebComponent() {
   if [ -z $name ]; then
@@ -412,7 +467,7 @@ windowsToLinuxFilePath() {
   echo $file
 }
 
-OPTS=$(getopt -o hn:t:f:s: --long help,name:,tags:,container-folder:,project-file:,article-file: -n 'parse-options' -- "$@")
+OPTS=$(getopt -o hn:t:f:s:d:c: --long help,name:,tags:,category:,container-folder:,project-file:,article-file:,description: -n 'parse-options' -- "$@")
 if [ $? != 0 ]; then
   echo "Failed parsing options." >&2; exit 1
 fi
@@ -426,6 +481,12 @@ while true; do
       name=$2; shift 2 ;;
     -t | --tags )
       read -ra tags <<< "$2"; 
+      shift 2 ;;
+    -c | --category )
+      read -ra category <<< "$2"; 
+      shift 2 ;;
+    -d | --description )
+      read -ra description <<< "$2"; 
       shift 2 ;;
     -f | --container-folder )
       containerFolder=$2; shift 2 ;;
@@ -443,6 +504,8 @@ done
 case $1 in 
   new-article | na )
     newArticle ;;
+  new-tool | nt )
+    newTool ;;
   new-webcomponent | nwc )
     newWebComponent ;;
   new-reactcomponent | nrc )

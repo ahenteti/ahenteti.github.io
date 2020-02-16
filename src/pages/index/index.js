@@ -10,12 +10,11 @@ import 'components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './index.scss';
 import WebsiteDivisionsReduxContainer from 'components/reactcomponents/redux/containers/WebsiteDivisionReduxContainer';
-import ArticlesDivisionReduxContainer from 'components/reactcomponents/redux/containers/ArticlesDivisionReduxContainer';
+import HomePageReduxContainer from 'components/reactcomponents/redux/containers/HomePageReduxContainer';
 
 // main actions
 renderWebsiteDivisionSelectComponent();
-renderArticlesComponent();
-// renderSearchComponent();
+renderWebsiteDivision();
 
 // helper functions
 function renderWebsiteDivisionSelectComponent() {
@@ -23,15 +22,15 @@ function renderWebsiteDivisionSelectComponent() {
     <Provider store={store}>
       <WebsiteDivisionsReduxContainer />
     </Provider>,
-    document.querySelector('.website-division')
+    document.querySelector('.website-division-select-component')
   );
 }
 
-function renderArticlesComponent() {
+function renderWebsiteDivision() {
   ReactDOM.render(
     <Provider store={store}>
-      <ArticlesDivisionReduxContainer />
+      <HomePageReduxContainer />
     </Provider>,
-    document.querySelector('.articles')
+    document.querySelector('.website-division')
   );
 }

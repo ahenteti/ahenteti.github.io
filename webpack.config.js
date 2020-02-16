@@ -12,7 +12,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 let ARTICLES_METADATA = null;
 
-const entries = glob.sync('./src/pages/{index,about,articles}/**/*.js').reduce((acc, filePath) => {
+const entries = glob.sync('./src/pages/{index,about,articles,tools}/**/*.js').reduce((acc, filePath) => {
   const parentFolderName = getParentFolderName(filePath);
   const fileNameWithoutExtension = getBasenameWithoutExtension(filePath, '.js');
   if (parentFolderName === fileNameWithoutExtension) {
@@ -24,7 +24,7 @@ entries.common = './src/common/common.js';
 entries.webcomponents = './src/components/webcomponents/webcomponents.js';
 entries.highlightStyle = './src/common/vendor/highlight/atom-one-light.min.js';
 
-const htmlWebpackPlugins = glob.sync('./src/pages/{index,about,articles}/**/*.html').reduce((acc, filePath) => {
+const htmlWebpackPlugins = glob.sync('./src/pages/{index,about,articles,tools}/**/*.html').reduce((acc, filePath) => {
   acc.push(
     new HtmlWebpackPlugin({
       filename: calcHtmlWebpackPluginFilename(filePath),
@@ -55,7 +55,8 @@ module.exports = {
     new webpack.DefinePlugin({
       ALL_ARTICLES: JSON.stringify(getArticlesMetadata()),
       ALL_ARTICLES_BY_CATEGORY: JSON.stringify(toArticlesByCategory(getArticlesMetadata())),
-      ARTICLES_TAGS: JSON.stringify(getArticlesTags())
+      ARTICLES_TAGS: JSON.stringify(getArticlesTags()),
+      ALL_TOOLS: JSON.stringify(getToolsMetadata())
     }),
     new CopyWebpackPlugin([{ from: 'src/assets/', to: 'assets/' }])
   ],
@@ -129,6 +130,13 @@ function getParentFolderName(filePath) {
     .dirname(filePath)
     .split('/')
     .pop();
+}
+
+function getToolsMetadata() {
+  return glob.sync('./src/pages/tools/**/metadata.json').reduce((tools, filePath) => {
+    tools.push(JSON.parse(fs.readFileSync(filePath)));
+    return tools;
+  }, []);
 }
 
 function getArticlesMetadata() {
@@ -217,6 +225,9 @@ function getArticlesTags() {
 function calcHtmlWebpackPluginFilename(filePath) {
   if (filePath.includes('articles/')) {
     return 'articles/' + path.basename(filePath);
+  }
+  if (filePath.includes('tools/')) {
+    return 'tools/' + path.basename(filePath);
   }
   return path.basename(filePath);
 }

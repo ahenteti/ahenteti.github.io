@@ -12,7 +12,7 @@ class LoaderWebComponent extends ElementWebComponent {
           top: 0px;
           width: 100%;
           height: 100%;
-          z-index: 9999;
+          z-index: 3;
           background: rgba(0, 0, 0, .2);
           transition: var(--transition);
           transition-property: background;

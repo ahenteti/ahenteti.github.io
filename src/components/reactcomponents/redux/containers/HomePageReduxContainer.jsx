@@ -1,11 +1,13 @@
 import { connect } from 'react-redux';
-import ArticlesDivisionReactComponent from 'components/reactcomponents/articles-division-reactcomponent/articles-division-reactcomponent';
+import HomePageReactComponent from 'components/reactcomponents/home-page-reactcomponent/home-page-reactcomponent';
 import { selectTag, onArticlesFilterChange } from '../actions/index';
 
 const mapStateToProps = state => ({
   articles: state.articles,
   tags: state.tags,
-  selectedTag: state.selectedTag
+  selectedTag: state.selectedTag,
+  currentWebsiteDivision: state.currentWebsiteDivision,
+  tools: state.tools
 });
 
 const mapDispatchToProps = dispatch => {
@@ -15,4 +17,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArticlesDivisionReactComponent);
+export default connect(mapStateToProps, mapDispatchToProps)(HomePageReactComponent);
