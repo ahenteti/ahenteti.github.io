@@ -16,6 +16,7 @@ import './bounce.scss';
 import './table.scss';
 import './tooltip.scss';
 import './vendor/font.css';
+import './vendor/highlight/atom-one-light.min.css';
 import HeaderReduxContainer from 'components/reactcomponents/redux/containers/HeaderReduxContainer';
 
 // main actions

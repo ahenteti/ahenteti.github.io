@@ -7,25 +7,25 @@
   <body>
     ${require('templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>How to convert a string to lower case</h2>
-      <oneline-code-webcomponent
-        code="echo 'HELLO WORLD!' | tr '[:upper:]' '[:lower:]'"
-        language="bash"
-      ></oneline-code-webcomponent>
+      <article-webcomponent>
+        <h2>How to convert a string to lower case</h2>
+        <oneline-code-webcomponent
+          code="echo 'HELLO WORLD!' | tr '[:upper:]' '[:lower:]'"
+          language="bash"
+        ></oneline-code-webcomponent>
 
-      <h2>How to uppercase the first character in a variable</h2>
-      <oneline-code-webcomponent
-        code="foo=\$(tr '[:lower:]' '[:upper:]' &lt;&lt;&lt; \${foo:0:1})\${foo:1}"
-        language="bash"
-      >
-      </oneline-code-webcomponent>
+        <h2>How to uppercase the first character in a variable</h2>
+        <oneline-code-webcomponent
+          code="foo=\$(tr '[:lower:]' '[:upper:]' &lt;&lt;&lt; \${foo:0:1})\${foo:1}"
+          language="bash"
+        >
+        </oneline-code-webcomponent>
 
-      <h2>How to split a string on delimiter</h2>
-      <multiline-code-webcomponent language="bash">
-        <pre slot="code">
+        <h2>How to split a string on delimiter</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
                 <code>
                     IFS='-' read -ra array &lt;&lt;&lt; "a-b-c"; unset IFS
                     for i in \${array[@]}; do
@@ -33,11 +33,11 @@
                     done
                 </code>
             </pre>
-      </multiline-code-webcomponent>
+        </multiline-code-webcomponent>
 
-      <h2>How to remove particular characters from a string</h2>
-      <multiline-code-webcomponent language="bash">
-        <pre slot="code">
+        <h2>How to remove particular characters from a string</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
                 <code>
                     # using tr
                     echo "Hello World!" | tr -d !
@@ -46,31 +46,31 @@
                     echo "Hello World!" | sed 's/!//g'
                 </code>
             </pre>
-      </multiline-code-webcomponent>
+        </multiline-code-webcomponent>
 
-      <h2>How to prevent read command to eat backslashes</h2>
-      <p>you should use the <span class="code">-r</span> option of the read command</p>
-      <oneline-code-webcomponent
-        code="read <span class='highlight'>-r</span> path"
-        language="bash"
-      ></oneline-code-webcomponent>
+        <h2>How to prevent read command to eat backslashes</h2>
+        <p>you should use the <span class="code">-r</span> option of the read command</p>
+        <oneline-code-webcomponent
+          code="read <span class='highlight'>-r</span> path"
+          language="bash"
+        ></oneline-code-webcomponent>
 
-      <h2>How to insert multiple lines into a file after specified pattern</h2>
-      <p>
-        https://stackoverflow.com/questions/22497246/insert-multiple-lines-into-a-file-after-specified-pattern-using-shell-script
-      </p>
+        <h2>How to insert multiple lines into a file after specified pattern</h2>
+        <p>
+          https://stackoverflow.com/questions/22497246/insert-multiple-lines-into-a-file-after-specified-pattern-using-shell-script
+        </p>
 
-      <h2>How to extract filename and extension in Bash</h2>
-      <multiline-code-webcomponent language="bash">
-        <pre slot="code">
+        <h2>How to extract filename and extension in Bash</h2>
+        <multiline-code-webcomponent language="bash">
+          <pre slot="code">
                 <code>
                     filename=\$(basename "\$fullfile")
                     extension="\${filename##*.}"
                     filename="\${filename%.*}"
                 </code>
             </pre>
-      </multiline-code-webcomponent>
-    </article-webcomponent>
+        </multiline-code-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

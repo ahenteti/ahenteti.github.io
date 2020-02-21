@@ -16,6 +16,12 @@ body {
   --max-width: 1400px;
   --search-top-bottom-padding: 1rem;
   --white-color: #fff;
+  --code-line-height: 1.3;
+  --code-font-size: 1.6rem;
+  --code-padding-tb: 1.6rem;
+  --code-padding-lr: 1.6rem;
+  --code-line-numbers-width: 5rem;
+  --code-border-radius: 0.3rem;
 }
 
 body.dark {
@@ -110,6 +116,8 @@ body.dark {
   --select-options-border-color-on-hover: var(--primary-color);
   --select-options-background-color-on-hover: var(--gray-3);
   --select-border-color-on-open: var(--primary-color);
+
+  --tool-background-color: var(--article-background-color);
 }
 
 body.light {
@@ -197,6 +205,8 @@ body.light {
   --select-options-color-on-hover: var(--select-options-color);
   --select-options-border-color-on-hover: var(--primary-color);
   --select-options-background-color-on-hover: var(--gray-4);
+
+  --tool-background-color: var(--article-background-color);
 }
 
 html {

@@ -215,7 +215,7 @@ class ArticleWebComponent extends ElementWebComponent {
           return article;
         }
       }
-      throw new Error('the current article is not defined in the ALL_ARTICLES_BY_CATEGORY variable!');
+      throw new Error('the current article is not defined in the ALL_ARTICLES variable!');
     }
 
     function renderArticle(article) {

@@ -1,0 +1,38 @@
+.code-reactcomponent {
+  position: relative;
+  display: flex;
+
+  & * {
+    font-family: 'Anonymous Pro', monospace;
+  }
+
+  & pre {
+    width: 100%;
+    overflow-x: auto;
+    overflow-x: overlay;
+  }
+
+  & pre code {
+    padding: var(--code-padding-tb) var(--code-padding-lr);
+    line-height: var(--code-line-height);
+    font-size: var(--code-font-size);
+    border-top-right-radius: var(--code-border-radius);
+    border-bottom-right-radius: var(--code-border-radius);
+    background: var(--code-background-color);
+    color: var(--text-color);
+    scrollbar-width: none;
+  }
+
+  & ion-icon {
+    position: absolute;
+    color: var(--code-icon-color);
+    top: 1.5rem;
+    right: 1.5rem;
+    cursor: pointer;
+    font-size: 2rem;
+
+    @media screen and (max-width: 480px) {
+      display: none;
+    }
+  }
+}
