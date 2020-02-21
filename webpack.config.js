@@ -21,7 +21,7 @@ const entries = glob.sync('./src/pages/{index,about,articles,tools}/**/*.js').re
   return acc;
 }, {});
 entries.common = './src/common/common.js';
-entries.webcomponents = './src/components/webcomponents/webcomponents.js';
+entries.webcomponents = './src/common/components/webcomponents/webcomponents.js';
 entries.highlightStyle = './src/common/vendor/highlight/atom-one-light.min.js';
 
 const htmlWebpackPlugins = glob.sync('./src/pages/{index,about,articles,tools}/**/*.html').reduce((acc, filePath) => {
@@ -112,7 +112,7 @@ module.exports = {
     contentBase: './dist'
   },
   watchOptions: {
-    ignored: ['./src/components/components.js']
+    ignored: ['/src/common/components/webcomponents/webcomponents.js']
   },
   resolve: {
     modules: [path.resolve('./src'), path.resolve('./node_modules')],

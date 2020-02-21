@@ -1,0 +1,17 @@
+.code-line-numbers-reactcomponent {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--code-line-numbers-background-color);
+  color: var(--text-color-light);
+  padding-top: var(--code-padding-tb);
+  padding-bottom: var(--code-padding-tb);
+  width: var(--code-line-numbers-width);
+  line-height: var(--code-line-height);
+  border-top-left-radius: var(--border-top-left-radius);
+  border-bottom-left-radius: var(--border-bottom-left-radius);
+
+  & span {
+    padding: 0 1rem 0 0;
+    text-align: right;
+  }
+}

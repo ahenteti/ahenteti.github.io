@@ -8,6 +8,8 @@
   z-index: 99;
   visibility: hidden;
   opacity: 0;
+  transition: var(--transition);
+  transition-property: visibility, opacity;
 }
 
 [data-tooltip]:hover::before,

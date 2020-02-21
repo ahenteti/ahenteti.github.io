@@ -1,4 +1,4 @@
-import 'components/webcomponents/webcomponents.js';
+import 'common/components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import * as constants from 'common/constants.js';
 

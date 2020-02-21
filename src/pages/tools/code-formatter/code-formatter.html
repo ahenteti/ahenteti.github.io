@@ -1,22 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ${require('templates/head.html')}
+    ${require('common/templates/head.html')}
     <script src="https://unpkg.com/prettier@1.13.0/standalone.js"></script>
     <script src="https://unpkg.com/prettier@1.13.0/parser-babylon.js"></script>
     <script src="https://unpkg.com/prettier@1.13.0/parser-graphql.js"></script>
   </head>
 
   <body>
-    ${require('templates/pre-page-loader.html')}
+    ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
       <header></header>
       <tool-page-webcomponent>
         <textarea id="input" placeholder="your code" type="text"></textarea>
         <button-webcomponent id="format" value="Format your code"></button-webcomponent>
-        <pre class="code" style="display: none;">
+        <pre class="code" language="java">
+          public class Square implements IDrawable {
+              @Override
+              public void draw() {
+                  System.out.println("I'm a square");
+              }
+          }
         </pre>
-    </div>
 
+        <div class="code-tabs">
+          <pre class="code-tab" language="java" tab-name="Square.java">
+            public class Square implements IDrawable {
+                @Override
+                public void draw() {
+                    System.out.println("I'm a square");
+                }
+            }
+          </pre>
+          <pre class="code-tab" language="javascript" tab-name="code-tabs.jsx">
+            import * as React from 'react';
+            import './code-tabs-reactcomponent.scss';
+          </pre>
+        </div>
+      </tool-page-webcomponent>
+    </div>
   </body>
 </html>

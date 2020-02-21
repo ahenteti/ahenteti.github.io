@@ -21,7 +21,10 @@ body {
   --code-padding-tb: 1.6rem;
   --code-padding-lr: 1.6rem;
   --code-line-numbers-width: 5rem;
-  --code-border-radius: 0.3rem;
+  --border-top-left-radius: 0.3rem;
+  --border-top-right-radius: 0.3rem;
+  --border-bottom-left-radius: 0.3rem;
+  --border-bottom-right-radius: 0.3rem;
 }
 
 body.dark {
@@ -49,12 +52,16 @@ body.dark {
   --header-background: #1c1f23;
   --header-background-with-shadow: var(--header-background);
   --header-link-color: #fff;
-  --tooltip-background-color: #32373b;
+  --tooltip-background-color: #394048;
+
   --code-background-color: #32373b;
   --code-border-color: #32373b;
   --code-line-numbers-background-color: #394048;
+  --code-tab-background-color-on-hover: #394048;
+  --code-active-tab-background-color: #394048;
   --code-selected-tab-background-color: #c4c2c0;
   --code-icon-color: #777;
+
   --quote-background-color: #fafafa;
   --quote-color: #888;
   --quote-icon-background-color: #eee;
@@ -143,11 +150,15 @@ body.light {
   --header-background-with-shadow: var(--white-color);
   --header-link-color: #333;
   --tooltip-background-color: #333;
+
   --code-background-color: #f8f9fa;
   --code-border-color: #eaecf0;
   --code-line-numbers-background-color: #eee;
+  --code-tab-background-color-on-hover: #eee;
+  --code-active-tab-background-color: #eee;
   --code-selected-tab-background-color: #c4c2c0;
   --code-icon-color: #777;
+
   --quote-background-color: #fafafa;
   --quote-color: #888;
   --quote-icon-background-color: #eee;

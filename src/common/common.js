@@ -3,7 +3,7 @@ import * as constants from 'common/constants.js';
 import './pre-page-loader.js';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from 'components/reactcomponents/redux/store';
+import store from 'common/redux/store';
 import { Provider } from 'react-redux';
 
 import './article.scss';
@@ -17,7 +17,9 @@ import './table.scss';
 import './tooltip.scss';
 import './vendor/font.css';
 import './vendor/highlight/atom-one-light.min.css';
-import HeaderReduxContainer from 'components/reactcomponents/redux/containers/HeaderReduxContainer';
+import HeaderReduxContainer from 'common/redux/containers/HeaderReduxContainer';
+import CodeReactComponent from 'common/components/reactcomponents/code/code-reactcomponent/code-reactcomponent.jsx';
+import CodeTabsReactComponent from 'common/components/reactcomponents/code/code-tabs-reactcomponent/code-tabs-reactcomponent.jsx';
 
 // main actions
 $(window).load(() => {
@@ -28,9 +30,29 @@ $(window).load(() => {
 
 $(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
   resizeOneLineFontSize();
+  renderCodeReactComponent();
+  renderCodeTabsReactComponent();
 });
 
 // functions
+function renderCodeReactComponent() {
+  document.querySelectorAll('pre.code').forEach(el => {
+    el.style.all = 'inherit';
+    console.log(el);
+    ReactDOM.render(<CodeReactComponent code={el.innerHTML} language={el.getAttribute('language')} />, el);
+  });
+}
+
+function renderCodeTabsReactComponent() {
+  document.querySelectorAll('div.code-tabs').forEach(el => {
+    el.style.all = 'inherit';
+    ReactDOM.render(
+      <CodeTabsReactComponent resultTab={el.querySelector('.result')} codeTabs={el.querySelectorAll('.code-tab')} />,
+      el
+    );
+  });
+}
+
 function resizeOneLineFontSize() {
   const $oneLineTexts = document.querySelectorAll('.one-line');
   $oneLineTexts.forEach(resizeTextFontSize);

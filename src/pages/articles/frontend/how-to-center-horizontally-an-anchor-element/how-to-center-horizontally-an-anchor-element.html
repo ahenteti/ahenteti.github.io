@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ${require('templates/head.html')}
+    ${require('common/templates/head.html')}
   </head>
 
   <body>
-    ${require('templates/pre-page-loader.html')}
+    ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <multiline-code-webcomponent language="css">
-        <pre slot="code">
-                    <code>
-                        &lt;div style="text-align:center"&gt;
-                            &lt;a href="http://www.example.com"&gt;example&lt;/a&gt;​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
-                        &lt;/div&gt;
-                    </code>
-                </pre>
-      </multiline-code-webcomponent>
+      <article-webcomponent>
+        <pre class="code" language="css">
+          &lt;div style="text-align:center"&gt;
+              &lt;a href="http://www.example.com"&gt;example&lt;/a&gt;​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​​
+          &lt;/div&gt;
+        </pre>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="https://stackoverflow.com/questions/9721831/how-do-i-center-an-anchor-element-in-css/9721865"
-          label="Stackoverflow question"
-        ></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://stackoverflow.com/questions/9721831/how-do-i-center-an-anchor-element-in-css/9721865"
+            label="Stackoverflow question"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

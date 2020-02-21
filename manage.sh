@@ -217,12 +217,12 @@ newArticle() {
 
   mkdir -p $parentFolder
   articleFile=$parentFolder/$transformed_name.html
-  cp src/templates/article-template.html $articleFile
+  cp src/common/templates/article-template.html $articleFile
   sed -i "s/__ARTICLE_NAME__/$name/g" $articleFile
 
   touch $parentFolder/$transformed_name.scss
   touch $parentFolder/$transformed_name.js
-  echo "import 'components/webcomponents/webcomponents.js';" > $parentFolder/$transformed_name.js
+  echo "import 'common/components/webcomponents/webcomponents.js';" > $parentFolder/$transformed_name.js
   echo "import 'common/common.js';" >> $parentFolder/$transformed_name.js
 
   metadata=$parentFolder/metadata.json
@@ -266,11 +266,11 @@ newTool() {
 
   mkdir -p $parentFolder
   toolFile=$parentFolder/$transformed_name.html
-  cp src/templates/tool-template.html $toolFile
+  cp src/common/templates/tool-template.html $toolFile
 
   touch $parentFolder/$transformed_name.scss
   touch $parentFolder/$transformed_name.js
-  echo "import 'components/webcomponents/webcomponents.js';" > $parentFolder/$transformed_name.js
+  echo "import 'common/components/webcomponents/webcomponents.js';" > $parentFolder/$transformed_name.js
   echo "import 'common/common.js';" >> $parentFolder/$transformed_name.js
 
   metadata=$parentFolder/metadata.json
@@ -306,8 +306,8 @@ newWebComponent() {
   componentName=$componentName"-webcomponent"
   componentClassName=$componentClassName"WebComponent"
 
-  componentFile=src/components/webcomponents/$componentName.js
-  cp src/templates/webcomponent-template.js $componentFile
+  componentFile=src/common/components/webcomponents/$componentName.js
+  cp src/common/templates/webcomponent-template.js $componentFile
 
   sed -i "s/__COMPONENT_CLASS_NAME__/$componentClassName/g" $componentFile
   sed -i "s/__COMPONENT_NAME__/$componentName/g" $componentFile
@@ -335,11 +335,11 @@ newReactComponent() {
   componentCssFileName=$componentName"-reactcomponent.scss"
   componentClassName=$componentClassName"ReactComponent"
 
-  componentJsFile=src/components/reactcomponents/$componentFileName/$componentJsFileName
-  componentCssFile=src/components/reactcomponents/$componentFileName/$componentCssFileName
-  mkdir -p src/components/reactcomponents/$componentFileName
-  cp src/templates/reactcomponent-template.js $componentJsFile
-  cp src/templates/reactcomponent-template.scss $componentCssFile
+  componentJsFile=src/common/components/reactcomponents/$componentFileName/$componentJsFileName
+  componentCssFile=src/common/components/reactcomponents/$componentFileName/$componentCssFileName
+  mkdir -p src/common/components/reactcomponents/$componentFileName
+  cp src/common/templates/reactcomponent-template.js $componentJsFile
+  cp src/common/templates/reactcomponent-template.scss $componentCssFile
 
   sed -i "s/__COMPONENT_NAME__/$componentClassName/g" $componentJsFile
   sed -i "s/__COMPONENT_CSS_FILES_NAME__/$componentCssFileName/g" $componentJsFile

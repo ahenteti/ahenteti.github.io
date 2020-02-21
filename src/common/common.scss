@@ -152,3 +152,12 @@ h2 .code {
 .page-content {
   display: none;
 }
+
+@keyframes fadeEffect {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

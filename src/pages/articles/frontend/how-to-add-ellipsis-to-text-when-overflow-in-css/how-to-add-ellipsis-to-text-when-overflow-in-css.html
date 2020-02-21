@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ${require('templates/head.html')}
+    ${require('common/templates/head.html')}
   </head>
 
   <body>
-    ${require('templates/pre-page-loader.html')}
+    ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
       <header></header>
 
@@ -13,9 +13,8 @@
         <h2>Ellipsis for Single Line Text</h2>
         <p>The current solution is based on <span class="code">text-overflow</span> CSS property</p>
         <br />
-        <code-tabs-webcomponent>
-          <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
-          <code-panel-webcomponent class="result" slot="code-panel">
+        <div class="code-tabs">
+          <div class="result">
             <style>
               .demo {
                 padding: 4rem 0;
@@ -42,102 +41,62 @@
                 </p>
               </div>
             </div>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="html">
-              <pre slot="code">
-                        <code>
-                            &lt;!DOCTYPE html&gt;
-                            &lt;html lang="en"&gt;
-                                &lt;head&gt;
-                                    &lt;meta charset="UTF-8" /&gt;
-                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-                                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
-                                    &lt;title&gt;Document&lt;/title&gt;
-                                    &lt;link rel="stylesheet" href="style.css" /&gt;
-                                &lt;/head&gt;
-                            
-                                &lt;body&gt;
-                                    &lt;main&gt;
-                                        &lt;div class="single-line"&gt;
-                                            &lt;p class="overflow-single-line"&gt;
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis
-                                                ad accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem explicabo
-                                                eligendi quaerat!
-                                            &lt;/p&gt;
-                                        &lt;/div&gt;
-                                    &lt;/main&gt;
-                                &lt;/body&gt;
-                            &lt;/html&gt;
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">style.css</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="css">
-              <pre slot="code">
-                        <code>
-                            *,
-                            *::before,
-                            *::after {
-                                margin: 0;
-                                padding: 0;
-                                box-sizing: border-box;
-                            }
-                            
-                            html {
-                                font-size: 62.5%;
-                                line-height: 1.5;
-                            }
-                            
-                            body {
-                                font-family: sans-serif;
-                                background-color: #eee;
-                            }
-                            
-                            main {
-                                width: 70%;
-                                margin: 4rem auto;
-                                padding: 4rem;
-                                background-color: white;
-                            }
-                            
-                            h2 {
-                                margin-bottom: 2rem;
-                            }
-                            
-                            p {
-                                font-size: 1.5rem;
-                            }
-                            
-                            .single-line {
-                                width: 400px;
-                                margin: 0 auto;
-                                margin-bottom: 3rem;
-                                padding: 3rem;
-                                background-color: #f9f9f9;
-                            }
-                            
-                            p.overflow-single-line {
-                                white-space: nowrap;
-                                overflow: hidden;
-                                text-overflow: ellipsis;
-                            }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-        </code-tabs-webcomponent>
+          </div>
+          <pre class="code-tab" language="html" tab-name="index.html">
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8" /&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+                    &lt;title&gt;Document&lt;/title&gt;
+                    &lt;link rel="stylesheet" href="style.css" /&gt;
+                &lt;/head&gt;
+            
+                &lt;body&gt;
+                    &lt;main&gt;
+                        &lt;div class="single-line"&gt;
+                            &lt;p class="overflow-single-line"&gt;
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis
+                                ad accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem explicabo
+                                eligendi quaerat!
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/main&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
+          </pre>
+          <pre class="code-tab" language="css" tab-name="style.css">
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            .single-line {
+                width: 400px;
+                margin: 0 auto;
+                margin-bottom: 3rem;
+                padding: 3rem;
+                background-color: #f9f9f9;
+            }
+            
+            p.overflow-single-line {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+          </pre>
+        </div>
 
         <h2>Ellipsis for Multi Line Text</h2>
 
         <p>The current solution is based on <span class="code">javascript</span> to truncate long texts</p>
         <br />
-        <code-tabs-webcomponent>
-          <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
-          <code-panel-webcomponent class="result" slot="code-panel">
+        <div class="code-tabs">
+          <div class="result">
             <style>
               .demo {
                 line-height: 1.4;
@@ -162,128 +121,82 @@
                 </p>
               </div>
             </div>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="html">
-              <pre slot="code">
-                        <code>
-                            &lt;!DOCTYPE html&gt;
-                            &lt;html lang="en"&gt;
-                                &lt;head&gt;
-                                    &lt;meta charset="UTF-8" /&gt;
-                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-                                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
-                                    &lt;title&gt;Document&lt;/title&gt;
-                                    &lt;link rel="stylesheet" href="style.css" /&gt;
-                                &lt;/head&gt;
-                            
-                                &lt;body&gt;
-                                    &lt;main&gt;
-                                        &lt;div class="multi-line"&gt;
-                                            &lt;p class="overflow-multi-line" data-max-lines="3"&gt;
-                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis
-                                                asdfdsfd accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem
-                                                explicabo eligendi quaerat!
-                                            &lt;/p&gt;
-                                        &lt;/div&gt;
-                                    &lt;/main&gt;
-                                    &lt;script src="./script.js"&gt;&lt;/script&gt;
-                                &lt;/body&gt;
-                            &lt;/html&gt;
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">script.js</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="js">
-              <pre slot="code">
-                        <code>
-                            const \$overflowMultiLineTexts = document.querySelectorAll('.overflow-multi-line');
-                            setTimeout(() => \$overflowMultiLineTexts.forEach(ellipsizeTextBox), 0);
-                            
-                            function ellipsizeTextBox(element) {
-                                const maxLines = parseInt(element.dataset.maxLines) ││ 3;
-                                const elementLineHeight = calcElementLineHeight(element);
-                                let currentElementLines = calcElementLines(element, elementLineHeight);
-                                const wordArray = element.innerHTML.split(' ');
-                                element.style.textAlign = 'justify';
-                                while (currentElementLines &gt; maxLines) {
-                                    wordArray.pop();
-                                    element.innerHTML = wordArray.join(' ') + ' ...';
-                                    currentElementLines = calcCurrentElementLines(element, elementLineHeight);
-                                }
-                            }
-                            
-                            function calcElementLines(element, elementLineHeight) {
-                                return Math.floor(element.offsetHeight / elementLineHeight);
-                            }
-                            
-                            function calcElementLineHeight(element) {
-                                let res = element.style.lineHeight;
-                                if (isNaN(parseInt(res))) {
-                                    res = document.defaultView.getComputedStyle(element).getPropertyValue('line-height');
-                                }
-                                if (isNaN(parseInt(res))) {
-                                    res = 20; // default value that I have chosen in this example. feel free to change it
-                                }
-                                return parseInt(res);
-                            }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">style.css</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="css">
-              <pre slot="code">
-                        <code>
-                            *,
-                            *::before,
-                            *::after {
-                                margin: 0;
-                                padding: 0;
-                                box-sizing: border-box;
-                            }
-                            
-                            html {
-                                font-size: 62.5%;
-                                line-height: 1.5;
-                            }
-                            
-                            body {
-                                font-family: sans-serif;
-                                background-color: #eee;
-                            }
-                            
-                            main {
-                                width: 70%;
-                                margin: 4rem auto;
-                                padding: 4rem;
-                                background-color: white;
-                            }
-                            
-                            h2 {
-                                margin-bottom: 2rem;
-                            }
-                            
-                            p {
-                                font-size: 1.5rem;
-                            }
-                            
-                            .multi-line {
-                                width: 400px;
-                                margin: 0 auto;
-                                margin-bottom: 3rem;
-                                padding: 3rem;
-                                background-color: #f9f9f9;
-                            }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-        </code-tabs-webcomponent>
+          </div>
+          <pre class="code-tab" language="html" tab-name="index.html">
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8" /&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+                    &lt;title&gt;Document&lt;/title&gt;
+                    &lt;link rel="stylesheet" href="style.css" /&gt;
+                &lt;/head&gt;
+            
+                &lt;body&gt;
+                    &lt;main&gt;
+                        &lt;div class="multi-line"&gt;
+                            &lt;p class="overflow-multi-line" data-max-lines="3"&gt;
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis illum neque quasi reiciendis facilis
+                                asdfdsfd accusantium quibusdam velit! Sapiente optio quis nam quam, enim iste? Similique quidem
+                                explicabo eligendi quaerat!
+                            &lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/main&gt;
+                    &lt;script src="./script.js"&gt;&lt;/script&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
+          </pre>
+          <pre class="code-tab" language="javascript" tab-name="script.js">
+            const \$overflowMultiLineTexts = document.querySelectorAll('.overflow-multi-line');
+            setTimeout(() => \$overflowMultiLineTexts.forEach(ellipsizeTextBox), 0);
+            
+            function ellipsizeTextBox(element) {
+                const maxLines = parseInt(element.dataset.maxLines) ││ 3;
+                const elementLineHeight = calcElementLineHeight(element);
+                let currentElementLines = calcElementLines(element, elementLineHeight);
+                const wordArray = element.innerHTML.split(' ');
+                element.style.textAlign = 'justify';
+                while (currentElementLines &gt; maxLines) {
+                    wordArray.pop();
+                    element.innerHTML = wordArray.join(' ') + ' ...';
+                    currentElementLines = calcCurrentElementLines(element, elementLineHeight);
+                }
+            }
+            
+            function calcElementLines(element, elementLineHeight) {
+                return Math.floor(element.offsetHeight / elementLineHeight);
+            }
+            
+            function calcElementLineHeight(element) {
+                let res = element.style.lineHeight;
+                if (isNaN(parseInt(res))) {
+                    res = document.defaultView.getComputedStyle(element).getPropertyValue('line-height');
+                }
+                if (isNaN(parseInt(res))) {
+                    res = 20; // default value that I have chosen in this example. feel free to change it
+                }
+                return parseInt(res);
+            }
+          </pre>
+          <pre class="code-tab" language="css" tab-name="style.css">
+            *,
+            *::before,
+            *::after {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            
+            .multi-line {
+                width: 400px;
+                margin: 0 auto;
+                margin-bottom: 3rem;
+                padding: 3rem;
+                background-color: #f9f9f9;
+            }
+          </pre>
+        </div>
 
         <more-info-webcomponent>
           <link-webcomponent

@@ -1,286 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ${require('templates/head.html')}
+    ${require('common/templates/head.html')}
   </head>
 
   <body>
-    ${require('templates/pre-page-loader.html')}
+    ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <code-tabs-webcomponent>
-        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
-        <code-panel-webcomponent class="result" slot="code-panel">
-          <div class="demo">
-            <div class="buttons">
-              <button class="tooltip-top-demo" data-tooltip-demo="tooltip message">
-                Tooltip on the top
-              </button>
-              <button class="tooltip-right-demo" data-tooltip-demo="tooltip message">
-                Tooltip on the right
-              </button>
-              <button class="tooltip-bottom-demo" data-tooltip-demo="tooltip message">
-                Tooltip on the bottom
-              </button>
-              <button class="tooltip-left-demo" data-tooltip-demo="tooltip message">
-                Tooltip on the left
-              </button>
+      <article-webcomponent>
+        <div class="code-tabs">
+          <div class="result">
+            <div class="demo">
+              <div class="buttons">
+                <button class="tooltip-top-demo" data-tooltip-demo="tooltip message">
+                  Tooltip on the top
+                </button>
+                <button class="tooltip-right-demo" data-tooltip-demo="tooltip message">
+                  Tooltip on the right
+                </button>
+                <button class="tooltip-bottom-demo" data-tooltip-demo="tooltip message">
+                  Tooltip on the bottom
+                </button>
+                <button class="tooltip-left-demo" data-tooltip-demo="tooltip message">
+                  Tooltip on the left
+                </button>
+              </div>
             </div>
           </div>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="html">
-            <pre slot="code">
-                        <code>
-                            &lt;!DOCTYPE html&gt;
-                            &lt;html lang="en"&gt;
-                                &lt;head&gt;
-                                    &lt;meta charset="UTF-8" /&gt;
-                                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-                                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
-                                    &lt;title&gt;Document&lt;/title&gt;
-                                    &lt;link rel="stylesheet" href="base.css" /&gt;
-                                    &lt;link rel="stylesheet" href="tooltip.css" /&gt;
-                                &lt;/head&gt;
-                            
-                                &lt;body&gt;
-                                    &lt;main&gt;
-                                        &lt;h2&gt;CSS Tooltips&lt;/h2&gt;
-                                        &lt;div class="buttons"&gt;
-                                            &lt;button class="tooltip-top" data-tooltip="tooltip message"&gt;Tooltip on the top&lt;/button&gt;
-                                            &lt;button class="tooltip-right" data-tooltip="tooltip message"&gt;Tooltip on the right&lt;/button&gt;
-                                            &lt;button class="tooltip-bottom" data-tooltip="tooltip message"&gt;Tooltip on the bottom&lt;/button&gt;
-                                            &lt;button class="tooltip-left" data-tooltip="tooltip message"&gt;Tooltip on the left&lt;/button&gt;
-                                        &lt;/div&gt;
-                                    &lt;/main&gt;
-                                &lt;/body&gt;
-                            &lt;/html&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">tooltip.css</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="css">
-            <pre slot="code">
-                        <code>
-                            :root {
-                                --tooltip-background-color: rgba(51, 51, 51, 0.8);
-                                --tooltip-color: white;
-                                --tooltip-triangle-height: 0.7rem;
-                                --tooltip-margin: 5px;
-                            }
-                            
-                            [data-tooltip] {
-                                position: relative;
-                            }
-                            
-                            [data-tooltip]::before,
-                            [data-tooltip]::after {
-                                text-transform: initial;
-                                z-index: 99;
-                                visibility: hidden;
-                                opacity: 0;
-                                transition: visibility 0s, opacity 0.2s;
-                            }
-                            
-                            [data-tooltip]:hover::before,
-                            [data-tooltip]:hover::after {
-                                visibility: visible;
-                                opacity: 1;
-                            }
-                            
-                            [data-tooltip].tooltip-top::before {
-                                content: attr(data-tooltip);
-                                position: absolute;
-                                background-color: var(--tooltip-background-color);
-                                color: var(--tooltip-color);
-                                padding: 0.8rem 1.6rem;
-                                border-radius: 0.3rem;
-                                white-space: nowrap;
-                                font-size: 1.4rem;
-                            
-                                bottom: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-                                left: 50%;
-                                transform: translateX(-50%);
-                            }
-                            
-                            [data-tooltip].tooltip-top::after {
-                                content: '';
-                                position: absolute;
-                                border-top: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-                                border-right: var(--tooltip-triangle-height) solid transparent;
-                                border-bottom: none;
-                                border-left: var(--tooltip-triangle-height) solid transparent;
-                            
-                                bottom: calc(100% + var(--tooltip-margin));
-                                left: 50%;
-                                transform: translateX(-50%);
-                            }
-                            
-                            [data-tooltip].tooltip-right::before {
-                                content: attr(data-tooltip);
-                                position: absolute;
-                                background-color: var(--tooltip-background-color);
-                                color: var(--tooltip-color);
-                                padding: 0.8rem 1.6rem;
-                                border-radius: 0.3rem;
-                                white-space: nowrap;
-                                font-size: 1.4rem;
-                            
-                                top: 50%;
-                                left: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-                                transform: translateY(-50%);
-                            }
-                            
-                            [data-tooltip].tooltip-right::after {
-                                content: '';
-                                position: absolute;
-                                border-top: var(--tooltip-triangle-height) solid transparent;
-                                border-right: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-                                border-bottom: var(--tooltip-triangle-height) solid transparent;
-                                border-left: none;
-                            
-                                top: 50%;
-                                left: calc(100% + var(--tooltip-margin));
-                                transform: translateY(-50%);
-                            }
-                            
-                            [data-tooltip].tooltip-bottom::before {
-                                content: attr(data-tooltip);
-                                position: absolute;
-                                background-color: var(--tooltip-background-color);
-                                color: var(--tooltip-color);
-                                padding: 0.8rem 1.6rem;
-                                border-radius: 0.3rem;
-                                white-space: nowrap;
-                                font-size: 1.4rem;
-                            
-                                top: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-                                left: 50%;
-                                transform: translateX(-50%);
-                            }
-                            
-                            [data-tooltip].tooltip-bottom::after {
-                                content: '';
-                                position: absolute;
-                                border-top: none;
-                                border-right: var(--tooltip-triangle-height) solid transparent;
-                                border-bottom: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-                                border-left: var(--tooltip-triangle-height) solid transparent;
-                            
-                                top: calc(100% + var(--tooltip-margin));
-                                left: 50%;
-                                transform: translateX(-50%);
-                            }
-                            
-                            [data-tooltip].tooltip-left::before {
-                                content: attr(data-tooltip);
-                                position: absolute;
-                                background-color: var(--tooltip-background-color);
-                                color: var(--tooltip-color);
-                                padding: 0.8rem 1.6rem;
-                                border-radius: 0.3rem;
-                                white-space: nowrap;
-                                font-size: 1.4rem;
-                            
-                                top: 50%;
-                                right: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
-                                transform: translateY(-50%);
-                            }
-                            
-                            [data-tooltip].tooltip-left::after {
-                                content: '';
-                                position: absolute;
-                                border-top: var(--tooltip-triangle-height) solid transparent;
-                                border-right: none;
-                                border-bottom: var(--tooltip-triangle-height) solid transparent;
-                                border-left: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
-                            
-                                top: 50%;
-                                right: calc(100% + var(--tooltip-margin));
-                                transform: translateY(-50%);
-                            }
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">base.css</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="css">
-            <pre slot="code">
-                        <code>
-                            :root {
-                                --primary-color: #078eed;
-                            }
-                            
-                            *,
-                            *::before,
-                            *::after {
-                                margin: 0;
-                                padding: 0;
-                                box-sizing: border-box;
-                            }
-                            
-                            html {
-                                font-size: 62.5%;
-                                line-height: 1.4;
-                            }
-                            
-                            body {
-                                font-family: sans-serif;
-                                background-color: #eee;
-                            }
-                            
-                            main {
-                                width: 70%;
-                                margin: 4rem auto;
-                                padding: 4rem;
-                                background-color: white;
-                            }
-                            
-                            h2 {
-                                margin-bottom: 2rem;
-                            }
-                            
-                            .buttons {
-                                display: flex;
-                                align-items: center;
-                                justify-content: space-between;
-                            }
-                            
-                            button {
-                                display: block;
-                                padding: 0.8rem 1.6rem;
-                                text-transform: uppercase;
-                                border: 2px solid var(--primary-color);
-                                border-radius: 2px;
-                                outline: none;
-                                background-color: white;
-                                color: var(--primary-color);
-                                transition: all 0.2s;
-                            }
-                            
-                            button:hover {
-                                background-color: var(--primary-color);
-                                color: white;
-                            }
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-      </code-tabs-webcomponent>
+          <pre class="code-tab" language="html" tab-name="index.html">
+            &lt;!DOCTYPE html&gt;
+            &lt;html lang="en"&gt;
+                &lt;head&gt;
+                    &lt;meta charset="UTF-8" /&gt;
+                    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+                    &lt;meta http-equiv="X-UA-Compatible" content="ie=edge" /&gt;
+                    &lt;title&gt;Document&lt;/title&gt;
+                    &lt;link rel="stylesheet" href="base.css" /&gt;
+                    &lt;link rel="stylesheet" href="tooltip.css" /&gt;
+                &lt;/head&gt;
+            
+                &lt;body&gt;
+                    &lt;main&gt;
+                        &lt;h2&gt;CSS Tooltips&lt;/h2&gt;
+                        &lt;div class="buttons"&gt;
+                            &lt;button class="tooltip-top" data-tooltip="tooltip message"&gt;Tooltip on the top&lt;/button&gt;
+                            &lt;button class="tooltip-right" data-tooltip="tooltip message"&gt;Tooltip on the right&lt;/button&gt;
+                            &lt;button class="tooltip-bottom" data-tooltip="tooltip message"&gt;Tooltip on the bottom&lt;/button&gt;
+                            &lt;button class="tooltip-left" data-tooltip="tooltip message"&gt;Tooltip on the left&lt;/button&gt;
+                        &lt;/div&gt;
+                    &lt;/main&gt;
+                &lt;/body&gt;
+            &lt;/html&gt;
+        </pre
+          >
+          <pre class="code-tab" language="css" tab-name="style.css">
+          :root {
+              --tooltip-background-color: rgba(51, 51, 51, 0.8);
+              --tooltip-color: white;
+              --tooltip-triangle-height: 0.7rem;
+              --tooltip-margin: 5px;
+          }
+          
+          [data-tooltip] {
+              position: relative;
+          }
+          
+          [data-tooltip]::before,
+          [data-tooltip]::after {
+              text-transform: initial;
+              z-index: 99;
+              visibility: hidden;
+              opacity: 0;
+              transition: visibility 0s, opacity 0.2s;
+          }
+          
+          [data-tooltip]:hover::before,
+          [data-tooltip]:hover::after {
+              visibility: visible;
+              opacity: 1;
+          }
+          
+          [data-tooltip].tooltip-top::before {
+              content: attr(data-tooltip);
+              position: absolute;
+              background-color: var(--tooltip-background-color);
+              color: var(--tooltip-color);
+              padding: 0.8rem 1.6rem;
+              border-radius: 0.3rem;
+              white-space: nowrap;
+              font-size: 1.4rem;
+          
+              bottom: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+              left: 50%;
+              transform: translateX(-50%);
+          }
+          
+          [data-tooltip].tooltip-top::after {
+              content: '';
+              position: absolute;
+              border-top: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+              border-right: var(--tooltip-triangle-height) solid transparent;
+              border-bottom: none;
+              border-left: var(--tooltip-triangle-height) solid transparent;
+          
+              bottom: calc(100% + var(--tooltip-margin));
+              left: 50%;
+              transform: translateX(-50%);
+          }
+          
+          [data-tooltip].tooltip-right::before {
+              content: attr(data-tooltip);
+              position: absolute;
+              background-color: var(--tooltip-background-color);
+              color: var(--tooltip-color);
+              padding: 0.8rem 1.6rem;
+              border-radius: 0.3rem;
+              white-space: nowrap;
+              font-size: 1.4rem;
+          
+              top: 50%;
+              left: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+              transform: translateY(-50%);
+          }
+          
+          [data-tooltip].tooltip-right::after {
+              content: '';
+              position: absolute;
+              border-top: var(--tooltip-triangle-height) solid transparent;
+              border-right: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+              border-bottom: var(--tooltip-triangle-height) solid transparent;
+              border-left: none;
+          
+              top: 50%;
+              left: calc(100% + var(--tooltip-margin));
+              transform: translateY(-50%);
+          }
+          
+          [data-tooltip].tooltip-bottom::before {
+              content: attr(data-tooltip);
+              position: absolute;
+              background-color: var(--tooltip-background-color);
+              color: var(--tooltip-color);
+              padding: 0.8rem 1.6rem;
+              border-radius: 0.3rem;
+              white-space: nowrap;
+              font-size: 1.4rem;
+          
+              top: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+              left: 50%;
+              transform: translateX(-50%);
+          }
+          
+          [data-tooltip].tooltip-bottom::after {
+              content: '';
+              position: absolute;
+              border-top: none;
+              border-right: var(--tooltip-triangle-height) solid transparent;
+              border-bottom: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+              border-left: var(--tooltip-triangle-height) solid transparent;
+          
+              top: calc(100% + var(--tooltip-margin));
+              left: 50%;
+              transform: translateX(-50%);
+          }
+          
+          [data-tooltip].tooltip-left::before {
+              content: attr(data-tooltip);
+              position: absolute;
+              background-color: var(--tooltip-background-color);
+              color: var(--tooltip-color);
+              padding: 0.8rem 1.6rem;
+              border-radius: 0.3rem;
+              white-space: nowrap;
+              font-size: 1.4rem;
+          
+              top: 50%;
+              right: calc(100% + var(--tooltip-margin) + var(--tooltip-triangle-height));
+              transform: translateY(-50%);
+          }
+          
+          [data-tooltip].tooltip-left::after {
+              content: '';
+              position: absolute;
+              border-top: var(--tooltip-triangle-height) solid transparent;
+              border-right: none;
+              border-bottom: var(--tooltip-triangle-height) solid transparent;
+              border-left: var(--tooltip-triangle-height) solid var(--tooltip-background-color);
+          
+              top: 50%;
+              right: calc(100% + var(--tooltip-margin));
+              transform: translateY(-50%);
+          }
+        </pre
+          >
+        </div>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="https://www.w3schools.com/css/css_tooltip.asp"
-          label="w3schools css-tooltip article"
-        ></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://www.w3schools.com/css/css_tooltip.asp"
+            label="w3schools css-tooltip article"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

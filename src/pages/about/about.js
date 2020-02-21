@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import * as constants from 'common/constants.js';
-import 'components/webcomponents/webcomponents.js';
+import 'common/components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './about.scss';
 

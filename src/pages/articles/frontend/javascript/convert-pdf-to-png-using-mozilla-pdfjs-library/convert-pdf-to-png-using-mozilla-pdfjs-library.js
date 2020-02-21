@@ -1,4 +1,4 @@
-import 'components/webcomponents/webcomponents.js';
+import 'common/components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './convert-pdf-to-png-using-mozilla-pdfjs-library.scss';
 import * as constants from 'common/constants.js';
