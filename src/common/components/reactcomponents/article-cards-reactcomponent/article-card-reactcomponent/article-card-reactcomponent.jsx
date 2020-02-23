@@ -8,7 +8,7 @@ import {
   addNotYetVisibleClass
 } from '../../fancy-title-reactcomponent/slidein-utlis';
 import './article-card-reactcomponent.scss';
-import * as commonConstants from 'common/constants';
+import * as constants from 'common/constants';
 
 class ArticleCardReactComponent extends React.Component {
   constructor(props) {
@@ -46,14 +46,15 @@ class ArticleCardReactComponent extends React.Component {
 
   componentDidMount() {
     this.highlightNewArticle();
-    setTimeout(() => {
+    $(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
       if (alreadyVisible(this.container)) {
         addAlreadyVisibleClass(this.container);
       } else {
         addNotYetVisibleClass(this.container);
       }
       window.addEventListener('scroll', this.scrollHandler);
-    }, 0);
+    });
+    setTimeout(() => {}, 0);
   }
 
   highlightNewArticle() {
@@ -64,7 +65,7 @@ class ArticleCardReactComponent extends React.Component {
 
   selectTag(event) {
     event.preventDefault();
-    this.props.selectTag(commonConstants.NEW_ARTICLES);
+    this.props.selectTag(constants.NEW_ARTICLES);
   }
 
   componentWillUnmount() {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-
+import * as constants from 'common/constants';
 import './fancy-title-reactcomponent.scss';
 import {
   checkAndAddSlideInClass,
@@ -23,14 +23,14 @@ class FancyTitleReactComponent extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => {
+    $(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
       if (alreadyVisible(this.container)) {
         addAlreadyVisibleClass(this.container);
       } else {
         addNotYetVisibleClass(this.container);
       }
       window.addEventListener('scroll', this.scrollHandler);
-    }, 0);
+    });
   }
 
   componentWillUnmount() {
