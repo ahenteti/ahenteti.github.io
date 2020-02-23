@@ -1,10 +1,4 @@
-import * as actionTypes from './ActionTypes';
-import * as commonConstants from 'common/constants';
-
-export const changeThemeColor = () => ({
-  type: actionTypes.CHANGE_THEME_COLOR,
-  newTheme: window.localStorage.getItem(commonConstants.LOCAL_STORAGE_THEME_KEY)
-});
+import * as actionTypes from './action.types';
 
 export const changeWebsiteDivision = selectedWebsiteDivision => ({
   type: actionTypes.CHANGE_WEBSITE_DIVISION,

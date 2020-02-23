@@ -1,8 +1,8 @@
 import * as React from 'react';
 import './home-page-reactcomponent.scss';
 import * as constants from 'common/constants';
-import ArticlesDivisionReactComponent from 'common/components/reactcomponents/articles-division-reactcomponent/articles-division-reactcomponent';
-import ToolsDivisionReactComponent from 'common/components/reactcomponents/tools-division-reactcomponent/tools-division-reactcomponent';
+import ArticlesDivisionReactComponent from 'pages/index/react/articles-division-reactcomponent/articles-division-reactcomponent';
+import ToolsDivisionReactComponent from 'pages/index/react/tools-division-reactcomponent/tools-division-reactcomponent';
 
 class HomePageReactComponent extends React.Component {
   render() {

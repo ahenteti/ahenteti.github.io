@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { changeThemeColor } from '../actions';
+import { changeThemeColor } from '../actions/action.creators';
 import HeaderReactComponent from 'common/components/reactcomponents/header-reactcomponent/header-reactcomponent';
 
 const mapStateToProps = state => ({

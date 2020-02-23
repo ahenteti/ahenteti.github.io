@@ -1,6 +1,6 @@
 import * as React from 'react';
-import SearchReactComponent from 'common/components/reactcomponents/search-reactcomponent/search-reactcomponent';
-import ArticleCardsReactComponent from 'common/components/reactcomponents/article-cards-reactcomponent/article-cards-reactcomponent';
+import SearchReactComponent from 'pages/index/react/search-reactcomponent/search-reactcomponent';
+import ArticleCardsReactComponent from 'pages/index/react/article-cards-reactcomponent/article-cards-reactcomponent';
 import './articles-division-reactcomponent.scss';
 
 class ArticlesDivisionReactComponent extends React.Component {

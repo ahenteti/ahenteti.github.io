@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TagListReactComponent from '../../tag-list-reactcomponent/tag-list-reactcomponent';
+import TagListReactComponent from 'common/components/reactcomponents/tag/tag-list-reactcomponent/tag-list-reactcomponent';
 import {
   checkAndAddSlideInClass,
   alreadyVisible,
   addAlreadyVisibleClass,
   addNotYetVisibleClass
-} from '../../fancy-title-reactcomponent/slidein-utlis';
+} from 'common/components/reactcomponents/fancy-title-reactcomponent/slidein-utlis';
 import './article-card-reactcomponent.scss';
 import * as constants from 'common/constants';
 

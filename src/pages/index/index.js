@@ -3,14 +3,14 @@
 /* eslint-disable no-undef */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import store from 'common/redux/store';
+import store from './redux/store';
 import { Provider } from 'react-redux';
 
 import 'common/components/webcomponents/webcomponents.js';
 import 'common/common.js';
 import './index.scss';
-import WebsiteDivisionsReduxContainer from 'common/redux/containers/WebsiteDivisionReduxContainer';
-import HomePageReduxContainer from 'common/redux/containers/HomePageReduxContainer';
+import WebsiteDivisionsReduxContainer from 'pages/index/redux/containers/WebsiteDivisionReduxContainer';
+import HomePageReduxContainer from 'pages/index/redux/containers/HomePageReduxContainer';
 
 // main actions
 renderWebsiteDivisionSelectComponent();

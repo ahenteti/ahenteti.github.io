@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import WebsiteDivisionsReactComponent from 'common/components/reactcomponents/website-divisions-reactcomponent/website-divisions-reactcomponent';
-import { changeWebsiteDivision } from '../actions/index';
+import WebsiteDivisionsReactComponent from 'pages/index/react/website-divisions-reactcomponent/website-divisions-reactcomponent';
+import { changeWebsiteDivision } from '../action.creators';
 
 const mapStateToProps = state => ({
   currentWebsiteDivision: state.currentWebsiteDivision,

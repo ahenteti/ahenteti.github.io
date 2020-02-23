@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import HomePageReactComponent from 'common/components/reactcomponents/home-page-reactcomponent/home-page-reactcomponent';
-import { selectTag, onArticlesFilterChange } from '../actions/index';
+import HomePageReactComponent from 'pages/index/react/home-page-reactcomponent/home-page-reactcomponent';
+import { selectTag, onArticlesFilterChange } from '../action.creators';
 
 const mapStateToProps = state => ({
   articles: state.articles,
