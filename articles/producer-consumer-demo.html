@@ -1,6 +1,6 @@
 <!doctype html> <html lang=en> <head> <meta charset=UTF-8 /> <meta name=viewport content="width=device-width,initial-scale=1"/> <meta http-equiv=X-UA-Compatible content="ie=edge"/> <link rel="shortcut icon" type=image/png href=/assets/img/favicon.png /> <script src=https://unpkg.com/ionicons@5.0.0/dist/ionicons.js></script> <script src=https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/2.2.10/webcomponents-bundle.js></script> <script src=https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js></script> <script src=https://kit.fontawesome.com/58854edabd.js crossorigin=anonymous></script> <title>ahenteti zone</title>  <script type="text/javascript">window.webpackManifest={
-  "index.js": "/js/index.fc0e3aca33a3f1ba91e4.js",
-  "index.css": "/css/index.fc0e3aca33a3f1ba91e4.css",
+  "index.js": "/js/index.b7a5f575f4f7fa175f70.js",
+  "index.css": "/css/index.b7a5f575f4f7fa175f70.css",
   "what-i-have-done-to-add-react-to-my-website.js": "/js/what-i-have-done-to-add-react-to-my-website.e07007ee6da20900e8a2.js",
   "what-i-have-done-to-add-react-to-my-website.css": "/css/what-i-have-done-to-add-react-to-my-website.e07007ee6da20900e8a2.css",
   "code-highlighter.js": "/js/code-highlighter.8042311a3922ed3008f9.js",
@@ -113,7 +113,7 @@
   "highlightStyle.js": "/js/highlightStyle.753e1fb05b06239a6d2e.js",
   "highlightStyle.css": "/css/highlightStyle.753e1fb05b06239a6d2e.css",
   "assets/fonts/builder-design-pattern.svg": "/assets/fonts/builder-design-pattern.svg",
-  "assets/fonts/singleton-design-pattern.svg": "/assets/fonts/singleton-design-pattern.svg",
+  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg",
   "assets/fonts/factory-design-pattern.svg": "/assets/fonts/factory-design-pattern.svg",
   "assets/fonts/volatile-keyword-in-java.svg": "/assets/fonts/volatile-keyword-in-java.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg",
@@ -128,7 +128,7 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
-  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg"
+  "assets/fonts/singleton-design-pattern.svg": "/assets/fonts/singleton-design-pattern.svg"
 }</script><link href="/css/highlightStyle.753e1fb05b06239a6d2e.css" rel="stylesheet"><link href="/css/producer-consumer-demo.b8e7865c5853cb6114e2.css" rel="stylesheet"></head> <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Overview</h2> <p class=mb-s> In this demo, I will show you how we can implement the Producer-Consumer pattern in java. This pattern is baed a <span class=code>Storage</span> where </p> <ul> <li> multiple <span class=code>Producer</span> can add items and wait if no space is available on the storage </li> <li> multiple <span class=code>Consumer</span> can process items and wait if no item is available on the storage </li> </ul> <h2>Storage implementation steps</h2> <p> The difficulty in this pattern is how to implement the <span class=code>Storage</span> <span class=code>add</span> and <span class=code>remove</span> methods </p> <div class=steps> <h3 class=step>Initial version</h3> <p>In this initial version, we are not going to handle concurrency and Storage maxSize problems</p> <pre class=code language=java>
                   private final Queue&lt;E&gt; queue;
 
