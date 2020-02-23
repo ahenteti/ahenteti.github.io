@@ -20,6 +20,8 @@ import './vendor/highlight/atom-one-light.min.css';
 import HeaderReduxContainer from 'common/redux/containers/HeaderReduxContainer';
 import CodeReactComponent from 'common/components/reactcomponents/code/code-reactcomponent/code-reactcomponent.jsx';
 import CodeTabsReactComponent from 'common/components/reactcomponents/code/code-tabs-reactcomponent/code-tabs-reactcomponent.jsx';
+import ToastLevel from 'common/components/reactcomponents/toast-reactcomponent/toast-level';
+import ToastReactComponent from 'common/components/reactcomponents/toast-reactcomponent/toast-reactcomponent';
 
 // main actions
 $(window).load(() => {
@@ -97,4 +99,9 @@ function findTheme() {
   }
   localStorage.setItem(constants.LOCAL_STORAGE_THEME_KEY, theme);
   return theme;
+}
+
+export function alertUser(domElement, msg, level = ToastLevel.INFO) {
+  ReactDOM.unmountComponentAtNode(domElement);
+  ReactDOM.render(<ToastReactComponent msg={msg} level={level} />, domElement);
 }

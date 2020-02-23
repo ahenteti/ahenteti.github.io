@@ -7,7 +7,6 @@ class TextWithIconWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
     <style>
         .container {
-          margin: 1rem 0 0;
           display: flex;
           flex-wrap: wrap;
           background: var(--background-color);

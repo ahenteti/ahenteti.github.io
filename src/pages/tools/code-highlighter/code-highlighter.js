@@ -1,12 +1,14 @@
 /* eslint-disable no-undef */
 import 'common/components/webcomponents/webcomponents.js';
-import 'common/common.js';
 import './code-highlighter.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CodeReactComponent from 'common/components/reactcomponents/code/code-reactcomponent/code-reactcomponent.jsx';
+import ToastLevel from 'common/components/reactcomponents/toast-reactcomponent/toast-level';
+import { alertUser } from 'common/common.js';
 
 // global variables
+const toast = document.querySelector('#toast');
 const highlightButton = document.querySelector('#highlight');
 const resetButton = document.querySelector('#reset');
 const codeInput = document.querySelector('#input');
@@ -19,7 +21,7 @@ resetButton.addEventListener('click', handleResetButtonClick);
 // functions
 function handleHighlightButtonClick(event) {
   if (codeInput.value.length === 0) {
-    console.log('empty code input');
+    alertUser(toast, 'no code to highlight', ToastLevel.ERROR);
     return;
   }
   hideButton(highlightButton);

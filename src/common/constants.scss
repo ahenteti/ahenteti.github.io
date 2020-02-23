@@ -77,6 +77,8 @@ body.dark {
   --info-component-text-color: rgb(166, 213, 250);
   --warn-component-background-color: rgb(25, 15, 0);
   --warn-component-text-color: rgb(255, 213, 153);
+  --error-component-background-color: rgb(24, 6, 5);
+  --error-component-text-color: rgb(250, 179, 174);
   --quote-component-background-color: #32373b;
   --quote-component-text-color: #999;
   --quote-component-text-font-style: italic;
@@ -173,6 +175,8 @@ body.light {
   --info-component-text-color: rgb(13, 60, 97);
   --warn-component-background-color: rgb(255, 244, 229);
   --warn-component-text-color: rgb(102, 60, 0);
+  --error-component-background-color: rgb(253, 236, 234);
+  --error-component-text-color: rgb(97, 26, 21);
   --quote-component-background-color: #fafafa;
   --quote-component-text-color: #888;
   --quote-component-text-font-style: italic;
