@@ -17,12 +17,12 @@
 
         <h3>How to uppercase the first character in a variable</h3>
         <pre class="code" language="bash">
-          foo=\$(tr '[:lower:]' '[:upper:]' <<< \${foo:0:1})\${foo:1}
+          foo=\$(tr '[:lower:]' '[:upper:]' &lt;&lt;&lt; \${foo:0:1})\${foo:1}
         </pre>
 
         <h3>How to split a string on delimiter</h3>
         <pre class="code" language="bash">
-          IFS='-' read -ra array <<< "a-b-c"; unset IFS
+          IFS='-' read -ra array &lt;&lt;&lt; "a-b-c"; unset IFS
           for i in \${array[@]}; do
               echo \$i
           done
