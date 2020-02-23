@@ -15,6 +15,8 @@ import './slide-in.scss';
 import './bounce.scss';
 import './table.scss';
 import './tooltip.scss';
+import './input.scss';
+import './textarea.scss';
 import './vendor/font.css';
 import './vendor/highlight/atom-one-light.min.css';
 import HeaderReduxContainer from 'common/redux/containers/HeaderReduxContainer';

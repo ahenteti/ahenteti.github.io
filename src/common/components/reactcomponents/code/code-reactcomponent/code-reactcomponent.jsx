@@ -6,7 +6,7 @@ import * as hljs from 'common/vendor/highlight/highlight.min.js';
 class CodeReactComponent extends React.Component {
   componentDidMount() {
     this.codeElement.innerHTML = this.trimmedCode;
-    this.addCodeLanguage(this.codeElement);
+    this.addCodeLanguage();
     hljs.highlightBlock(this.codeElement);
     this.resetCopyCodeIconTooltipDataAttribute();
     this.copyCodeIcon.addEventListener('mouseout', () => this.resetCopyCodeIconTooltipDataAttribute());
@@ -32,7 +32,7 @@ class CodeReactComponent extends React.Component {
     );
   }
 
-  addCodeLanguage(codeElement) {
+  addCodeLanguage() {
     if (this.props.language) {
       this.codeElement.classList.add(this.props.language);
     }

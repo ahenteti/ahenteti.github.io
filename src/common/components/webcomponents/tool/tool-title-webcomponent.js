@@ -10,7 +10,7 @@ class ToolTitleWebComponent extends ElementWebComponent {
           font-size: 5rem;
           color: var(--title-color);
           position: relative;
-          padding-bottom: 1rem;
+          padding-bottom: 3rem;
           margin-bottom: 5rem;
         }
 

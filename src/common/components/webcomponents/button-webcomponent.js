@@ -8,6 +8,7 @@ class ButtonWebComponent extends ElementWebComponent {
       <style>
         .container {
           display: flex;
+          height: 100%;
         }
 
         button {

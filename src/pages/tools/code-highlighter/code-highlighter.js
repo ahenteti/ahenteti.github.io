@@ -11,7 +11,8 @@ import { alertUser } from 'common/common.js';
 const toast = document.querySelector('#toast');
 const highlightButton = document.querySelector('#highlight');
 const resetButton = document.querySelector('#reset');
-const codeInput = document.querySelector('#input');
+const languageInput = document.querySelector('#language-input');
+const codeInput = document.querySelector('#code-input');
 const highlightedCode = document.querySelector('#highlighted-code');
 
 // main
@@ -21,42 +22,36 @@ resetButton.addEventListener('click', handleResetButtonClick);
 // functions
 function handleHighlightButtonClick(event) {
   if (codeInput.value.length === 0) {
-    alertUser(toast, 'no code to highlight', ToastLevel.ERROR);
+    alertUser(toast, 'No code to highlight', ToastLevel.ERROR);
     return;
   }
-  hideButton(highlightButton);
-  showButton(resetButton);
-  hideCodeInput();
-  showHighlightedCode(codeInput.value);
+  hide(highlightButton);
+  hide(languageInput);
+  show(resetButton);
+  hide(codeInput);
+  showHighlightedCode();
 }
 
 function handleResetButtonClick(event) {
-  hideButton(resetButton);
-  showButton(highlightButton);
+  hide(resetButton);
+  show(highlightButton);
+  show(languageInput);
   hideHighlightedCode();
-  showCodeInput();
+  show(codeInput, 'block');
 }
 
-function hideButton(button) {
-  button.style.display = 'none';
+function hide(el) {
+  el.style.display = 'none';
 }
 
-function showButton(button) {
-  button.style.display = 'inline';
-}
-
-function hideCodeInput() {
-  codeInput.style.display = 'none';
-}
-
-function showCodeInput() {
-  codeInput.style.display = 'block';
+function show(el, display = 'inline') {
+  el.style.display = display;
 }
 
 function hideHighlightedCode() {
   ReactDOM.unmountComponentAtNode(highlightedCode);
 }
 
-function showHighlightedCode(code) {
-  ReactDOM.render(<CodeReactComponent code={code} />, highlightedCode);
+function showHighlightedCode() {
+  ReactDOM.render(<CodeReactComponent code={codeInput.value} language={languageInput.value} />, highlightedCode);
 }
