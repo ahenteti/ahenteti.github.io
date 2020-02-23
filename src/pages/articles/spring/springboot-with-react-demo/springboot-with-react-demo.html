@@ -10,12 +10,8 @@
       <header></header>
 
       <article-webcomponent>
-        <code-tabs-webcomponent>
-          <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="xml">
-              <pre slot="code">
-                        <code>
+        <div class="code-tabs">
+          <pre class="code-tab" tab-name="project structure" language="xml">
                             .
                             ├── pom.xml
                             └── src
@@ -42,16 +38,8 @@
                                         ├── application.yml
                                         ├── static
                                         └── templates
-                            
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">pom.xml</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="xml">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="pom.xml" language="xml">
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                                      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
@@ -167,15 +155,8 @@
                                 &lt;/build&gt;
                             
                             &lt;/project&gt;
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">Main.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="Main.java" language="java">
                             package io.github.ahenteti.java;
                             
                             import org.springframework.boot.SpringApplication;
@@ -189,15 +170,8 @@
                                 }
                             
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">HelloController.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="HelloController.java" language="java">
                             package io.github.ahenteti.java.controller;
                             
                             import org.springframework.web.bind.annotation.GetMapping;
@@ -212,15 +186,8 @@
                                     return "Hello, the time at the server is now " + LocalDateTime.now();
                                 }
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">package.json</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="json">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="package.json" language="json">
                             {
                               "name": "frontend",
                               "version": "0.1.0",
@@ -256,15 +223,8 @@
                               },
                               "proxy": "http://localhost:9999"
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">App.js</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="js">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="App.js" language="js">
                             import React, {Component} from 'react';
                             import './App.css';
                             
@@ -294,30 +254,16 @@
                             }
                             
                             export default App;
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">index.js</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="js">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="index.js" language="js">
                             import React from 'react';
                             import ReactDOM from 'react-dom';
                             import './index.css';
                             import App from './App';
                             
                             ReactDOM.render(&lt;App /&gt;, document.getElementById('root'));
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="html">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="index.html" language="html">
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
                               &lt;head&gt;
@@ -347,24 +293,17 @@
                                 &lt;div id="root"&gt;&lt;/div&gt;
                               &lt;/body&gt;
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-        </code-tabs-webcomponent>
+          </pre>
+        </div>
 
         <h2>Usage</h2>
 
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
                 git clone https://github.com/ahenteti/ahenteti.github.io.demo.git
                 cd ahenteti.github.io.demo/spring/spring-boot-with-react-demo
                 mvn clean install -Pbuild
                 # then open this url http://localhost:9999 in your browser
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <more-info-webcomponent>
           <link-webcomponent

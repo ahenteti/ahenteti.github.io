@@ -28,9 +28,7 @@
           <a target="_blank" href="https://dzone.com/articles/java-volatile-keyword-0"> Thibault Delor</a> for sharing a
           simple example where this keyword is required
         </p>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public class Main {
 
                   private static <span class="highlight">volatile</span> int sharedCounter = 0;
@@ -64,14 +62,10 @@
                       }
                   }
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h3 class="mb-0">Output <b>with</b> the <span class="code">volatile</span> keyword</h3>
-        <multiline-code-webcomponent class="mt-s" language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               incrementing sharedCounter: 1
               sharedCounter new value : 1
               incrementing sharedCounter: 2
@@ -82,22 +76,16 @@
               sharedCounter new value : 4
               incrementing sharedCounter: 5
               sharedCounter new value : 5
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h3 class="mb-0">Output <b>without</b> the <span class="code">volatile</span> keyword</h3>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               incrementing sharedCounter: 1
               incrementing sharedCounter: 2
               incrementing sharedCounter: 3
               incrementing sharedCounter: 4
               incrementing sharedCounter: 5
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
         <p>And the <span class="code">SharedCounterReader</span> thread loops infinitely...</p>
 
         <conclusion-webcomponent></conclusion-webcomponent>

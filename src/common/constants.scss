@@ -107,24 +107,23 @@ body.dark {
   --header-small-screens-li-on-hover-state: #32373b;
   --website-divisions-select-background-color: #262a2d;
   --website-divisions-select-background-color-on-hover: #32373b;
+  --tool-background-color: var(--article-background-color);
 
-  --select-selected-option-color: var(--gray-6);
-  --select-selected-option-border-color: var(--gray-3);
-  --select-selected-option-background-color: var(--gray-3);
+  --select-selected-option-color: var(--primary-color);
+  --select-selected-option-border-color: var(--primary-color);
+  --select-selected-option-background-color: var(--article-background-color);
   --select-selected-option-border-color-on-open: var(--primary-color);
   --select-options-color: var(--gray-6);
   --select-options-border-color: var(--gray-2);
   --select-options-background-color: var(--gray-2);
   --select-options-border-color-on-open: var(--primary-color);
-  --select-selected-option-color-on-hover: var(--select-selected-option-color);
+  --select-selected-option-color-on-hover: var(--white-color);
   --select-selected-option-border-color-on-hover: var(--primary-color);
-  --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
+  --select-selected-option-background-color-on-hover: var(--primary-color);
   --select-options-color-on-hover: var(--select-options-color);
   --select-options-border-color-on-hover: var(--primary-color);
   --select-options-background-color-on-hover: var(--gray-3);
   --select-border-color-on-open: var(--primary-color);
-
-  --tool-background-color: var(--article-background-color);
 }
 
 body.light {
@@ -201,23 +200,22 @@ body.light {
   --related-article-tag-background-color: #f2f2f2;
   --header-small-screens-background: #f2f2f2;
   --header-small-screens-li-on-hover-state: #eee;
+  --tool-background-color: var(--article-background-color);
 
-  --select-selected-option-color: var(--gray-3);
-  --select-selected-option-border-color: var(--gray-4);
-  --select-selected-option-background-color: var(--gray-4);
+  --select-selected-option-color: var(--primary-color);
+  --select-selected-option-border-color: var(--primary-color);
+  --select-selected-option-background-color: var(--article-background-color);
   --select-selected-option-border-color-on-open: var(--primary-color);
   --select-options-color: var(--gray-3);
   --select-options-border-color: var(--gray-6);
   --select-options-background-color: var(--gray-6);
   --select-options-border-color-on-open: var(--primary-color);
-  --select-selected-option-color-on-hover: var(--select-selected-option-color);
+  --select-selected-option-color-on-hover: var(--white-color);
   --select-selected-option-border-color-on-hover: var(--primary-color);
-  --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
+  --select-selected-option-background-color-on-hover: var(--primary-color);
   --select-options-color-on-hover: var(--select-options-color);
   --select-options-border-color-on-hover: var(--primary-color);
   --select-options-background-color-on-hover: var(--gray-4);
-
-  --tool-background-color: var(--article-background-color);
 }
 
 html {

@@ -22,9 +22,7 @@
           In the following example, we are going to parse the same <span class="code">stringDate</span> by multiple
           threads and using a single instance of <span class="code">SimpleDateFormat</span>
         </p>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
               public static void main(String[] args) {
@@ -43,21 +41,14 @@
                       e.printStackTrace();
                   }
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <p>If we run the program above, we are expecting 10 messages like this in the console</p>
-        <oneline-code-webcomponent
-          code="Date: Sun Jan 19 19:00:00 CET 2020"
-          language="bash"
-        ></oneline-code-webcomponent>
+        <pre class="code" language="bash">Date: Sun Jan 19 19:00:00 CET 2020</pre>
 
         <p>But instead we obtain this random output (it changes every execution)</p>
 
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               Date: Sun Jan 19 19:00:00 CET 2020
               <span class="highlight">Date: Mon Jul 10 09:16:33 CET 190728635</span>
               Date: Sun Jan 19 19:00:00 CET 2020
@@ -78,9 +69,7 @@
                 at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
                 at java.lang.Thread.run(Thread.java:748)
               java.lang.NumberFormatException: multiple points
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h3>So how we should use <span class="code">SimpleDateFormat</span> in multi-threaded environment ?</h3>
         <p>From my research on the Internet, I found out these three options</p>
@@ -98,9 +87,7 @@
 
         <div class="steps">
           <h3 class="step">New instance for each thread execution</h3>
-          <multiline-code-webcomponent language="java">
-            <pre slot="code">
-              <code>
+          <pre class="code" language="java">
                 public static void main(String[] args) {
                     final String stringDate = "2020-01-19T19:00:00";
                     ExecutorService executorService = Executors.newFixedThreadPool(5);
@@ -118,9 +105,7 @@
                         e.printStackTrace();
                     }
                 }
-              </code>
-            </pre>
-          </multiline-code-webcomponent>
+          </pre>
           <p>
             As you may noticed, with this solution, we will create N
             <span class="code">SimpleDateFormat</span> instances (100 instances in the example above). So we have
@@ -128,9 +113,7 @@
           </p>
 
           <h3 class="step">Synchronize concurrent access</h3>
-          <multiline-code-webcomponent language="java">
-            <pre slot="code">
-              <code>
+          <pre class="code" language="java">
                 private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
                 public static void main(String[] args) {
@@ -151,9 +134,7 @@
                         e.printStackTrace();
                     }
                 }
-              </code>
-            </pre>
-          </multiline-code-webcomponent>
+          </pre>
           <p>
             With solution, we have kept our <span class="code">SimpleFormatDate</span> global instance, but have
             restrict the access to this instance to threads: only one thread can access it each time and will make other
@@ -165,9 +146,7 @@
           </p>
 
           <h3 class="step">Use ThreadLocal class</h3>
-          <multiline-code-webcomponent language="java">
-            <pre slot="code">
-              <code>
+          <pre class="code" language="java">
                 private static ThreadLocal&lt;SimpleDateFormat&gt; formatter = ThreadLocal
                         .withInitial(() -> new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss"));
       
@@ -187,9 +166,7 @@
                         e.printStackTrace();
                     }
                 }
-              </code>
-            </pre>
-          </multiline-code-webcomponent>
+          </pre>
           <p>
             With solution, we only created 10 <span class="code">SimpleDateFormat</span> instances has been created
             instead of the 100 instances that has been created in the first solution

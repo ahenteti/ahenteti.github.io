@@ -7,15 +7,11 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <code-tabs-webcomponent>
-        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xml">
-            <pre slot="code">
-                        <code>
+      <article-webcomponent>
+        <div class="code-tabs">
+          <pre class="code-tab" tab-name="project structure" language="xml">
                             .
                             ├── pom.xml
                             └── src
@@ -33,16 +29,8 @@
                                         └── resources
                                             └── css
                                                 └── default.css
-                            
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">pom.xml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="pom.xml" language="xml">
                             &lt;project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"&gt;
                                 &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
                             
@@ -110,15 +98,8 @@
                                     &lt;/plugins&gt;
                                 &lt;/build&gt;
                             &lt;/project&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">web.xml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="web.xml" language="xml">
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;web-app version="3.1" 
                                      xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
@@ -148,15 +129,8 @@
                                     &lt;welcome-file&gt;index.xhtml&lt;/welcome-file&gt;
                                 &lt;/welcome-file-list&gt;
                             &lt;/web-app&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">index.xhtml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xhtml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="index.xhtml" language="xhtml">
                             &lt;?xml version='1.0' encoding='UTF-8' ?&gt;
                             &lt;!DOCTYPE html
                                     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
@@ -189,15 +163,8 @@
                                 &lt;/h:body&gt;
                             
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">HelloBean.java</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="java">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="HelloBean.java" language="java">
                             package io.github.ahenteti.java;
                             
                             import java.io.Serializable;
@@ -226,19 +193,16 @@
                                 }
                             
                             }
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-      </code-tabs-webcomponent>
+          </pre>
+        </div>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="http://jj-blogger.blogspot.com/2016/02/a-look-at-upcoming-jsf-23-push-support.html"
-          label="JSF 2.3 websocket support"
-        ></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="http://jj-blogger.blogspot.com/2016/02/a-look-at-upcoming-jsf-23-push-support.html"
+            label="JSF 2.3 websocket support"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

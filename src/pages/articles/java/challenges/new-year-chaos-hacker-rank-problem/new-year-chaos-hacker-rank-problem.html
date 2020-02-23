@@ -60,27 +60,19 @@
         </p>
 
         <h2>Sample Input</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               2
               5
               2 1 5 3 4
               5
               2 5 1 3 4
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Sample Output</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               3
               Too chaotic
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Observation</h2>
         <p class="mb-s">
@@ -92,9 +84,7 @@
           <li>and having a sticker less that the current person sticker</li>
         </ul>
 
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public static final int MAX_PERSON_BRIBES = 2;
 
               static void minimumBribes(int[] arr) {
@@ -126,23 +116,17 @@
               public static class TooChaoticException extends Exception {
                   
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <p class="mb-s">
           But such solution fails with status <span class="code">Terminated due to timeout</span> in the Hacker Rank
           website. In fact even with this condition:
         </p>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               if (res > MAX_PERSON_BRIBES) {
                   throw new TooChaoticException();
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
         <p class="mt-s">the time complexity of this solution is <span class="code">O(n^2)</span></p>
 
         <p>
@@ -152,9 +136,7 @@
           <span class="code">i + 1</span> which represents the current person position
         </p>
 
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public static class Person {
                   int currentPosition;
                   int initialPosition;
@@ -172,9 +154,7 @@
                       return res;
                   }
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <p>
           In the next solution, we are going to return back to the initial persons positions and calculate through this
@@ -183,9 +163,7 @@
           implementation of this solution
         </p>
 
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public static class Person {
                   int currentPosition;
                   int initialPosition;
@@ -243,9 +221,7 @@
                   }
                   System.out.println(res);
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <conclusion-webcomponent></conclusion-webcomponent>
         <more-info-webcomponent>

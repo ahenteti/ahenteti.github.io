@@ -36,27 +36,17 @@
         <p>Print the SHA-256 encryption value of <span class="code">s</span> on a new line.</p>
 
         <h2>Sample Input</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               HelloWorld
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Sample Output</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               872e4e50ce9990d8b041330c47c9ddd11bec6b503ae9386a99da8584e9bb12c4
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Solution</h2>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public static void main(String[] args) throws NoSuchAlgorithmException {
                   Scanner in = new Scanner(System.in);
                   String valueToEncrypt = in.next();
@@ -66,9 +56,7 @@
                   for (byte b : hash) System.out.printf("%02x", b);
                   System.out.println();
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <conclusion-webcomponent></conclusion-webcomponent>
 

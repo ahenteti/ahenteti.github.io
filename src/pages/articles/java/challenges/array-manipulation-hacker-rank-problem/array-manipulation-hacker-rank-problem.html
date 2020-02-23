@@ -17,32 +17,24 @@
           Your list of queries is as follows:
         </p>
 
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-          <code>
+        <pre class="code" language="bash">
             a b k
             1 5 3
             4 8 7
             6 9 1
-          </code>
         </pre>
-        </multiline-code-webcomponent>
 
         <p>
           Add the values of <span class="code">k</span> between the indices <span class="code">a</span> and
           <span class="code">b</span> inclusive:
         </p>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-          <code>
+        <pre class="code" language="bash">
             index->	 1  2  3   4   5  6  7  8  9  10
                     [0, 0, 0,  0,  0, 0, 0, 0, 0,  0]
                     [3, 3, 3,  3,  3, 0, 0, 0, 0,  0]
                     [3, 3, 3, 10, 10, 7, 7, 7, 0,  0]
                     [3, 3, 3, 10, 10, 8, 8, 8, 1,  0]
-          </code>
         </pre>
-        </multiline-code-webcomponent>
         <p>The largest value is <span class="code">10</span> after all operations are performed.</p>
         <h2>Function Description</h2>
         <p>
@@ -68,27 +60,21 @@
         <p>Return the integer maximum value in the finished array.</p>
 
         <h2>Sample Input</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               5 3
               1 2 10
               2 5 10
               3 4 10
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Sample Output</h2>
-        <oneline-code-webcomponent code="20" language="bash"></oneline-code-webcomponent>
+        <pre class="code" language="bash">20</pre>
 
         <h2>Explanation</h2>
         <img src="./array-manipulation-hacker-rank-problem.svg" alt="" />
 
         <h2>Implementation</h2>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               static long arrayManipulation(int n, int[][] queries) {
                   int[] arr = new int[n];
                   for (int i = 0; i &lt; queries.length; i++) {
@@ -107,9 +93,7 @@
                   }
                   return max;
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <conclusion-webcomponent></conclusion-webcomponent>
         <more-info-webcomponent>

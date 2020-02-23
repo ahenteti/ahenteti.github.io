@@ -34,9 +34,7 @@
           </li>
         </ul>
 
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               private ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
               public List&lt;Double&gt; getProductPrices(String productId) {
@@ -63,9 +61,7 @@
                       prices.add(Math.random()); // simulate http request
                   }
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <p>
           But when we call the <span class="code">getProductPrices</span> method, we obtain an empty list. In fact, when
@@ -83,9 +79,7 @@
           <span class="code">latch.await()</span> method
         </p>
 
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               private ExecutorService threadPool = Executors.newFixedThreadPool(THREAD_POOL_SIZE);
 
               public List&lt;Double&gt; getProductPrices(String productId) throws InterruptedException {
@@ -119,9 +113,7 @@
                       <span class="highlight">latch.countDown();</span>
                   }
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <p>Supposing now that we want to introduce timeout to our method</p>
         <img src="./get-prices-workflow-solution2.svg" alt="" />
@@ -131,12 +123,9 @@
           following method of <span class="code">CountDownLatch</span> class
         </p>
 
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
-              public boolean await(long timeout, TimeUnit unit)</code>
-          </pre>
-        </multiline-code-webcomponent>
+        <pre class="code" language="java">
+              public boolean await(long timeout, TimeUnit unit)
+        </pre>
 
         <h2>Can we do better ?</h2>
         <p>
@@ -144,9 +133,7 @@
           <span class="code">CountDownLatch</span> code. Here is the final code how it looks like :
         </p>
 
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
             public List&lt;Double&gt; getProductPrices(String productId) throws Exception {
                 List&lt;Double&gt; prices = Collections.synchronizedList(new ArrayList&lt;&gt;());
         
@@ -182,9 +169,7 @@
                     }
                 }
             }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <more-info-webcomponent>
           <link-webcomponent

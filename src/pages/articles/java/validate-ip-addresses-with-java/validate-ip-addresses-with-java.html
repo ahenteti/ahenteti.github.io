@@ -13,17 +13,13 @@
         <h2>Using java Regex</h2>
 
         <h3>Code</h3>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public boolean isValidIpv4Address(String ipAddress) {
                   String zeroTo255Pattern = "(\\d{1,2}|[0-1]\\d{2}|2[0-4]\\d|25[0-5])";
                   String ipv4AddressPattern = zeroTo255Pattern + "\\." + zeroTo255Pattern + "\\." + zeroTo255Pattern + "\\." + zeroTo255Pattern;
                   return ipAddress.matches(ipv4AddressPattern);
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h3>Explanation</h3>
         <ul>
@@ -38,9 +34,7 @@
           The <span class="code">InetAddress.getByName</span> method treats also IPv6 addresses. For me, we should use
           this solution for production code
         </p>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public boolean isValidIpAddress(String ipAddress) {
                   try {
                       InetAddress.getByName(ipAddress);
@@ -49,9 +43,7 @@
                       return false;
                   }
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <more-info-webcomponent>
           <link-webcomponent

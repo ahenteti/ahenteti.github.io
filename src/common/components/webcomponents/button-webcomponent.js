@@ -13,13 +13,13 @@ class ButtonWebComponent extends ElementWebComponent {
         button {
           padding: 0.8rem 1.6rem;
           border-radius: 0.2rem;
-          border: 0.2rem solid var(--primary-color);
+          border: 1px solid var(--primary-color);
           background: var(--button-background-color);
           color: var(--primary-color);
           margin: 0 auto;
           transition: var(--transition);
           transition-property: color, background;
-
+          font-family: "Roboto", sans-serif;
         }
 
         button:hover {

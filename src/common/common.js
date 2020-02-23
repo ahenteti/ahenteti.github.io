@@ -38,7 +38,6 @@ $(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
 function renderCodeReactComponent() {
   document.querySelectorAll('pre.code').forEach(el => {
     el.style.all = 'inherit';
-    console.log(el);
     ReactDOM.render(<CodeReactComponent code={el.innerHTML} language={el.getAttribute('language')} />, el);
   });
 }

@@ -24,10 +24,18 @@
 
 body.dark .website-divisions-reactcomponent {
   --select-selected-option-color: #dedede;
+  --select-selected-option-border-color: var(--gray-3);
+  --select-selected-option-background-color: var(--gray-3);
   --select-selected-option-color-on-hover: var(--select-selected-option-color);
+  --select-selected-option-border-color-on-hover: var(--primary-color);
+  --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
 }
 
 body.light .website-divisions-reactcomponent {
   --select-selected-option-color: #555;
+  --select-selected-option-border-color: var(--gray-4);
+  --select-selected-option-background-color: var(--gray-4);
   --select-selected-option-color-on-hover: var(--select-selected-option-color);
+  --select-selected-option-border-color-on-hover: var(--primary-color);
+  --select-selected-option-background-color-on-hover: var(--select-selected-option-background-color);
 }

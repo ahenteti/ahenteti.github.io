@@ -7,43 +7,33 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>How to get git history</h2>
-      <oneline-code-webcomponent
-        code="git log --oneline --decorate --graph --all"
-        language="bash"
-      ></oneline-code-webcomponent>
+      <article-webcomponent>
+        <h2>How to get git history</h2>
+        <pre class="code" language="bash">git log --oneline --decorate --graph --all</pre>
 
-      <h2>How to get unstaged changes</h2>
-      <oneline-code-webcomponent code="git diff" language="bash"></oneline-code-webcomponent>
+        <h2>How to get unstaged changes</h2>
+        <pre class="code" language="bash">git diff</pre>
 
-      <h2>How to get staged changes</h2>
-      <oneline-code-webcomponent code="git diff --cached" language="bash"></oneline-code-webcomponent>
+        <h2>How to get staged changes</h2>
+        <pre class="code" language="bash">git diff --cached</pre>
 
-      <h2>How to get git aliases</h2>
-      <oneline-code-webcomponent code="git config -l | grep alias" language="bash"></oneline-code-webcomponent>
+        <h2>How to get git aliases</h2>
+        <pre class="code" language="bash">git config -l | grep alias</pre>
 
-      <h2>How to show changed files for a commit</h2>
-      <oneline-code-webcomponent code="git show --pretty= --name-only" language="bash"></oneline-code-webcomponent>
+        <h2>How to show changed files for a commit</h2>
+        <pre class="code" language="bash">git show --pretty= --name-only</pre>
 
-      <h2>How to get current branch</h2>
-      <oneline-code-webcomponent
-        code="git branch | sed -n -e 's/^\\* \\(.*\)/\\1/p'"
-        language="bash"
-      ></oneline-code-webcomponent>
+        <h2>How to get current branch</h2>
+        <pre class="code" language="bash">git branch | sed -n -e 's/^\\* \\(.*\)/\\1/p'</pre>
 
-      <h2>How to add aliases to git</h2>
-      <oneline-code-webcomponent
-        code="git config --global alias.glog 'log --oneline --decorate --all --graph'"
-        language="bash"
-      >
-      </oneline-code-webcomponent>
+        <h2>How to add aliases to git</h2>
+        <pre class="code" language="bash">git config --global alias.glog 'log --oneline --decorate --all --graph'</pre>
 
-      <h2>How to amend a commit without changing last commit message</h2>
-      <oneline-code-webcomponent code="git commit -a --amend --no-edit" language="bash"></oneline-code-webcomponent>
-    </article-webcomponent>
+        <h2>How to amend a commit without changing last commit message</h2>
+        <pre class="code" language="bash">git commit -a --amend --no-edit</pre>
+      </article-webcomponent>
     </div>
   </body>
 </html>

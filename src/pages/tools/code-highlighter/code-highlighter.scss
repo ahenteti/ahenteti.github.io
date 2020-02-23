@@ -2,6 +2,16 @@
   --button-background-color: var(--tool-background-color);
 }
 
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 2rem;
+}
+
+.select-code-language {
+  margin-right: 1.5rem;
+}
+
 textarea {
   background: var(--code-background-color);
   border: 1px solid var(--code-background-color);
@@ -19,4 +29,8 @@ textarea {
 textarea:hover,
 textarea:focus {
   border-color: var(--primary-color);
+}
+
+#reset {
+  display: none;
 }

@@ -5,7 +5,8 @@ import * as hljs from 'common/vendor/highlight/highlight.min.js';
 
 class CodeReactComponent extends React.Component {
   componentDidMount() {
-    this.codeElement.classList.add(this.calcCodeLanguage());
+    this.codeElement.innerHTML = this.trimmedCode;
+    this.addCodeLanguage(this.codeElement);
     hljs.highlightBlock(this.codeElement);
     this.resetCopyCodeIconTooltipDataAttribute();
     this.copyCodeIcon.addEventListener('mouseout', () => this.resetCopyCodeIconTooltipDataAttribute());
@@ -18,7 +19,7 @@ class CodeReactComponent extends React.Component {
       <div className='code-reactcomponent'>
         <CodeLineNumbersReactComponent lineNumbers={this.codeLineNumbers} />
         <pre>
-          <code ref={el => (this.codeElement = el)}>{this.trimmedCode}</code>
+          <code ref={el => (this.codeElement = el)}></code>
         </pre>
         <div
           ref={el => (this.copyCodeIcon = el)}
@@ -31,11 +32,10 @@ class CodeReactComponent extends React.Component {
     );
   }
 
-  calcCodeLanguage() {
+  addCodeLanguage(codeElement) {
     if (this.props.language) {
-      return this.props.language;
+      this.codeElement.classList.add(this.props.language);
     }
-    return 'bash';
   }
 
   trimCode(code) {
@@ -43,8 +43,6 @@ class CodeReactComponent extends React.Component {
     const indentationRegExp = new RegExp('\n' + indentation, 'g');
     code = code.replace(/^\s*/, '');
     code = code.replace(indentationRegExp, '\n');
-    code = code.replace(/&lt;/g, '<');
-    code = code.replace(/&gt;/g, '>');
     return code.replace(/\n\s*$/, '');
   }
 

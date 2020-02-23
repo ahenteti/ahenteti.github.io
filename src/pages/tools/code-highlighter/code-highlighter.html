@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    ${require('common/templates/head.html')}
+    <script src="https://unpkg.com/prettier@1.13.0/standalone.js"></script>
+    <script src="https://unpkg.com/prettier@1.13.0/parser-babylon.js"></script>
+    <script src="https://unpkg.com/prettier@1.13.0/parser-graphql.js"></script>
+  </head>
+
+  <body>
+    ${require('common/templates/pre-page-loader.html')}
+    <div class="page-content">
+      <header></header>
+      <tool-page-webcomponent>
+        <div class="controls">
+          <button-webcomponent id="highlight" value="Highlight your code"></button-webcomponent>
+          <button-webcomponent id="reset" value="Reset"></button-webcomponent>
+        </div>
+        <textarea id="input" placeholder="your code to highlight..." type="text"></textarea>
+        <div id="highlighted-code"></div>
+      </tool-page-webcomponent>
+    </div>
+  </body>
+</html>

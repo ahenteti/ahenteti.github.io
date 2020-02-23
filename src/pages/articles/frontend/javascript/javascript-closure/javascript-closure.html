@@ -7,43 +7,35 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>Definition</h2>
-      <quote author="Douglas-webcomponent Crockford">
-        <p>
-          An inner function always has access to the vars and parameters of its outer function, even after the outer
-          function has returned
-        </p>
-      </quote-webcomponent>
+      <article-webcomponent>
+        <h2>Definition</h2>
+        <quote-webcomponent author="Douglas-webcomponent Crockford">
+          <p>
+            An inner function always has access to the vars and parameters of its outer function, even after the outer
+            function has returned
+          </p>
+        </quote-webcomponent>
 
-      <h2>closure function</h2>
-      <multiline-code-webcomponent>
-        <pre slot="code">
-                <code>
+        <h2>closure function</h2>
+        <pre class="code">
                     function closureFunction() {
                         let date = new Date();
                         return function() {
                             return date.getMilliseconds();
                         }
                     }
-                </code>
-            </pre>
-      </multiline-code-webcomponent>
+        </pre>
 
-      <h2>non-closure function</h2>
-      <multiline-code-webcomponent>
-        <pre slot="code">
-                <code>
+        <h2>non-closure function</h2>
+        <pre class="code">
                     function nonClosureFunction() {
                         let date = new Date();
                         return date.getMilliseconds();
                     }
-                </code>
-            </pre>
-      </multiline-code-webcomponent>
-    </article-webcomponent>
+        </pre>
+      </article-webcomponent>
     </div>
   </body>
 </html>

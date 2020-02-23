@@ -9,35 +9,21 @@ YELLOW="\\033[1;33m"
 
 PROJECT_FILE="__PROJECT_FILE__"
 PROJECT_FILE_INDENTATION="                    "
-START_APP_MULTILINE_CODE_TAG='        <multiline-code-webcomponent language="bash">
-            <pre slot="code">
-                <code>'
-END_APP_MULTILINE_CODE_TAG='                </code>
-            </pre>
-        </multiline-code-webcomponent>'
+START_APP_MULTILINE_CODE_TAG='        <pre class="code" language="bash">'
+END_APP_MULTILINE_CODE_TAG='          </pre>'
 
 PROJECT_FILES="__PROJECT_FILES__"
 PROJECT_FILES_INDENTATION="                            "
-START_APP_CODE_TABS_TAG='        <code-tabs-webcomponent>'
-START_PROJECT_STRUCTURE_APP_CODE_TAB_TAG='            <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
-            <code-panel-webcomponent slot="code-panel">
-                <multiline-code-webcomponent language="xml">
-                    <pre slot="code">
-                        <code>'
-END_PROJECT_STRUCTURE_APP_CODE_TAB_TAG='                        </code>
-                    </pre>
-                </multiline-code-webcomponent>
-            </code-panel-webcomponent>'
-END_APP_CODE_TABS_TAG='        </code-tabs-webcomponent>'
-START_APP_CODE_TAB_TAG='            <code-tab-webcomponent slot="code-tab">__SOURCE_FILENAME__</code-tab-webcomponent>
-            <code-panel-webcomponent slot="code-panel">
-                <multiline-code-webcomponent language="__SOURCE_FILENAME_EXTENSION__">
-                    <pre slot="code">
-                        <code>'
-END_APP_CODE_TAB_TAG='                        </code>
-                    </pre>
-                </multiline-code-webcomponent>
-            </code-panel-webcomponent>'
+START_APP_CODE_TABS_TAG='        <div class="code-tabs">'
+START_PROJECT_STRUCTURE_APP_CODE_TAB_TAG='
+      <pre class="code-tab" tab-name="project structure" language="xml">'
+END_PROJECT_STRUCTURE_APP_CODE_TAB_TAG='
+      </pre>'
+END_APP_CODE_TABS_TAG='        </div>'
+START_APP_CODE_TAB_TAG='
+      <pre class="code-tab" tab-name="__SOURCE_FILENAME__" language="__SOURCE_FILENAME_EXTENSION__">'
+END_APP_CODE_TAB_TAG='
+      </pre>'
 
 name=
 description=

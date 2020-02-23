@@ -1,0 +1,32 @@
+.demo .tablist {
+  padding: 3rem;
+}
+.demo .tabs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.demo .panels {
+  height: 5em;
+  background: #fafafa;
+}
+
+.demo [role='tab'] {
+  position: relative;
+  margin: 0;
+  padding: 1em;
+  border: none;
+  outline: none;
+  background: #eeeeee;
+  transition: all 0.2s ease-in;
+}
+
+.demo [role='tab']:hover,
+.demo [role='tab'][aria-selected='true'] {
+  background: #fafafa;
+}
+
+.demo [role='tabpanel'] {
+  padding: 1rem;
+  font-size: 1.5rem;
+}

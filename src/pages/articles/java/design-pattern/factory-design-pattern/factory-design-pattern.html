@@ -41,83 +41,44 @@
 
         <h2>Implementation</h2>
 
-        <code-tabs-webcomponent>
-          <code-tab-webcomponent slot="code-tab">IDrawable.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+        <div class="code-tabs">
+          <pre class="code-tab" tab-name="IDrawable.java" language="java">
                             public interface IDrawable {
                                 void draw();
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">Circle.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="Circle.java" language="java">
                             public class Circle implements IDrawable {
                                 @Override
                                 public void draw() {
                                     System.out.println("I'm a circle");
                                 }
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">Square.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="Square.java" language="java">
                             public class Square implements IDrawable {
                                 @Override
                                 public void draw() {
                                     System.out.println("I'm a square");
                                 }
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">Rectangle.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="Rectangle.java" language="java">
                             public class Rectangle implements IDrawable {
                                 @Override
                                 public void draw() {
                                     System.out.println("I'm a rectangle");
                                 }
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">EDrawable.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="EDrawable.java" language="java">
                             public enum EDrawable {
                                 CIRCLE,
                                 SQUARE,
                                 RECTANGLE
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">DrawableFactory.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="DrawableFactory.java" language="java">
                             public class DrawableFactory {
                                 public IDrawable create(EDrawable type) {
                                     switch (type) {
@@ -132,15 +93,8 @@
                                     }
                                 }
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">FactoryDemo.java</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="java">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="FactoryDemo.java" language="java">
                             public class FactoryDemo {
                                 public static void main(String[] args) {
                                     DrawableFactory factory = new DrawableFactory();
@@ -152,11 +106,8 @@
                                     rectangle.draw(); // I'm a rectangle
                                 }
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-        </code-tabs-webcomponent>
+          </pre>
+        </div>
 
         <conclusion-webcomponent></conclusion-webcomponent>
         <more-info-webcomponent>

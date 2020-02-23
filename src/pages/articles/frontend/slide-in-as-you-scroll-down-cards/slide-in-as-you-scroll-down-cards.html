@@ -7,35 +7,30 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <code-tabs-webcomponent>
-        <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
-        <code-panel-webcomponent class="result" slot="code-panel">
-          <section class="demo">
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-            <div class="card"></div>
-          </section>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">html</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="html">
-            <pre slot="code">
-                        <code>
+      <article-webcomponent>
+        <div class="code-tabs">
+          <div class="result">
+            <section class="demo">
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+              <div class="card"></div>
+            </section>
+          </div>
+          <pre class="code-tab" tab-name="html" language="html">
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
                             
@@ -78,15 +73,8 @@
                             &lt;/body&gt;
                             
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">css</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="css">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="css" language="css">
                             *, *::before, *::after {
                               padding: 0;
                               margin: 0;
@@ -132,15 +120,8 @@
                             @keyframes visible-after-scroll {
                               to { transform: translateY(0); }
                             }
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">javascript</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="js">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="javascript" language="js">
                             function alreadyVisible (card) {
                               let position = card.getBoundingClientRect();
                               return position.top &lt; window.innerHeight;
@@ -166,19 +147,16 @@
                                 }
                               });
                             })
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-      </code-tabs-webcomponent>
+          </pre>
+        </div>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="https://css-tricks.com/slide-in-as-you-scroll-down-boxes/"
-          label="Slide-in as you scroll down cards"
-        ></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://css-tricks.com/slide-in-as-you-scroll-down-boxes/"
+            label="Slide-in as you scroll down cards"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

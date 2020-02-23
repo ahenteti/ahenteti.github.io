@@ -7,13 +7,11 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>Using string concatenation</h2>
-      <multiline-code-webcomponent language="java">
-        <pre slot="code">
-                <code>
+      <article-webcomponent>
+        <h2>Using string concatenation</h2>
+        <pre class="code" language="java">
                     public class ReverseStringDemo {
                         public static void main(String[] args) {
                             String str = "Hello World!";
@@ -25,21 +23,17 @@
                             System.out.println(reversedStr); 
                         }
                     }
-                </code>
-            </pre>
-      </multiline-code-webcomponent>
+        </pre>
 
-      <warn-webcomponent>
-        <p>
-          As Strings in java immutables. the concatenation of two strings result of the creation of a third String
-          object. So we don't encourage the use of this solution as it shows bad performance and bad memory management
-        </p>
-      </warn-webcomponent>
+        <warn-webcomponent>
+          <p>
+            As Strings in java immutables. the concatenation of two strings result of the creation of a third String
+            object. So we don't encourage the use of this solution as it shows bad performance and bad memory management
+          </p>
+        </warn-webcomponent>
 
-      <h2>Using StringBuilder reverse method</h2>
-      <multiline-code-webcomponent language="java">
-        <pre slot="code">
-                <code>
+        <h2>Using StringBuilder reverse method</h2>
+        <pre class="code" language="java">
                     public class ReverseStringDemo {
                         public static void main(String[] args) {
                             String str = "Hello World!";
@@ -49,14 +43,10 @@
                             System.out.println(reversedStr); 
                         }
                     }
-                </code>
-            </pre>
-      </multiline-code-webcomponent>
+        </pre>
 
-      <h2>Using StringBuilder append method</h2>
-      <multiline-code-webcomponent language="java">
-        <pre slot="code">
-                <code>
+        <h2>Using StringBuilder append method</h2>
+        <pre class="code" language="java">
                     public class ReverseStringDemo {
                         public static void main(String[] args) {
                             String str = "Hello World!";
@@ -69,10 +59,8 @@
                             System.out.println(reversedStr); 
                         }
                     }
-                </code>
-            </pre>
-      </multiline-code-webcomponent>
-    </article-webcomponent>
+        </pre>
+      </article-webcomponent>
     </div>
   </body>
 </html>

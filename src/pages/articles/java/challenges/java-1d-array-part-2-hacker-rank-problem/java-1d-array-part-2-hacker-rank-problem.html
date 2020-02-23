@@ -74,9 +74,7 @@
         <p>Return true if you can win the game; otherwise, return false.</p>
 
         <h2>Sample Input</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               4
               5 3
               0 0 0 0 0
@@ -86,21 +84,15 @@
               0 0 1 1 1 0
               3 1
               0 1 0
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Sample Output</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               YES
               YES
               NO
               NO
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Explanation</h2>
         <p class="mb-s">We perform the following <span class="code">q = 4</span> queries:</p>
@@ -130,9 +122,7 @@
           The following solution is inspired from the
           <a href="https://fr.wikipedia.org/wiki/Algorithme_de_parcours_en_profondeur">DFS algorithm</a>
         </p>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
               public static boolean canWin(int leap, int[] game) {
                   return canWin(leap, game, 0);
               }
@@ -147,9 +137,7 @@
                       || canWin(leap, game, index + 1) 
                       || canWin(leap, game, index - 1);
               }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <conclusion-webcomponent></conclusion-webcomponent>
 

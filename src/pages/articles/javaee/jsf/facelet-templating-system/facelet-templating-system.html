@@ -7,51 +7,47 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>Introduction</h2>
-      <p>This tutorial demonstrate the use of the commonly used facelet taglib tags, especially :</p>
-      <table>
-        <thead>
-          <th>tag</th>
-          <th>description</th>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="monospace">ui:include</td>
-            <td>Includes contents of one xhtml page into another xhtml page</td>
-          </tr>
-          <tr>
-            <td class="monospace">ui:composition</td>
-            <td>
-              Loads a template using template attribute. It can also define a group of components to be inserted in
-              xhtml page
-            </td>
-          </tr>
-          <tr>
-            <td class="monospace">ui:insert</td>
-            <td>Used in template file. It defines contents to be placed in a template</td>
-          </tr>
-          <tr>
-            <td class="monospace">ui:define</td>
-            <td>
-              The define tag defines content that is inserted into a page by a template. The define tag can be used
-              inside
-              <span class="monospace">ui:composition</span>, <span class="monospace">ui:component</span>,
-              <span class="monospace">ui:decorate</span>, and <span class="monospace">ui:fragment</span> tags.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <article-webcomponent>
+        <h2>Introduction</h2>
+        <p>This tutorial demonstrate the use of the commonly used facelet taglib tags, especially :</p>
+        <table>
+          <thead>
+            <th>tag</th>
+            <th>description</th>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="monospace">ui:include</td>
+              <td>Includes contents of one xhtml page into another xhtml page</td>
+            </tr>
+            <tr>
+              <td class="monospace">ui:composition</td>
+              <td>
+                Loads a template using template attribute. It can also define a group of components to be inserted in
+                xhtml page
+              </td>
+            </tr>
+            <tr>
+              <td class="monospace">ui:insert</td>
+              <td>Used in template file. It defines contents to be placed in a template</td>
+            </tr>
+            <tr>
+              <td class="monospace">ui:define</td>
+              <td>
+                The define tag defines content that is inserted into a page by a template. The define tag can be used
+                inside
+                <span class="monospace">ui:composition</span>, <span class="monospace">ui:component</span>,
+                <span class="monospace">ui:decorate</span>, and <span class="monospace">ui:fragment</span> tags.
+              </td>
+            </tr>
+          </tbody>
+        </table>
 
-      <h2>Demo</h2>
-      <code-tabs-webcomponent>
-        <code-tab-webcomponent slot="code-tab">project structure</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xml">
-            <pre slot="code">
-                        <code>
+        <h2>Demo</h2>
+        <div class="code-tabs">
+          <pre class="code-tab" tab-name="project structure" language="xml">
                             .
                             ├── pom.xml
                             └───src
@@ -70,15 +66,8 @@
                                         └── WEB-INF
                                             ├── faces-config.xml
                                             └── web.xml
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-        <code-tab-webcomponent slot="code-tab">template.xhtml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xhtml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="template.xhtml" language="xhtml">
                             &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
                                   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
                             &lt;html xmlns="http://www.w3.org/1999/xhtml"
@@ -101,16 +90,8 @@
                                 &lt;/h:body&gt;
                                 
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-
-        <code-tab-webcomponent slot="code-tab">header.xhtml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xhtml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="header.xhtml" language="xhtml">
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;!DOCTYPE html&gt;
                             &lt;html xmlns="http://www.w3.org/1999/xhtml"
@@ -121,16 +102,8 @@
                                     &lt;/header&gt;
                                 &lt;/ui:composition&gt;
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-
-        <code-tab-webcomponent slot="code-tab">footer.xhtml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xhtml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="footer.xhtml" language="xhtml">
                             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
                             &lt;!DOCTYPE html&gt;
                             &lt;html xmlns="http://www.w3.org/1999/xhtml"
@@ -141,16 +114,8 @@
                                     &lt;/footer&gt;
                                 &lt;/ui:composition&gt;
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-
-        <code-tab-webcomponent slot="code-tab">index.xhtml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xhtml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="index.xhtml" language="xhtml">
                             &lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
                               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
                             &lt;html xmlns="http://www.w3.org/1999/xhtml"
@@ -167,16 +132,8 @@
                                 &lt;/ui:composition&gt;
                             
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-
-        <code-tab-webcomponent slot="code-tab">web.xml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="web.xml" language="xml">
                             &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
                             &lt;web-app version=&quot;3.1&quot; 
                                         xmlns=&quot;http://xmlns.jcp.org/xml/ns/javaee&quot; 
@@ -199,31 +156,15 @@
                                     &lt;session-timeout&gt;30&lt;/session-timeout&gt;
                                 &lt;/session-config&gt;
                             &lt;/web-app&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-
-        <code-tab-webcomponent slot="code-tab">faces-config.xml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xhtml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="faces-config.xml" language="xhtml">
                             &lt;?xml version='1.0' encoding='UTF-8'?&gt;
                             &lt;faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
                                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                                           xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"&gt;
                             &lt;/faces-config&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-
-        <code-tab-webcomponent slot="code-tab">pom.xml</code-tab-webcomponent>
-        <code-panel-webcomponent slot="code-panel">
-          <multiline-code-webcomponent language="xml">
-            <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="pom.xml" language="xml">
                             &lt;project xmlns=&quot;http://maven.apache.org/POM/4.0.0&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xsi:schemaLocation=&quot;http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd&quot;&gt;
                                 &lt;modelVersion&gt;4.0.0&lt;/modelVersion&gt;
                             
@@ -291,20 +232,20 @@
                                     &lt;/plugins&gt;
                                 &lt;/build&gt;
                             &lt;/project&gt;
-                        </code>
-                    </pre>
-          </multiline-code-webcomponent>
-        </code-panel-webcomponent>
-      </code-tabs-webcomponent>
+          </pre>
+        </div>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/facelet-templating-system"
-          label="Article source code"
-        ></link-webcomponent>
-        <link-webcomponent href="https://javaee.github.io/tutorial/jsf-facelets004.html" label="JavaEE 8 tutorial"></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://github.com/ahenteti/ahenteti.github.io.demo/tree/master/javaee/jsf/facelet-templating-system"
+            label="Article source code"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://javaee.github.io/tutorial/jsf-facelets004.html"
+            label="JavaEE 8 tutorial"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

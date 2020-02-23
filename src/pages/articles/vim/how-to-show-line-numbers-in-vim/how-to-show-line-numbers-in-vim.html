@@ -7,19 +7,19 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>Solution for opened files</h2>
-      <p>Switch to <i>command mode</i>, if it is not the case, in your vim editor and set the following command</p>
-      <oneline-code-webcomponent code=":set number" language="vim"></oneline-code-webcomponent>
+      <article-webcomponent>
+        <h2>Solution for opened files</h2>
+        <p>Switch to <i>command mode</i>, if it is not the case, in your vim editor and set the following command</p>
+        <pre class="code" language="vim">:set number</pre>
 
-      <h2>Default solution</h2>
-      <p>
-        Add the following line to your vim configuration file
-      </p>
-      <oneline-code-webcomponent code="echo ':set number' >> ~/.vimrc" language="bash"></oneline-code-webcomponent>
-    </article-webcomponent>
+        <h2>Default solution</h2>
+        <p>
+          Add the following line to your vim configuration file
+        </p>
+        <pre class="code" language="bash">echo ':set number' >> ~/.vimrc</pre>
+      </article-webcomponent>
     </div>
   </body>
 </html>

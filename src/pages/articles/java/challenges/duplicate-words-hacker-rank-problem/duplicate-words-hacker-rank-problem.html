@@ -44,36 +44,26 @@
         </p>
 
         <h2>Sample Input</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               5
               Goodbye bye bye world world world
               Sam went went to to to his business
               Reya is is the the best player in eye eye game
               in inthe
               Hello hello Ab aB
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Sample Output</h2>
-        <multiline-code-webcomponent language="bash">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="bash">
               Goodbye bye world
               Sam went to his business
               Reya is the best player in eye game
               in inthe
               Hello Ab
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <h2>Solution</h2>
-        <multiline-code-webcomponent language="java">
-          <pre slot="code">
-            <code>
+        <pre class="code" language="java">
                 public static void main(String[] args) {
                     String regex = "\\\\b(\\\\w+)(:?\\\\W+\\\\1\\\\b)+";
                     Pattern p = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
@@ -91,9 +81,7 @@
                     }
                     in.close();
                 }
-            </code>
-          </pre>
-        </multiline-code-webcomponent>
+        </pre>
 
         <conclusion-webcomponent></conclusion-webcomponent>
 

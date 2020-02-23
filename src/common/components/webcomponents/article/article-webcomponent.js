@@ -124,8 +124,6 @@ class ArticleWebComponent extends ElementWebComponent {
     // //////////////////////////////// //
     //        global variables          //
     // //////////////////////////////// //
-    const $appMultilineCode = document.querySelectorAll('multiline-code-webcomponent');
-    const $appOnelineCode = document.querySelectorAll('oneline-code-webcomponent');
     const $articleComponent = document.querySelector('article-webcomponent');
     const $articleTitleComponent = $articleComponent.shadowRoot.querySelector('article-title-webcomponent');
     const $articleTitle = $articleTitleComponent.shadowRoot.querySelector('h1');
@@ -135,7 +133,6 @@ class ArticleWebComponent extends ElementWebComponent {
     const $relatedArticlesTitle = $articleComponent.shadowRoot.querySelector('.related-articles-title');
 
     // main actions
-    highlightCodeSectionsAsync();
     renderArticleMetadata();
     renderRelatedArticles();
     renderArticleCommentsContainer();
@@ -144,26 +141,6 @@ class ArticleWebComponent extends ElementWebComponent {
     document.addEventListener('click', handleTagClickEvent);
 
     // util functions
-    function highlightCodeSectionsAsync() {
-      setTimeout(() => {
-        $appMultilineCode.forEach(el => {
-          const code = el.querySelector('code');
-          highlightBlock(code, el.language);
-        });
-        $appOnelineCode.forEach(el => {
-          const code = el.shadowRoot.querySelector('code');
-          highlightBlock(code, el.language);
-        });
-      });
-    }
-
-    function highlightBlock(code, language) {
-      if (language) {
-        code.classList.add(language);
-      }
-      hljs.highlightBlock(code);
-    }
-
     function renderArticleMetadata() {
       const currentArticleMetadata = findArticleMetadata();
       if ($articleTitle.innerHTML == 'null') {

@@ -7,43 +7,37 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>Find the process id from the server port</h2>
-      <oneline-code-webcomponent
-        code="netstat -a -b -o | findstr <span class='highlight-green'>server-port</span>"
-        language="bash"
-      >
-      </oneline-code-webcomponent>
+      <article-webcomponent>
+        <h2>Find the process id from the server port</h2>
+        <pre
+          class="code"
+          language="bash"
+        >netstat -a -b -o | findstr <span class='highlight-green'>server-port</span></pre>
 
-      <h2>Kill the process</h2>
-      <oneline-code-webcomponent code="taskkill /F /PID <span class='highlight'>process-id</span>" language="bash">
-      </oneline-code-webcomponent>
+        <h2>Kill the process</h2>
+        <pre class="code" language="bash">taskkill /F /PID <span class='highlight'>process-id</span></pre>
 
-      <h2>Output example</h2>
-      <multiline-code-webcomponent language="bash">
-        <pre slot="code">
-                <code>
+        <h2>Output example</h2>
+        <pre class="code" language="bash">
                     » netstat -a -b -o | findstr <span class="highlight-green">60071</span>
                       TCP   0.0.0.0:60071   LISTENING   <span class="highlight">4264</span>
 
                     » taskkill /F /PID <span class="highlight">4264</span>
-                </code>
-            </pre>
-      </multiline-code-webcomponent>
+                      </pre>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="https://winaero.com/blog/kill-process-windows-10/"
-          label="How to kill a process in windows 10"
-        ></link-webcomponent>
-        <link-webcomponent
-          href="https://stackoverflow.com/questions/48198/how-can-you-find-out-which-process-is-listening-on-a-port-on-windows"
-          label="How to find out which process is listening on a port on windows"
-        ></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://winaero.com/blog/kill-process-windows-10/"
+            label="How to kill a process in windows 10"
+          ></link-webcomponent>
+          <link-webcomponent
+            href="https://stackoverflow.com/questions/48198/how-can-you-find-out-which-process-is-listening-on-a-port-on-windows"
+            label="How to find out which process is listening on a port on windows"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

@@ -7,13 +7,11 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <h2>Before ES6 specification</h2>
-      <multiline-code-webcomponent language="javascript">
-        <pre slot="code">
-          <code>
+      <article-webcomponent>
+        <h2>Before ES6 specification</h2>
+        <pre class="code" language="javascript">
             function Animal(name) {
               this.name = name;
             }
@@ -24,14 +22,10 @@
             
             const dog = new Animal('Dog');
             dog.getName();
-          </code>
         </pre>
-      </multiline-code-webcomponent>
 
-      <h2>After ES6 specification</h2>
-      <multiline-code-webcomponent language="javascript">
-        <pre slot="code">
-          <code>
+        <h2>After ES6 specification</h2>
+        <pre class="code" language="javascript">
             class Animal {
               constructor(name) {
                 this.name = name;
@@ -43,14 +37,10 @@
             
             const dog = new Animal('Dog');
             dog.getName(); 
-          </code>
         </pre>
-      </multiline-code-webcomponent>
 
-      <h2>ES6 static methods</h2>
-      <multiline-code-webcomponent language="javascript">
-        <pre slot="code">
-          <code>
+        <h2>ES6 static methods</h2>
+        <pre class="code" language="javascript">
             class Animal {
               constructor(name) {
                 this.name = name;
@@ -68,17 +58,15 @@
             const dog = new Animal('Dog');
             const cat = new Animal('Cat');
             Animal.getNames(dog, cat);
-          </code>
         </pre>
-      </multiline-code-webcomponent>
 
-      <more-info-webcomponent>
-        <link-webcomponent
-          href="https://medium.com/beginners-guide-to-mobile-web-development/javascript-introduction-to-es6-classes-ecb2db9fe985"
-          label="Medium javascript-introduction-to-es6-classes article"
-        ></link-webcomponent>
-      </more-info-webcomponent>
-    </article-webcomponent>
+        <more-info-webcomponent>
+          <link-webcomponent
+            href="https://medium.com/beginners-guide-to-mobile-web-development/javascript-introduction-to-es6-classes-ecb2db9fe985"
+            label="Medium javascript-introduction-to-es6-classes article"
+          ></link-webcomponent>
+        </more-info-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

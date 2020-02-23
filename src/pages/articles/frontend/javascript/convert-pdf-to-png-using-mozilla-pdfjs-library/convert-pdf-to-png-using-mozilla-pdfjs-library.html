@@ -12,9 +12,8 @@
       <header></header>
 
       <article-webcomponent>
-        <code-tabs-webcomponent>
-          <code-tab-webcomponent slot="code-tab">Result</code-tab-webcomponent>
-          <code-panel-webcomponent class="result" slot="code-panel">
+        <div class="code-tabs">
+          <div class="result">
             <div class="demo">
               <button class="upload-button">Select Your PDF</button>
               <input class="upload-input" type="file" />
@@ -34,13 +33,8 @@
                 <canvas class="pdf-canvas"></canvas>
               </div>
             </div>
-          </code-panel-webcomponent>
-
-          <code-tab-webcomponent slot="code-tab">index.html</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="html">
-              <pre slot="code">
-                        <code>
+          </div>
+          <pre class="code-tab" tab-name="index.html" language="html">
                             &lt;!DOCTYPE html&gt;
                             &lt;html lang="en"&gt;
                                 &lt;head&gt;
@@ -78,15 +72,8 @@
                                     &lt;script src="./main.js"&gt;&lt;/script&gt;
                                 &lt;/body&gt;
                             &lt;/html&gt;
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">main.css</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="css">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="main.css" language="css">
                             :root {
                                 --primary-color: #078eed;
                                 --color-gray: #eee;
@@ -210,15 +197,8 @@
                             .download-link-container.display {
                                 display: block;
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-          <code-tab-webcomponent slot="code-tab">main.js</code-tab-webcomponent>
-          <code-panel-webcomponent slot="code-panel">
-            <multiline-code-webcomponent language="js">
-              <pre slot="code">
-                        <code>
+          </pre>
+          <pre class="code-tab" tab-name="main.js" language="js">
                             const uploadButtonDOMElement = document.querySelector('.upload-button');
                             const uploadInputDOMElement = document.querySelector('.upload-input');
                             const loaderDOMElement = document.querySelector('.loader');
@@ -314,11 +294,8 @@
                             function show(element) {
                                 element.classList.add('display');
                             }
-                        </code>
-                    </pre>
-            </multiline-code-webcomponent>
-          </code-panel-webcomponent>
-        </code-tabs-webcomponent>
+          </pre>
+        </div>
 
         <more-info-webcomponent>
           <link-webcomponent

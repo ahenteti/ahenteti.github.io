@@ -7,16 +7,14 @@
   <body>
     ${require('common/templates/pre-page-loader.html')}
     <div class="page-content">
-    <header></header>
+      <header></header>
 
-    <article-webcomponent>
-      <multiline-code-webcomponent language="java">
-        <pre slot="code">
-          <code>
+      <article-webcomponent>
+        <pre class="code" language="java">
               /**
-                * jdbc driver demo
-                *
-                */
+               * jdbc driver demo
+               *
+               */
               public class Main {
                   public static void main(String[] args) {
                       try (Connection connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "&lt;username&gt;", "&lt;password&gt;")) {
@@ -32,10 +30,8 @@
                       }
                   }
               }
-          </code>
         </pre>
-      </multiline-code-webcomponent>
-    </article-webcomponent>
+      </article-webcomponent>
     </div>
   </body>
 </html>

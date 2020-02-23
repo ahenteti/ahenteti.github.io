@@ -7,19 +7,19 @@ class ToolTitleWebComponent extends ElementWebComponent {
     this._root.innerHTML += /* html */ `
       <style>
         h1 {
-          font-size: 3rem;
+          font-size: 5rem;
           color: var(--title-color);
           position: relative;
           padding-bottom: 1rem;
-          margin-bottom: 2rem;
+          margin-bottom: 5rem;
         }
 
         h1::after {
           content: "";
           position: absolute;
           display: block;
-          height: 0.3rem;
-          width: 100%;
+          height: .5rem;
+          width: 85%;
           top: 100%;
           background: linear-gradient(to right, var(--primary-color), var(--tool-background-color));
         }
