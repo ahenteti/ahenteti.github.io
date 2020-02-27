@@ -18,6 +18,7 @@ class TextWithIconWebComponent extends ElementWebComponent {
         .icon {
           flex: 0 0 var(--container-prefix-width);
           padding-right: 2rem;
+          width: 2rem;
         }
 
         .text {
