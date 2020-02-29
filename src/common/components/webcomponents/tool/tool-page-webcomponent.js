@@ -51,7 +51,7 @@ class ToolPageWebComponent extends ElementWebComponent {
       const tool = findToolMetadata();
       toolContainer.insertAdjacentHTML(
         'afterbegin',
-        `<tool-title-webcomponent tool-title="${tool.name}"></tool-title-webcomponent>`
+        `<tool-title-webcomponent tool-title="${tool.name}" tool-description="${tool.description}"></tool-title-webcomponent>`
       );
     }
 
