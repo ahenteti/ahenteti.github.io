@@ -123,11 +123,11 @@
   "assets/fonts/get-prices-workflow-solution1.svg": "/assets/fonts/get-prices-workflow-solution1.svg",
   "assets/fonts/get-prices-workflow-solution2.svg": "/assets/fonts/get-prices-workflow-solution2.svg",
   "assets/fonts/java-arraylist-chacker-rank-problem.svg": "/assets/fonts/java-arraylist-chacker-rank-problem.svg",
-  "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
   "assets/fonts/encryption_decryption_overview.svg": "/assets/fonts/encryption_decryption_overview.svg",
   "assets/fonts/digital-signature.svg": "/assets/fonts/digital-signature.svg",
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
+  "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
   "assets/fonts/singleton-design-pattern.svg": "/assets/fonts/singleton-design-pattern.svg"
 }</script><link href="/css/highlightStyle.8a08e5d6d42d09b01a61.css" rel="stylesheet"><link href="/css/simpledateformat-thread-safety-issues.eb844657cc4478b39659.css" rel="stylesheet"></head> <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>SimpleDateFormat Javadoc</h2> <quote-webcomponent author="SimpleDateFormat javadoc"> <p class=mb-s> Date formats are not <b>synchronized</b>. It is recommended to create separate format instances for each thread. If multiple threads access a format concurrently, it must be synchronized externally. </p> </quote-webcomponent> <h2>SimpleDateFormat thread safety issue Example</h2> <p> In the following example, we are going to parse the same <span class=code>stringDate</span> by multiple threads and using a single instance of <span class=code>SimpleDateFormat</span> </p> <pre class=code language=java>
               private static SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
