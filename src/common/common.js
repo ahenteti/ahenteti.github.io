@@ -57,7 +57,7 @@ function renderCodeTabsReactComponent() {
 }
 
 function resizeOneLineFontSize() {
-  const $oneLineTexts = document.querySelectorAll('.one-line');
+  const $oneLineTexts = document.querySelectorAll('.resize-to-fit-one-line');
   $oneLineTexts.forEach(resizeTextFontSize);
 }
 

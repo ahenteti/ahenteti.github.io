@@ -1,4 +1,14 @@
 .tools-division-reactcomponent {
-  display: flex;
-  justify-content: center;
+  margin: 4rem 0 6rem;
+  display: grid;
+  min-width: 0;
+  grid-gap: 2rem;
+
+  @media screen and (max-width: 720px) {
+    grid-template-columns: 1fr;
+  }
+
+  @media screen and (min-width: 720px) {
+    grid-template-columns: 1fr 1fr;
+  }
 }
