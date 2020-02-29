@@ -53,5 +53,17 @@ function hideHighlightedCode() {
 }
 
 function showHighlightedCode() {
-  ReactDOM.render(<CodeReactComponent code={codeInput.value} language={languageInput.value} />, highlightedCode);
+  ReactDOM.render(
+    <CodeReactComponent code={escapeHtmlSpecialCharacters(codeInput.value)} language={languageInput.value} />,
+    highlightedCode
+  );
+}
+
+function escapeHtmlSpecialCharacters(input) {
+  let res = input.replace(/&/g, '&amp;');
+  res = res.replace(/>/g, '&gt;');
+  res = res.replace(/</g, '&lt;');
+  res = res.replace(/"/g, '&quot;');
+  res = res.replace(/'/g, '&#39;');
+  return res;
 }
