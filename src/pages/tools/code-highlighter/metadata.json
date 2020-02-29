@@ -1,5 +1,5 @@
 {
   "name": "Code Highlighter",
-  "description": "Highlight your code online using highlight.js library, no backend communication is used for this task",
+  "description": "Highlight your code using highlight.js library, no backend communication is used for this task",
   "slug": "/tools/code-highlighter.html"
 }
