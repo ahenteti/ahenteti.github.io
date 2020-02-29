@@ -23,6 +23,7 @@
     cursor: pointer;
     padding: 14px 16px;
     transition: var(--transition);
+    white-space: nowrap;
   }
 
   & .tab.active {
