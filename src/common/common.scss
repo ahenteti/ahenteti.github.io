@@ -161,3 +161,11 @@ h2 .code {
     opacity: 1;
   }
 }
+
+a {
+  outline: 0;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
