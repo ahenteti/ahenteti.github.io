@@ -2,6 +2,7 @@ body {
   --header-height: 6.5rem;
   --transition: all 0.2s ease-in;
   --box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  --box-shadow: rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
   --box-shadow-primary-color: 0 0 0 3px rgba(0, 149, 255, 0.15);
   --text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
   --container-prefix-width: 5rem;
@@ -145,7 +146,7 @@ body.light {
   --primary-color-dark: #0c7ccb;
   --primary-code-highlight-color: rgb(255, 215, 0);
   --code-highlight-color: rgb(31, 255, 31);
-  --body-background-color: #fafafa;
+  --body-background-color: #f8f9fa;
   --border-color: #eee;
   --text-color: #555;
   --text-color-light: #888;
