@@ -113,7 +113,7 @@
   "highlightStyle.js": "/js/highlightStyle.8a08e5d6d42d09b01a61.js",
   "highlightStyle.css": "/css/highlightStyle.8a08e5d6d42d09b01a61.css",
   "assets/fonts/builder-design-pattern.svg": "/assets/fonts/builder-design-pattern.svg",
-  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg",
+  "assets/fonts/singleton-design-pattern.svg": "/assets/fonts/singleton-design-pattern.svg",
   "assets/fonts/factory-design-pattern.svg": "/assets/fonts/factory-design-pattern.svg",
   "assets/fonts/volatile-keyword-in-java.svg": "/assets/fonts/volatile-keyword-in-java.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg",
@@ -128,5 +128,5 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
-  "assets/fonts/singleton-design-pattern.svg": "/assets/fonts/singleton-design-pattern.svg"
+  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg"
 }
