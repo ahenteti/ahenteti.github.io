@@ -7,6 +7,8 @@ import './about.scss';
 const BACK_ARROW = 'back';
 const FORWARD_ARROW = 'forward';
 const CERTIFICATES_OF_COMPLETION = [
+  'assets/img/certificate-c-sharp-code-more-object-oriented.png',
+  'assets/img/certificate-csharp-generics.jpg',
   'assets/img/certificate-csharp-defensive-coding.png',
   'assets/img/certificate-csharp-solid-principles.png',
   'assets/img/certificate-csharp-clean-coding-principles.png',
