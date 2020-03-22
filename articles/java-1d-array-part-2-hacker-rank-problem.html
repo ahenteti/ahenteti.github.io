@@ -17,8 +17,8 @@
   "how-to-draw-a-triangle-with-css.css": "/css/how-to-draw-a-triangle-with-css.51abf35fb9b5ea89e26f.css",
   "how-to-create-tooltips-with-css.js": "/js/how-to-create-tooltips-with-css.ce7d0933353325bfb3f5.js",
   "how-to-create-tooltips-with-css.css": "/css/how-to-create-tooltips-with-css.ce7d0933353325bfb3f5.css",
-  "about.js": "/js/about.f2bf490c4a609ddbd58f.js",
-  "about.css": "/css/about.f2bf490c4a609ddbd58f.css",
+  "about.js": "/js/about.e8d20ead416153a762cf.js",
+  "about.css": "/css/about.e8d20ead416153a762cf.css",
   "how-to-stop-a-process-listening-on-a-certain-port-in-windows.js": "/js/how-to-stop-a-process-listening-on-a-certain-port-in-windows.1bf6d905d0882a287649.js",
   "how-to-stop-a-process-listening-on-a-certain-port-in-windows.css": "/css/how-to-stop-a-process-listening-on-a-certain-port-in-windows.1bf6d905d0882a287649.css",
   "how-to-show-line-numbers-in-vim.js": "/js/how-to-show-line-numbers-in-vim.2a87fa3dded803fd398a.js",
@@ -113,7 +113,7 @@
   "highlightStyle.js": "/js/highlightStyle.8a08e5d6d42d09b01a61.js",
   "highlightStyle.css": "/css/highlightStyle.8a08e5d6d42d09b01a61.css",
   "assets/fonts/builder-design-pattern.svg": "/assets/fonts/builder-design-pattern.svg",
-  "assets/fonts/singleton-design-pattern.svg": "/assets/fonts/singleton-design-pattern.svg",
+  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg",
   "assets/fonts/factory-design-pattern.svg": "/assets/fonts/factory-design-pattern.svg",
   "assets/fonts/volatile-keyword-in-java.svg": "/assets/fonts/volatile-keyword-in-java.svg",
   "assets/fonts/capgemini-logo-transparent.svg": "/assets/fonts/capgemini-logo-transparent.svg",
@@ -128,7 +128,7 @@
   "assets/fonts/obtaining-digital-certificate-procedure.svg": "/assets/fonts/obtaining-digital-certificate-procedure.svg",
   "assets/fonts/ssl-connection.svg": "/assets/fonts/ssl-connection.svg",
   "assets/fonts/array-manipulation-hacker-rank-problem.svg": "/assets/fonts/array-manipulation-hacker-rank-problem.svg",
-  "assets/fonts/how-to-build-graph-structure-in-java.svg": "/assets/fonts/how-to-build-graph-structure-in-java.svg"
+  "assets/fonts/singleton-design-pattern.svg": "/assets/fonts/singleton-design-pattern.svg"
 }</script><link href="/css/highlightStyle.8a08e5d6d42d09b01a61.css" rel="stylesheet"><link href="/css/java-1d-array-part-2-hacker-rank-problem.150c0cffa2518e31ae69.css" rel="stylesheet"></head> <body> <div class=pre-page-loader> <div class=loader> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> <div></div> </div> </div>  <div class=page-content> <header></header> <article-webcomponent> <h2>Problem</h2> <p class=mb-s> Let's play a game on an array! You're standing at index <span class=code>0</span> of an <span class=code>n</span>-element array named <span class=code>game</span>. From some index <span class=code>i</span> (where <span class=code> 0 ⩽ i &lt; n</span> ), you can perform one of the following moves: </p> <ul> <li> Move Backward: If cell <span class=code>i - 1</span> exists and contains a <span class=code>0</span> , you can walk back to cell <span class=code>i - 1</span>. </li> <li> Move Forward: <ul> <li> If cell <span class=code>i + 1</span> contains a zero, you can walk to cell <span class=code>i + 1</span>. </li> <li> If cell <span class=code>i + leap</span> contains a zero, you can jump to cell <span class=code>i + leap</span>. </li> <li> If you're standing in cell <span class=code>n - 1</span> or the value of <span class=code>i + leap ⩾ n</span>, you can walk or jump off the end of the array and win the game. </li> </ul> </li> </ul> <p> In other words, you can move from index <span class=code>i</span> to index <span class=code>i + 1</span>, <span class=code>i - 1</span>, or <span class=code>i + leap</span> as long as the destination index is a cell containing a <span class=code>0</span>. If the destination index is greater than <span class=code>n - 1</span>, you win the game. </p> <p> Given <span class=code>leap</span> and <span class=code>game</span>, complete the function in the editor below so that it returns true if you can win the game (or false if you cannot). </p> <h2>Input Format</h2> <p> The first line contains an integer, <span class=code>q</span>, denoting the number of queries (i.e., function calls). </p> <p class=mb-s>The <span class=code>2q</span> subsequent lines describe each query over two lines:</p> <ul> <li> The first line contains two space-separated integers describing the respective values of <span class=code>n</span> and <span class=code>leap</span>. </li> <li> The second line contains space-separated binary integers (i.e., zeroes and ones) describing the respective values of <span class=code>game<sub>0</sub>, game<sub>1</sub>, ..., game<sub>n-1</sub></span>. </li> </ul> <h2>Output Format</h2> <p>Return true if you can win the game; otherwise, return false.</p> <h2>Sample Input</h2> <pre class=code language=bash>
               4
               5 3
