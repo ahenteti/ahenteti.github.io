@@ -26,7 +26,7 @@
   }
 
   & .name {
-    color: var(--title-color);
+    color: var(--card-title-color);
     font-weight: bold;
     font-size: 2rem;
     flex-grow: 1;
@@ -39,7 +39,7 @@
 
   & .description {
     color: var(--primary-color);
-    font-size: 1.35rem;
+    font-size: 1.5rem;
     margin: 0;
     white-space: nowrap;
     overflow: hidden;

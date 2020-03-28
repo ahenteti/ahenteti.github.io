@@ -40,7 +40,7 @@ class ArticleCardWebComponent extends ElementWebComponent {
         }
         
         .name {
-          color: var(--title-color);
+          color: var(--card-title-color);
           padding-bottom: 1.5rem;
           font-weight: bold;
           font-size: 2rem;

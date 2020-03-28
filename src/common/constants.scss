@@ -91,6 +91,7 @@ body.dark {
   --search-border-color: #262a2d;
   --selected-tag-color: var(--white-color);
   --card-background-color: #262a2d;
+  --card-title-color: var(--title-color);
   --card-border-color: var(--border-color);
   --card-border-top-height: 0px;
   --card-border-right-height: 0px;
@@ -146,7 +147,7 @@ body.light {
   --primary-color-dark: #0c7ccb;
   --primary-code-highlight-color: rgb(255, 215, 0);
   --code-highlight-color: rgb(31, 255, 31);
-  --body-background-color: #f8f9fa;
+  --body-background-color: #fff;
   --border-color: #eee;
   --text-color: #555;
   --text-color-light: #888;
@@ -190,16 +191,17 @@ body.light {
   --quote-component-text-color: #888;
   --quote-component-text-font-style: italic;
   --search-background-color: var(--white-color);
-  --search-border-color: #f9f9f9;
+  --search-border-color: #ddd;
   --selected-tag-color: var(--white-color);
-  --card-background-color: var(--white-color);
-  --card-border-color: var(--border-color);
+  --card-background-color: #fafafa;
+  --card-title-color: #828286;
+  --card-border-color: var(--card-background-color);
   --card-border-top-height: 0px;
   --card-border-right-height: 0px;
   --card-border-bottom-height: 0px;
   --card-border-left-height: 0px;
   --card-border-radius: 2px;
-  --card-box-shadow: 0 1px 7px rgba(0, 0, 0, 0.05);
+  --card-box-shadow: var(--box-shadow);
   --article-background-color: var(--white-color);
   --gallery-image-controls-color: var(--white-color);
   --demo-card-background-color: #eee;
