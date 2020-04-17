@@ -453,6 +453,16 @@ windowsToLinuxFilePath() {
   echo $file
 }
 
+dumpArticleSummaries() {
+  dumpFile="dump.json"
+  echo "[" > $dumpFile
+  find src/pages/articles/ -name "metadata.json" | while read articleSummary; do
+    cat $articleSummary >> $dumpFile
+    echo "," >> $dumpFile  
+  done 
+  echo "]" >> $dumpFile
+}
+
 OPTS=$(getopt -o hn:t:f:s:d:c: --long help,name:,tags:,category:,container-folder:,project-file:,article-file:,description: -n 'parse-options' -- "$@")
 if [ $? != 0 ]; then
   echo "Failed parsing options." >&2; exit 1
@@ -502,6 +512,8 @@ case $1 in
     copyProjectFile ;;
   copy-project-files | cpfs )
     copyProjectFiles ;;
+  dump-article-summaries | sum )
+    dumpArticleSummaries ;;
   * )
     usage ;;
 esac

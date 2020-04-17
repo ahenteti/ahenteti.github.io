@@ -1,21 +1,22 @@
 import ElementWebComponent from './element-webcomponent';
 
 class HighlightFeatureWebComponent extends ElementWebComponent {
-  connectedCallback() {
-    super.connectedCallback();
-    this._value = this.getAttribute('value');
-    this._width = this.getAttribute('width') || '30rem';
-    this._trianglePosition = this.getAttribute('triangle-position') || '20rem';
-    this._root.innerHTML += /* html */ `
+    connectedCallback() {
+        super.connectedCallback();
+        this._value = this.getAttribute('value');
+        this._width = this.getAttribute('width') || '30rem';
+        this._trianglePosition = this.getAttribute('triangle-position') || '20rem';
+        this._root.innerHTML += /* html */ `
       <style>
         .container {
           position: relative;
           background: var(--primary-color);
           padding: 1.5rem;
           color: white;
-          border-radius: .1rem;
+          border-radius: .25rem;
           box-shadow: var(--box-shadow);
           width: ${this._width};
+          animation: bounce .8s infinite alternate;
         }
 
         .container::after {
@@ -51,7 +52,7 @@ class HighlightFeatureWebComponent extends ElementWebComponent {
         <p>Click above to see our new feature</p>
       </div>
   `;
-  }
+    }
 }
 
 window.customElements.define('highlight-feature-webcomponent', HighlightFeatureWebComponent);
