@@ -125,11 +125,11 @@ class LoaderWebComponent extends ElementWebComponent {
     `;
     this._container = this._root.querySelector('.container');
 
-    this.show = function() {
+    this.show = function () {
       this._container.classList.add('show');
     };
 
-    this.hide = function() {
+    this.hide = function () {
       this._container.classList.remove('show');
     };
   }

@@ -133,6 +133,9 @@ body.dark {
   --select-options-border-color-on-hover: var(--primary-color);
   --select-options-background-color-on-hover: var(--gray-3);
   --select-border-color-on-open: var(--primary-color);
+
+  --personal-project-background-color: #1c1f23;
+  --personal-project-border-color: #1c1f23;
 }
 
 body.light {
@@ -233,6 +236,9 @@ body.light {
   --select-options-color-on-hover: var(--select-options-color);
   --select-options-border-color-on-hover: var(--primary-color);
   --select-options-background-color-on-hover: var(--gray-4);
+
+  --personal-project-background-color: #fcfcfc;
+  --personal-project-border-color: #fcfcfc;
 }
 
 html {

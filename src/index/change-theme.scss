@@ -1,0 +1,31 @@
+main {
+  position: relative;
+}
+.change-theme-icon {
+  position: absolute;
+  font-size: 3.5rem;
+  padding: 0.5rem;
+  height: 4.5rem;
+  top: 2rem;
+  right: 2rem;
+  border-radius: 0.5rem;
+  transition: var(--transition);
+  transition-property: color, background-color;
+  cursor: pointer;
+}
+
+.change-theme-to-light-icon {
+  color: #fafbfc;
+
+  &:hover {
+    background-color: rgb(34, 34, 34);
+  }
+}
+
+.change-theme-to-dark-icon {
+  color: #222;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}

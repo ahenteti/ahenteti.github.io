@@ -1,12 +1,12 @@
 import ElementWebComponent from './element-webcomponent';
 
 class HighlightFeatureWebComponent extends ElementWebComponent {
-    connectedCallback() {
-        super.connectedCallback();
-        this._value = this.getAttribute('value');
-        this._width = this.getAttribute('width') || '30rem';
-        this._trianglePosition = this.getAttribute('triangle-position') || '20rem';
-        this._root.innerHTML += /* html */ `
+  connectedCallback() {
+    super.connectedCallback();
+    this._value = this.getAttribute('value');
+    this._width = this.getAttribute('width') || '30rem';
+    this._trianglePosition = this.getAttribute('triangle-position') || '20rem';
+    this._root.innerHTML += /* html */ `
       <style>
         .container {
           position: relative;
@@ -52,7 +52,7 @@ class HighlightFeatureWebComponent extends ElementWebComponent {
         <p>Click above to see our new feature</p>
       </div>
   `;
-    }
+  }
 }
 
 window.customElements.define('highlight-feature-webcomponent', HighlightFeatureWebComponent);

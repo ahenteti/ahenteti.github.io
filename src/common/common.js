@@ -19,7 +19,6 @@ import './input.scss';
 import './textarea.scss';
 import './vendor/font.css';
 import './vendor/highlight/atom-one-light.min.css';
-import HeaderReduxContainer from 'common/redux/containers/HeaderReduxContainer';
 import CodeReactComponent from 'common/components/reactcomponents/code/code-reactcomponent/code-reactcomponent.jsx';
 import CodeTabsReactComponent from 'common/components/reactcomponents/code/code-tabs-reactcomponent/code-tabs-reactcomponent.jsx';
 import ToastLevel from 'common/components/reactcomponents/toast-reactcomponent/toast-level';
@@ -27,9 +26,7 @@ import ToastReactComponent from 'common/components/reactcomponents/toast-reactco
 
 // main actions
 $(window).load(() => {
-  renderHeaderComponent();
   updateBodyCssClass();
-  store.subscribe(updateBodyCssClass);
 });
 
 $(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
@@ -40,34 +37,22 @@ $(window).on(constants.PAGE_CONTENT_READY_EVENT, () => {
 
 // functions
 function renderCodeReactComponent() {
-  document.querySelectorAll('pre.code').forEach(el => {
+  document.querySelectorAll('pre.code').forEach((el) => {
     el.style.all = 'inherit';
     ReactDOM.render(<CodeReactComponent code={el.innerHTML} language={el.getAttribute('language')} />, el);
   });
 }
 
 function renderCodeTabsReactComponent() {
-  document.querySelectorAll('div.code-tabs').forEach(el => {
+  document.querySelectorAll('div.code-tabs').forEach((el) => {
     el.style.all = 'inherit';
-    ReactDOM.render(
-      <CodeTabsReactComponent resultTab={el.querySelector('.result')} codeTabs={el.querySelectorAll('.code-tab')} />,
-      el
-    );
+    ReactDOM.render(<CodeTabsReactComponent resultTab={el.querySelector('.result')} codeTabs={el.querySelectorAll('.code-tab')} />, el);
   });
 }
 
 function resizeOneLineFontSize() {
   const $oneLineTexts = document.querySelectorAll('.resize-to-fit-one-line');
   $oneLineTexts.forEach(resizeTextFontSize);
-}
-
-function renderHeaderComponent() {
-  ReactDOM.render(
-    <Provider store={store}>
-      <HeaderReduxContainer firstVisit={store.getState().firstVisit} />
-    </Provider>,
-    document.querySelector('header')
-  );
 }
 
 function updateBodyCssClass() {

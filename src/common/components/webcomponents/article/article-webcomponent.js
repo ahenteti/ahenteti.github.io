@@ -149,7 +149,7 @@ class ArticleWebComponent extends ElementWebComponent {
       $articlePublicationDate.innerHTML = currentArticleMetadata.publicationDate;
       $articleTagsContainer.innerHTML = currentArticleMetadata.tags
         .split(',')
-        .map(tag => `<tag-webcomponent value="${tag}"></tag-webcomponent>`)
+        .map((tag) => `<tag-webcomponent value="${tag}"></tag-webcomponent>`)
         .join('');
     }
 
@@ -173,7 +173,7 @@ class ArticleWebComponent extends ElementWebComponent {
     }
 
     function handleTagClickEvent(event) {
-      const tag = event.composedPath().find(component => {
+      const tag = event.composedPath().find((component) => {
         try {
           return component.classList.contains('tag');
         } catch (error) {

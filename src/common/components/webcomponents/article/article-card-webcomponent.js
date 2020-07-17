@@ -108,7 +108,7 @@ class ArticleCardWebComponent extends ElementWebComponent {
           <p class="name">${this._name}</p>
           <div class="tags">
             <ion-icon name="pricetags"></ion-icon>
-            ${this._tags.map(tag => `<tag-webcomponent value="${tag}"></tag-webcomponent>`).join('')}
+            ${this._tags.map((tag) => `<tag-webcomponent value="${tag}"></tag-webcomponent>`).join('')}
           </div>
           <div class="publication-date">
             <ion-icon name="calendar"></ion-icon>
@@ -119,23 +119,23 @@ class ArticleCardWebComponent extends ElementWebComponent {
     `;
     this._container = this._root.querySelector('.container');
 
-    this.alreadyVisible = function() {
+    this.alreadyVisible = function () {
       const position = this.getBoundingClientRect();
       return position.top < 0 || (position.top < window.innerHeight - 50 && position.bottom >= 0);
     };
 
-    this.addAlreadyVisibleClass = function() {
+    this.addAlreadyVisibleClass = function () {
       this._container.classList.add('already-visible');
     };
 
-    this.addNotYetVisibleClass = function() {
+    this.addNotYetVisibleClass = function () {
       this._container.classList.add('not-yet-visible');
     };
 
-    this.addComeInClass = function() {
+    this.addComeInClass = function () {
       this._container.classList.add('slide-in');
     };
   }
 }
 
-window.customElements.define('article-card-webcomponent', ArticleCardWebComponent);
+//window.customElements.define('article-card-webcomponent', ArticleCardWebComponent);

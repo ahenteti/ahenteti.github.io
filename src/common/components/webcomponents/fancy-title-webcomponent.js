@@ -64,20 +64,20 @@ class FancyTitleWebComponent extends ElementWebComponent {
     `;
     this._container = this._root.querySelector('.container');
 
-    this.alreadyVisible = function() {
+    this.alreadyVisible = function () {
       const position = this.getBoundingClientRect();
       return position.top < 0 || (position.top < window.innerHeight && position.bottom >= 0);
     };
 
-    this.addAlreadyVisibleClass = function() {
+    this.addAlreadyVisibleClass = function () {
       this._container.classList.add('already-visible');
     };
 
-    this.addNotYetVisibleClass = function() {
+    this.addNotYetVisibleClass = function () {
       this._container.classList.add('not-yet-visible');
     };
 
-    this.addComeInClass = function() {
+    this.addComeInClass = function () {
       this._container.classList.add('slide-in');
     };
   }

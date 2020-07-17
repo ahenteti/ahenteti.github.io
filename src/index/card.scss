@@ -1,0 +1,30 @@
+.card {
+  margin-top: 4rem;
+  display: grid;
+}
+
+.card__logo {
+  width: 20rem;
+}
+
+.card__details {
+  & p {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .card {
+    grid-template-columns: 14rem 1fr;
+    grid-column-gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .card {
+    grid-template-columns: 1fr;
+  }
+  .card__logo {
+    margin-bottom: 3rem;
+  }
+}
