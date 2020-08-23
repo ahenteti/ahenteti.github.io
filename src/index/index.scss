@@ -238,26 +238,6 @@ main {
     padding: 4rem;
   }
 
-  .profile-with-general-info {
-    flex-direction: column;
-  }
-
-  .general-info {
-    padding-left: 0;
-    margin-top: 4rem;
-
-    & .name {
-      font-size: 3rem;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
-    & .text-with-icon,
-    & a {
-      font-size: 1.6rem;
-    }
-  }
-
   .summary {
     margin-top: 2.5rem;
   }
@@ -281,7 +261,7 @@ main {
 
 @media screen and (min-width: 1200px) {
   main {
-    margin: 2rem auto;
+    margin: 4rem auto;
     width: 65%;
     max-width: 85rem;
   }
@@ -289,7 +269,7 @@ main {
 
 @media screen and (min-width: 720px) and (max-width: 1200px) {
   main {
-    margin: 1rem auto;
+    margin: 2rem auto;
     width: 80%;
   }
 }
@@ -302,10 +282,6 @@ main {
 
   .about-container {
     margin-top: 0;
-  }
-
-  .profile-with-general-info {
-    margin-top: 5rem;
   }
 }
 
