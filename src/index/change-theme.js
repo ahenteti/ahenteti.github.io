@@ -16,9 +16,9 @@ function changeTheme(newTheme) {
 function toggleIcons(currentTheme) {
   changeThemeToDarkIcon.style.visibility = 'visible';
   changeThemeToLightIcon.style.visibility = 'visible';
-  if (currentTheme === constants.LIGHT_THEME) {
-    changeThemeToLightIcon.style.visibility = 'hidden';
-  } else {
+  if (currentTheme === constants.DARK_THEME) {
     changeThemeToDarkIcon.style.visibility = 'hidden';
+  } else {
+    changeThemeToLightIcon.style.visibility = 'hidden';
   }
 }

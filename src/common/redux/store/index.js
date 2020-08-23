@@ -6,7 +6,7 @@ import { createStore } from 'redux';
 
 const initialState = {
   theme: initTheme(),
-  unknownChangeThemeColorFeature: initUnknownChangeThemeColorFeature()
+  unknownChangeThemeColorFeature: initUnknownChangeThemeColorFeature(),
 };
 
 function reducer(state = initialState, action) {
@@ -23,13 +23,12 @@ export default createStore(reducer, initialState);
 
 function initTheme() {
   const searchParam = new URLSearchParams(window.location.search);
-  const themeInput =
-    searchParam.get(constants.THEME_QUERY_PARAM) || localStorage.getItem(constants.LOCAL_STORAGE_THEME_KEY);
+  const themeInput = searchParam.get(constants.THEME_QUERY_PARAM) || localStorage.getItem(constants.LOCAL_STORAGE_THEME_KEY);
   let theme;
-  if (constants.LIGHT_THEME === themeInput) {
-    theme = constants.LIGHT_THEME;
-  } else {
+  if (constants.DARK_THEME === themeInput) {
     theme = constants.DARK_THEME;
+  } else {
+    theme = constants.LIGHT_THEME;
   }
   return theme;
 }
