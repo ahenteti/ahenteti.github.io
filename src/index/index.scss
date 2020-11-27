@@ -1,5 +1,10 @@
 $imgWidthHeight: 150px;
 
+a {
+  text-decoration: none;
+  color: var(--body-color);
+}
+
 main {
   background-color: var(--article-background-color);
   --fancy-title-background-color: var(--article-background-color);
