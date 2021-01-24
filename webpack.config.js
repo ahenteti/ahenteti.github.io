@@ -30,15 +30,12 @@ module.exports = {
       filename: 'index.html',
       template: './src/index/index.html',
     }),
-    new HtmlWebpackPlugin({
-      filename: 'about.html',
-      template: './src/index/index.html',
-    }),
     new InlineChunkManifestHtmlWebpackPlugin(),
     new ExtractTextPlugin({
       filename: 'css/[name].[chunkhash].css',
     }),
     new CopyWebpackPlugin([{ from: 'src/assets/', to: 'assets/' }]),
+    new CopyWebpackPlugin([{ from: 'src/google/', to: '' }]),
   ],
   module: {
     rules: [
