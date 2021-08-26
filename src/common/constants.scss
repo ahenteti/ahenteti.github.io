@@ -136,6 +136,8 @@ body.dark {
 
   --personal-project-background-color: #1c1f23;
   --personal-project-border-color: #1c1f23;
+  --project-description-color: #aaa;
+  --technology-background-color: var(--tag-background-color);
 }
 
 body.light {
@@ -239,6 +241,8 @@ body.light {
 
   --personal-project-background-color: #fbfbfb;
   --personal-project-border-color: #fcfcfc;
+  --project-description-color: #666;
+  --technology-background-color: var(--tag-background-color);
 }
 
 html {

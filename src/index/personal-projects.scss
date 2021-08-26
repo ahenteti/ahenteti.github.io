@@ -37,6 +37,12 @@
     transition-property: color, background-color;
   }
 
+  & .description {
+    color: var(--project-description-color);
+    font-size: 1.4rem;
+    margin: 1rem 0 0.5rem;
+  }
+
   & .links a {
     text-decoration: none;
     color: var(--text-color);
@@ -52,8 +58,21 @@
 
   & .technologies {
     display: flex;
-    flex-flow: wrap;
-    margin: 0.5rem 0;
+    align-items: center;
+    margin-bottom: 0;
+    & .technologies-label {
+      margin-right: 0.5rem;
+      font-size: 1.45rem;
+      font-weight: bold;
+    }
+
+    & .technology {
+      font-size: 1.45rem;
+      margin: 0 0.5rem;
+      background-color: var(--technology-background-color);
+      padding: 0.2rem 0.5rem;
+      border-radius: 0.3rem;
+    }
   }
 
   & tag-webcomponent {
@@ -71,7 +90,14 @@
   }
 
   & .live-demo {
+    margin-top: 0.3rem;
     margin-bottom: 0;
+  }
+
+  & .live-demo-label {
+    font-size: 1.45rem;
+    font-weight: bold;
+    margin-right: 1rem;
   }
 
   & .live-demo-url {
